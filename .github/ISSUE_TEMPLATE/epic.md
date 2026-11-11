@@ -11,7 +11,7 @@ labels: "kind:epic,status:backlog,stage:requirements"
 
 ## 사용자 결과와 범위
 
-누가 어떤 문제를 해결하는가? 이번 범위와 후속 통합을 구분한다.
+누가 어떤 문제를 해결하는가? 전체 구현 범위와 이번 명세 작업의 범위를 구분한다.
 
 ## 완료 조건
 
@@ -21,7 +21,7 @@ labels: "kind:epic,status:backlog,stage:requirements"
 
 ## 선행 조건과 하위 스토리
 
-실제 Sub-issues로 연결하고 기술 선택·실험 의존성을 적는다. 미래 에픽은 구체화 조건을 적는다.
+실제 Sub-issues로 연결하고 기술 선택·실험 의존성과 미결정 선행 조건을 적는다.
 
 ## 검증과 산출물
 

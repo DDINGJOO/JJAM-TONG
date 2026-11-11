@@ -1,4 +1,4 @@
-@draft @future
+@draft @required
 Feature: 관측 대상을 당시의 자산과 소유권에 연결한다
 
   Scenario: BDD-CMDB-001 담당자 변경 전후의 자산 소유권을 구분한다

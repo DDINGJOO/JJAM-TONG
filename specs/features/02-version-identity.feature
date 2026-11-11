@@ -1,4 +1,4 @@
-@draft @initial
+@draft @required
 Feature: 코드 분석과 실행 근거의 버전을 명확히 식별한다
 
   Scenario: BDD-VER-001 분석 결과에서 대상과 분석 조건을 추적한다

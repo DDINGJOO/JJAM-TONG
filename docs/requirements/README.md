@@ -1,23 +1,39 @@
 # BDD 요구사항 초안
 
-상태: **Draft / 논의용**. 사용자가 요청한 행동을 Given–When–Then으로 구체화한 제안이다. 승인된 요구사항·아키텍처·지원 기능이나 실행 테스트 통과를 뜻하지 않는다. 기능 파일은 현재 실행기 없는 명세이며 Cucumber 등 도구·의존성은 채택하지 않았다.
+상태: **행동 명세 Draft / 논의용**. 코드 관측성·에이전트 근거 조회·SRE·MSA·Kubernetes·인프라·CMDB·SIEM은 모두 구현 대상이다. 사용자 목표를 Given–When–Then으로 구체화한 세부 행동은 함께 검토할 초안이며, 승인된 아키텍처·현재 지원 기능이나 실행 테스트 통과를 뜻하지 않는다. 기능 파일은 현재 실행기 없는 명세이며 Cucumber 등 도구·의존성은 채택하지 않았다.
 
 목적은 에이전트가 빠르고 정확한 분석에 필요한 근거를 얻고 SRE가 전체 상황을 파악하도록 돕는 것이다. 코드 관계의 수동 유지 부담을 줄이면서 **어떤 코드·배포의 어떤 시점에서 무엇을 확인했고 무엇이 빠졌는지** 설명해야 한다.
 
 ## 범위와 추적성
 
-| 스토리 | 명세 | 시나리오 ID | 제안 범위 |
+| 스토리 | 명세 | 시나리오 ID | 구현 범위 |
 | --- | --- | --- | --- |
-| S01 메서드 관계 | [01-code-relations.feature](../../specs/features/01-code-relations.feature) | BDD-REL-001~003 | 초기 |
-| S02 분석·실행 버전 | [02-version-identity.feature](../../specs/features/02-version-identity.feature) | BDD-VER-001~003 | 초기 |
-| S03 자동 갱신 | [03-graph-refresh.feature](../../specs/features/03-graph-refresh.feature) | BDD-UPD-001~003 | 초기 |
-| S04 에이전트 근거 조회 | [04-agent-evidence.feature](../../specs/features/04-agent-evidence.feature) | BDD-AGT-001~003 | 초기 |
-| S05 SRE 분석 | [05-sre-analysis.feature](../../specs/features/05-sre-analysis.feature) | BDD-SRE-001~003 | 초기 |
-| S06 인프라 문맥 | [06-infrastructure.feature](../../specs/features/06-infrastructure.feature) | BDD-INF-001~003 | 미래 |
-| S07 자산·소유권 | [07-cmdb.feature](../../specs/features/07-cmdb.feature) | BDD-CMDB-001~003 | 미래 |
-| S08 보안 상관 분석 | [08-security.feature](../../specs/features/08-security.feature) | BDD-SEC-001~003 | 미래 |
+| S01 메서드 관계 | [01-code-relations.feature](../../specs/features/01-code-relations.feature) | BDD-REL-001~004 | 구현 대상 |
+| S02 분석·실행 버전 | [02-version-identity.feature](../../specs/features/02-version-identity.feature) | BDD-VER-001~003 | 구현 대상 |
+| S03 자동 갱신 | [03-graph-refresh.feature](../../specs/features/03-graph-refresh.feature) | BDD-UPD-001~004 | 구현 대상 |
+| S04 에이전트 근거 조회 | [04-agent-evidence.feature](../../specs/features/04-agent-evidence.feature) | BDD-AGT-001~004 | 구현 대상 |
+| S05 SRE 분석 | [05-sre-analysis.feature](../../specs/features/05-sre-analysis.feature) | BDD-SRE-001~004 | 구현 대상 |
+| S06 인프라 문맥 | [06-infrastructure.feature](../../specs/features/06-infrastructure.feature) | BDD-INF-001~004 | 구현 대상 |
+| S07 자산·소유권 | [07-cmdb.feature](../../specs/features/07-cmdb.feature) | BDD-CMDB-001~003 | 구현 대상 |
+| S08 보안 상관 분석 | [08-security.feature](../../specs/features/08-security.feature) | BDD-SEC-001~003 | 구현 대상 |
 
 각 스토리는 요구사항·미결정 사항 검토 태스크와 검증 계획 태스크에 연결한다. 실제 이슈 번호·부모 관계·상태는 [ROADMAP](../../ROADMAP.md)의 GitHub 링크에서 확인한다. 시나리오 파일이나 이슈를 만들었다는 이유로 기능을 완료 처리하지 않는다.
+
+전체 영역의 구현 범위는 유지한다. 구현 순서·지원 조합·검증 규모는 의존성과 설계 토론으로 정하며, 우선순위와 현재 구현 유무를 범위 포함 여부로 해석하지 않는다. 모든 기능 파일의 `@required`는 구현 대상을, `@draft`는 세부 행동이 검토 중임을 나타낸다.
+
+## 공통 품질 요구: 이식성
+
+플랫폼을 다른 환경에 설치하는 능력과 다른 환경의 대상을 관측하는 능력을 구분한다. 예를 들어 플랫폼이 Kubernetes에서 실행되더라도 관측 대상이 Kubernetes라는 전제를 요구할지 별도로 정한다. 다음은 지원 계약과 검증을 위한 초안이며 특정 구조·도구 채택이나 모든 환경 지원의 약속은 아니다.
+
+| 축 | 원하는 행동과 판정 후보 | 연결 시나리오·태스크 |
+| --- | --- | --- |
+| 언어·런타임 | 언어별 분석기·계측기가 지원 수준을 선언하고 미지원 메서드 관측을 빈 그래프나 정상 수집으로 바꾸지 않음 | BDD-REL-004 · T01/T02 |
+| CI·빌드 환경 | 같은 빌드 입력·분석 설정으로 CI 공급원을 바꾸어도 버전 연결과 의미상 관계가 일치함; 실행 ID·시각은 별도 | BDD-UPD-004 · T05/T06 |
+| 수집 도구·공급원 | 관측·CMDB·SIEM 연결을 교체할 때 원본 식별·출처·시간·권한을 보존하거나 변환 불가를 설명함 | BDD-AGT-004 · T07/T08/T14/T16 |
+| 업무 서비스와 격리 | 수집 경로 중단이 업무 결과·예외를 바꾸지 않고 버퍼·재시도 자원이 제한됨 | BDD-SRE-004 · T10 |
+| 관측 대상 환경 | VM·컨테이너·Kubernetes에서 서비스·빌드 근거를 조회하고 환경 전용 관계는 별도로 표시함 | BDD-INF-004 · T11/T12 |
+
+추가로 플랫폼의 로컬·서버·클러스터 설치, 업그레이드·제거, 데이터 export/import와 스키마 호환성, 비밀·권한 설정의 이관을 논의한다. 지원 조합·앱 수정량·필요 권한·의존 인프라·자원 예산·이식 비용을 표로 정한 뒤 실제 실험으로 확인한다. 이 항목들의 세부 행동과 자동 검증 계획은 아직 미결이며, 현재 시나리오가 모든 이식 과정을 검증하는 것은 아니다. 대안은 [D06 설계 토론](../DISCUSSIONS.md#d06-이식성의-책임과-지원-범위를-어떻게-나눌-것인가)에 있다.
 
 ## 공통 용어와 합성 예제
 
@@ -36,7 +52,8 @@
 4. 에이전트의 읽기 인터페이스·인증·대상별 권한·조회 예산·페이지/응답 상한·출처 감사는 어떻게 정할 것인가?
 5. 소스 코드·메서드명·예외 유형의 공개/수집 경계는 어디인가? 공급원 만료·거절·충돌을 어떻게 노출할 것인가?
 6. freshness·수집 한도·계측 비용·응답 시간의 예산과 측정 조건은 무엇인가? 현재 수치 SLO나 보편적인 성능 배수는 정하지 않았다.
-7. 미래 인프라·CMDB·SIEM의 식별·시간·권한 계약과 공급원은 무엇인가? 초기 기능과 같은 단계의 구현 약속으로 취급하지 않는다.
+7. 모두 구현 대상인 인프라·CMDB·SIEM의 식별·시간·권한 계약과 공급원은 무엇인가? 전체 범위를 유지하면서 어떤 의존성 순서로 구현·검증할 것인가?
+8. 플랫폼 설치 환경과 관측 대상 환경, 언어·런타임·CI·수집 도구의 지원 조합은 무엇인가? 서비스 수정량과 데이터·설정 이동 비용을 어떻게 측정할 것인가?
 
 아키텍처·정적 분석기·계측 방식·스토리지·CI 이벤트·에이전트 프로토콜은 위 행동과 반례를 놓고 비교한다. 대안은 [설계 토론](../DISCUSSIONS.md), 후보 근거는 [오픈소스 조사](../RESEARCH.md)에서 관리한다.
 

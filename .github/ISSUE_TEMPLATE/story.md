@@ -20,7 +20,7 @@ labels: "kind:story,status:backlog,stage:requirements"
 
 ## BDD 시나리오와 미결정 사항
 
-시나리오 ID·feature 경로·초기/미래 범위와 합성 예시를 적는다. 정상·실패·반례를 Given–When–Then으로 설명하고 미결정 정책·수치·기술을 구분한다.
+시나리오 ID·feature 경로·구현 대상 행동과 합성 예시를 적는다. 정상·실패·반례를 Given–When–Then으로 설명하고 미결정 정책·수치·기술을 구분한다. 언어·실행 환경·CI·공급원별 지원 차이와 이식성 검증 조건을 적는다.
 
 ```gherkin
 Scenario: BDD-XXX-000 기대하는 사용자 행동
