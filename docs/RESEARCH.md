@@ -1,0 +1,62 @@
+# 오픈소스·인프라 조사
+
+조사 기준일: 2026-11-11. 공식 문서 기반의 예비 조사다. **현재 작업은 [요구사항·BDD](requirements/README.md)의 작성·토론**이며, 이 문서는 이후 후보 검증의 참고 자료다. 의존성 채택·실행 실험·호환성·성능·재배포 적합성·보안 감사는 완료하지 않았다.
+
+## 조사 질문
+
+기존 도구가 에이전트·SRE의 분석 질문에 필요한 정적 관계·실제 호출·버전·출처·시점·수집 범위를 기계 조회로 제공할 수 있는지 확인한다. 직접 구현할 부분과 연동할 부분, 필요한 운영 인프라를 같은 fixture와 질문으로 비교한다. 화면 기능만으로 적합성을 판단하지 않는다.
+
+## 후보와 근거
+
+| 후보 | 참고·재사용을 검토할 부분 | 확인할 경계 |
+| --- | --- | --- |
+| AppMap Java | 메서드 호출·코드 구조·요청 기록과 개발·CI 지도 | 미실행 경로의 정적 후보 관계, 상시 운영 수집, 기본 기록 데이터와 라이선스 조건 |
+| Apache SkyWalking | agent·수집·APM backend·조회 화면의 통합 | 서비스/endpoint 토폴로지와 전체 메서드 정적 그래프를 구분, 정확한 source/build 연결 |
+| SootUp | JVM 정적 분석과 CHA/RTA 호출 그래프 | classpath·진입점·알고리즘별 결과, DI·프록시·reflection의 한계 |
+| WALA | 호출 그래프·pointer analysis 비교 후보 | 분석 설정·입력·동적 기능 처리와 현재 앱 조합의 재현성 |
+| OTel Java agent·확장 | 기존 라이브러리 계측·context와 앱 메서드 확장 | 기본 계측의 범위, 확장 API 버전, 중복 span·SDK 공존 |
+| Byte Buddy 기반 agent | 앱 메서드의 bytecode 계측을 직접 제어하는 기반 | context·classloader·재귀·비동기·오버헤드의 구현 책임 |
+
+AppMap은 가까운 참고 사례지만 문서만으로 이 프로젝트의 정적·운영·버전 결합 요구를 모두 충족한다고 판단하지 않는다. Byte Buddy는 완성된 관측 제품과 구분한다.
+
+## 공식 출처
+
+- AppMap: [Java agent 문서](https://appmap.io/docs/reference/appmap-java), [개발·CI 흐름](https://appmap.io/how-it-works), [Java v1.30.2 라이선스 원문](https://github.com/getappmap/appmap-java/blob/v1.30.2/LICENSE.txt).
+- SkyWalking: [공식 구조 설명](https://skywalking.apache.org/docs/main/latest/en/concepts-and-designs/overview/), [저장소](https://github.com/apache/skywalking).
+- SootUp: [호출 그래프 문서](https://soot-oss.github.io/SootUp/latest/callgraphs/), [저장소·라이선스](https://github.com/soot-oss/SootUp).
+- WALA: [호출 그래프 API](https://wala.github.io/javadoc/com/ibm/wala/ipa/callgraph/package-summary.html), [저장소·라이선스](https://github.com/wala/WALA).
+- OTel: [Java agent 확장](https://opentelemetry.io/docs/zero-code/java/agent/extensions/), [메서드 계측](https://explorer.opentelemetry.io/java-agent/instrumentation/methods), [저장소·라이선스](https://github.com/open-telemetry/opentelemetry-java-instrumentation).
+- Byte Buddy: [저장소·라이선스](https://github.com/raphw/byte-buddy).
+
+AppMap Java v1.30.2의 원문은 MIT에 **Commons Clause 조건**을 더하므로 단순 MIT 후보로 분류하지 않는다. 다른 후보의 조사상 라이선스 표기는 SkyWalking·OTel·Byte Buddy가 Apache-2.0, SootUp이 LGPL-2.1, WALA가 EPL-2.0이다. 실제 채택 버전과 배포 방식의 조건을 원문·의존성 트리에서 다시 확인한다. 이 표기는 재배포 허용 판단이나 프로젝트 자체의 라이선스 선택을 대신하지 않는다.
+
+## 비교 실험
+
+| 질문 | 같은 fixture에서 확인할 것 |
+| --- | --- |
+| 어떤 관계를 찾는가? | overload·private/self-call·인터페이스 구현체·재귀·reflection의 정답/후보/미해결 |
+| 실제 실행을 어떻게 얻는가? | 범위 지정, 동기·비동기 부모/링크, 오류, 원래 결과·예외 보존 |
+| 코드가 바뀌면 유지되는가? | 메서드 추가·삭제·이름 변경 후 전체 재생성과 차이 |
+| 버전이 섞이지 않는가? | 같은 이름의 메서드가 있는 두 빌드와 이전 배포의 동시 조회 |
+| 에이전트가 근거를 읽을 수 있는가? | trace·메서드·빌드·소스의 구조화된 조회, 원본 참조·권한·응답 상한 |
+| 결과를 얼마나 믿을 수 있는가? | 수집 시점·freshness·coverage·sampling·미해결·가설 구분, 누락 시 설명 |
+| 유지할 수 있는가? | 실행 시간·메모리·수집량·설정·업그레이드 부담과 누락 표시 |
+
+JDK 21과 선택한 프레임워크·agent·분석기의 실제 조합은 별도 PoC에서 확인한다. 프로젝트의 활동성·릴리스·라이선스·알려진 보안 이슈도 채택 후보 버전을 고정할 때 갱신한다. 문서의 `latest`가 검증한 실행 버전을 뜻하지 않는다.
+
+## 인프라 비교 방향
+
+첫 PoC의 후보는 버전별 snapshot과 제한된 실행 기록으로 두 버전의 결합과 근거 조회를 입증하는 구성이다. 중앙 보관과 원본 연합 조회의 대안도 비교한다. 공유 보관이 필요하면 snapshot 조회·보존·권한과 trace 저장·전송의 비용을 평가한다. 아직 구조를 선택하지 않았다.
+
+SkyWalking 같은 통합 제품을 활용하면 해당 backend·UI·저장소의 운영 부담도 함께 평가한다. 분리된 분석기와 OTel 생태계를 결합하면 버전 매칭·조회 계층의 구현 부담을 평가한다. 어느 쪽도 현재 채택하지 않았다.
+
+Neo4j·Kafka·Kubernetes는 현재 필수 구성으로 정하지 않는다. 그래프 크기·탐색 깊이·변경 빈도·이벤트량·보존 기간·접근 통제와 비용을 측정한 뒤 필요성을 판단한다.
+
+## 결정 전 산출물
+
+1. 버전·공식 근거·라이선스·활동성·미확인 항목을 포함한 후보 비교표.
+2. 같은 fixture의 정적·실행 결과와 누락·오연결 반례.
+3. 코드·빌드·메서드·분석기·schema·설정 식별 및 출처·시점·freshness·coverage·불확실성을 포함한 근거 조회 계약 후보.
+4. 재사용/직접 구현 경계, 파이프라인·인프라 대안과 비용·미결 선택을 기록한 토론 자료. 채택한 결정만 별도 ADR로 구분.
+
+먼저 요구사항과 BDD의 기대 결과·반례·미결 질문을 함께 검토하고, 그것을 판정 기준으로 후속 PoC를 설계한다. PoC 이후 아키텍처 ADR과 구현 범위를 논의한다. 현재 모든 후보·파이프라인은 미채택 상태이며 [DISCUSSIONS](DISCUSSIONS.md)에 대안과 판별 실험을 둔다. CMDB·SIEM 제품 선택은 후속 통합 단계에서 별도 조사한다.

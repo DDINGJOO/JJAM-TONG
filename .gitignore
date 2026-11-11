@@ -1,0 +1,14 @@
+.local/
+.omx/
+results/
+.env
+.env.*
+*.log
+.DS_Store
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+**/build/
+.gradle/
+node_modules/
