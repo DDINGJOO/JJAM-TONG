@@ -25,10 +25,10 @@
 | --- | --- |
 | [R1 — 코드 관계·버전 요구사항](https://github.com/DDINGJOO/JJAM-TONG/milestone/1) | 메서드 관계와 분석·실행 버전의 행동 명세·반례·미결정 사항을 검토한다. |
 | [R2 — 자동 갱신·에이전트 근거 요구사항](https://github.com/DDINGJOO/JJAM-TONG/milestone/2) | 그래프 갱신과 기계 조회 근거의 행동·실패 조건을 명세한다. |
-| [R3 — SRE·인프라 요구사항](https://github.com/DDINGJOO/JJAM-TONG/milestone/3) | SRE 분석과 MSA·Kubernetes·인프라 관계의 행동 및 이식성 요구를 명세한다. |
-| [R4 — CMDB·SIEM 요구사항](https://github.com/DDINGJOO/JJAM-TONG/milestone/4) | 전체 구현 대상인 자산·소유권·보안 연결의 출처·시간·권한과 공급원 교체 요구를 명세한다. 현재는 명세·검증 계획 단계다. |
+| [R3 — SRE·인프라 요구사항](https://github.com/DDINGJOO/JJAM-TONG/milestone/3) | SRE 분석과 AWS EKS·ECS·일반 Kubernetes의 환경별 식별·실행·이식성을 명세한다. |
+| [R4 — 카탈로그·CMDB·SIEM 요구사항](https://github.com/DDINGJOO/JJAM-TONG/milestone/4) | 카탈로그의 온프레미스·AWS 자원 매핑과 자산·소유권·보안 연결의 출처·시간·권한을 명세한다. 현재는 명세·검증 계획 단계다. |
 
-S01~S08은 코드·관측성·에이전트·SRE·MSA·Kubernetes·인프라·CMDB·SIEM의 전체 구현 범위다. 구현 순서·지원 조합·일정은 의존성과 설계 토론으로 정한다. 세부 행동 시나리오는 모두 논의용 Draft이며 이식성을 공통 품질 요구로 다룬다.
+S01~S09는 코드·관측성·에이전트·SRE·MSA·Kubernetes·인프라·CMDB·SIEM의 전체 구현 범위다. 관측 지원 대상은 AWS EKS·ECS·일반 Kubernetes이며 카탈로그에서 온프레미스·AWS 자원으로 매핑한다. 구현 순서·지원 조합·일정은 의존성과 설계 토론으로 정한다. 세부 행동 시나리오는 모두 논의용 Draft이며 이식성을 공통 품질 요구로 다룬다.
 
 ## E01 · [#2 메서드 관계·분석 버전 요구사항](https://github.com/DDINGJOO/JJAM-TONG/issues/2)
 
@@ -89,16 +89,16 @@ SRE가 느린 구간·혼합 성공/실패·부분 수집을 구분한다. (구�
 
 ### S06 · [#20 서비스·배포·워크로드 문맥을 연결한다](https://github.com/DDINGJOO/JJAM-TONG/issues/20)
 
-MSA·Kubernetes·인프라에서 시점이 맞는 배포·워크로드 근거를 탐색한다. (구현 대상 · 행동 초안 명세)
+AWS EKS·ECS와 일반 Kubernetes에서 시점이 맞는 배포·실행·자원 근거를 탐색한다. (구현 대상 · 행동 초안 명세)
 
-[BDD 원본](specs/features/06-infrastructure.feature) · BDD-INF-001, BDD-INF-002, BDD-INF-003, BDD-INF-004
+[BDD 원본](specs/features/06-infrastructure.feature) · BDD-INF-001, BDD-INF-002, BDD-INF-003, BDD-INF-004, BDD-INF-005, BDD-INF-006
 
 - [#21 서비스·배포·워크로드 관계 명세](https://github.com/DDINGJOO/JJAM-TONG/issues/21)
 - [#22 인프라 관계의 누락·오연결 반례](https://github.com/DDINGJOO/JJAM-TONG/issues/22) · 선행: [#21](https://github.com/DDINGJOO/JJAM-TONG/issues/21)
 
-## E04 · [#23 CMDB·SIEM 통합 요구사항](https://github.com/DDINGJOO/JJAM-TONG/issues/23)
+## E04 · [#23 카탈로그·CMDB·SIEM 통합 요구사항](https://github.com/DDINGJOO/JJAM-TONG/issues/23)
 
-자산·소유권·보안 이벤트를 권한·출처·시간 기준으로 연결하도록 명세한다.
+카탈로그의 논리 서비스를 온프레미스·AWS 자원과 연결하고 자산·소유권·보안 이벤트의 권한·출처·시간을 명세한다.
 
 ### S07 · [#24 자산·소유권·관계 이력을 근거로 조회한다](https://github.com/DDINGJOO/JJAM-TONG/issues/24)
 
@@ -117,6 +117,15 @@ SIEM 근거를 같은 서비스·배포·자산의 운영 증거와 함께 조�
 
 - [#28 보안 이벤트 상관 분석 행동 명세](https://github.com/DDINGJOO/JJAM-TONG/issues/28)
 - [#29 보안 조회 누락·민감정보·자동 대응 경계](https://github.com/DDINGJOO/JJAM-TONG/issues/29) · 선행: [#28](https://github.com/DDINGJOO/JJAM-TONG/issues/28)
+
+### S09 · [#30 카탈로그의 서비스를 온프레미스·AWS 자원에 매핑한다](https://github.com/DDINGJOO/JJAM-TONG/issues/30)
+
+논리 서비스·시스템·소유자와 실제 자원의 다중 환경·공유 관계를 출처·유효 시간·revision과 함께 조회한다. (구현 대상 · 행동 초안 명세)
+
+[BDD 원본](specs/features/09-catalog-mapping.feature) · BDD-CAT-001, BDD-CAT-002, BDD-CAT-003, BDD-CAT-004, BDD-CAT-005, BDD-CAT-006
+
+- [#31 카탈로그 모델과 환경별 자원 매핑 명세](https://github.com/DDINGJOO/JJAM-TONG/issues/31)
+- [#32 매핑 갱신·이동·중복·권한의 검증 계획](https://github.com/DDINGJOO/JJAM-TONG/issues/32) · 선행: [#31](https://github.com/DDINGJOO/JJAM-TONG/issues/31)
 
 ## 다음 단계
 

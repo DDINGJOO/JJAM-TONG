@@ -13,13 +13,39 @@
 | S03 자동 갱신 | [03-graph-refresh.feature](../../specs/features/03-graph-refresh.feature) | BDD-UPD-001~004 | 구현 대상 |
 | S04 에이전트 근거 조회 | [04-agent-evidence.feature](../../specs/features/04-agent-evidence.feature) | BDD-AGT-001~004 | 구현 대상 |
 | S05 SRE 분석 | [05-sre-analysis.feature](../../specs/features/05-sre-analysis.feature) | BDD-SRE-001~004 | 구현 대상 |
-| S06 인프라 문맥 | [06-infrastructure.feature](../../specs/features/06-infrastructure.feature) | BDD-INF-001~004 | 구현 대상 |
+| S06 인프라 문맥 | [06-infrastructure.feature](../../specs/features/06-infrastructure.feature) | BDD-INF-001~006 | 구현 대상 |
 | S07 자산·소유권 | [07-cmdb.feature](../../specs/features/07-cmdb.feature) | BDD-CMDB-001~003 | 구현 대상 |
 | S08 보안 상관 분석 | [08-security.feature](../../specs/features/08-security.feature) | BDD-SEC-001~003 | 구현 대상 |
+| S09 카탈로그 기반 자원 매핑 | [09-catalog-mapping.feature](../../specs/features/09-catalog-mapping.feature) | BDD-CAT-001~006 | 구현 대상 |
 
 각 스토리는 요구사항·미결정 사항 검토 태스크와 검증 계획 태스크에 연결한다. 실제 이슈 번호·부모 관계·상태는 [ROADMAP](../../ROADMAP.md)의 GitHub 링크에서 확인한다. 시나리오 파일이나 이슈를 만들었다는 이유로 기능을 완료 처리하지 않는다.
 
 전체 영역의 구현 범위는 유지한다. 구현 순서·지원 조합·검증 규모는 의존성과 설계 토론으로 정하며, 우선순위와 현재 구현 유무를 범위 포함 여부로 해석하지 않는다. 모든 기능 파일의 `@required`는 구현 대상을, `@draft`는 세부 행동이 검토 중임을 나타낸다.
+
+## 관측 지원 대상과 카탈로그 매핑
+
+사용자가 지정한 관측 지원 대상은 **AWS EKS·ECS와 일반 Kubernetes**다. 카탈로그에서 **온프레미스·AWS 자원**으로 매핑한다. 대상 범위는 구현 요구이며, 지원 버전·권한·수집 방식과 플랫폼 자체의 설치 환경은 별도로 정한다. 현재 실행 지원이 완료된 상태는 아니다.
+
+| 관측·매핑 대상 | 보존할 식별·관계 후보 | 지원 차이와 검증할 조건 |
+| --- | --- | --- |
+| AWS EKS | 등록된 클러스터 식별·Kubernetes 객체 UID, AWS 클러스터·자원 참조 | 일반 Kubernetes 관계와 AWS 관계를 연결하고 여러 수집원이 같은 대상을 관측한 근거 보존 |
+| AWS ECS | cluster·service·task 참조, task definition revision, 실제 이미지·빌드 근거 | EC2·Fargate 등 실행 방식별 수집 가능 범위와 호스트 가시성; Pod 관계를 필수로 요구하지 않음 |
+| 일반 Kubernetes | 수집원이 등록한 클러스터 식별, namespace·객체 UID·환경별 워크로드 관계 | AWS 계정·ARN을 필수로 요구하지 않으며 이름 재사용·여러 클러스터 구분 |
+| 온프레미스 자원 | 공급원·사이트·안정적인 자산 식별, 호스트·VM·클러스터·DB 관계 | hostname·IP 재사용, 단절·지연·수동 등록과 자동 수집의 출처 구분 |
+| AWS 자원 | 공급원·partition·계정·해당하는 경우 리전, ARN 또는 서비스별 자원 식별 | EC2·RDS·S3 등은 자원 유형 예시; 실제 지원 유형·API·권한과 전역 자원의 범위는 별도 검토 |
+
+카탈로그는 논리 서비스·시스템·소유자·저장소·선언한 의존성의 기준점을 제공한다. 환경별 배포·실제 실행·실제 자원은 별도 식별한다. 예를 들어 합성 `board-service`가 AWS EKS·ECS와 온프레미스에 배포되고, 다른 서비스와 같은 DB 자원을 공유하는 관계를 표현한다. 카탈로그의 서비스와 Kubernetes Service, ECS service 같은 공급원 객체는 각 식별 공간과 의미를 구분한다.
+
+매핑의 행동 초안은 다음과 같다.
+
+- 한 논리 서비스의 여러 환경·배포와 여러 서비스가 공유하는 자원을 표현한다. 논리 서비스 식별과 실물 자원 식별을 하나로 합치지 않는다.
+- 관계에는 원본 참조·출처·대상 범위·유효 시간·수집 시점과 카탈로그·매핑 revision을 남겨 사고 당시 관계를 조회한다. 코드·빌드·분석 버전과도 별도로 추적한다.
+- 명시적 선언, 자동 수집 사실, 이름·태그·IaC 등의 매칭 후보를 구분한다. 확정 기준·충돌 우선순위는 토론하며 근거 없이 후보를 확정하지 않는다.
+- 이름이 같거나 같은 자원이 여러 수집원에 나타나도 출처 범위·원본 식별과 확인된 동일성으로 판단한다. 충돌과 중복 근거를 보존한다.
+- 카탈로그 미등록 자원과 아직 자원에 연결되지 않은 서비스를 표현한다. 공급원 장애·권한 거절·태그 누락만으로 서비스·자원·기존 매핑을 삭제하지 않는다.
+- 조회 권한을 카탈로그와 자원·관계 양쪽에 적용한다. 상위 카탈로그를 볼 수 있다는 이유로 제한된 자원이나 보안 근거를 공개하지 않는다.
+
+등록 형식, 기존 카탈로그 연동과 자체 관리의 경계, 최초 발견·갱신·재조정 방식, 관계 확정 권한과 이력 보존 정책은 [D07](../DISCUSSIONS.md#d07-카탈로그와-실제-자원의-매핑을-어떻게-유지할-것인가)에서 토론한다. 제품·저장소·수집 파이프라인 채택은 미결이다.
 
 ## 공통 품질 요구: 이식성
 
@@ -31,7 +57,7 @@
 | CI·빌드 환경 | 같은 빌드 입력·분석 설정으로 CI 공급원을 바꾸어도 버전 연결과 의미상 관계가 일치함; 실행 ID·시각은 별도 | BDD-UPD-004 · T05/T06 |
 | 수집 도구·공급원 | 관측·CMDB·SIEM 연결을 교체할 때 원본 식별·출처·시간·권한을 보존하거나 변환 불가를 설명함 | BDD-AGT-004 · T07/T08/T14/T16 |
 | 업무 서비스와 격리 | 수집 경로 중단이 업무 결과·예외를 바꾸지 않고 버퍼·재시도 자원이 제한됨 | BDD-SRE-004 · T10 |
-| 관측 대상 환경 | VM·컨테이너·Kubernetes에서 서비스·빌드 근거를 조회하고 환경 전용 관계는 별도로 표시함 | BDD-INF-004 · T11/T12 |
+| 관측 대상 환경 | AWS EKS·ECS·일반 Kubernetes와 온프레미스에서 공통 서비스·빌드 근거와 환경 전용 관계를 구분함 | BDD-INF-004~006 · T11/T12 |
 
 추가로 플랫폼의 로컬·서버·클러스터 설치, 업그레이드·제거, 데이터 export/import와 스키마 호환성, 비밀·권한 설정의 이관을 논의한다. 지원 조합·앱 수정량·필요 권한·의존 인프라·자원 예산·이식 비용을 표로 정한 뒤 실제 실험으로 확인한다. 이 항목들의 세부 행동과 자동 검증 계획은 아직 미결이며, 현재 시나리오가 모든 이식 과정을 검증하는 것은 아니다. 대안은 [D06 설계 토론](../DISCUSSIONS.md#d06-이식성의-책임과-지원-범위를-어떻게-나눌-것인가)에 있다.
 
@@ -41,7 +67,7 @@
 - **실행 근거**는 관측한 호출 occurrence·부모/링크·시간·상태다. 기록 부재를 미실행으로 확정하지 않는다.
 - **분석 식별**은 대상 repository·commit·build·module과 analysis run·index·analyzer/schema/config를 구분한다. 정확한 필드·정규화는 미결이다.
 - **근거 응답**은 원본 참조·출처·대상 시간·수집 시점·수집 범위·신선도와 불확실성을 설명한다. 구체적 wire format은 미결이다.
-- `com.example.shop`, `build-A`, `build-B`, `팀-A`, `팀-B`는 합성 fixture다. 빌드 이름을 실제 commit SHA 또는 배포 검증으로 해석하지 않는다.
+- `com.example.shop`, `board-service`, `build-A`, `build-B`, `팀-A`, `팀-B`는 합성 fixture다. 빌드 이름을 실제 commit SHA 또는 배포 검증으로 해석하지 않는다.
 - 메서드 예시는 `PlaceOrderController → OrderService.place → OrderService.validate(private) → InventoryRepository.reserve`다. 입력·반환 본문·개인정보·비밀은 예제와 기본 수집 대상에 넣지 않는다.
 
 ## 먼저 논의할 미결정 사항

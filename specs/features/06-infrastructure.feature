@@ -20,9 +20,25 @@ Feature: 서비스의 실행을 해당 시점의 배포와 인프라에 연결�
     And 노드 이벤트가 지연의 원인이라고 자동 확정하지 않는다
 
   Scenario: BDD-INF-004 관측 대상의 실행 환경에 맞는 관계만 제공한다
-    Given 같은 합성 앱 빌드를 실행하는 VM과 컨테이너와 Kubernetes가 검증할 지원 대상 후보로 정의된다
+    Given 같은 합성 앱 빌드를 실행하는 온프레미스 VM과 AWS EKS 및 ECS와 일반 Kubernetes가 있다
     And 각 환경에 서비스와 빌드 및 실행 근거가 수집되어 있다
     When 에이전트가 각 환경의 요청과 배포 문맥을 조회한다
     Then 환경별 실행 식별자와 공통 서비스 및 빌드 근거를 구분해 얻는다
     And VM에 없는 Pod 관계를 생성하거나 해당 없음 상태를 수집 실패와 혼동하지 않는다
     And 플랫폼의 설치 환경을 관측 대상의 실행 환경으로 추정하지 않는다
+
+  Scenario: BDD-INF-005 ECS 실행을 task 식별과 당시 빌드 근거에 연결한다
+    Given 합성 ECS service의 교체 전후 task 참조와 task definition revision 및 실제 이미지와 빌드 연결 근거가 있다
+    And Fargate task에 대해 사용자가 조회할 수 있는 호스트 자산 근거는 없다
+    When 에이전트가 교체 전후의 요청 실행과 인프라 문맥을 조회한다
+    Then 요청은 당시 task와 해당 빌드 및 배포 근거에 연결되고 교체 전후 이력을 구분한다
+    And Pod 관계나 임의의 EC2 호스트를 생성하지 않고 호스트 가시성의 지원 한계를 설명한다
+    And task definition revision만으로 코드 버전을 확정하지 않는다
+
+  Scenario: BDD-INF-006 EKS와 일반 Kubernetes의 같은 이름을 구분한다
+    Given AWS EKS와 온프레미스 Kubernetes에 같은 namespace와 이름의 워크로드가 있다
+    And 각 객체의 클러스터 식별과 UID 및 수집 출처가 기록되어 있다
+    When 에이전트가 각 서비스 실행의 워크로드와 자원 관계를 조회한다
+    Then 해당 클러스터와 UID 및 시점에 맞는 관계를 각각 반환한다
+    And 일반 Kubernetes에 AWS 계정이나 ARN을 필수로 요구하지 않는다
+    And AWS 연결 근거가 없다는 이유로 Kubernetes 관계를 미수집으로 표시하지 않는다

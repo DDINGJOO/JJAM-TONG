@@ -52,6 +52,20 @@ SkyWalking 같은 통합 제품을 활용하면 해당 backend·UI·저장소의
 
 Neo4j·Kafka·Kubernetes는 현재 필수 구성으로 정하지 않는다. 그래프 크기·탐색 깊이·변경 빈도·이벤트량·보존 기간·접근 통제와 비용을 측정한 뒤 필요성을 판단한다.
 
+## 카탈로그·환경별 식별의 공식 참고
+
+관측 지원 대상은 AWS EKS·ECS와 일반 Kubernetes, 카탈로그 매핑 대상은 온프레미스·AWS 자원이다. 다음은 지원 계약을 설계하기 위한 문서 확인이며 connector 구현·실행 호환성이나 제품 채택의 증거가 아니다.
+
+| 공식 근거 | 확인한 내용 | 프로젝트에서 검토할 요구 |
+| --- | --- | --- |
+| [EKS 개요](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html) | AWS가 제공하는 관리형 Kubernetes 서비스 | Kubernetes 객체 식별과 AWS 자원 참조를 함께 보존하고 동일 대상의 여러 수집 근거 연결 |
+| [ECS 개요](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html), [Task API](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Task.html) | ECS의 서비스·task·task definition, EC2·Fargate 등의 실행 방식과 task·cluster 참조 | ECS 실행과 빌드·이미지의 연결, 실행 방식별 가시성·미수집·해당 없음 구분 |
+| [Fargate의 실행 제약](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-security-considerations.html) | EC2 방식과 다른 런타임·권한 제약 | 호스트 접근·계측 방식의 가능 여부를 실제 지원 조합에서 검증; 임의 호스트 관계 생성 방지 |
+| [Kubernetes 객체 이름과 UID](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) | 이름과 객체 생애를 구분하는 UID | 등록된 클러스터·객체 UID·출처로 같은 이름과 재생성을 구분 |
+| [Backstage 시스템 모델](https://backstage.io/docs/features/software-catalog/system-model/) | 소프트웨어 Component·API·Resource와 System·소유 조직의 모델 | 카탈로그의 논리 서비스와 실제 자원의 경계 비교; 사고 시점·매핑 이력·권한 계약은 별도로 검토 |
+
+Backstage는 모델 참고 대상이며 설치·의존성·필수 제품으로 채택하지 않았다. 기존 카탈로그 연동과 자체 관리의 비교에는 동기화·외부 식별·권한·운영 비용·라이선스·버전별 최소 재현이 필요하다. 카탈로그 선언과 실제 실행 관계는 서로 다른 근거로 유지하는 안을 [D07](DISCUSSIONS.md#d07-카탈로그와-실제-자원의-매핑을-어떻게-유지할-것인가)에서 토론한다.
+
 ## 결정 전 산출물
 
 1. 버전·공식 근거·라이선스·활동성·미확인 항목을 포함한 후보 비교표.
