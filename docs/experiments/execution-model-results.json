@@ -1,0 +1,736 @@
+{
+  "recordedAt": "2026-11-12T06:15:02.237985+00:00",
+  "scope": "isolated synthetic manual-context execution-model comparison",
+  "runnerSha256": "80cd66c29eb2b3e18ee87e97cf00d7f75cc44b8d32b2081bbd0264909878209a",
+  "targetRevision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+  "targetSourceState": "clean",
+  "targetSourcePublished": false,
+  "targetSourceFileSha256": {
+    ".dockerignore": "7182f7cc4266422b0786b549456f4cceab3afd91891e736655682e8402df7422",
+    ".gitignore": "59f1cfd29cd255df03ee464e64ae4484b8d4680ac692b6533c1e91c6b8286422",
+    "Dockerfile": "fd3190de72e43e76314db4d52fc617c7e3c113f3c037d87bfbb5031e40a2ce44",
+    "EXECUTION-FIXTURE.md": "a04b7733c07961712358e6b15483326c9f5ab2f2d0bc2d9113fa2d2c566356ea",
+    "README.md": "76209911d8339ee4e542ede1a333af6c34644f98c5c48918f02fb7f8da626f1f",
+    "activity-worker/pom.xml": "5da1bd8e7c4bc1fc9da735741da1ee8d24a9120b35e32e4e6cb76eb871fb1fc0",
+    "activity-worker/src/main/java/io/jjamtong/sandbox/activity/ActivityApplication.java": "053284558188b5521479b5a0b3187d22d7abb314ae7620e2505351485e42f2a1",
+    "activity-worker/src/main/java/io/jjamtong/sandbox/activity/ActivityController.java": "2715cb7b6c2c17dd9ac50141d89b1314ec3801a6f7347c58c382505adc49634c",
+    "activity-worker/src/main/java/io/jjamtong/sandbox/activity/ActivityProjection.java": "7c819dd62dd518f606703e7974bab5b75b08f531188177272a82b28b65a4e51f",
+    "activity-worker/src/main/java/io/jjamtong/sandbox/activity/ConsumerFailureConfiguration.java": "86165817a9411262db4cf09d05562ccc240c2de1932538877c7ad76546be4970",
+    "activity-worker/src/main/java/io/jjamtong/sandbox/activity/ConsumerRetryState.java": "82e4a34812a885019fc592ad7253b605c2852eb3463f4c9e7ba0d432e562ebe2",
+    "activity-worker/src/main/resources/application.properties": "208b050ae145552cc6ff4474e48beed3d6dde1585e9eece66368d27304048fdd",
+    "activity-worker/src/main/resources/schema.sql": "cafdc6f20095986c03c133970e9be6f473c94390e9d320b213d35b3275251d66",
+    "board-api/pom.xml": "178c4626496ea7288efe5b197eebf490c3f2f445046a38a4aa9444a068c65374",
+    "board-api/src/main/java/io/jjamtong/sandbox/board/BoardApplication.java": "e5d9a0c321274d9c566ab3415794774a4058f2cab21275f70513700fda8f9e24",
+    "board-api/src/main/java/io/jjamtong/sandbox/board/BoardController.java": "be9db35016e961cdf981b03329a6fce4c2c9ef67deff3602360da25b3d8f4020",
+    "board-api/src/main/java/io/jjamtong/sandbox/board/CacheGateway.java": "0d93833e43a464e857a620fadbb4c8fc8cd625c3c6bf6779164b1a971d42cd32",
+    "board-api/src/main/java/io/jjamtong/sandbox/board/LocalFaults.java": "ea4f10844033927f0a5c504ef7f2dcfbb17db5299f059626bda03623359d197c",
+    "board-api/src/main/java/io/jjamtong/sandbox/board/OutboxPublisher.java": "d8e9ecc175a37bf7864509442c99d6ec0df74d39dd23de5bc1885c14957d4bee",
+    "board-api/src/main/java/io/jjamtong/sandbox/board/Post.java": "531decfc38b3d55ad129fd05b88aaa04162490003289a19848005a4d4f7f6d01",
+    "board-api/src/main/java/io/jjamtong/sandbox/board/PostReadService.java": "4dae19325bb13005277c100b6aa68ad4bdadc1994c729bb827b43855bc8f5b81",
+    "board-api/src/main/java/io/jjamtong/sandbox/board/PostWriteService.java": "e23da02fed11524aec1c02bc2aa8ba6c2b86d16bd7e3d457b95c0c3439fd3ec7",
+    "board-api/src/main/java/io/jjamtong/sandbox/board/RedisPostCache.java": "7d7fd1371496bdee8b55630e08599f4fc26ce9b758d24193bfaab2f4358fc351",
+    "board-api/src/main/resources/application.properties": "6edc51340a08e27a6996a40b879f5915c299303edf9f3758ad9dedf3e3af5e2f",
+    "board-api/src/main/resources/schema.sql": "93f1ae03c3767b451ab6f86fa160043700508c7fbaad4826b11a2b194e491e40",
+    "common/pom.xml": "63c5d4df533cff5ac9741a44d70ae52aa1d44506b9bbda423b9727a891ce600a",
+    "common/src/main/java/io/jjamtong/sandbox/common/BuildEvidence.java": "095d5624484781a2421fa03733d71bdba08a9083e9f58a4c81d2413b474cc72d",
+    "common/src/main/java/io/jjamtong/sandbox/common/EventCodec.java": "dc05e5653c2fcf2fa536dd1bc17a4e029f521a2664809f9fdc3ba9456b08a204",
+    "common/src/main/java/io/jjamtong/sandbox/common/PostEvent.java": "19334537dfa8cb9dc023078c172bf579494be793e85d5e4149c7142e2c77ca1d",
+    "common/src/test/java/io/jjamtong/sandbox/common/CommonTest.java": "1d4581f59725eefca4ec908823593c5f5c03891ffb2b547213999863dedb55e5",
+    "compose.execution.yaml": "7342057b90ba386c65a66eac0bf519787059b42f1e157a45649417f310745ad1",
+    "compose.yaml": "48b0adc07db862732ffaa9c745139a6959f119d13b52dcd3f56dbeebef952db1",
+    "execution-common/pom.xml": "c4a155ae066258afdc2426f4c0e8fdea975917298a95bc1f99d48961386b4240",
+    "execution-common/src/main/java/io/jjamtong/sandbox/execution/ProbeConfiguration.java": "06a1257f4c9c55439e285a28e0c96c4e49710c0387774b435b29981a5f532d3c",
+    "execution-common/src/main/java/io/jjamtong/sandbox/execution/ProbeContext.java": "38b5caea8e5eabc64af85740de3c5c4c69f8b9ab206d9808977ed66b5c1f2f3e",
+    "execution-common/src/main/java/io/jjamtong/sandbox/execution/ProbeService.java": "09cd67fae2a350ad5944fd1362d3e2d0752272f30729a7993974d3672cfd18e6",
+    "execution-common/src/main/resources/execution-probe-schema.sql": "7915d159a70f1270583e78d205361cdbb60c9749b884e7b7757a2a0ddfa85a2a",
+    "execution-common/src/main/resources/probe.properties": "c44a881db8ce25d829f2adeb186dd7fb1087d6bab6fdab393b363e72f625d11f",
+    "execution-common/src/test/java/io/jjamtong/sandbox/execution/ProbeConsumerTest.java": "9940ae0f5f31742d0fd967189a80b57ed85956ccc51446a23f9398d1cfc1cb4f",
+    "execution-common/src/test/java/io/jjamtong/sandbox/execution/ProbeContextTest.java": "36153ac67846c12ffc7a298df63c3daed1fb7da79dc5ec5a2de19bedc13060a0",
+    "execution-mvc/pom.xml": "aa169b3eb7d6d177f227f8b9ba3fb2a037a42f4ea34d1025c27955b73ccc40b6",
+    "execution-mvc/src/main/java/io/jjamtong/sandbox/executionmvc/ExecutionMvcApplication.java": "bb3c21b358649327b14ccd9e296e257a4134d48d12fe193fd61cfee236e334d3",
+    "execution-mvc/src/main/java/io/jjamtong/sandbox/executionmvc/ExecutionMvcController.java": "9492403d02d746fffbe49c5cb0bef60c986a2755150219360c80d67627810587",
+    "execution-mvc/src/main/resources/application.properties": "b0f71f7ff0fe4768d9fff5754081c364e6cf4127fd692552e7e1b4c8123cb445",
+    "execution-netty/pom.xml": "8b78e45155662840245a28aa79f657cfb75c941738ee2d6c022df58ac964542e",
+    "execution-netty/src/main/java/io/jjamtong/sandbox/executionnetty/ExecutionNettyApplication.java": "b7bc560de8e397a145f1f1b5e56c0b41b4e5af6d704a75b6003056525ee6b377",
+    "execution-netty/src/main/java/io/jjamtong/sandbox/executionnetty/ExecutionNettyController.java": "203b839b46ba1cc8d2b015430d7a8989e89ca87a3e6d95b7610713f6ca4ab069",
+    "execution-netty/src/main/resources/application.properties": "2fe3a9d53b0641a39272fd8d1abea422e67c86f0c43bfe18f4a13c024b70f940",
+    "execution-netty/src/test/java/io/jjamtong/sandbox/executionnetty/ReactorProbeContextTest.java": "37d3d0daf77ba62615aa3643bb2d5c92233082a60a915e9807615190ea7ebf4f",
+    "infra/init.sql": "317692d65dbb4062eb8f2a442a64959523bff8449ea075f0f05773cc76a06400",
+    "pom.xml": "8a00cf8aba7f3781ec98d66b84d7c626a9b2d7445fa6e33e80b46546cf9efcb4",
+    "scripts/build.py": "1c861ec48fc0ae3c5000d07527a6c7417b5f14142a3c381699087529d5f459ce",
+    "scripts/build_execution.py": "b8ba8d2fc0e96c80bdf69e500a466b1591daa171c68eb7425bc287b00be1772a",
+    "scripts/verify.py": "e1d63137b178738fe15455d7f43f0734eeb9475228db6fd67856174ca4f00022",
+    "specs/local-observation.feature": "28568c1ac7dc33fec319fa7c25fd82eac7a7f956611a5beca5c10362c38d2a43"
+  },
+  "contractJarSha256": "b706b1c8911021ba94542b4feca75124030ef7a7bc910ee384249149d46d51b5",
+  "artifacts": [
+    {
+      "repository": "local:jjamtong-sandbox",
+      "revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+      "build": "execution-probe-b1",
+      "module": "execution-mvc",
+      "artifactSha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+      "bytes": 59662210,
+      "sourceState": "clean",
+      "selectedResolvedLibraries": [
+        "HikariCP-7.0.2.jar",
+        "kafka-clients-4.2.2.jar",
+        "lettuce-core-7.5.2.RELEASE.jar",
+        "netty-common-4.2.19.Final.jar",
+        "postgresql-42.7.14.jar",
+        "reactor-core-3.8.8.jar",
+        "spring-boot-4.1.2.jar",
+        "tomcat-embed-core-11.0.27.jar"
+      ]
+    },
+    {
+      "repository": "local:jjamtong-sandbox",
+      "revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+      "build": "execution-probe-b1",
+      "module": "execution-netty",
+      "artifactSha256": "20683964131cc727e392d55bd31c646756eeebe33b401d32005fed73c708a1b2",
+      "bytes": 71030235,
+      "sourceState": "clean",
+      "selectedResolvedLibraries": [
+        "HikariCP-7.0.2.jar",
+        "kafka-clients-4.2.2.jar",
+        "lettuce-core-7.5.2.RELEASE.jar",
+        "netty-common-4.2.19.Final.jar",
+        "postgresql-42.7.14.jar",
+        "reactor-core-3.8.8.jar",
+        "reactor-netty-http-1.3.8.jar",
+        "spring-boot-4.1.2.jar"
+      ]
+    }
+  ],
+  "resourceLimits": {
+    "perFixtureMemoryBytes": 536870912,
+    "perFixtureCpu": 1,
+    "perFixtureDbPool": 2,
+    "admittedWork": 4,
+    "nettyBlockingWorkers": 4,
+    "nettyBlockingQueue": 4,
+    "loadRequests": 12,
+    "sqlSleepMillis": 1000,
+    "clientTimeoutSeconds": 0.05
+  },
+  "runs": [
+    {
+      "mode": "mvc-platform",
+      "javaVersion": "21.0.13",
+      "buildEvidence": {
+        "build": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "build": "execution-probe-b1",
+          "module": "execution-mvc",
+          "artifactSha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        "sourceState": "clean",
+        "artifactDigestVerified": true,
+        "analysisLinkStatus": "UNRESOLVED",
+        "automaticMethodAnalysis": false,
+        "runtimeMethodTracing": false
+      },
+      "observedStages": [
+        {
+          "stage": "request-ingress",
+          "thread_name": "http-nio-8080-exec-5",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "request-work",
+          "thread_name": "http-nio-8080-exec-5",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "request-clean",
+          "thread_name": "http-nio-8080-exec-5",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "outbox-publish",
+          "thread_name": "scheduling-1",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "publisher-clean",
+          "thread_name": "scheduling-1",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "consumer-attempt",
+          "thread_name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "consumer-clean",
+          "thread_name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        }
+      ],
+      "scenarios": [
+        {
+          "case": "concurrent-context-isolation",
+          "passed": true,
+          "requests": 12,
+          "concurrency": 3
+        },
+        {
+          "case": "two-retries-one-effect",
+          "passed": true,
+          "attemptOutcomes": [
+            "retryable-failure",
+            "retryable-failure",
+            "applied"
+          ],
+          "effectRows": 1
+        },
+        {
+          "case": "duplicate-one-effect",
+          "passed": true,
+          "attemptOutcomes": [
+            "retryable-failure",
+            "retryable-failure",
+            "applied",
+            "duplicate"
+          ],
+          "effectRows": 1
+        },
+        {
+          "case": "missing-context-negative-control",
+          "passed": true,
+          "outboxContextPresent": true,
+          "consumerContextMissing": true,
+          "falseConnectionRejected": true
+        },
+        {
+          "case": "transaction-rollback-and-cleanup",
+          "passed": true,
+          "injectedHttpStatus": 503,
+          "outboxRows": 0,
+          "effectRows": 0
+        },
+        {
+          "case": "slow-jdbc-bounded-admission",
+          "passed": true,
+          "requests": 12,
+          "accepted": 4,
+          "rejected429": 8,
+          "health_status": 200,
+          "health_millis_single_sample": 2.704
+        },
+        {
+          "case": "client-timeout-observation",
+          "passed": true,
+          "client_timed_out": true,
+          "outbox_after_timeout": 1,
+          "effects_observed": 1,
+          "followup_context_clean": true,
+          "server_cancellation_guarantee": false
+        }
+      ],
+      "loadSnapshot": {
+        "activeWork": 4,
+        "admissionLimit": 4,
+        "dbPool": {
+          "limit": 2,
+          "idle": 0,
+          "waiting": 2,
+          "active": 2
+        }
+      }
+    },
+    {
+      "mode": "mvc-virtual",
+      "javaVersion": "21.0.13",
+      "buildEvidence": {
+        "build": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "build": "execution-probe-b1",
+          "module": "execution-mvc",
+          "artifactSha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        "sourceState": "clean",
+        "artifactDigestVerified": true,
+        "analysisLinkStatus": "UNRESOLVED",
+        "automaticMethodAnalysis": false,
+        "runtimeMethodTracing": false
+      },
+      "observedStages": [
+        {
+          "stage": "request-ingress",
+          "thread_name": "tomcat-handler-53",
+          "virtual": true,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "request-work",
+          "thread_name": "tomcat-handler-53",
+          "virtual": true,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "request-clean",
+          "thread_name": "tomcat-handler-53",
+          "virtual": true,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "outbox-publish",
+          "thread_name": "scheduling-1",
+          "virtual": true,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "publisher-clean",
+          "thread_name": "scheduling-1",
+          "virtual": true,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "consumer-attempt",
+          "thread_name": "kafka-1",
+          "virtual": true,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        },
+        {
+          "stage": "consumer-clean",
+          "thread_name": "kafka-1",
+          "virtual": true,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7"
+        }
+      ],
+      "scenarios": [
+        {
+          "case": "concurrent-context-isolation",
+          "passed": true,
+          "requests": 12,
+          "concurrency": 3
+        },
+        {
+          "case": "two-retries-one-effect",
+          "passed": true,
+          "attemptOutcomes": [
+            "retryable-failure",
+            "retryable-failure",
+            "applied"
+          ],
+          "effectRows": 1
+        },
+        {
+          "case": "duplicate-one-effect",
+          "passed": true,
+          "attemptOutcomes": [
+            "retryable-failure",
+            "retryable-failure",
+            "applied",
+            "duplicate"
+          ],
+          "effectRows": 1
+        },
+        {
+          "case": "missing-context-negative-control",
+          "passed": true,
+          "outboxContextPresent": true,
+          "consumerContextMissing": true,
+          "falseConnectionRejected": true
+        },
+        {
+          "case": "transaction-rollback-and-cleanup",
+          "passed": true,
+          "injectedHttpStatus": 503,
+          "outboxRows": 0,
+          "effectRows": 0
+        },
+        {
+          "case": "slow-jdbc-bounded-admission",
+          "passed": true,
+          "requests": 12,
+          "accepted": 4,
+          "rejected429": 8,
+          "health_status": 200,
+          "health_millis_single_sample": 2.588
+        },
+        {
+          "case": "client-timeout-observation",
+          "passed": true,
+          "client_timed_out": true,
+          "outbox_after_timeout": 1,
+          "effects_observed": 1,
+          "followup_context_clean": true,
+          "server_cancellation_guarantee": false
+        }
+      ],
+      "loadSnapshot": {
+        "activeWork": 4,
+        "admissionLimit": 4,
+        "dbPool": {
+          "limit": 2,
+          "idle": 0,
+          "waiting": 2,
+          "active": 2
+        }
+      }
+    },
+    {
+      "mode": "netty",
+      "javaVersion": "21.0.13",
+      "buildEvidence": {
+        "build": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "build": "execution-probe-b1",
+          "module": "execution-netty",
+          "artifactSha256": "20683964131cc727e392d55bd31c646756eeebe33b401d32005fed73c708a1b2"
+        },
+        "sourceState": "clean",
+        "artifactDigestVerified": true,
+        "analysisLinkStatus": "UNRESOLVED",
+        "automaticMethodAnalysis": false,
+        "runtimeMethodTracing": false
+      },
+      "observedStages": [
+        {
+          "stage": "request-ingress",
+          "thread_name": "reactor-http-nio-4",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "20683964131cc727e392d55bd31c646756eeebe33b401d32005fed73c708a1b2"
+        },
+        {
+          "stage": "request-work",
+          "thread_name": "probe-blocking-2",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "20683964131cc727e392d55bd31c646756eeebe33b401d32005fed73c708a1b2"
+        },
+        {
+          "stage": "request-clean",
+          "thread_name": "probe-blocking-2",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "20683964131cc727e392d55bd31c646756eeebe33b401d32005fed73c708a1b2"
+        },
+        {
+          "stage": "outbox-publish",
+          "thread_name": "scheduling-1",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "20683964131cc727e392d55bd31c646756eeebe33b401d32005fed73c708a1b2"
+        },
+        {
+          "stage": "publisher-clean",
+          "thread_name": "scheduling-1",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "20683964131cc727e392d55bd31c646756eeebe33b401d32005fed73c708a1b2"
+        },
+        {
+          "stage": "consumer-attempt",
+          "thread_name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "20683964131cc727e392d55bd31c646756eeebe33b401d32005fed73c708a1b2"
+        },
+        {
+          "stage": "consumer-clean",
+          "thread_name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1",
+          "virtual": false,
+          "build_id": "execution-probe-b1",
+          "artifact_sha256": "20683964131cc727e392d55bd31c646756eeebe33b401d32005fed73c708a1b2"
+        }
+      ],
+      "scenarios": [
+        {
+          "case": "concurrent-context-isolation",
+          "passed": true,
+          "requests": 12,
+          "concurrency": 3
+        },
+        {
+          "case": "two-retries-one-effect",
+          "passed": true,
+          "attemptOutcomes": [
+            "retryable-failure",
+            "retryable-failure",
+            "applied"
+          ],
+          "effectRows": 1
+        },
+        {
+          "case": "duplicate-one-effect",
+          "passed": true,
+          "attemptOutcomes": [
+            "retryable-failure",
+            "retryable-failure",
+            "applied",
+            "duplicate"
+          ],
+          "effectRows": 1
+        },
+        {
+          "case": "missing-context-negative-control",
+          "passed": true,
+          "outboxContextPresent": true,
+          "consumerContextMissing": true,
+          "falseConnectionRejected": true
+        },
+        {
+          "case": "transaction-rollback-and-cleanup",
+          "passed": true,
+          "injectedHttpStatus": 503,
+          "outboxRows": 0,
+          "effectRows": 0
+        },
+        {
+          "case": "slow-jdbc-bounded-admission",
+          "passed": true,
+          "requests": 12,
+          "accepted": 8,
+          "rejected429": 4,
+          "health_status": 200,
+          "health_millis_single_sample": 1.603
+        },
+        {
+          "case": "client-timeout-observation",
+          "passed": true,
+          "client_timed_out": true,
+          "outbox_after_timeout": 0,
+          "effects_observed": 0,
+          "followup_context_clean": true,
+          "server_cancellation_guarantee": false
+        }
+      ],
+      "loadSnapshot": {
+        "activeWork": 4,
+        "admissionLimit": 4,
+        "dbPool": {
+          "limit": 2,
+          "idle": 0,
+          "waiting": 2,
+          "active": 2
+        },
+        "executor": {
+          "queueLimit": 4,
+          "limit": 4,
+          "queued": 4,
+          "active": 4
+        }
+      }
+    }
+  ],
+  "passedExecutionScenarios": 21,
+  "testCounts": {
+    "maven": 10,
+    "mavenNew": 7,
+    "existingCommon": 3,
+    "runnerOracle": 6
+  },
+  "pinning": {
+    "source_sha256": "49f116fb25a2a6e2746dc4a3900dc2c348106419d834e22f30b6b0fbced650b5",
+    "runner_sha256": "936b88ec0ad96e60563cb2d8792d09463d4e1ba5bfad632a03155052406b7e6e",
+    "host_platform": "macOS-26.6.2-arm64-arm-64bit",
+    "class_sha256": "0c91f55f6de0bf96bc85461e014d7a965493c6ada02023cb58bcbc4b70b0137f",
+    "compile_release": 21,
+    "scheduler_parallelism": 1,
+    "scheduler_max_pool_size": 1,
+    "jfr_event": "jdk.VirtualThreadPinned",
+    "threshold_millis": 0,
+    "lifecycle_events": [
+      "jdk.VirtualThreadStart",
+      "jdk.VirtualThreadEnd"
+    ],
+    "runs": [
+      {
+        "label": "jdk21",
+        "java_version": "openjdk version \"21.0.11\" 2026-04-21 LTS\nOpenJDK Runtime Environment Corretto-21.0.11.10.1 (build 21.0.11+10-LTS)\nOpenJDK 64-Bit Server VM Corretto-21.0.11.10.1 (build 21.0.11+10-LTS, mixed mode, sharing)",
+        "cases": [
+          {
+            "case": "unlocked-control",
+            "tasks": 4,
+            "sleepMillis": 120,
+            "virtualThreadStarts": 4,
+            "virtualThreadEnds": 4,
+            "pinnedEvents": 0,
+            "monitorPinnedEvents": 0
+          },
+          {
+            "case": "monitor-sleep",
+            "tasks": 4,
+            "sleepMillis": 120,
+            "virtualThreadStarts": 4,
+            "virtualThreadEnds": 4,
+            "pinnedEvents": 4,
+            "monitorPinnedEvents": 4
+          }
+        ],
+        "recording_sha256": {
+          "monitor-sleep.jfr": "7b91924254d9c3acbd3b34dfee2d8414050fdf93a5ccc7b904b079ca60305c8a",
+          "unlocked-control.jfr": "365eb5508c710ab1d1fc84d9b63ea98aa10bb162bc93cb603d9999595a4dcc63"
+        }
+      },
+      {
+        "label": "jdk24plus",
+        "java_version": "openjdk version \"25.0.3\" 2026-04-21 LTS\nOpenJDK Runtime Environment Microsoft-13877172 (build 25.0.3+9-LTS)\nOpenJDK 64-Bit Server VM Microsoft-13877172 (build 25.0.3+9-LTS, mixed mode, sharing)",
+        "cases": [
+          {
+            "case": "unlocked-control",
+            "tasks": 4,
+            "sleepMillis": 120,
+            "virtualThreadStarts": 4,
+            "virtualThreadEnds": 4,
+            "pinnedEvents": 0,
+            "monitorPinnedEvents": 0
+          },
+          {
+            "case": "monitor-sleep",
+            "tasks": 4,
+            "sleepMillis": 120,
+            "virtualThreadStarts": 4,
+            "virtualThreadEnds": 4,
+            "pinnedEvents": 0,
+            "monitorPinnedEvents": 0
+          }
+        ],
+        "recording_sha256": {
+          "monitor-sleep.jfr": "f3434585e0653bde25c2bb6f8a0e85787b29bcbbef3d27c619c7ca0984b6581f",
+          "unlocked-control.jfr": "40be2378b7e6e10ac3cf80e79734e4a9637969e0d4cb3eda95c3408f9c9b1eca"
+        }
+      }
+    ],
+    "limitations": [
+      "Controlled synchronized plus sleep input only",
+      "No production load or throughput comparison",
+      "No event is not proof of absence of every source of pinning",
+      "JVM distribution and version differ; no single-factor benchmark"
+    ]
+  },
+  "baselineContainersPreserved": true,
+  "limitations": [
+    "Manual synthetic context, not automatic method tracing or OTel spans",
+    "No fan-out or batch span-link validation",
+    "No Kafka commit-offset loss/rebalance or collector sampling validation",
+    "No production benchmark, AWS or Kubernetes execution",
+    "Same event identity is explicit fixture metadata; no method graph or span-parent/SpanLinks generation",
+    "Dedicated synthetic fixture differs from full board business flow; target source is local and not published",
+    "Single publisher and one consumer per group; no crash/rebalance/poison exhaustion validation",
+    "Consumer effect and attempt records are not one distributed atomic transaction",
+    "Netty has an additional bounded queue; accepted counts and single health samples are not a performance ranking",
+    "Client-timeout result is one observed input, not a general server-cancellation guarantee",
+    "Pinning JFR probe is separate from the Spring/Kafka application and uses different JDK distributions",
+    "21 experimental scenarios do not complete C01-C12, 47 draft BDD scenarios or issue44"
+  ],
+  "images": {
+    "mvc-platform": {
+      "image": "jjamtong-sandbox/execution-mvc:execution-probe-b1",
+      "imageId": "sha256:c7103d52b75dc9e1fe72141b01cb7fd64575e6cf264d2c91a2f4158fce851e0a",
+      "memoryBytes": 536870912,
+      "nanoCpus": 1000000000,
+      "running": true
+    },
+    "mvc-virtual": {
+      "image": "jjamtong-sandbox/execution-mvc:execution-probe-b1",
+      "imageId": "sha256:c7103d52b75dc9e1fe72141b01cb7fd64575e6cf264d2c91a2f4158fce851e0a",
+      "memoryBytes": 536870912,
+      "nanoCpus": 1000000000,
+      "running": true
+    },
+    "netty": {
+      "image": "jjamtong-sandbox/execution-netty:execution-probe-b1",
+      "imageId": "sha256:f3e5e849792bfd553d2bd9d3441067994f15c96a73757f53148c91b7b04ed0ce",
+      "memoryBytes": 536870912,
+      "nanoCpus": 1000000000,
+      "running": true
+    },
+    "kafka": {
+      "image": "apache/kafka:4.3.2",
+      "imageId": "sha256:852a0d49fc4e656b022e7f23785411802c9a088c78a7c5e39f33969de9c227a7",
+      "memoryBytes": 1073741824,
+      "nanoCpus": 1500000000,
+      "running": true
+    },
+    "redis": {
+      "image": "redis:8.10.3-alpine",
+      "imageId": "sha256:7958cfbb9d152f87dadfbc89f1b0b15938f0b81ff8982feb327476f4911935c3",
+      "memoryBytes": 134217728,
+      "nanoCpus": 500000000,
+      "running": true
+    },
+    "postgres": {
+      "image": "postgres:17.11-alpine",
+      "imageId": "sha256:e5d2edd28b1f8d40a0a6c0c9cdc545b19b56a0d5d88f94bc11a97d970d4700d0",
+      "memoryBytes": 402653184,
+      "nanoCpus": 1000000000,
+      "running": true
+    }
+  },
+  "mavenTestSuites": [
+    {
+      "name": "io.jjamtong.sandbox.common.CommonTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "io.jjamtong.sandbox.execution.ProbeConsumerTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "io.jjamtong.sandbox.execution.ProbeContextTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "io.jjamtong.sandbox.executionnetty.ReactorProbeContextTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "buildEnvironment": {
+    "mavenImage": "maven:3.9.9-eclipse-temurin-21",
+    "javaVersion": "openjdk version \"21.0.7\" 2025-04-15 LTS\nOpenJDK Runtime Environment Temurin-21.0.7+6 (build 21.0.7+6-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.7+6 (build 21.0.7+6-LTS, mixed mode, sharing)",
+    "composeVersion": "5.1.4"
+  },
+  "officialBootSource": {
+    "version": "4.1.2",
+    "revision": "634e6fd6bc2e475d745c0bdceb8e775864f7f2ec",
+    "kafkaVirtualThreadConfiguration": "https://github.com/spring-projects/spring-boot/blob/634e6fd6bc2e475d745c0bdceb8e775864f7f2ec/module/spring-boot-kafka/src/main/java/org/springframework/boot/kafka/autoconfigure/KafkaAnnotationDrivenConfiguration.java#L116-L153"
+  },
+  "fixtureLifecycle": {
+    "stateAfterVerification": "stopped",
+    "fixtureContainersStopped": 3,
+    "baselineContainerIdsPreservedAndRunning": 11,
+    "localArtifactsAndDatabaseRecordsPreserved": true
+  }
+}
