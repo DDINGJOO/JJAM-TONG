@@ -8,7 +8,7 @@
 
 | 상황 | 확인하려는 결과 | 명세와 작업 |
 | --- | --- | --- |
-| GitHub 모노레포를 연결했더니 게시판·댓글 서비스가 발견됨 | 유효 선언의 등록과 추정 후보를 구분하고 중복 등록을 막음 | [온보딩](../../specs/features/10-automated-onboarding.feature), [S03 #10](https://github.com/DDINGJOO/JJAM-TONG/issues/10), [S09 #30](https://github.com/DDINGJOO/JJAM-TONG/issues/30) |
+| GitHub 모노레포를 연결했더니 게시판 API와 백그라운드 작업 서비스가 발견됨 | 등록 조건을 충족한 서비스 선언과 코드 구조에서 추정한 서비스 후보를 구분하고 중복 등록을 막음 | [온보딩](../../specs/features/10-automated-onboarding.feature), [S03 #10](https://github.com/DDINGJOO/JJAM-TONG/issues/10), [S09 #30](https://github.com/DDINGJOO/JJAM-TONG/issues/30) |
 | `Controller → Service → private 검증 → Repository` | 코드상 호출 가능 관계와 실제 요청에서 실행된 관계를 따로 표현 | [메서드 관계](../../specs/features/01-code-relations.feature), [S01 #3](https://github.com/DDINGJOO/JJAM-TONG/issues/3) |
 | 새 코드가 올라왔지만 운영은 이전 빌드 | 해당 요청이 실행한 빌드·소스·분석 버전을 찾아 연결 | [버전 식별](../../specs/features/02-version-identity.feature), [S02 #6](https://github.com/DDINGJOO/JJAM-TONG/issues/6) |
 | 메서드 삭제·이름 변경, 알림 중복·역순·누락 | 자동 갱신과 실패·오래된 결과·수집 공백을 설명 | [관계 갱신](../../specs/features/03-graph-refresh.feature), [S03 #10](https://github.com/DDINGJOO/JJAM-TONG/issues/10) |
@@ -18,9 +18,9 @@
 
 ## BDD를 읽는 규칙
 
-전체 명세는 **10개 feature·47개 시나리오**, `@draft @required`다. `@required`는 구현 대상을, `@draft`는 검토 중인 세부 행동을 뜻한다. 실행기 없는 명세이므로 문서 존재와 실행 수락을 구분한다. 시나리오 ID·상위 스토리·검증 태스크는 [원본 인덱스](../requirements/README.md)와 [로드맵](../../ROADMAP.md)이 연결한다.
+BDD는 사용자의 행동과 기대 결과를 시나리오로 표현하는 방식이다. 전체 명세는 **기능 명세 파일 10개와 시나리오 47개**로 구성되어 있고, 모두 `@draft @required`로 표시한다. `@required`는 구현 대상을, `@draft`는 검토 중인 세부 행동을 뜻한다. 현재는 시나리오를 실행하는 테스트 도구가 없으므로 명세를 작성한 것과 수락 테스트를 통과한 것을 구분한다. 시나리오 ID와 상위 스토리·검증 태스크의 연결 관계는 [원본 인덱스](../requirements/README.md)와 [로드맵](../../ROADMAP.md)에서 확인한다.
 
-새 요구는 먼저 사용자·전제·행동·기대 결과를 쓰고, 정상 예와 함께 누락·충돌·권한·버전 불일치 반례를 붙인다. 기존 시나리오에 연결할 수 있으면 중복 이슈를 만들지 않는다. 구현 전 fixture와 판정 방법, 미결 정책을 이슈에 남긴다.
+새 요구는 먼저 사용자·전제·행동·기대 결과를 쓰고, 정상 예와 함께 누락·충돌·권한·버전 불일치 반례를 붙인다. 기존 시나리오에 연결할 수 있으면 중복 이슈를 만들지 않는다. 구현 전에는 검증용 예제와 입력(fixture), 판정 방법, 아직 정하지 않은 정책을 이슈에 남긴다.
 
 ## 계속 지켜야 할 구분
 

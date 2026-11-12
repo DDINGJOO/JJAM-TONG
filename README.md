@@ -48,7 +48,7 @@ python3 -m experiments.reconciliation_lab.run --repetitions 3
 
 ## 프로젝트 문서
 
-[프로젝트 위키](docs/wiki/Home.md)에서 비전·게시판 시나리오·아키텍처와 결정·OSS 비교·실험 결과·작업 이슈를 분야별로 탐색한다. 상세 근거는 기존 문서, 진행 상태는 GitHub Issues가 기준이다.
+[프로젝트 Wiki](https://github.com/DDINGJOO/JJAM-TONG/wiki)에서 비전·게시판 시나리오·아키텍처와 결정·OSS 비교·실험 결과·작업 이슈를 분야별로 탐색한다. [저장소 원본](docs/wiki/Home.md)에서도 읽을 수 있다. 상세 근거는 기존 문서, 진행 상태는 GitHub Issues가 기준이다.
 
 | 문서 | 내용 |
 | --- | --- |
