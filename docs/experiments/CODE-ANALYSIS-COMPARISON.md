@@ -46,6 +46,33 @@ fixture는 비교에 사용하는 고정 입력이며, oracle은 도구 출력�
 
 이 표는 [BDD-REL-001~004](../../specs/features/01-code-relations.feature), [BDD-VER-001~003](../../specs/features/02-version-identity.feature), [BDD-UPD-001~004](../../specs/features/03-graph-refresh.feature)의 일부 조건을 구체화한다. 기존 Draft 명세를 바꾸거나 전체 수락 테스트를 통과시킨 것은 아니다. 도구의 보수적인 추가 후보와 틀린 버전 연결은 같은 오류율로 합산하지 않는다.
 
+## 실행 모델과 이벤트 경계도 함께 검증한다
+
+사용자 추가 요구에 따라 Spring Boot 4 계열의 가상 스레드와 Netty 기반 실행을 C06 비동기·C07 오류·C08 부분 수집 조건에 함께 대입한다. **다음은 추가 검증 조건이며 아직 실행하지 않았다.** 현재 별도 대상은 Boot 4.1.2의 MVC/Tomcat이며 가상 스레드 활성화 설정은 없다. Redis의 Lettuce가 Netty를 사용한다는 사실과 HTTP 서버가 Netty라는 판단은 구분한다.
+
+가상 스레드는 스레드 실행 방식이고, Netty는 이벤트루프에서 I/O를 처리한다. 둘은 조합할 수 있다. 비교할 때 HTTP 서버·클라이언트·작업 실행기를 각각 식별하며, Boot 설정 하나가 Kafka 소비자나 모든 Netty 작업까지 가상 스레드로 바꾼다고 가정하지 않는다. [Boot 작업 실행](https://docs.spring.io/spring-boot/4.1/reference/features/task-execution-and-scheduling.html), [WebFlux 실행 모델](https://docs.spring.io/spring-framework/reference/web/webflux/new-framework.html), [Lettuce의 Netty 사용](https://docs.spring.io/spring-data-redis/reference/4.0/redis/drivers.html)을 기준으로 한다.
+
+| 비교 구성 | 확인할 실행 경계 |
+| --- | --- |
+| MVC/Tomcat + 플랫폼 스레드 | 현재 기준 구성의 요청 처리·JDBC 대기·Kafka 발행/소비 |
+| MVC/Tomcat + 가상 스레드 | 실제 설정이 적용된 실행기와 각 작업의 스레드 종류 |
+| WebFlux/Netty | 이벤트루프·Reactor 작업 전환과 블로킹 작업을 분리한 실행기. 분리한 실행기의 플랫폼/가상 스레드도 별도 축으로 비교 |
+
+| 경계·장애 입력 | 필요한 관측과 실패 판정 |
+| --- | --- |
+| 스레드·Reactor 작업 전환 | 같은 요청의 추적 문맥을 유지하고 다른 요청에 섞이지 않는지 검사. 스레드 ID나 작업 전환만으로 호출 인과관계를 만들면 실패 |
+| HTTP → outbox → Kafka → 소비자 | 발행 대기 동안 보존할 문맥과 Kafka header 주입·추출을 검증. 메서드 진입·스레드 변경·메시지 처리를 서로 다른 관계로 표현 |
+| 재시도·중복·다중 소비·묶음 처리 | 원본 메시지와 각 처리 시도를 구분. 부모 관계와 별도 span 간 연결인 Span Links를 함께 표현하고 문맥 누락은 미확인으로 유지 |
+| 느린 JDBC·Redis와 처리량 초과 | 이벤트루프의 블로킹, DB 연결 풀 대기, 동시 처리·큐 상한과 수신 속도 조절을 관측. 가상 스레드 수를 DB나 Kafka 처리 용량으로 해석하지 않음 |
+| 타임아웃·취소·오류 | 취소 뒤 남은 작업, 처리 위치(offset) 반영, 재전달과 수집 유실을 구분하고 앱 결과·예외를 보존 |
+| JDK별 가상 스레드 정체 | JDK 21과 24 이상을 구분해 가상 스레드가 실제 실행을 담당하는 플랫폼 스레드에서 분리되지 못하는 pinning 근거를 수집. 한 버전의 진단을 다른 버전의 보장으로 확대하지 않음 |
+
+Reactor의 요청 문맥과 스레드별 로그 문맥(MDC)은 등록·복원·정리 범위를 확인한다. [Reactor 문맥 전파](https://projectreactor.io/docs/core/release/reference/advanced-contextPropagation.html)는 자동 전파 설정과 ThreadLocal 연동의 조건을 설명한다. Kafka에서는 [소비 병렬성·poll 조건](https://docs.spring.io/spring-kafka/reference/4.1/kafka/receiving-messages/message-listener-container.html)을 함께 기록한다. 메시지 문맥의 `traceparent` 전파는 이 프로젝트에서 검증할 연동 계약이며 현재 구현된 기능이 아니다.
+
+[OTel 메시징 span 규약](https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/)은 2026-11-12 조회 시 1.45.0 Development 상태다. 기본 producer/consumer 상관관계의 Links와 단일 메시지 처리의 부모 선택 조건을 구분하고, 모든 이벤트를 동기 부모·자식 호출로 강제하지 않는다. [JEP 491](https://openjdk.org/jeps/491)은 JDK 24의 synchronized 관련 pinning 개선이며 모든 pinning 제거를 뜻하지 않는다.
+
+각 비교에 Boot/JDK/분석기/계측기/문맥 규약의 정확한 버전, 실행기 설정, artifact·분석 식별과 부하·자원 상한을 남긴다. 동일 입력의 관계 정확성·유실·대기·지연을 비교하며, 기존 [9개 로컬 통합 결과](LOCAL-MSA-TARGET.md)를 이 실행 모델 비교의 통과로 집계하지 않는다.
+
 ## 빌드·분석·실행을 연결할 식별
 
 각 결과에는 저장소 식별자·커밋·빌드·산출물의 내용 식별자·모듈을 남긴다. 내용 식별자(digest)는 파일 내용으로 계산한 해시다. 분석 결과에는 분석 실행 식별자, 분석기·스키마 버전, 설정 식별자와 색인의 내용 식별자를 추가한다. 실행 기록에는 요청·호출 인스턴스, 배포와 산출물 참조, 수집 범위·계측 버전·표본 수집(sampling) 조건을 남긴다. 해당 정보가 없거나 충돌하면 연결 미확인 또는 불일치로 반환한다.

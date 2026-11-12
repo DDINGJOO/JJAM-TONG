@@ -42,3 +42,5 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 ## 첫 라이브러리 구현
 
 [빌드 식별 계약 라이브러리](../../libraries/evidence-contract-java/README.md)는 외부 의존성 없는 Java JAR로 만들었다. JDK 17·21에서 각 23개 계약 검증을 통과했으며, JDK 17 JAR을 JDK 21 소비자가 사용하는 검증도 통과했다. [ADR 0002](../decisions/0002-experimental-build-identity.md)와 [실행 기록](../experiments/library-contract-results.json)에 범위와 조건을 남긴다. 메타데이터의 일치를 확인하는 공통부이며 자동 메서드 분석·실행 수집 완료를 뜻하지 않는다. 사용자 요청에 따라 실제 Kafka·Redis·PostgreSQL을 쓰는 합성 MSA 대상도 별도 로컬 저장소에 만들었다. [외부 앱 적용·장애 복구 9개 시나리오와 실행 한계](../experiments/LOCAL-MSA-TARGET.md)를 확인할 수 있다.
+
+가상 스레드·Netty·Kafka를 함께 다루는 [실행 모델과 이벤트 경계의 추가 검증 조건](../experiments/CODE-ANALYSIS-COMPARISON.md#실행-모델과-이벤트-경계도-함께-검증한다)도 정리했다. 현재의 9개 통합 검증과 별개이며, 스레드 전환·메시지 재전달·부하 제어에서 호출 인과관계와 버전 근거를 보존하는지 비교할 계획이다.
