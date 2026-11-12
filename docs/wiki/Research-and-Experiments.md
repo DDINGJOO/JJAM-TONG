@@ -35,6 +35,6 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 
 세 보관 방식의 보존 범위와 같은 커밋의 다른 빌드·원본 중단·권한 회수 등을 [합성 입력·20개 사례의 예상 판정](../experiments/evidence-query-cases.json)으로 정했다. 예상 응답 60개는 실제 실행 결과가 아니다. 코드 후보는 고정 버전의 공식 원문·라이선스·호환성 조건을 확인했으며, 파서의 선언 해석과 호출 그래프, 기본 자동 계측과 선택 메서드 계측을 구분한다. 실제 대안 구현·분석기 설치·호환성 실행·성능 측정·제품 채택은 별도 검증 대상이다.
 
-실제 실행은 [보관·조회 비교 T24 #43](https://github.com/DDINGJOO/JJAM-TONG/issues/43)과 [선택 후보 최소 재현 T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)로 이어간다. 두 태스크의 상태와 선행 조건은 이슈에서 관리한다.
+실제 실행은 [보관·조회 비교 T24 #43](https://github.com/DDINGJOO/JJAM-TONG/issues/43)과 [외부 프로젝트의 라이브러리 로컬 검증 T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)로 이어간다. 첫 구현물은 재사용할 라이브러리와 연동 도구이며, 관측 대상 앱은 별도 저장소에서 관리한다. 두 태스크의 상태와 선행 조건은 이슈에서 관리한다.
 
 새 실험은 기대 결과·실패 판정·버전·입력·명령·실제 결과·한계를 남기고 [설계 결정](Architecture-and-Decisions.md)과 다음 이슈에 연결한다. 성공한 항목만 골라 기록하지 않는다.

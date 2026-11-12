@@ -6,6 +6,8 @@
 
 이 저장소는 새로 시작한다. 현재는 **BDD 시나리오·이슈로 요구사항을 명세하고 OSS 아키텍처를 비교하는 단계**이며, 실행 가능한 플랫폼이나 라이브러리는 아직 구현하지 않았다.
 
+첫 개발 목표는 **별도로 관리하는 프로젝트에 도입할 코드 관측성 라이브러리와 필요한 연동 도구**다. 대상 앱은 별도 저장소에 유지하고, 로컬에서 라이브러리를 적용해 정적 호출 후보·실제 실행·빌드 버전의 연결을 검증한다. 상세 범위는 [첫 개발 단계](docs/PROJECT.md#첫-개발-단계-외부-프로젝트에-도입할-라이브러리)에 있다.
+
 자동 갱신은 [비교 실험실](experiments/architecture_lab/README.md)에서 세 방식으로 구현해 실행했다. [16개 시나리오의 결과](docs/experiments/RESULTS.md)와 [방법론·아키텍처 비교 계획](docs/experiments/ARCHITECTURE-EXPERIMENTS.md)을 공개한다. 합성 공급원·동일 SQLite의 로컬 실험이며 실제 GitHub·코드 계측·AWS 통합이나 전체 BDD 통과를 뜻하지 않는다.
 
 다음 [원본 재확인 실험](experiments/reconciliation_lab/README.md)은 실제 Git 원본·loopback 웹훅·공개 GitHub REST 읽기와 in-process/one-shot worker를 비교한다. [주기적 확인과 변경 알림의 결합](docs/decisions/0001-reconciliation-baseline.md)을 관계 갱신의 검증 기본안으로 기록했으며, [실행 결과](docs/experiments/HYBRID-RESULTS.md)에서 실측·주입 장애·미실행을 구분한다. 현재 인덱스는 파일·blob 관계로 메서드 분석·실제 trace 수집은 후속이다.
