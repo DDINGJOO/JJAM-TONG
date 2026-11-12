@@ -12,14 +12,16 @@
 | S02 분석·실행 버전 | [02-version-identity.feature](../../specs/features/02-version-identity.feature) | BDD-VER-001~003 | 구현 대상 |
 | S03 자동 갱신 | [03-graph-refresh.feature](../../specs/features/03-graph-refresh.feature) | BDD-UPD-001~004 | 구현 대상 |
 | S04 에이전트 근거 조회 | [04-agent-evidence.feature](../../specs/features/04-agent-evidence.feature) | BDD-AGT-001~004 | 구현 대상 |
-| S05 SRE 분석 | [05-sre-analysis.feature](../../specs/features/05-sre-analysis.feature) | BDD-SRE-001~004 | 구현 대상 |
+| S05 SRE 분석 | [05-sre-analysis.feature](../../specs/features/05-sre-analysis.feature) | BDD-SRE-001~008 | 구현 대상 |
 | S06 인프라 문맥 | [06-infrastructure.feature](../../specs/features/06-infrastructure.feature) | BDD-INF-001~006 | 구현 대상 |
 | S07 자산·소유권 | [07-cmdb.feature](../../specs/features/07-cmdb.feature) | BDD-CMDB-001~003 | 구현 대상 |
 | S08 보안 상관 분석 | [08-security.feature](../../specs/features/08-security.feature) | BDD-SEC-001~003 | 구현 대상 |
 | S09 카탈로그 기반 자원 매핑 | [09-catalog-mapping.feature](../../specs/features/09-catalog-mapping.feature) | BDD-CAT-001~006 | 구현 대상 |
 | S03·S09 공통 자동 온보딩 | [10-automated-onboarding.feature](../../specs/features/10-automated-onboarding.feature) | BDD-ONB-001~010 | 구현 대상 |
 
-[자동화 제품 기획](AUTOMATION.md)은 GitHub 기반 발견·등록·지속 갱신과 운영 자동화의 흐름, 확인한 방향·세부 제안·미결 정책을 구분한다. 새 10개 시나리오는 기존 S03·S09의 명세·검증 태스크에 연결한다. 전체 10개 feature·47개 시나리오는 실행기 없는 Draft이며 새 스토리·태스크를 중복 생성하지 않는다.
+[자동화 제품 기획](AUTOMATION.md)은 GitHub 기반 발견·등록·지속 갱신과 운영 자동화의 흐름, 확인한 방향·세부 제안·미결 정책을 구분한다. 온보딩 10개 시나리오는 기존 S03·S09의 명세·검증 태스크에 연결한다. 수용량·복구 4개를 포함한 전체 10개 feature·51개 시나리오는 실행기 없는 Draft이며 새 스토리·태스크를 중복 생성하지 않는다.
+
+[수용량 검증 계획](../experiments/CAPACITY-VALIDATION.md)의 BDD-SRE-005~008은 업무 서비스의 계측 전후 수용량, 플랫폼의 수집·분석·조회와 데이터 규모, 과부하 복구와 서비스별 격리를 명세한다. T10 #19에서 목표·판정 조건을 검토하고 T25 #44의 로컬 적용 비교에 연결한다. 현재 수치 목표와 수용량 실측은 없다.
 
 각 스토리는 요구사항·미결정 사항 검토 태스크와 검증 계획 태스크에 연결한다. 실제 이슈 번호·부모 관계·상태는 [ROADMAP](../../ROADMAP.md)의 GitHub 링크에서 확인한다. 시나리오 파일이나 이슈를 만들었다는 이유로 기능을 완료 처리하지 않는다.
 
@@ -90,6 +92,6 @@
 
 시나리오마다 원하는 행동, 반례, 합성 입력, 관측 가능한 판정, 아직 모르는 조건을 함께 검토한다. 다음으로 어떤 fixture·테스트 층·원본 근거로 확인할지 정하고, 그 뒤 구현 태스크를 만든다.
 
-이 디렉터리의 전체 BDD 검증은 파일별 태그·고유 ID·Given/When/Then 구조와 스토리 매핑에 한정한다. 별도 [비교 실험](../experiments/ARCHITECTURE-EXPERIMENTS.md)에서는 17개 BDD ID의 일부 조건을 16개 합성 시나리오에 연결해 세 갱신 전략을 실행했다. 전체 47개 BDD의 실행 통과·실제 공급원 호환성·분산 성능 검증과 구분한다.
+이 디렉터리의 전체 BDD 검증은 파일별 태그·고유 ID·Given/When/Then 구조와 스토리 매핑에 한정한다. 별도 [비교 실험](../experiments/ARCHITECTURE-EXPERIMENTS.md)에서는 17개 BDD ID의 일부 조건을 16개 합성 시나리오에 연결해 세 갱신 전략을 실행했다. 전체 51개 BDD의 실행 통과·실제 공급원 호환성·분산 성능 검증과 구분한다.
 
 후속 [원본 재확인 실험](../experiments/HYBRID-RECONCILIATION.md)은 H01~H14의 파일·blob 갱신 계약과 실제 Git·공개 REST 읽기·loopback 수신·단일 머신 실행 경계를 확인한다. 메서드 분석·build/trace·AWS/Kubernetes·CMDB·SIEM 전체 행동의 실행 수락과 별도로 집계한다.
