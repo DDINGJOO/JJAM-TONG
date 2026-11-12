@@ -1,0 +1,32 @@
+# 요구사항과 게시판 시나리오
+
+[위키 홈](Home.md) · 원본: [BDD 인덱스](../requirements/README.md), [자동화 제품 기획](../requirements/AUTOMATION.md)
+
+## 게시판을 기준으로 묻는 질문
+
+아래는 **검증할 합성 시나리오**다. 실제 게시판 서비스·클러스터가 구현되거나 수락 테스트가 통과한 것으로 읽지 않는다.
+
+| 상황 | 확인하려는 결과 | 명세와 작업 |
+| --- | --- | --- |
+| GitHub 모노레포를 연결했더니 게시판·댓글 서비스가 발견됨 | 유효 선언의 등록과 추정 후보를 구분하고 중복 등록을 막음 | [온보딩](../../specs/features/10-automated-onboarding.feature), [S03 #10](https://github.com/DDINGJOO/JJAM-TONG/issues/10), [S09 #30](https://github.com/DDINGJOO/JJAM-TONG/issues/30) |
+| `Controller → Service → private 검증 → Repository` | 코드상 호출 가능 관계와 실제 요청에서 실행된 관계를 따로 표현 | [메서드 관계](../../specs/features/01-code-relations.feature), [S01 #3](https://github.com/DDINGJOO/JJAM-TONG/issues/3) |
+| 새 코드가 올라왔지만 운영은 이전 빌드 | 해당 요청이 실행한 빌드·소스·분석 버전을 찾아 연결 | [버전 식별](../../specs/features/02-version-identity.feature), [S02 #6](https://github.com/DDINGJOO/JJAM-TONG/issues/6) |
+| 메서드 삭제·이름 변경, 알림 중복·역순·누락 | 자동 갱신과 실패·오래된 결과·수집 공백을 설명 | [관계 갱신](../../specs/features/03-graph-refresh.feature), [S03 #10](https://github.com/DDINGJOO/JJAM-TONG/issues/10) |
+| 배포 뒤 게시글 조회가 느려짐 | 느린 실행과 비교 조건·누락을 조회하고 원인 가설과 사실을 구분 | [에이전트 근거](../../specs/features/04-agent-evidence.feature), [SRE 분석](../../specs/features/05-sre-analysis.feature), [S04 #13](https://github.com/DDINGJOO/JJAM-TONG/issues/13), [S05 #17](https://github.com/DDINGJOO/JJAM-TONG/issues/17) |
+| EKS·ECS·일반 Kubernetes 배포가 같은 DB를 사용 | 서비스·배포·실제 자원·공유 관계를 시점과 출처로 구분 | [인프라](../../specs/features/06-infrastructure.feature), [카탈로그 매핑](../../specs/features/09-catalog-mapping.feature), [S06 #20](https://github.com/DDINGJOO/JJAM-TONG/issues/20), [S09 #30](https://github.com/DDINGJOO/JJAM-TONG/issues/30) |
+| 자산 소유자가 바뀌고 관련 보안 이벤트가 발견됨 | 당시 소유권·관계 이력과 허용된 보안 근거를 연결 | [CMDB](../../specs/features/07-cmdb.feature), [보안](../../specs/features/08-security.feature), [S07 #24](https://github.com/DDINGJOO/JJAM-TONG/issues/24), [S08 #27](https://github.com/DDINGJOO/JJAM-TONG/issues/27) |
+
+## BDD를 읽는 규칙
+
+전체 명세는 **10개 feature·47개 시나리오**, `@draft @required`다. `@required`는 구현 대상을, `@draft`는 검토 중인 세부 행동을 뜻한다. 실행기 없는 명세이므로 문서 존재와 실행 수락을 구분한다. 시나리오 ID·상위 스토리·검증 태스크는 [원본 인덱스](../requirements/README.md)와 [로드맵](../../ROADMAP.md)이 연결한다.
+
+새 요구는 먼저 사용자·전제·행동·기대 결과를 쓰고, 정상 예와 함께 누락·충돌·권한·버전 불일치 반례를 붙인다. 기존 시나리오에 연결할 수 있으면 중복 이슈를 만들지 않는다. 구현 전 fixture와 판정 방법, 미결 정책을 이슈에 남긴다.
+
+## 계속 지켜야 할 구분
+
+- 정적 호출 후보와 실제 관측 호출을 구분한다. 관측하지 못했다고 호출 불가능으로 단정하지 않는다.
+- 소스 commit, 실제 build/artifact, 배포, 분석기·스키마·설정 버전을 구분한다.
+- 선언한 자원 관계와 수집한 사실, 추정 매핑과 확인한 매핑을 구분한다.
+- 연결·조회 권한을 배포·수정·보안 대응 실행 권한으로 확대하지 않는다.
+
+아직 정하지 않은 API 필드·보존 정책·계측 범위·비용 상한은 [설계 토론](../DISCUSSIONS.md)에서 검토한다.
