@@ -79,3 +79,5 @@ docker compose --project-name jjamtong-sandbox ps
 독립 확인에서도 두 앱의 준비 상태·버전 응답, 네 산출물의 실제 해시, 새 글의 생성·조회·활동 1건 반영을 대조했다. 장애 검사 전후 다른 프로젝트의 컨테이너는 유지됐고, 이 대상의 DB 연결과 Redis·Kafka도 복구했다.
 
 현재 앱은 Kubernetes로 옮길 수 있도록 컨테이너·환경 변수·준비 상태·자원 한도를 갖춘 로컬 대상이다. Kubernetes·EKS·ECS에 배포한 결과는 없다. Redis/DB 사이의 원자적 일관성, 다중 발행자, 운영 부하·고가용성도 검증하지 않았다. 다음 단계는 앱 기능 추가보다 **정적 호출 후보와 실제 메서드 실행을 연결할 도구 선택 및 C01~C12 실행**이다. #44와 기존 47개 Draft BDD의 전체 완료로 집계하지 않는다.
+
+추가 비교는 [실행 모델과 이벤트 경계 검증](CODE-ANALYSIS-COMPARISON.md#실행-모델과-이벤트-경계도-함께-검증한다)에 정리했다. 현재 HTTP 구성은 MVC/Tomcat이고 Redis 클라이언트는 Netty 기반 Lettuce다. 가상 스레드·WebFlux/Netty·추적 문맥 전파의 비교는 아직 실행하지 않았다.
