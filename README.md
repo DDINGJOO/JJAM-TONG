@@ -8,9 +8,13 @@
 
 자동 갱신은 [비교 실험실](experiments/architecture_lab/README.md)에서 세 방식으로 구현해 실행했다. [16개 시나리오의 결과](docs/experiments/RESULTS.md)와 [방법론·아키텍처 비교 계획](docs/experiments/ARCHITECTURE-EXPERIMENTS.md)을 공개한다. 합성 공급원·동일 SQLite의 로컬 실험이며 실제 GitHub·코드 계측·AWS 통합이나 전체 BDD 통과를 뜻하지 않는다.
 
+다음 [원본 재확인 실험](experiments/reconciliation_lab/README.md)은 실제 Git 원본·loopback 웹훅·공개 GitHub REST 읽기와 in-process/one-shot worker를 비교한다. [주기적 확인과 변경 알림의 결합](docs/decisions/0001-reconciliation-baseline.md)을 관계 갱신의 검증 기본안으로 기록했으며, [실행 결과](docs/experiments/HYBRID-RESULTS.md)에서 실측·주입 장애·미실행을 구분한다. 현재 인덱스는 파일·blob 관계로 메서드 분석·실제 trace 수집은 후속이다.
+
 ```sh
 python3 -m unittest discover -s experiments/architecture_lab -p 'test_*.py' -v
 python3 -m experiments.architecture_lab.lab --output results/architecture-lab --changes 200
+python3 -m unittest experiments.reconciliation_lab.test_reconciliation -v
+python3 -m experiments.reconciliation_lab.run --repetitions 3
 ```
 
 ## 명세할 문제와 기대 결과
@@ -63,6 +67,6 @@ python3 -m experiments.architecture_lab.lab --output results/architecture-lab --
 
 ## 아직 결정하지 않은 것
 
-아키텍처·파이프라인·스택은 함께 토론할 제안이며 아직 승인된 설계는 없다. 정적 분석기, 계측 방식, 근거 조회 계약·저장소·화면·배포 환경과 라이선스는 대안 비교·실험·ADR을 거쳐 결정한다. 퍼블릭 저장소라는 사실만으로 별도의 사용·재배포 라이선스를 부여하지 않는다.
+현재 관계 갱신은 [원본 재확인과 변경 알림을 결합하는 검증 기본안](docs/decisions/0001-reconciliation-baseline.md)을 사용한다. 전체 제품 아키텍처·파이프라인·스택은 함께 토론할 제안이다. 정적 분석기, 계측 방식, 근거 조회 계약·저장소·화면·배포 환경과 라이선스는 대안 비교·실험·ADR을 거쳐 결정한다. 퍼블릭 저장소라는 사실만으로 별도의 사용·재배포 라이선스를 부여하지 않는다.
 
 블로그 글 작성·발행은 프로젝트 목표에 포함하지 않는다. 공개 예제와 검증 자료에는 합성 데이터를 사용한다.

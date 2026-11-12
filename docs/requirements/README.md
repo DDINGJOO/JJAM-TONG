@@ -91,3 +91,5 @@
 시나리오마다 원하는 행동, 반례, 합성 입력, 관측 가능한 판정, 아직 모르는 조건을 함께 검토한다. 다음으로 어떤 fixture·테스트 층·원본 근거로 확인할지 정하고, 그 뒤 구현 태스크를 만든다.
 
 이 디렉터리의 전체 BDD 검증은 파일별 태그·고유 ID·Given/When/Then 구조와 스토리 매핑에 한정한다. 별도 [비교 실험](../experiments/ARCHITECTURE-EXPERIMENTS.md)에서는 17개 BDD ID의 일부 조건을 16개 합성 시나리오에 연결해 세 갱신 전략을 실행했다. 전체 47개 BDD의 실행 통과·실제 공급원 호환성·분산 성능 검증과 구분한다.
+
+후속 [원본 재확인 실험](../experiments/HYBRID-RECONCILIATION.md)은 H01~H14의 파일·blob 갱신 계약과 실제 Git·공개 REST 읽기·loopback 수신·단일 머신 실행 경계를 확인한다. 메서드 분석·build/trace·AWS/Kubernetes·CMDB·SIEM 전체 행동의 실행 수락과 별도로 집계한다.
