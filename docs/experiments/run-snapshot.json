@@ -1,0 +1,4085 @@
+{
+  "schema": "jjamtong-experiment-v1",
+  "created_at": "2026-11-12T01:35:07.363655+00:00",
+  "environment": {
+    "python": "3.9.6",
+    "sqlite": "3.51.0",
+    "system": "Darwin",
+    "machine": "arm64"
+  },
+  "base_commit": "204ee38f137eec7d9bf8432cbb0699d979d11da8",
+  "input_sha256": {
+    "lab.py": "217d0eab421a2ebb167eb9c9276237e2d47a864123fca1670cc893613ab114ca",
+    "test_lab.py": "32d16701542e9265c1ac43b82151889f46bb992ed54e969bccdb1c9d2f1d7070",
+    "fixtures/base.json": "b04e007220f227d7965924f62c4e34c9dbdf8c41b852f5058f1a20762d5abb26",
+    "fixtures/scenarios.json": "938050f95c8902c15915ba4ca978c4831db6f5ea1fb13b9ef2a8bd6484ae5298"
+  },
+  "changes": 200,
+  "configuration": {
+    "poll_interval_ticks": 5,
+    "source_page_size": 2,
+    "timing_samples": 1
+  },
+  "limitations": [
+    "synthetic sources",
+    "single process",
+    "shared SQLite implementation",
+    "no real analyzer or cloud",
+    "no production benchmark",
+    "no actual validity interval inference"
+  ],
+  "scenarios": [
+    {
+      "id": "X01",
+      "name": "모노레포의 두 서비스 최초 등록",
+      "bdd": [
+        "BDD-ONB-001"
+      ]
+    },
+    {
+      "id": "X02",
+      "name": "정상 변경의 즉시 반영과 주기 후 수렴",
+      "bdd": [
+        "BDD-ONB-005",
+        "BDD-UPD-001"
+      ]
+    },
+    {
+      "id": "X03",
+      "name": "변경 이벤트 유실과 원본 재확인",
+      "bdd": [
+        "BDD-ONB-006"
+      ]
+    },
+    {
+      "id": "X04",
+      "name": "원본 조회 장애 중 이벤트 도착",
+      "bdd": [
+        "BDD-UPD-002",
+        "BDD-ONB-007"
+      ]
+    },
+    {
+      "id": "X05",
+      "name": "중복 전달과 역순 과거 이벤트",
+      "bdd": [
+        "BDD-ONB-005",
+        "BDD-UPD-003"
+      ]
+    },
+    {
+      "id": "X06",
+      "name": "부분 페이지 실패와 이전 성공 보존",
+      "bdd": [
+        "BDD-ONB-007",
+        "BDD-CAT-005"
+      ]
+    },
+    {
+      "id": "X07",
+      "name": "durable inbox 저장 직후 재시작",
+      "bdd": [
+        "BDD-ONB-005"
+      ]
+    },
+    {
+      "id": "X08",
+      "name": "반영과 처리 완료 사이 중단 후 복구",
+      "bdd": [
+        "BDD-ONB-005"
+      ]
+    },
+    {
+      "id": "X09",
+      "name": "동일 commit의 서로 다른 두 build 연결",
+      "bdd": [
+        "BDD-ONB-004",
+        "BDD-VER-001"
+      ]
+    },
+    {
+      "id": "X10",
+      "name": "조회 권한 회수 후 과거와 캐시 접근",
+      "bdd": [
+        "BDD-ONB-008",
+        "BDD-CAT-006"
+      ]
+    },
+    {
+      "id": "X11",
+      "name": "위조 서명 이벤트 거절",
+      "bdd": [
+        "BDD-ONB-009"
+      ]
+    },
+    {
+      "id": "X12",
+      "name": "명시한 삭제와 다른 근거의 보존",
+      "bdd": [
+        "BDD-UPD-001",
+        "BDD-CAT-005"
+      ]
+    },
+    {
+      "id": "X13",
+      "name": "조회 주기 사이의 짧은 소유자 변경",
+      "bdd": [
+        "BDD-CMDB-001",
+        "BDD-CAT-002"
+      ]
+    },
+    {
+      "id": "X14",
+      "name": "유실된 중간 변경은 현재 조회로 복구 불가",
+      "bdd": [
+        "BDD-ONB-006",
+        "BDD-CMDB-001"
+      ]
+    },
+    {
+      "id": "X15",
+      "name": "늦게 수집한 보안 근거와 당시 알던 정보",
+      "bdd": [
+        "BDD-SEC-001",
+        "BDD-CMDB-002"
+      ]
+    },
+    {
+      "id": "X16",
+      "name": "연결 회수 후 예약 조회와 미처리 작업 차단",
+      "bdd": [
+        "BDD-ONB-008"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "scenario": "X01",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "service": "board-api"
+            },
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "service": "board-api"
+            },
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            },
+            "catalog/worker": {
+              "event_at": 0,
+              "key": "catalog/worker",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-worker"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X01",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "service": "board-api"
+            },
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "service": "board-api"
+            },
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            },
+            "catalog/worker": {
+              "event_at": 0,
+              "key": "catalog/worker",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-worker"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X01",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "service": "board-api"
+            },
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "service": "board-api"
+            },
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            },
+            "catalog/worker": {
+              "event_at": 0,
+              "key": "catalog/worker",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-worker"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X02",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-005",
+        "BDD-UPD-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 1,
+          "event_before": 1,
+          "known_before": 1,
+          "target_met": false,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B",
+                "service": "board-api"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 5
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X02",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-005",
+        "BDD-UPD-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 1,
+          "event_before": 1,
+          "known_before": 1,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B",
+                "service": "board-api"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 1
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B",
+                "service": "board-api"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 1
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X02",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-005",
+        "BDD-UPD-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 1,
+          "event_before": 1,
+          "known_before": 1,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B",
+                "service": "board-api"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 1
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B",
+                "service": "board-api"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 1
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {
+          "received_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X03",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-006"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 5
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X03",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-006"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": false,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X03",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-006"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 5
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X04",
+      "variant": "poll",
+      "bdd": [
+        "BDD-UPD-002",
+        "BDD-ONB-007"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": false,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            },
+            "catalog/worker": {
+              "event_at": 0,
+              "key": "catalog/worker",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-worker"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 2,
+          "pages": 5
+        },
+        "engine": {
+          "scan_failures": 1
+        }
+      }
+    },
+    {
+      "scenario": "X04",
+      "variant": "events",
+      "bdd": [
+        "BDD-UPD-002",
+        "BDD-ONB-007"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 1
+            },
+            "catalog/worker": {
+              "event_at": 0,
+              "key": "catalog/worker",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-worker"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X04",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-UPD-002",
+        "BDD-ONB-007"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 1
+            },
+            "catalog/worker": {
+              "event_at": 0,
+              "key": "catalog/worker",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-worker"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 2,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1,
+          "scan_failures": 1
+        }
+      }
+    },
+    {
+      "scenario": "X05",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-005",
+        "BDD-UPD-003"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-C"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-C"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 2,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-C"
+              },
+              "revision": 3,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 5
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X05",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-005",
+        "BDD-UPD-003"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-C"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-C"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 2,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-C"
+              },
+              "revision": 3,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 2
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 12,
+        "inbox_rows": 2,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 4
+        }
+      }
+    },
+    {
+      "scenario": "X05",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-005",
+        "BDD-UPD-003"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-C"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-C"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 2,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-C"
+              },
+              "revision": 3,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 2
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 12,
+        "inbox_rows": 2,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {
+          "received_events": 4
+        }
+      }
+    },
+    {
+      "scenario": "X06",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-007",
+        "BDD-CAT-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": false,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            },
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            },
+            "catalog/worker": {
+              "event_at": 0,
+              "key": "catalog/worker",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-worker"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 10,
+          "event_before": 10,
+          "known_before": 10,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 10
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 10,
+        "source": {
+          "scans": 3,
+          "pages": 12
+        },
+        "engine": {
+          "scan_failures": 1
+        }
+      }
+    },
+    {
+      "scenario": "X06",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-007",
+        "BDD-CAT-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": false,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            },
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            },
+            "catalog/worker": {
+              "event_at": 0,
+              "key": "catalog/worker",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-worker"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 10,
+          "event_before": 10,
+          "known_before": 10,
+          "target_met": false,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X06",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-007",
+        "BDD-CAT-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": false,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            },
+            "catalog/worker": {
+              "service": "board-worker"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            },
+            "catalog/worker": {
+              "event_at": 0,
+              "key": "catalog/worker",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-worker"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 10,
+          "event_before": 10,
+          "known_before": 10,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 10
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 10,
+        "source": {
+          "scans": 3,
+          "pages": 12
+        },
+        "engine": {
+          "scan_failures": 1
+        }
+      }
+    },
+    {
+      "scenario": "X07",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 1,
+          "event_before": 1,
+          "known_before": 1,
+          "target_met": false,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "restarts": 1
+        }
+      }
+    },
+    {
+      "scenario": "X07",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 1,
+          "event_before": 1,
+          "known_before": 1,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 1
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1,
+          "restarts": 1
+        }
+      }
+    },
+    {
+      "scenario": "X07",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 1,
+          "event_before": 1,
+          "known_before": 1,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 1
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1,
+          "restarts": 1
+        }
+      }
+    },
+    {
+      "scenario": "X08",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 1,
+          "event_before": 1,
+          "known_before": 1,
+          "target_met": false,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "restarts": 1
+        }
+      }
+    },
+    {
+      "scenario": "X08",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 1,
+          "event_before": 1,
+          "known_before": 1,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 1
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1,
+          "restarts": 1
+        }
+      }
+    },
+    {
+      "scenario": "X08",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 1,
+          "event_before": 1,
+          "known_before": 1,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "catalog/api": {
+              "event_at": 1,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 1
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1,
+          "restarts": 1
+        }
+      }
+    },
+    {
+      "scenario": "X09",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-004",
+        "BDD-VER-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {},
+          "safety_expected": {},
+          "observed": {},
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {
+            "status": "ok",
+            "build": "A",
+            "artifact": "sha256:aaa",
+            "method": "BoardService.list",
+            "code_revision": 1
+          }
+        },
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {},
+          "safety_expected": {},
+          "observed": {},
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {
+            "status": "ok",
+            "build": "B",
+            "artifact": "sha256:bbb",
+            "method": "BoardService.validate",
+            "code_revision": 1
+          }
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X09",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-004",
+        "BDD-VER-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {},
+          "safety_expected": {},
+          "observed": {},
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {
+            "status": "ok",
+            "build": "A",
+            "artifact": "sha256:aaa",
+            "method": "BoardService.list",
+            "code_revision": 1
+          }
+        },
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {},
+          "safety_expected": {},
+          "observed": {},
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {
+            "status": "ok",
+            "build": "B",
+            "artifact": "sha256:bbb",
+            "method": "BoardService.validate",
+            "code_revision": 1
+          }
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X09",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-004",
+        "BDD-VER-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {},
+          "safety_expected": {},
+          "observed": {},
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {
+            "status": "ok",
+            "build": "A",
+            "artifact": "sha256:aaa",
+            "method": "BoardService.list",
+            "code_revision": 1
+          }
+        },
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {},
+          "safety_expected": {},
+          "observed": {},
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {
+            "status": "ok",
+            "build": "B",
+            "artifact": "sha256:bbb",
+            "method": "BoardService.validate",
+            "code_revision": 1
+          }
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X10",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-008",
+        "BDD-CAT-006"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {
+            "catalog/api": null,
+            "asset/db": null,
+            "security/1": null
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": null,
+            "catalog/api": null,
+            "security/1": null
+          },
+          "visible_keys": [],
+          "request": {
+            "status": "unavailable"
+          }
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X10",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-008",
+        "BDD-CAT-006"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {
+            "catalog/api": null,
+            "asset/db": null,
+            "security/1": null
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": null,
+            "catalog/api": null,
+            "security/1": null
+          },
+          "visible_keys": [],
+          "request": {
+            "status": "unavailable"
+          }
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X10",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-008",
+        "BDD-CAT-006"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {
+            "catalog/api": null,
+            "asset/db": null,
+            "security/1": null
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": null,
+            "catalog/api": null,
+            "security/1": null
+          },
+          "visible_keys": [],
+          "request": {
+            "status": "unavailable"
+          }
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X11",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-009"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X11",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-009"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "rejected_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X11",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-009"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 0,
+          "event_before": 0,
+          "known_before": 0,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "rejected_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X12",
+      "variant": "poll",
+      "bdd": [
+        "BDD-UPD-001",
+        "BDD-CAT-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/worker": null
+          },
+          "safety_expected": {
+            "catalog/worker": null,
+            "catalog/api": {
+              "service": "board-api"
+            },
+            "asset/db": {
+              "owner": "team-A"
+            }
+          },
+          "observed": {
+            "asset/db": {
+              "event_at": 0,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-A"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 0
+            },
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            },
+            "catalog/worker": null
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X12",
+      "variant": "events",
+      "bdd": [
+        "BDD-UPD-001",
+        "BDD-CAT-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/worker": null
+          },
+          "safety_expected": {
+            "catalog/worker": null,
+            "catalog/api": {
+              "service": "board-api"
+            },
+            "asset/db": {
+              "owner": "team-A"
+            }
+          },
+          "observed": {
+            "asset/db": {
+              "event_at": 0,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-A"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 0
+            },
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            },
+            "catalog/worker": null
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X12",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-UPD-001",
+        "BDD-CAT-005"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/worker": null
+          },
+          "safety_expected": {
+            "catalog/worker": null,
+            "catalog/api": {
+              "service": "board-api"
+            },
+            "asset/db": {
+              "owner": "team-A"
+            }
+          },
+          "observed": {
+            "asset/db": {
+              "event_at": 0,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-A"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 0
+            },
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            },
+            "catalog/worker": null
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {
+          "received_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X13",
+      "variant": "poll",
+      "bdd": [
+        "BDD-CMDB-001",
+        "BDD-CAT-002"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 1,
+          "known_before": 5,
+          "target_met": false,
+          "expected": {
+            "asset/db": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 0,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-A"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "asset/db": {
+              "owner": "team-C"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 2,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-C"
+              },
+              "revision": 3,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 5
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X13",
+      "variant": "events",
+      "bdd": [
+        "BDD-CMDB-001",
+        "BDD-CAT-002"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 1,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "asset/db": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 1,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 1
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "asset/db": {
+              "owner": "team-C"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 2,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-C"
+              },
+              "revision": 3,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 2
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 12,
+        "inbox_rows": 2,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 2
+        }
+      }
+    },
+    {
+      "scenario": "X13",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-CMDB-001",
+        "BDD-CAT-002"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 1,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "asset/db": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 1,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-B"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 1
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "asset/db": {
+              "owner": "team-C"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 2,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-C"
+              },
+              "revision": 3,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 2
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 12,
+        "inbox_rows": 2,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {
+          "received_events": 2
+        }
+      }
+    },
+    {
+      "scenario": "X14",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-006",
+        "BDD-CMDB-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 1,
+          "known_before": 5,
+          "target_met": false,
+          "expected": {
+            "asset/db": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 0,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-A"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "asset/db": {
+              "owner": "team-C"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 2,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-C"
+              },
+              "revision": 3,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 5
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X14",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-006",
+        "BDD-CMDB-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 1,
+          "known_before": 5,
+          "target_met": false,
+          "expected": {
+            "asset/db": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 0,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-A"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "asset/db": {
+              "owner": "team-C"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 2,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-C"
+              },
+              "revision": 3,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 2
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X14",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-006",
+        "BDD-CMDB-001"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 1,
+          "known_before": 5,
+          "target_met": false,
+          "expected": {
+            "asset/db": {
+              "owner": "team-B"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 0,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "native_id": "fixture/db-001",
+                "owner": "team-A"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "asset/db": {
+              "owner": "team-C"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "asset/db": {
+              "event_at": 2,
+              "key": "asset/db",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-C"
+              },
+              "revision": 3,
+              "scope": "demo",
+              "source": "cmdb",
+              "recorded_at": 2
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 5,
+        "source": {
+          "scans": 2,
+          "pages": 10
+        },
+        "engine": {
+          "received_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X15",
+      "variant": "poll",
+      "bdd": [
+        "BDD-SEC-001",
+        "BDD-CMDB-002"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 1,
+          "known_before": 4,
+          "target_met": true,
+          "expected": {
+            "security/1": {
+              "rule": "synthetic-rule-v1"
+            }
+          },
+          "safety_expected": {
+            "security/1": {
+              "rule": "synthetic-rule-v1"
+            }
+          },
+          "observed": {
+            "security/1": {
+              "event_at": 0,
+              "key": "security/1",
+              "kind": "detected",
+              "payload": {
+                "asset": "asset/db",
+                "rule": "synthetic-rule-v1"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "siem",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 10,
+          "event_before": 10,
+          "known_before": 10,
+          "target_met": true,
+          "expected": {
+            "security/1": {
+              "rule": "synthetic-rule-v2"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "security/1": {
+              "event_at": 1,
+              "key": "security/1",
+              "kind": "detected",
+              "payload": {
+                "asset": "asset/db",
+                "rule": "synthetic-rule-v2"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "siem",
+              "recorded_at": 10
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 10,
+        "source": {
+          "scans": 3,
+          "pages": 15
+        },
+        "engine": {}
+      }
+    },
+    {
+      "scenario": "X15",
+      "variant": "events",
+      "bdd": [
+        "BDD-SEC-001",
+        "BDD-CMDB-002"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 1,
+          "known_before": 4,
+          "target_met": true,
+          "expected": {
+            "security/1": {
+              "rule": "synthetic-rule-v1"
+            }
+          },
+          "safety_expected": {
+            "security/1": {
+              "rule": "synthetic-rule-v1"
+            }
+          },
+          "observed": {
+            "security/1": {
+              "event_at": 0,
+              "key": "security/1",
+              "kind": "detected",
+              "payload": {
+                "asset": "asset/db",
+                "rule": "synthetic-rule-v1"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "siem",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 10,
+          "event_before": 10,
+          "known_before": 10,
+          "target_met": true,
+          "expected": {
+            "security/1": {
+              "rule": "synthetic-rule-v2"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "security/1": {
+              "event_at": 1,
+              "key": "security/1",
+              "kind": "detected",
+              "payload": {
+                "asset": "asset/db",
+                "rule": "synthetic-rule-v2"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "siem",
+              "recorded_at": 5
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X15",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-SEC-001",
+        "BDD-CMDB-002"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 1,
+          "known_before": 4,
+          "target_met": true,
+          "expected": {
+            "security/1": {
+              "rule": "synthetic-rule-v1"
+            }
+          },
+          "safety_expected": {
+            "security/1": {
+              "rule": "synthetic-rule-v1"
+            }
+          },
+          "observed": {
+            "security/1": {
+              "event_at": 0,
+              "key": "security/1",
+              "kind": "detected",
+              "payload": {
+                "asset": "asset/db",
+                "rule": "synthetic-rule-v1"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "siem",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        },
+        {
+          "tick": 10,
+          "event_before": 10,
+          "known_before": 10,
+          "target_met": true,
+          "expected": {
+            "security/1": {
+              "rule": "synthetic-rule-v2"
+            }
+          },
+          "safety_expected": {},
+          "observed": {
+            "security/1": {
+              "event_at": 1,
+              "key": "security/1",
+              "kind": "detected",
+              "payload": {
+                "asset": "asset/db",
+                "rule": "synthetic-rule-v2"
+              },
+              "revision": 2,
+              "scope": "demo",
+              "source": "siem",
+              "recorded_at": 5
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 11,
+        "inbox_rows": 1,
+        "pending_deliveries": 0,
+        "last_scan_success": 10,
+        "source": {
+          "scans": 3,
+          "pages": 15
+        },
+        "engine": {
+          "received_events": 1
+        }
+      }
+    },
+    {
+      "scenario": "X16",
+      "variant": "poll",
+      "bdd": [
+        "BDD-ONB-008"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 0,
+        "pending_deliveries": 0,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "restarts": 1,
+          "collection_denied": 1
+        }
+      }
+    },
+    {
+      "scenario": "X16",
+      "variant": "events",
+      "bdd": [
+        "BDD-ONB-008"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 1,
+        "pending_deliveries": 1,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1,
+          "restarts": 1
+        }
+      }
+    },
+    {
+      "scenario": "X16",
+      "variant": "hybrid",
+      "bdd": [
+        "BDD-ONB-008"
+      ],
+      "safety_oracles_passed": true,
+      "checkpoints": [
+        {
+          "tick": 5,
+          "event_before": 5,
+          "known_before": 5,
+          "target_met": true,
+          "expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "safety_expected": {
+            "catalog/api": {
+              "owner": "team-A"
+            }
+          },
+          "observed": {
+            "catalog/api": {
+              "event_at": 0,
+              "key": "catalog/api",
+              "kind": "declared",
+              "payload": {
+                "owner": "team-A",
+                "service": "board-api"
+              },
+              "revision": 1,
+              "scope": "demo",
+              "source": "github",
+              "recorded_at": 0
+            }
+          },
+          "visible_keys": [
+            "asset/db",
+            "catalog/api",
+            "catalog/worker",
+            "code/A",
+            "code/B",
+            "deployment/A",
+            "deployment/B",
+            "security/1",
+            "trace/A",
+            "trace/B"
+          ],
+          "request": {}
+        }
+      ],
+      "stats": {
+        "evidence_revisions": 10,
+        "inbox_rows": 1,
+        "pending_deliveries": 1,
+        "last_scan_success": 0,
+        "source": {
+          "scans": 1,
+          "pages": 5
+        },
+        "engine": {
+          "received_events": 1,
+          "restarts": 1,
+          "collection_denied": 1
+        }
+      }
+    }
+  ],
+  "workload": {
+    "poll": {
+      "evidence_revisions": 51,
+      "inbox_rows": 0,
+      "pending_deliveries": 0,
+      "last_scan_success": 205,
+      "source": {
+        "scans": 42,
+        "pages": 210
+      },
+      "engine": {},
+      "elapsed_seconds": 0.015179124999999988,
+      "sqlite_bytes": 40960
+    },
+    "events": {
+      "evidence_revisions": 210,
+      "inbox_rows": 200,
+      "pending_deliveries": 0,
+      "last_scan_success": 0,
+      "source": {
+        "scans": 1,
+        "pages": 5
+      },
+      "engine": {
+        "received_events": 200
+      },
+      "elapsed_seconds": 0.11570175000000002,
+      "sqlite_bytes": 135168
+    },
+    "hybrid": {
+      "evidence_revisions": 210,
+      "inbox_rows": 200,
+      "pending_deliveries": 0,
+      "last_scan_success": 205,
+      "source": {
+        "scans": 42,
+        "pages": 210
+      },
+      "engine": {
+        "received_events": 200
+      },
+      "elapsed_seconds": 0.13560741699999998,
+      "sqlite_bytes": 135168
+    }
+  }
+}

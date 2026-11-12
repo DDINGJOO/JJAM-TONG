@@ -1,0 +1,110 @@
+[
+  {"id":"X01","name":"모노레포의 두 서비스 최초 등록","bdd":["BDD-ONB-001"],"operations":[
+    {"op":"check","want":{"catalog/api":{"service":"board-api"},"catalog/worker":{"service":"board-worker"}},"must":{"catalog/api":{"service":"board-api"},"catalog/worker":{"service":"board-worker"}}}
+  ]},
+  {"id":"X02","name":"정상 변경의 즉시 반영과 주기 후 수렴","bdd":["BDD-ONB-005","BDD-UPD-001"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"catalog/api","patch":{"payload":{"service":"board-api","owner":"team-B"}}},
+    {"op":"check","want":{"catalog/api":{"owner":"team-B"}}},
+    {"op":"advance","ticks":4},
+    {"op":"check","want":{"catalog/api":{"owner":"team-B"}}}
+  ]},
+  {"id":"X03","name":"변경 이벤트 유실과 원본 재확인","bdd":["BDD-ONB-006"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"catalog/api","patch":{"payload":{"owner":"team-B"}},"emit":false},
+    {"op":"advance","ticks":4},
+    {"op":"check","want":{"catalog/api":{"owner":"team-B"}}}
+  ]},
+  {"id":"X04","name":"원본 조회 장애 중 이벤트 도착","bdd":["BDD-UPD-002","BDD-ONB-007"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"availability","available":false},
+    {"op":"change","key":"catalog/api","patch":{"payload":{"owner":"team-B"}}},
+    {"op":"advance","ticks":4},
+    {"op":"check","want":{"catalog/api":{"owner":"team-B"}},"must":{"catalog/worker":{"service":"board-worker"}}}
+  ]},
+  {"id":"X05","name":"중복 전달과 역순 과거 이벤트","bdd":["BDD-ONB-005","BDD-UPD-003"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"catalog/api","patch":{"payload":{"owner":"team-B"}},"save":"old"},
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"catalog/api","patch":{"payload":{"owner":"team-C"}},"save":"new"},
+    {"op":"redeliver","saved":"new"},
+    {"op":"redeliver","saved":"old"},
+    {"op":"advance","ticks":3},
+    {"op":"check","want":{"catalog/api":{"owner":"team-C"}},"must":{"catalog/api":{"owner":"team-C"}}}
+  ]},
+  {"id":"X06","name":"부분 페이지 실패와 이전 성공 보존","bdd":["BDD-ONB-007","BDD-CAT-005"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"catalog/api","patch":{"payload":{"owner":"team-B"}},"emit":false},
+    {"op":"partial","page":2},
+    {"op":"advance","ticks":4},
+    {"op":"check","want":{"catalog/api":{"owner":"team-B"}},"must":{"catalog/api":{"owner":"team-A"},"catalog/worker":{"service":"board-worker"}}},
+    {"op":"partial","page":null},
+    {"op":"advance","ticks":5},
+    {"op":"check","want":{"catalog/api":{"owner":"team-B"}}}
+  ]},
+  {"id":"X07","name":"durable inbox 저장 직후 재시작","bdd":["BDD-ONB-005"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"catalog/api","patch":{"payload":{"owner":"team-B"}},"fault":"after_inbox"},
+    {"op":"availability","available":false},
+    {"op":"restart"},
+    {"op":"check","want":{"catalog/api":{"owner":"team-B"}}}
+  ]},
+  {"id":"X08","name":"반영과 처리 완료 사이 중단 후 복구","bdd":["BDD-ONB-005"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"catalog/api","patch":{"payload":{"owner":"team-B"}},"fault":"mid_projection"},
+    {"op":"availability","available":false},
+    {"op":"restart"},
+    {"op":"check","want":{"catalog/api":{"owner":"team-B"}}}
+  ]},
+  {"id":"X09","name":"동일 commit의 서로 다른 두 build 연결","bdd":["BDD-ONB-004","BDD-VER-001"],"operations":[
+    {"op":"check","request":"trace/A","must_request":{"status":"ok","build":"A","artifact":"sha256:aaa","method":"BoardService.list"}},
+    {"op":"check","request":"trace/B","must_request":{"status":"ok","build":"B","artifact":"sha256:bbb","method":"BoardService.validate"}}
+  ]},
+  {"id":"X10","name":"조회 권한 회수 후 과거와 캐시 접근","bdd":["BDD-ONB-008","BDD-CAT-006"],"operations":[
+    {"op":"revoke"},
+    {"op":"check","want":{"catalog/api":null,"asset/db":null,"security/1":null},"request":"trace/A","must_request":{"status":"unavailable"}}
+  ]},
+  {"id":"X11","name":"위조 서명 이벤트 거절","bdd":["BDD-ONB-009"],"operations":[
+    {"op":"forge"},
+    {"op":"check","want":{"catalog/api":{"owner":"team-A"}},"must":{"catalog/api":{"owner":"team-A"}}}
+  ]},
+  {"id":"X12","name":"명시한 삭제와 다른 근거의 보존","bdd":["BDD-UPD-001","BDD-CAT-005"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"catalog/worker","patch":{"deleted":true}},
+    {"op":"advance","ticks":4},
+    {"op":"check","want":{"catalog/worker":null},"must":{"catalog/worker":null,"catalog/api":{"service":"board-api"},"asset/db":{"owner":"team-A"}}}
+  ]},
+  {"id":"X13","name":"조회 주기 사이의 짧은 소유자 변경","bdd":["BDD-CMDB-001","BDD-CAT-002"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"asset/db","patch":{"payload":{"owner":"team-B","native_id":"fixture/db-001"}}},
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"asset/db","patch":{"payload":{"owner":"team-C","native_id":"fixture/db-001"}}},
+    {"op":"advance","ticks":3},
+    {"op":"check","event_before":1,"want":{"asset/db":{"owner":"team-B"}}},
+    {"op":"check","want":{"asset/db":{"owner":"team-C"}}}
+  ]},
+  {"id":"X14","name":"유실된 중간 변경은 현재 조회로 복구 불가","bdd":["BDD-ONB-006","BDD-CMDB-001"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"asset/db","patch":{"payload":{"owner":"team-B"}},"emit":false},
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"asset/db","patch":{"payload":{"owner":"team-C"}}},
+    {"op":"advance","ticks":3},
+    {"op":"check","event_before":1,"want":{"asset/db":{"owner":"team-B"}}},
+    {"op":"check","want":{"asset/db":{"owner":"team-C"}}}
+  ]},
+  {"id":"X15","name":"늦게 수집한 보안 근거와 당시 알던 정보","bdd":["BDD-SEC-001","BDD-CMDB-002"],"operations":[
+    {"op":"advance","ticks":5},
+    {"op":"change","key":"security/1","event_at":1,"patch":{"payload":{"asset":"asset/db","rule":"synthetic-rule-v2"}}},
+    {"op":"check","event_before":1,"known_before":4,"want":{"security/1":{"rule":"synthetic-rule-v1"}},"must":{"security/1":{"rule":"synthetic-rule-v1"}}},
+    {"op":"advance","ticks":5},
+    {"op":"check","want":{"security/1":{"rule":"synthetic-rule-v2"}}}
+  ]},
+  {"id":"X16","name":"연결 회수 후 예약 조회와 미처리 작업 차단","bdd":["BDD-ONB-008"],"operations":[
+    {"op":"advance","ticks":1},
+    {"op":"change","key":"catalog/api","patch":{"payload":{"owner":"team-B"}},"fault":"after_inbox"},
+    {"op":"disconnect"},
+    {"op":"restart"},
+    {"op":"advance","ticks":4},
+    {"op":"check","want":{"catalog/api":{"owner":"team-A"}},"must":{"catalog/api":{"owner":"team-A"}}}
+  ]}
+]

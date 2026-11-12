@@ -1,0 +1,12 @@
+[
+  {"scope":"demo","source":"github","key":"catalog/api","revision":1,"event_at":0,"kind":"declared","payload":{"service":"board-api","owner":"team-A"}},
+  {"scope":"demo","source":"github","key":"catalog/worker","revision":1,"event_at":0,"kind":"declared","payload":{"service":"board-worker","owner":"team-A"}},
+  {"scope":"demo","source":"analysis","key":"code/A","revision":1,"event_at":0,"kind":"static-candidate","payload":{"repo":"fixture/community","commit":"same-synthetic-commit","build":"A","artifact":"sha256:aaa","module":"board-api","analysis_run":"run-A","analyzer":"synthetic-1","schema":"1","config":"included-app-only","snapshot_digest":"synthetic-snapshot-A","methods":["BoardService.list"]}},
+  {"scope":"demo","source":"analysis","key":"code/B","revision":1,"event_at":0,"kind":"static-candidate","payload":{"repo":"fixture/community","commit":"same-synthetic-commit","build":"B","artifact":"sha256:bbb","module":"board-api","analysis_run":"run-B","analyzer":"synthetic-1","schema":"1","config":"included-app-only","snapshot_digest":"synthetic-snapshot-B","methods":["BoardService.list","BoardService.validate"]}},
+  {"scope":"demo","source":"inventory","key":"deployment/A","revision":1,"event_at":0,"kind":"observed","payload":{"build":"A","artifact":"sha256:aaa","environment":"prod","resource":"fixture/cluster-1/pod-uid-A","shared_db":"asset/db"}},
+  {"scope":"demo","source":"inventory","key":"deployment/B","revision":1,"event_at":0,"kind":"observed","payload":{"build":"B","artifact":"sha256:bbb","environment":"prod","resource":"fixture/cluster-1/pod-uid-B","shared_db":"asset/db"}},
+  {"scope":"demo","source":"runtime","key":"trace/A","revision":1,"event_at":0,"kind":"observed","payload":{"build":"A","artifact":"sha256:aaa","method":"BoardService.list","code_key":"code/A","deployment_key":"deployment/A","duration_ms":30}},
+  {"scope":"demo","source":"runtime","key":"trace/B","revision":1,"event_at":0,"kind":"observed","payload":{"build":"B","artifact":"sha256:bbb","method":"BoardService.validate","code_key":"code/B","deployment_key":"deployment/B","duration_ms":300}},
+  {"scope":"demo","source":"cmdb","key":"asset/db","revision":1,"event_at":0,"kind":"declared","payload":{"owner":"team-A","native_id":"fixture/db-001"}},
+  {"scope":"demo","source":"siem","key":"security/1","revision":1,"event_at":0,"kind":"detected","payload":{"asset":"asset/db","rule":"synthetic-rule-v1"}}
+]

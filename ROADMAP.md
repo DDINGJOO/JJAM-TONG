@@ -1,6 +1,6 @@
 # 요구사항 로드맵
 
-현재는 **BDD 초안 → 함께 토론 → 검증 계획** 단계다. 기능 구현·아키텍처·파이프라인은 확정하지 않았다. 명세와 구현의 완료를 구분한다.
+현재는 **BDD·토론·검증 계획과 제한된 비교 실험** 단계다. 제품 아키텍처·파이프라인은 확정하지 않았다. 명세·비교 실험과 실제 기능 지원의 완료를 구분한다.
 
 프로젝트 홈: [#1 JJAM-TONG Platform — 에이전트 분석과 SRE를 위한 근거 기반](https://github.com/DDINGJOO/JJAM-TONG/issues/1). 처음 검토할 초안: [#4 메서드 관계 BDD 초안 검토와 미결정 정리](https://github.com/DDINGJOO/JJAM-TONG/issues/4).
 
@@ -126,6 +126,19 @@ SIEM 근거를 같은 서비스·배포·자산의 운영 증거와 함께 조�
 
 - [#31 카탈로그 모델과 환경별 자원 매핑 명세](https://github.com/DDINGJOO/JJAM-TONG/issues/31)
 - [#32 매핑 갱신·이동·중복·권한의 검증 계획](https://github.com/DDINGJOO/JJAM-TONG/issues/32) · 선행: [#31](https://github.com/DDINGJOO/JJAM-TONG/issues/31)
+
+## E05 · [#33 구현 방법론·아키텍처 비교 실험](https://github.com/DDINGJOO/JJAM-TONG/issues/33)
+
+[X1 비교 실험 milestone](https://github.com/DDINGJOO/JJAM-TONG/milestone/10) · [방법론·비교 축](docs/experiments/ARCHITECTURE-EXPERIMENTS.md) · [첫 실행 결과](docs/experiments/RESULTS.md)
+
+### S10 · [#34 같은 시나리오로 자동 갱신 구조와 실행 경계를 비교한다](https://github.com/DDINGJOO/JJAM-TONG/issues/34)
+
+주기적 원본 조회·이벤트·혼합을 같은 계약과 입력으로 구현하고, 실제 공급원·분리 실행의 후속 비교로 이어간다. 전체 범위는 유지하며 어떤 제품 스택도 채택하지 않았다.
+
+- [#35 세 갱신 전략과 독립 판정 실험실 구현·검증](https://github.com/DDINGJOO/JJAM-TONG/issues/35) · X01~X16, 48회 합성 실행과 별도 테스트 9개; 목표 미달 13개도 공개.
+- [#36 실제 공급원 adapter와 분리 worker 비교 조건 구체화](https://github.com/DDINGJOO/JJAM-TONG/issues/36) · 선행: [#35](https://github.com/DDINGJOO/JJAM-TONG/issues/35); 실제 구현 대안·권한·환경·버전·실측 범위를 정할 후속 작업.
+
+기존 32개 요구사항 이슈의 완료 조건·상태·부모 관계를 유지하며, 별도 실험 에픽·스토리·태스크를 추가했다. 실제 진행 상태는 GitHub에서 확인한다.
 
 ## 다음 단계
 

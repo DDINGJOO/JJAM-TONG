@@ -6,6 +6,13 @@
 
 이 저장소는 새로 시작한다. 현재는 **BDD 시나리오·이슈로 요구사항을 명세하고 OSS 아키텍처를 비교하는 단계**이며, 실행 가능한 플랫폼이나 라이브러리는 아직 구현하지 않았다.
 
+자동 갱신은 [비교 실험실](experiments/architecture_lab/README.md)에서 세 방식으로 구현해 실행했다. [16개 시나리오의 결과](docs/experiments/RESULTS.md)와 [방법론·아키텍처 비교 계획](docs/experiments/ARCHITECTURE-EXPERIMENTS.md)을 공개한다. 합성 공급원·동일 SQLite의 로컬 실험이며 실제 GitHub·코드 계측·AWS 통합이나 전체 BDD 통과를 뜻하지 않는다.
+
+```sh
+python3 -m unittest discover -s experiments/architecture_lab -p 'test_*.py' -v
+python3 -m experiments.architecture_lab.lab --output results/architecture-lab --changes 200
+```
+
 ## 명세할 문제와 기대 결과
 
 - 코드에서 메서드와 **호출 가능 관계**를 분석한다.
@@ -43,6 +50,7 @@
 | [프로젝트 정의](docs/PROJECT.md) | 플랫폼 범위·성공 조건·진행 규칙 |
 | [요구사항·BDD](docs/requirements/README.md) | 시나리오·요구사항 이슈·미결 질문 |
 | [자동화 제품 기획](docs/requirements/AUTOMATION.md) | GitHub 발견·등록·지속 갱신·실패 복구와 기존 이슈 연결 |
+| [아키텍처 비교 실험](docs/experiments/ARCHITECTURE-EXPERIMENTS.md) | 방법론·비교 축·첫 실행 결과·다음 판별 실험 |
 | [구조 제안](docs/ARCHITECTURE.md) | 분석·실행·버전 결합의 책임과 데이터 계약 |
 | [설계 토론](docs/DISCUSSIONS.md) | 열려 있는 대안·트레이드오프·판별 실험 |
 | [오픈소스·인프라 조사](docs/RESEARCH.md) | 후보·공식 근거·확인할 한계 |
