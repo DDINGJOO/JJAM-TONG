@@ -58,3 +58,5 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 ## 서비스와 플랫폼은 어디까지 감당하는가
 
 [수용량·과부하·복구 검증 계획](../experiments/CAPACITY-VALIDATION.md)은 업무 서비스의 계측 전후 한계와 JJAM-TONG의 수집·분석·조회 한계를 나누어 검증할 요구다. 부하 발생기의 제한, 데이터·버전 규모, 적체·신선도·유실, 정상 부하로 낮춘 뒤의 복구를 포함한다. [BDD-SRE-005~008](../../specs/features/05-sre-analysis.feature)과 [T10 #19](https://github.com/DDINGJOO/JJAM-TONG/issues/19)·[T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)에 연결하며, 수치 목표와 수용량 실측은 아직 없다.
+
+[엔터프라이즈 운영 조건](../requirements/ENTERPRISE.md)을 수용량 설정에 추가한다. 여러 조직의 혼합 부하에서 권한·암호화·감사를 유지하고, 장애 영역 중단·별도 환경 복원·순차 업그레이드·사이트 재연결을 검증할 계획이다. [BDD-ENT-001~009](../../specs/features/11-enterprise-operations.feature)는 아직 실행하지 않은 명세다.
