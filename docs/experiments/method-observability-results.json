@@ -1,0 +1,4563 @@
+{
+  "schema": "jjamtong.method-comparison.v1",
+  "date": "2026-11-12",
+  "status": "EXPERIMENT_COMPLETE_WITH_EXPLICIT_GAPS; T25 still open",
+  "sourceBase": "6b0e87e5f2066b5c72358e07760e64e108d63893",
+  "targetRevision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+  "targetSource": "separate local synthetic repository, not published in platform",
+  "agent": {
+    "version": "2.33.1",
+    "sha256": "e43a270df53c6f423e0ab157be9c27ccc01d5dc3232e162fe54777573db2f149",
+    "bytes": 26507624,
+    "source": "https://repo.maven.apache.org/maven2/io/opentelemetry/javaagent/opentelemetry-javaagent/2.33.1/opentelemetry-javaagent-2.33.1.jar"
+  },
+  "analysisDependencies": {
+    "schema": "jjamtong.analysis-dependencies.v1",
+    "artifacts": [
+      {
+        "file": "checker-qual-3.55.1.jar",
+        "sha256": "857658c8bdcbff794949a8d9922f88d63ee3751c203c7cd7d21ea97f9e745288"
+      },
+      {
+        "file": "com.ibm.wala.core-1.9.0.jar",
+        "sha256": "b3947bee5425e5ea0e257d87ad6ca4a13932708810e48e20b5cb78b62236e9c6"
+      },
+      {
+        "file": "com.ibm.wala.shrike-1.9.0.jar",
+        "sha256": "8a3186aa13a747c88ecc065f887ee2cfd68d017de1f56c1f36a3d76fd0754f3f"
+      },
+      {
+        "file": "com.ibm.wala.util-1.9.0.jar",
+        "sha256": "63962088a49117b143900866e0ab1d09a5526ddbac3bd2cd0402fa87c99e5d79"
+      },
+      {
+        "file": "error_prone_annotations-2.48.0.jar",
+        "sha256": "b49c5c958316ed67a09c699dda9aa749caf434d51d863dea599ef36a49b9c855"
+      },
+      {
+        "file": "failureaccess-1.0.3.jar",
+        "sha256": "cbfc3906b19b8f55dd7cfd6dfe0aa4532e834250d7f080bd8d211a3e246b59cb"
+      },
+      {
+        "file": "gson-2.14.0.jar",
+        "sha256": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f"
+      },
+      {
+        "file": "guava-33.6.0-jre.jar",
+        "sha256": "dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3"
+      },
+      {
+        "file": "j2objc-annotations-3.1.jar",
+        "sha256": "84d3a150518485f8140ea99b8a985656749629f6433c92b80c75b36aba3b099b"
+      },
+      {
+        "file": "javaparser-core-3.28.2.jar",
+        "sha256": "b5499a3b1c40b16c0671fabe478c9aafeab38160c6fde74a6c13f42d86716ecd"
+      },
+      {
+        "file": "javaparser-symbol-solver-core-3.28.2.jar",
+        "sha256": "4cb097c0834427939c01f4169dd0bab20068673913341c5b6db27be1a7445098"
+      },
+      {
+        "file": "javassist-3.31.0-GA.jar",
+        "sha256": "44b6b900ca352f4a0048e9428efab16582a014e10f8f65b4e58f5136c704624e"
+      },
+      {
+        "file": "jctools-core-4.0.7.jar",
+        "sha256": "fab373e48733e00bdf7114edbdb49f54114b0237e088b161c05984a6705fed50"
+      },
+      {
+        "file": "json-20260814.jar",
+        "sha256": "7dd2de1533e766e2b6c07d8194da85145ad313a167a4760050f5c9b6839604fe"
+      },
+      {
+        "file": "jspecify-1.0.1.jar",
+        "sha256": "070d75f261fe4c5b8202508366715f7f2d4660f88c8ef7e6d3575e48c9683b66"
+      },
+      {
+        "file": "listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar",
+        "sha256": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99"
+      },
+      {
+        "file": "java-call-analysis-0.1.0.jar",
+        "sha256": "7188a738e855d783bd62fe25b32fd64cb8cb6a2059ee574f6058aa2aac1d21ad"
+      }
+    ]
+  },
+  "builds": [
+    {
+      "repository": "local:jjamtong-sandbox",
+      "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+      "variant": "A",
+      "sourceDigest": "443df1b99b50182fea9b1a9fc67d20f5318dccdb6cea2c67ac2371f38061a740",
+      "build": "method-a1",
+      "module": "method-fixture",
+      "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4",
+      "artifactBytes": 9201,
+      "compilerRelease": 17,
+      "compiler": "javac 17.0.19",
+      "buildJava": "openjdk version \"17.0.19\" 2026-04-21\nOpenJDK Runtime Environment Temurin-17.0.19+10 (build 17.0.19+10)\nOpenJDK 64-Bit Server VM Temurin-17.0.19+10 (build 17.0.19+10, mixed mode, sharing)",
+      "classFiles": [
+        {
+          "path": "fixture/board/AsyncLookup.class",
+          "majorVersion": 61,
+          "sha256": "ce43e80224d2bdf77d6269460099cfb28032db1c34cfe75535db031ae5f58d13"
+        },
+        {
+          "path": "fixture/board/CachedRepository.class",
+          "majorVersion": 61,
+          "sha256": "efb1b203a80e1e32a59379e38798036984bedd9c02abac84f75b9e6312f0bac7"
+        },
+        {
+          "path": "fixture/board/Controller.class",
+          "majorVersion": 61,
+          "sha256": "6b9b01e6a234d8f396a204b92c665da8b04dccb64434e9d3fc29a68e92c72099"
+        },
+        {
+          "path": "fixture/board/JdbcRepository.class",
+          "majorVersion": 61,
+          "sha256": "3e85c6e2e946266590c6ecf19f106b12bf9acf997b42bca1d5af4e56785d1cb1"
+        },
+        {
+          "path": "fixture/board/Main.class",
+          "majorVersion": 61,
+          "sha256": "304a708a65901442bd6be4a636ecae681889e0932c747fc87c1bcf626ed46dca"
+        },
+        {
+          "path": "fixture/board/Repository.class",
+          "majorVersion": 61,
+          "sha256": "5263d16092a53069850b6f0d29bcc5b1617ef8dee5e289b01081891e37ac4890"
+        },
+        {
+          "path": "fixture/board/Service$Denied.class",
+          "majorVersion": 61,
+          "sha256": "55dc45ed1541af3cd32e54a24560487fceb7b965a96be6bd7fbc89308b195eda"
+        },
+        {
+          "path": "fixture/board/Service.class",
+          "majorVersion": 61,
+          "sha256": "c62bbe18c3fcd04417b9788bd0cd135efd1ef604472750322f016a4eb847ce9f"
+        },
+        {
+          "path": "fixture/external/ExcludedGateway.class",
+          "majorVersion": 61,
+          "sha256": "8843ba3a684eaf670f4c73196530f6d1cd3c324722a167b1f7a1d0dac324c3f8"
+        }
+      ],
+      "externalRuntimeDependencies": []
+    },
+    {
+      "repository": "local:jjamtong-sandbox",
+      "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+      "variant": "A",
+      "sourceDigest": "443df1b99b50182fea9b1a9fc67d20f5318dccdb6cea2c67ac2371f38061a740",
+      "build": "method-a2",
+      "module": "method-fixture",
+      "artifactSha256": "542d49f4a14aa2de8c83ee2c8ca7fc672967f23720cb965dcf9406404bb27c12",
+      "artifactBytes": 9201,
+      "compilerRelease": 17,
+      "compiler": "javac 17.0.19",
+      "buildJava": "openjdk version \"17.0.19\" 2026-04-21\nOpenJDK Runtime Environment Temurin-17.0.19+10 (build 17.0.19+10)\nOpenJDK 64-Bit Server VM Temurin-17.0.19+10 (build 17.0.19+10, mixed mode, sharing)",
+      "classFiles": [
+        {
+          "path": "fixture/board/AsyncLookup.class",
+          "majorVersion": 61,
+          "sha256": "ce43e80224d2bdf77d6269460099cfb28032db1c34cfe75535db031ae5f58d13"
+        },
+        {
+          "path": "fixture/board/CachedRepository.class",
+          "majorVersion": 61,
+          "sha256": "efb1b203a80e1e32a59379e38798036984bedd9c02abac84f75b9e6312f0bac7"
+        },
+        {
+          "path": "fixture/board/Controller.class",
+          "majorVersion": 61,
+          "sha256": "6b9b01e6a234d8f396a204b92c665da8b04dccb64434e9d3fc29a68e92c72099"
+        },
+        {
+          "path": "fixture/board/JdbcRepository.class",
+          "majorVersion": 61,
+          "sha256": "3e85c6e2e946266590c6ecf19f106b12bf9acf997b42bca1d5af4e56785d1cb1"
+        },
+        {
+          "path": "fixture/board/Main.class",
+          "majorVersion": 61,
+          "sha256": "304a708a65901442bd6be4a636ecae681889e0932c747fc87c1bcf626ed46dca"
+        },
+        {
+          "path": "fixture/board/Repository.class",
+          "majorVersion": 61,
+          "sha256": "5263d16092a53069850b6f0d29bcc5b1617ef8dee5e289b01081891e37ac4890"
+        },
+        {
+          "path": "fixture/board/Service$Denied.class",
+          "majorVersion": 61,
+          "sha256": "55dc45ed1541af3cd32e54a24560487fceb7b965a96be6bd7fbc89308b195eda"
+        },
+        {
+          "path": "fixture/board/Service.class",
+          "majorVersion": 61,
+          "sha256": "c62bbe18c3fcd04417b9788bd0cd135efd1ef604472750322f016a4eb847ce9f"
+        },
+        {
+          "path": "fixture/external/ExcludedGateway.class",
+          "majorVersion": 61,
+          "sha256": "8843ba3a684eaf670f4c73196530f6d1cd3c324722a167b1f7a1d0dac324c3f8"
+        }
+      ],
+      "externalRuntimeDependencies": []
+    },
+    {
+      "repository": "local:jjamtong-sandbox",
+      "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+      "variant": "B",
+      "sourceDigest": "66c0cf9ba25cdd80a1a325aebfe58f49d02e0b169ad7c4e0d6a0ee8548c778f8",
+      "build": "method-b1",
+      "module": "method-fixture",
+      "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf",
+      "artifactBytes": 9204,
+      "compilerRelease": 17,
+      "compiler": "javac 17.0.19",
+      "buildJava": "openjdk version \"17.0.19\" 2026-04-21\nOpenJDK Runtime Environment Temurin-17.0.19+10 (build 17.0.19+10)\nOpenJDK 64-Bit Server VM Temurin-17.0.19+10 (build 17.0.19+10, mixed mode, sharing)",
+      "classFiles": [
+        {
+          "path": "fixture/board/AsyncLookup.class",
+          "majorVersion": 61,
+          "sha256": "ce43e80224d2bdf77d6269460099cfb28032db1c34cfe75535db031ae5f58d13"
+        },
+        {
+          "path": "fixture/board/CachedRepository.class",
+          "majorVersion": 61,
+          "sha256": "efb1b203a80e1e32a59379e38798036984bedd9c02abac84f75b9e6312f0bac7"
+        },
+        {
+          "path": "fixture/board/Controller.class",
+          "majorVersion": 61,
+          "sha256": "6b9b01e6a234d8f396a204b92c665da8b04dccb64434e9d3fc29a68e92c72099"
+        },
+        {
+          "path": "fixture/board/JdbcRepository.class",
+          "majorVersion": 61,
+          "sha256": "3e85c6e2e946266590c6ecf19f106b12bf9acf997b42bca1d5af4e56785d1cb1"
+        },
+        {
+          "path": "fixture/board/Main.class",
+          "majorVersion": 61,
+          "sha256": "304a708a65901442bd6be4a636ecae681889e0932c747fc87c1bcf626ed46dca"
+        },
+        {
+          "path": "fixture/board/Repository.class",
+          "majorVersion": 61,
+          "sha256": "5263d16092a53069850b6f0d29bcc5b1617ef8dee5e289b01081891e37ac4890"
+        },
+        {
+          "path": "fixture/board/Service$Denied.class",
+          "majorVersion": 61,
+          "sha256": "55dc45ed1541af3cd32e54a24560487fceb7b965a96be6bd7fbc89308b195eda"
+        },
+        {
+          "path": "fixture/board/Service.class",
+          "majorVersion": 61,
+          "sha256": "712d26e6810b2781cdc216986ed153afda149da8b13b30fc03cd171c433a93c6"
+        },
+        {
+          "path": "fixture/external/ExcludedGateway.class",
+          "majorVersion": 61,
+          "sha256": "8843ba3a684eaf670f4c73196530f6d1cd3c324722a167b1f7a1d0dac324c3f8"
+        }
+      ],
+      "externalRuntimeDependencies": []
+    }
+  ],
+  "indexes": [
+    {
+      "analysisRunId": "method-a1-jdk17-exclude",
+      "buildIdentity": {
+        "repository": "local:jjamtong-sandbox",
+        "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+        "build": "method-a1",
+        "module": "method-fixture",
+        "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+      },
+      "configSha256": "66c279445a369dc013e7bbfbed1752012e6de986b66adcfd2e39542566daf0b7",
+      "indexSha256": "175692be3d07d675d924e67d4a99b17b19374070b5acaed1770e5459b6b14970",
+      "input": {
+        "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4",
+        "classInputSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4",
+        "metadataInputSha256": "450856df39a519ff27ee245a8f2ea0646c60d6608a2c7da68b8c7297056bcf8c",
+        "sourceTreeSha256": "b19023c6774be682d5b38cb3d200a187dafbef437d5adfb4c582c6c5239541c1"
+      },
+      "provenance": {
+        "adapterVersion": "0.1.0",
+        "dependencyMode": "published-Maven-Central-binaries",
+        "javaVendor": "Eclipse Adoptium",
+        "javaVersion": "17.0.19",
+        "maximumBytecodeRelease": 17
+      }
+    },
+    {
+      "analysisRunId": "method-a1-jdk17",
+      "buildIdentity": {
+        "repository": "local:jjamtong-sandbox",
+        "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+        "build": "method-a1",
+        "module": "method-fixture",
+        "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+      },
+      "configSha256": "d4b84d7a956e44856b70a4b50ecc044f044247ff9b47aaa37246c6a9bcd24481",
+      "indexSha256": "8a26f6be8766e2e7701c533348cdbbfe9543c4c724463035eb16857c6b5caded",
+      "input": {
+        "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4",
+        "classInputSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4",
+        "metadataInputSha256": "450856df39a519ff27ee245a8f2ea0646c60d6608a2c7da68b8c7297056bcf8c",
+        "sourceTreeSha256": "b19023c6774be682d5b38cb3d200a187dafbef437d5adfb4c582c6c5239541c1"
+      },
+      "provenance": {
+        "adapterVersion": "0.1.0",
+        "dependencyMode": "published-Maven-Central-binaries",
+        "javaVendor": "Eclipse Adoptium",
+        "javaVersion": "17.0.19",
+        "maximumBytecodeRelease": 17
+      }
+    },
+    {
+      "analysisRunId": "method-a1-jdk21",
+      "buildIdentity": {
+        "repository": "local:jjamtong-sandbox",
+        "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+        "build": "method-a1",
+        "module": "method-fixture",
+        "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+      },
+      "configSha256": "d4b84d7a956e44856b70a4b50ecc044f044247ff9b47aaa37246c6a9bcd24481",
+      "indexSha256": "eec5620dbafa5f5daf428538ebd7d54f50dffd30d5304903ccf536b119159bfd",
+      "input": {
+        "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4",
+        "classInputSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4",
+        "metadataInputSha256": "450856df39a519ff27ee245a8f2ea0646c60d6608a2c7da68b8c7297056bcf8c",
+        "sourceTreeSha256": "b19023c6774be682d5b38cb3d200a187dafbef437d5adfb4c582c6c5239541c1"
+      },
+      "provenance": {
+        "adapterVersion": "0.1.0",
+        "dependencyMode": "published-Maven-Central-binaries",
+        "javaVendor": "Amazon.com Inc.",
+        "javaVersion": "21.0.11",
+        "maximumBytecodeRelease": 17
+      }
+    },
+    {
+      "analysisRunId": "method-a2-jdk17",
+      "buildIdentity": {
+        "repository": "local:jjamtong-sandbox",
+        "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+        "build": "method-a2",
+        "module": "method-fixture",
+        "artifactSha256": "542d49f4a14aa2de8c83ee2c8ca7fc672967f23720cb965dcf9406404bb27c12"
+      },
+      "configSha256": "d4b84d7a956e44856b70a4b50ecc044f044247ff9b47aaa37246c6a9bcd24481",
+      "indexSha256": "20eb11e06decba272e1fb2fda62d8b103fd899bd8534576dd06ea8ee91ba39d0",
+      "input": {
+        "artifactSha256": "542d49f4a14aa2de8c83ee2c8ca7fc672967f23720cb965dcf9406404bb27c12",
+        "classInputSha256": "542d49f4a14aa2de8c83ee2c8ca7fc672967f23720cb965dcf9406404bb27c12",
+        "metadataInputSha256": "4ac055a4037a20dba31649cf9834d99390e8275ccbe7cf29fb29414ed10c882c",
+        "sourceTreeSha256": "b19023c6774be682d5b38cb3d200a187dafbef437d5adfb4c582c6c5239541c1"
+      },
+      "provenance": {
+        "adapterVersion": "0.1.0",
+        "dependencyMode": "published-Maven-Central-binaries",
+        "javaVendor": "Eclipse Adoptium",
+        "javaVersion": "17.0.19",
+        "maximumBytecodeRelease": 17
+      }
+    },
+    {
+      "analysisRunId": "method-b1-jdk17",
+      "buildIdentity": {
+        "repository": "local:jjamtong-sandbox",
+        "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+        "build": "method-b1",
+        "module": "method-fixture",
+        "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+      },
+      "configSha256": "d4b84d7a956e44856b70a4b50ecc044f044247ff9b47aaa37246c6a9bcd24481",
+      "indexSha256": "792723a5f8e6a89a00367a26c190807c928faa2d0303d3b9ba2332aa1652dc86",
+      "input": {
+        "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf",
+        "classInputSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf",
+        "metadataInputSha256": "a2f451f48a14dfd094ffd47bc5df3f42e898fef313a9bf7e54bc070ce681324c",
+        "sourceTreeSha256": "84202785396a1d3a6e3fc3ea38de8605f37e8676a27dd0196f4fdebe15386372"
+      },
+      "provenance": {
+        "adapterVersion": "0.1.0",
+        "dependencyMode": "published-Maven-Central-binaries",
+        "javaVendor": "Eclipse Adoptium",
+        "javaVersion": "17.0.19",
+        "maximumBytecodeRelease": 17
+      }
+    },
+    {
+      "analysisRunId": "method-b1-jdk21",
+      "buildIdentity": {
+        "repository": "local:jjamtong-sandbox",
+        "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+        "build": "method-b1",
+        "module": "method-fixture",
+        "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+      },
+      "configSha256": "d4b84d7a956e44856b70a4b50ecc044f044247ff9b47aaa37246c6a9bcd24481",
+      "indexSha256": "9163e9aabe8a93473faa2d835658377be304f39da8a4be33cf3517ce213f53e4",
+      "input": {
+        "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf",
+        "classInputSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf",
+        "metadataInputSha256": "a2f451f48a14dfd094ffd47bc5df3f42e898fef313a9bf7e54bc070ce681324c",
+        "sourceTreeSha256": "84202785396a1d3a6e3fc3ea38de8605f37e8676a27dd0196f4fdebe15386372"
+      },
+      "provenance": {
+        "adapterVersion": "0.1.0",
+        "dependencyMode": "published-Maven-Central-binaries",
+        "javaVendor": "Amazon.com Inc.",
+        "javaVersion": "21.0.11",
+        "maximumBytecodeRelease": 17
+      }
+    }
+  ],
+  "analysisCost": [
+    {
+      "run": "method-a1-jdk17",
+      "metrics": {
+        "wallSeconds": 0.882577791,
+        "maxRssBytes": 928268288,
+        "rssMeasurement": "macOS /usr/bin/time -l"
+      },
+      "outputBytes": 58038,
+      "rawAnalysisSha256": "765c84d7ced6824e06cf5ae1eec217fa44eeee8afd25952e030609d532fa13fb",
+      "repeatByteEqual": true
+    },
+    {
+      "run": "method-b1-jdk17",
+      "metrics": {
+        "wallSeconds": 0.889769667,
+        "maxRssBytes": 923484160,
+        "rssMeasurement": "macOS /usr/bin/time -l"
+      },
+      "outputBytes": 58058,
+      "rawAnalysisSha256": "cf8697ef85239de85081637787a7c7e17a8d01a1c6392c7a90a68c4e0692f199",
+      "repeatByteEqual": true
+    },
+    {
+      "run": "method-a2-jdk17",
+      "metrics": {
+        "wallSeconds": 0.8871614580000002,
+        "maxRssBytes": 915914752,
+        "rssMeasurement": "macOS /usr/bin/time -l"
+      },
+      "outputBytes": 58038,
+      "rawAnalysisSha256": "0070f85e28d0cf5f0eb8684a198c16b79d1f630e16f8d5a79739674af5fe8428",
+      "repeatByteEqual": true
+    },
+    {
+      "run": "method-a1-jdk21",
+      "metrics": {
+        "wallSeconds": 0.9356169999999997,
+        "maxRssBytes": 994508800,
+        "rssMeasurement": "macOS /usr/bin/time -l"
+      },
+      "outputBytes": 58037,
+      "rawAnalysisSha256": "b0c4de0cc74a4d349dd82047614679c9e753389c638ff3fc62d306ef629dc444",
+      "repeatByteEqual": true
+    },
+    {
+      "run": "method-b1-jdk21",
+      "metrics": {
+        "wallSeconds": 0.9415512499999998,
+        "maxRssBytes": 1011269632,
+        "rssMeasurement": "macOS /usr/bin/time -l"
+      },
+      "outputBytes": 58057,
+      "rawAnalysisSha256": "d71fb6a46d881c8696ea17230b224d5b5ed493a60c2c4c30f22d34f8909e242a",
+      "repeatByteEqual": true
+    },
+    {
+      "run": "method-a1-jdk17-exclude",
+      "metrics": {
+        "wallSeconds": 0.9385617919999998,
+        "maxRssBytes": 945274880,
+        "rssMeasurement": "macOS /usr/bin/time -l"
+      },
+      "outputBytes": 57267,
+      "rawAnalysisSha256": "691a5e9186a8c222533db66bf552cafcdbdd702af246d6c0e1b47f24114dd7fd",
+      "repeatByteEqual": true
+    }
+  ],
+  "unsupportedLanguage": {
+    "input": "Python source, no Java files",
+    "exitCode": 1,
+    "oldOutputPreserved": true,
+    "stderr": "analysis failed: IllegalStateException: JavaParser produced no included methods or calls"
+  },
+  "controls": {
+    "static": {
+      "A": {
+        "privateCall": true,
+        "distinctOverloads": true,
+        "jpInterfaceDeclaration": true,
+        "walaImplementationCandidates": 2,
+        "reflectionTarget": "UNRESOLVED",
+        "nativeBody": "UNSUPPORTED"
+      },
+      "B": {
+        "privateCall": true,
+        "distinctOverloads": true,
+        "jpInterfaceDeclaration": true,
+        "walaImplementationCandidates": 2,
+        "reflectionTarget": "UNRESOLVED",
+        "nativeBody": "UNSUPPORTED"
+      }
+    },
+    "C09": {
+      "sameRevision": true,
+      "sameSourceDifferentManifestBuildAndArtifact": true,
+      "classBytesSameForA1A2": true,
+      "wrongArtifactJoin": "MISMATCH",
+      "scope": "A1/A2 differ in build manifest; dependency-change/annotation-processor fixture not run"
+    },
+    "C10": {
+      "actualClassExclusion": true,
+      "differentConfigAndIndexDigests": true,
+      "runSelectionExplicit": true,
+      "overwriteRejected": true,
+      "oldIndexBytesUnchanged": true,
+      "analyzerOrSchemaUpgrade": "not run"
+    },
+    "C11": {
+      "sourceOverlayChanged": "fixture/board/Service.java",
+      "removed": [
+        [
+          "method-fixture",
+          "fixture.board.Service",
+          "validate",
+          "(Ljava/lang/String;)V"
+        ]
+      ],
+      "added": [
+        [
+          "method-fixture",
+          "fixture.board.Service",
+          "validateV2",
+          "(Ljava/lang/String;)V"
+        ]
+      ],
+      "oldExecutionStillQueriesOldIndex": true,
+      "aliasInference": "none; deletion + addition only",
+      "refresh": {
+        "strategy": "full-fallback",
+        "reason": "sound partial impact closure not implemented",
+        "selectedResultEqualsFull": true,
+        "incrementalPerformanceComparison": "NOT_RUN; same full result is a fallback control, not independent partial analysis"
+      }
+    },
+    "C12": {
+      "uncollectedHistory": "HISTORY_NOT_COLLECTED",
+      "missingArtifactIdentity": "UNRESOLVED",
+      "languageSupport": "Java17 plain JAR only; unsupported language must not be represented as an empty success graph"
+    },
+    "lossControls": {
+      "removedCollectedParent": "PARTIAL",
+      "perTraceCollectorCap": "PARTIAL",
+      "boundary": "post-capture controls; not real exporter/network-loss injection",
+      "missingRecordDoesNotProveNonExecution": true
+    }
+  },
+  "functional": {
+    "cases": 124,
+    "positiveSelectedCases": 40,
+    "controlledNegativeCases": 4,
+    "withoutAgentCases": 40,
+    "defaultAgentCases": 40,
+    "applicationMethodSpans": 194,
+    "casesDetails": [
+      {
+        "case": "17-method-a1-none-normal-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "normal",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "33c183d8d7d1a15cfef0ec0585fd7d07a742eec39d4e7a4bc18e13804d5454ac",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-none-denied-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "denied",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "24baf3a8c21b526826025d52e49053f0189b216f7b0aa92aaf5c2280bc0124e7",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-none-overload-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "overload",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "130ebf00d9a00d85b1834918280b8af0e7971d5d8a7d7b175d0928cc6a0c4a74",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-none-jdbc-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "jdbc",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "9c668127b2d8936e5c3f0d67dc403ac846e7db18a95181a8d340bfb8b1cedde9",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-none-cache-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "cache",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "cdb3708f19b1d1287ae1d6b8c2538c92046ee15f1c91b712a0cdec7a4ab4b7bb",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-none-reflection-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "reflection",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "e662a6963240df94be218d8f39bf8d12389fb7dd5c9d484d6cadf488f8d03e7f",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-none-async-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "async",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "effc456d95ca8cc19bb8670e9a8b011d88143274f43927d434056344cc15374c",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-none-recursive-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "recursive",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "fa8e99b812d2f9e448a7c962a1c86b4ba24ce382c36b8c2fbef17fd5b8d4c6e9",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-none-error-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "error",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "a3ba8b2d5439a9261921602401c1068527ac5d07c201d73a3ade91f73d2adf8d",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-none-excluded-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "excluded",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "eb2bdc69c35b1cb1b27d702e99d54c939d39d05be8e7f43ebfa2e587468469e1",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-default-normal-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "normal",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "3f19065a78ec641d0467a11367932170b40122e78952af49bbb487984b1de78c",
+          "telemetry.log": "ad51e8217ed23881d3ef1af1e79e05a3334f26dfd58c4685e7c48c8f8aa6e689"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-default-denied-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "denied",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "e2eb74fb3925d99bca4494e4ebb26063efb6d878321fac8cb7a6b704c80ede9a",
+          "telemetry.log": "d01b15ea4ccff69c22c557274f9ab4e179a6fdc50e36e5f7f6a5cad25d714ef2"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-default-overload-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "overload",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "8a8c2655698a98d127afbda33ffc03cae58ed113d58679efd19cbb5f7e2b8249",
+          "telemetry.log": "97959860e34d968d326116c8061e2dd5528df476b9afe9cbfe4c03480bfc4fe0"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-default-jdbc-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "jdbc",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "67079079e0b145240d5f7dcc990b20f0e56602515211d1e7bf0e8b187b477f7e",
+          "telemetry.log": "97959860e34d968d326116c8061e2dd5528df476b9afe9cbfe4c03480bfc4fe0"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-default-cache-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "cache",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "883bb1f86bba4c3765992a868e0dc63cacc5a237125cb6d49b3b9038cf817c4a",
+          "telemetry.log": "035abc0afec0ab550622ef46341a096d76c0ca11e314aa58b3f307a93debb5bc"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-default-reflection-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "reflection",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "a04a6ab242926d721386f273058d43b62f30cb36b524cb969228aaf7dc52024d",
+          "telemetry.log": "035abc0afec0ab550622ef46341a096d76c0ca11e314aa58b3f307a93debb5bc"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-default-async-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "async",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "50d99aaea3fa14af7046ccd623d3f3132aeca0c3ea86360e0d0b9c6655fc19a1",
+          "telemetry.log": "f45cf473681db0b995dd375744b5ff84588e5c422ab84ce19fa54e8c76ce3dab"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-default-recursive-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "recursive",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "54642b70cb648d3da983f58b61a0929b1e64fcd7144570baa6b01597a1742cb4",
+          "telemetry.log": "2e58eed4bfff45191c7245c2ba98d4878ab0651c9294f784516709192e116abc"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-default-error-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "error",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "4ad0b11ec7720aba72443b8f1bcb8c63400d1f26cfebf67799541801c76c2659",
+          "telemetry.log": "e97e99fc717e8d7e41c094aaeaf5000bdb08742ca564db77c4d3cf9835f118e1"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-default-excluded-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "excluded",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "7f2b29e88f278e0cd4dc8ed7f862f1d369f221a57774de81c3aff01207efe1c6",
+          "telemetry.log": "56b71cb614b58a687fed212198b50d1ca58a8b24a325d40db418018ecc6254e5"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-a1-selected-normal-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "normal",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "da938398ef6310b682e566cdedbed90a3662e37cc6eada3a23d59eee1943647b",
+          "telemetry.log": "9667b5faa0414a1424c2faa1fbe708a2572becb0f5ab0c72572bd3dd890aaffe"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "17-method-a1-selected-denied-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "denied",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "f473349797fde3c4dc61c2992e1d801fadceee331651b5bd66ea72923712bfe3",
+          "telemetry.log": "4fbfd00819a049dd4d7a025b85ff73dd9d2cf48d66050921c28542099af12440"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 3,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "17-method-a1-selected-overload-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "overload",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "0919b61b458adbeb8a69513739850d1a9fae868273e70884268a283f74372835",
+          "telemetry.log": "badda5f12ae409b73d4117df4b0649e165562fe60f8fb51ddad045d6bed5eff7"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "17-method-a1-selected-jdbc-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "jdbc",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "8be24e70d5c7f7c1a2ac266d587cc1224364f7488e17fb52beaf8808f6032ba9",
+          "telemetry.log": "7612d355c68278b7e9bc0deaad6786308b2c96a9d87d7460ab84a8f1f6f02d15"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "17-method-a1-selected-cache-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "cache",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "cbda3619fcfd950264b2708fa80fd09d3f3d1c56a5a4e5f7c0ff1e6a79adf962",
+          "telemetry.log": "b82e6ea82f4ff652a6d0a239e937da9a8fcac0c90d5cf9bef458d1a457777143"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.CachedRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.CachedRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.CachedRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.CachedRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "17-method-a1-selected-reflection-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "reflection",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "8810a3f5f04b2ee379b5542f10aa4eeafb4cf8409edb6c9874999cd51fb74438",
+          "telemetry.log": "dcf03e9b6b894a735ca6887b95e95c84f4c20aa7654bed17a1a8f7abd5defa8a"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": false,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "17-method-a1-selected-async-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "async",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "25aefbc1ec49dc011c7f6322a3a85bd9dd215eca9e94e809fdc425234ef9a4c6",
+          "telemetry.log": "becf01092bbccc26ebf9903b04c2a425cae940987683b7a737d2b02c9f48eb78"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "17-method-a1-selected-recursive-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "recursive",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 6,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "54a476805c881f84f34b8a9e596ef5d7787d3d224c05f3d5f31b0684b9ec4168",
+          "telemetry.log": "18b7208989664b8b484c658923923b4cfc5dcc3651722d41e66c5fb2c3bd715c"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 6,
+          "expectedSpanCount": 6,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "17-method-a1-selected-error-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "error",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "0eab704680f71e9364177865b8f932154e4306a1a26509d042233f17b9282d4e",
+          "telemetry.log": "9669ab9b15845d11ca6450e1bb1cfec6db15a3c6ac0477f8bb209f316d8040e5"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 2,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "17-method-a1-selected-excluded-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "excluded",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 3,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "8bba1c17a836bd00b0630226e518da3bf9adb0881b0576742e61852b3a912579",
+          "telemetry.log": "ade567091472582b5c7bf7d7b0bab2c8315020716bb3ecc6350023aeec53eb03"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 3,
+          "expectedSpanCount": 3,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 2
+        }
+      },
+      {
+        "case": "17-method-b1-none-normal-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "normal",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "4123edbe2e9f9808ccc0e01df3c9c8336734761fcdec4f69ff581fcee3002252",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-none-denied-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "denied",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "c8ea8c2be57862f5243622ce8569e54d5c1c256001a170e12772dc0f5d3dd174",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-none-overload-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "overload",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "94b82ef883795fcae225f486c52a6d21a61e73bf8fd9340953544f53b34ed5ae",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-none-jdbc-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "jdbc",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "26e051b2e40f41b5f5cf8e69a8a5f8eac7f4028dc3c76dc858e8418a50c13c73",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-none-cache-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "cache",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "d3eef44b8d9c0eb3ae66a3ad551be7d1416220ee7659f2f7247e820a646059df",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-none-reflection-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "reflection",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "ae890833901638709600b7de3a2f4bbb911cad8b5ffd9026e82ca449e2a23dfb",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-none-async-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "async",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "4f041c96fcd5c2847c1332b2557cefc013c2234ea5d10ebae9ea983cd632c769",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-none-recursive-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "recursive",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "012caf3881dc8073742f4f23b8e612d8a15b8343e62ca6b3e8f14309f8ade6d3",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-none-error-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "error",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "29ff7552592f369673c34dda34705678f2471354a1ddbed36c4b1d1fe21f0f58",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-none-excluded-function",
+        "java": "17",
+        "mode": "none",
+        "scenario": "excluded",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "3651a9325c9599b83e497e4beced461bc231e850d9ed5abed4b46355fdfcfb11",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-default-normal-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "normal",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "88cb17a43c12a9a8c0e564d635f50ef2f7d5e311972a358e35adaf7094597999",
+          "telemetry.log": "09078acd0210b135b26f285367cd733d1cd4703c0e0e3ecb863ff4f57926af27"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-default-denied-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "denied",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "195575d5918c9853b9f9be668a14d89805bfd2fcdc0dbd863067345dde3c43ba",
+          "telemetry.log": "50caf1954f5a80dc80160c39056e2a97a77a69290f7a0a877744d425188a9c5f"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-default-overload-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "overload",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "0cba6c6c82146d6fb1266be1317788ec3c7a6b8be08254c198dfa4f4b7e16160",
+          "telemetry.log": "6cc8ff2e3de4abd0716a482fa009ac32b787e299717d8fa520bda423bcd7bc0e"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-default-jdbc-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "jdbc",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "dbc32a3f99d325954399d1b6ed573893260e74d9998f65e7376914bf393fd31c",
+          "telemetry.log": "b21ca196ce72a9525f2924dda6a7f511308f59d3bf0162f2f7318e04305f932e"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-default-cache-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "cache",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "4f0d05364278d4b84e721d3112fc97159c6c46fb98071db84bb859e1cd79fa12",
+          "telemetry.log": "175f113a05b9d943bb09ea9c4b14a4e93ba9353f5ca47de18d2962ac8b143b48"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-default-reflection-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "reflection",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "50d5c617601d2512fd79addfbf4b24856e4714eb1d435f9535e61291dec133e4",
+          "telemetry.log": "62b0947137cf724cd432f48376c752d5afb7035704e7dba60948900bf0a65b4e"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-default-async-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "async",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "96e4ca70bee35d5c58205f829d31fe363f4b2fcf8a4157e776ca20f7b95d762c",
+          "telemetry.log": "17c59abf19615aa601224c03bfdb9475899715d5f6e8b50a46b6920a5944d70c"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-default-recursive-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "recursive",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "bdddada3cc55b8811833b3e0c777d5e9673d03a6e0534c70a89fe89d6b19f029",
+          "telemetry.log": "420c51942c498d03f8bdb626f5d51fb19f6340997a7b0a6d4dfce492896c1ae3"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-default-error-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "error",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "73c482da4e69566e154c3382de838ec81d5e210407d33e49b2bea187e2fb4897",
+          "telemetry.log": "fe1846cae3b71755c18457c52e9c8e7e0851be2e4bb570e5ed6c87223c237147"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-default-excluded-function",
+        "java": "17",
+        "mode": "default",
+        "scenario": "excluded",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "d670688eefb2d41eb2a2649722d2460037b37994fc1d0abac8f4fb3961b2ed64",
+          "telemetry.log": "eb8a2b2c6bcbf018e67b5af483bb8feb805cb5139d7b2757158193b5f3e0b8cb"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "17-method-b1-selected-normal-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "normal",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "237fece516f415c02f6c249e05e22e9751505b8040d71fce65b88ef446fb5af2",
+          "telemetry.log": "d03cf196043ab4553afc7fae89a4f781803361f451c4a52ddde1acb10894f0dd"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "17-method-b1-selected-denied-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "denied",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "b93c80b1a1501818babc7b4ae8fb3eb91fcde2f34181b4d8921d685fe6db2692",
+          "telemetry.log": "afc708f4bcbd595a51b829cbad4da1049c12fe1bafca01beccebc5c3e5142dd5"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 3,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "17-method-b1-selected-overload-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "overload",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "551110b0ba7103083ea1a0aced900ae9f48c9a242a4dc1dbcab010f503c8d1c3",
+          "telemetry.log": "4f9a2df27baa640c2e987c5f0ec160a828296f4db8560c179667e400e3c3674e"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "17-method-b1-selected-jdbc-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "jdbc",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "d2a3f340734e621055fc381fa3560025b27ffa193ee78a0f42cbb5013048abe4",
+          "telemetry.log": "f028a4f7819f3c158e156e43d684bc8e96e46d34c84018f9e290a71ef469fe0e"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "17-method-b1-selected-cache-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "cache",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "a8baa562b3ae9530c52d7f1ccfbaae4c24a1d19ebd5bbc0fc8363f0f6d03eebd",
+          "telemetry.log": "e7434907ffe83a55166a7ad40bb2d19a872b21ee3fc4b6fe8ca379134692edef"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.CachedRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.CachedRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.CachedRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.CachedRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "17-method-b1-selected-reflection-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "reflection",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "fa1b6d432792f2b8d743117e7289aa11963840b3e82f6ce9e4a6bbd5543d436e",
+          "telemetry.log": "5e604b3e5476ddcfd50c399e5c5a55567d69b098e7196622d5a009309e5ed3ff"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": false,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "17-method-b1-selected-async-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "async",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "ed966b7807e97ea90452ff64ca47a3e8193f1dc63862f5749d13092a5ed22083",
+          "telemetry.log": "ea2ccaa4d7c0258d0573953254af31ebb7f35113585439df1a860d1978cffd76"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "17-method-b1-selected-recursive-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "recursive",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 6,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "337762ed0a1d85757802302ba8fe8bd414fa808184f0285ebe12be5e7c36c448",
+          "telemetry.log": "463493e5eca9e3e8e7b2548c280b1e48441b9b81c3b68abe14c14b85d198debb"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 6,
+          "expectedSpanCount": 6,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "17-method-b1-selected-error-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "error",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "fc375b596b2cf86cc5bacb06766d204c60f2e4f7dfd05da749a1a7a31857852a",
+          "telemetry.log": "fa4f7bb6d05ae36d002e6df7745576d4476c4c79fba4f2cb84ab20f98cfebd5b"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 2,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "17-method-b1-selected-excluded-function",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "excluded",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 3,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "c8f44b4e87bace66ed6885cf5a0009d1933d1cbee031aad1aa8d1e6effde1838",
+          "telemetry.log": "0536d75340fed5bb9e16d95e810106762979f54c78b9681d51dd7ca803112ad7"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 3,
+          "expectedSpanCount": 3,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 2
+        }
+      },
+      {
+        "case": "17-method-a1-selected-normal-always-off",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "normal",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "fa26a96fb385db8d8a0e73e9d330ec53c7a10a8f858487cdc43f8b74137d7db9",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": "always-off",
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "ca8e56d57fa9bba86b912840865c3f8ec447504680fe060124b123d7e862ae35",
+          "telemetry.log": "3045741f0f1175ff73c05910d5aaed6905f180f74515d0159c6a800df30086b2"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "controlledAbsenceReason": "SAMPLING_ALWAYS_OFF; cause known from experiment control, not inferred from empty graph"
+      },
+      {
+        "case": "17-method-a1-selected-async-executor-disabled",
+        "java": "17",
+        "mode": "selected",
+        "scenario": "async",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "312bafa59412a4049309b2bdcbf8769f80c555fd2e748fcc2b388d1e4d0ecd01",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": "executor-disabled",
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "fa4ff6da7c1231929e2d2c170f99eded1cbc4cc63e963bf03dc1f7bb87cbfb91",
+          "telemetry.log": "9d5a49e64892923761329cf2d6ad5a9276c3a9e78b9f0b1ae31db38bf002d13a"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "controlledAbsenceReason": "ASYNC_PARENT_NOT_PROPAGATED; disconnected task retained, no parent guessed"
+      },
+      {
+        "case": "21-method-a1-none-normal-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "normal",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "1d41b6d0557fcd6660a37459669058620f22e6f8f717efdd75e0adad8b8b3de8",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-none-denied-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "denied",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "4f4360e31696b8997c202788de657550a49969c136f665c9534640ae332875f4",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-none-overload-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "overload",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "78e02e87042558df16ef262fd59d589349b767866d71267b53ea6e33d48cae3a",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-none-jdbc-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "jdbc",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "4737b760b2aeb93695e083d1f6eb4014f0eefd842d7ef90a63342cf8a4caa580",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-none-cache-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "cache",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "2e3c39503bf28475d98a09bda1d107fad0ecbbec62e091a0e1ab1c6964d48c27",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-none-reflection-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "reflection",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "71964e1ecfaacf7da778ea5ea77ea2665a6d05da7740163e5587b4f25d659fb2",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-none-async-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "async",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "1a7f4ebda0a8bc460dbe1200d3978b09005e01a624e7cb23985a1f9a88008f0a",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-none-recursive-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "recursive",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "fa5432199b997e52cd0a3ef140f3b7ea1d040cbd33f95d94bf3db388e1c86856",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-none-error-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "error",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "bc0d522b84ddfc84636c4a0cd23d9acc7467199353b3808e5197cc14f63a8f8e",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-none-excluded-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "excluded",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "59f55ec71c4422fc68cdbb184f812976c2f2a99eee80ab501cc59d05dceb7e2e",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-default-normal-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "normal",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "0cc3984af71ef28a954d9fdc5b29ab29a08abe144a8e72457cb05115da6cdd4c",
+          "telemetry.log": "fd7891d761f77abefd3eeb2e834b47350e87c3a67ae00a86c6332e5c861f09f9"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-default-denied-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "denied",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "2dd18e773896cc99602c1f6b6e37be88fa7c1cf1c3de1154be323043b1cfb9b1",
+          "telemetry.log": "9335497309215cb52356e6222e1219c4b3c2222681b9d1d8cd7526691350925e"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-default-overload-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "overload",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "03c48a05c91e5c155f3f4b13b2ff77175b3faa9471f44ace52e5ee77a9531a4e",
+          "telemetry.log": "bf732cb61c5c180c00d4148552ea37f9ddf2be0c7764d66320eece815ad0deba"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-default-jdbc-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "jdbc",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "f0ed858d4acc0bdc07f056dd04555653f9d4ce1421da74768d3ebeed7d8ff3f7",
+          "telemetry.log": "2300fd1b259d7787e090228f71d8498263e8280a127971c49fac3c6488322017"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-default-cache-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "cache",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "ac7be7ca8ca6e516c9760dc09302cc903199ca7f900eec928e258fbdfcee80bd",
+          "telemetry.log": "5322136c626d80c8ca73c6f1165dd0187e3eb294e4106e2e59c46969367e9243"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-default-reflection-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "reflection",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "22a7bafc3f399d9c1eb9784defce8b6f1fa2658ed295a585510c17e26fc2e8c6",
+          "telemetry.log": "1c63a61f937f46e2312cdd5716b471a67942f8235d4fad6543009e7f588a236f"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-default-async-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "async",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "3dd9d28531e92123d0c22f7c7b30a96c3fa4303c5f7c7ea5974d5adc89edd2d9",
+          "telemetry.log": "a52a9b7d4d52526c29957f16e922f3c7f500649038dbad864ffc88e59aabf0ae"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-default-recursive-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "recursive",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "8588be0f8134d7e8a4e9f159c9324eab8b433952ec94d6f9869eaa67724eac6c",
+          "telemetry.log": "d9b6aee19331c7c068b8aa0544bbfdf7c6b15f29ffb9bc8a0591c655920ecd7a"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-default-error-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "error",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "3f1925199e4044d63fee48fcdc83f5197c3e8afdf46bf9eb2156835295cf2761",
+          "telemetry.log": "6091bb10593ff5e252206d62e1cf13207ec42f64f475a304c600d5457439b87f"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-default-excluded-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "excluded",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "7f4bb8c4629f1430f368f72212251dcfcc160e39591e4b825fb4fe584b581082",
+          "telemetry.log": "6091bb10593ff5e252206d62e1cf13207ec42f64f475a304c600d5457439b87f"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-a1-selected-normal-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "normal",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "c809c2dc139873f957e5498512ba12140117570c479033691d56e9199f52cc7d",
+          "telemetry.log": "4601a6258ad3849c77caf790ba68b62260bfabd876e17041dffd12ff553a9f9f"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "21-method-a1-selected-denied-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "denied",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "dd7e21ee0321522b12b3634d50f993750750e80b2bbdfdaf802b54e625efa085",
+          "telemetry.log": "4c1ac97e990a6d1e9a5a34341dd4ba2f254eb864cadb3c2faae0383f701501b3"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 3,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "21-method-a1-selected-overload-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "overload",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "a9b03b03b32304fa8e95f1d1192a55e7f04feb7afb056b18b4a68ea6b077fa46",
+          "telemetry.log": "e8eba4da8f4fdcc6678931f414a203138937919c419e2102befd90961f94fc89"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "21-method-a1-selected-jdbc-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "jdbc",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "318c5d82be26a7198daa4cb5d9eb873f1156d1f9c0325b7ab7ee33fd3539c807",
+          "telemetry.log": "3366746599a3e07e464e11a649e05f29aae5fee18dc4f9aaeab1356883ce8451"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "21-method-a1-selected-cache-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "cache",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "aeb1895eae97732d08dd628c8e4e593665b66fe214c333da084f250ff97e99c7",
+          "telemetry.log": "6002629d6d22ef8b420e318117e32b5ca6e46f316a8cfa9247105b358c03265a"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.CachedRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.CachedRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.CachedRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.CachedRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "21-method-a1-selected-reflection-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "reflection",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "fbaef7c651fff79fde8d1d16c5a0fb333642e91e7719ade66e55c3532f3324c9",
+          "telemetry.log": "b8ac87b7cf1e9ab845e2611dc7f167292cc97dbf4d545c6a94d9af18dd8f5879"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": false,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "21-method-a1-selected-async-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "async",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "e94077c9005ec491129a8b1f9cd75305eddbbda76e21d868b0474574e3d36e8b",
+          "telemetry.log": "d75c0042e8d25cc52cc89414f19713b154e71477ae6a9e56755422644ff22595"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "21-method-a1-selected-recursive-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "recursive",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 6,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "64699ef0ddab9a4d1dbd42a5d81aa44e763f67ca766b1f9b77a4d5634d4b39ad",
+          "telemetry.log": "5ca138440ec46d88e3f3d0222ecb75d2a14034f68a8abeda091cb093cd29593a"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 6,
+          "expectedSpanCount": 6,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "21-method-a1-selected-error-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "error",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "ccd099d6fa99d92835b03a24fe72f34f2742f6936fde629dd8c18a98cfe71207",
+          "telemetry.log": "4dd5a0ccf6972c34c205f0866bf08f2a3d2bd3d0f66c07381ba627d0d98e450d"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 2,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "21-method-a1-selected-excluded-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "excluded",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 3,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "812519fb11685e8d0ce59c6bf4d99a2c9fdc5adbd03d25b4cb225cad3132e3f8",
+          "telemetry.log": "025b79a4836f78296cc20615e66ed460e6091d79b5638e8e6bf49b8dbb00916e"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 3,
+          "expectedSpanCount": 3,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 2
+        }
+      },
+      {
+        "case": "21-method-b1-none-normal-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "normal",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "4a38a114b903dd26b963d2d40c20ee84f75a1577018969ca8d96053e519f9557",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-none-denied-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "denied",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "ef8e5d55330439952130124e830109c543efe7c01093ba03b0a38952d879983e",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-none-overload-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "overload",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "2066f93c4868caf0470d8825ba30513d291c6fc6c16487e0d2d86006a18da767",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-none-jdbc-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "jdbc",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "d7c09eb5efcaf5b88c6125f35803a1f6a1058eb749eec7ba8017add447940258",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-none-cache-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "cache",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "d1894dbdb9a9091593320698f2c5e16c7f35a93f99d6fc08f6b37e03726b5ae3",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-none-reflection-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "reflection",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "e9fb1e219768a2838d771e326f51cab70e861f5496d8f7c729c53e80d6a13a6d",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-none-async-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "async",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "5964dabd108bb7a61886ce3bbcfe27068d8e727613cf9a0ae12a09972bb78a46",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-none-recursive-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "recursive",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "5ab966ceb481d46c56822c5c2d5ac5c73b75427bd1f50330bb130b65925cdfd4",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-none-error-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "error",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "f8ef3982f0abc10669dc9b21377dbdabaa045b5a2680c75c02d47cd8f2ae576c",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-none-excluded-function",
+        "java": "21",
+        "mode": "none",
+        "scenario": "excluded",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "3eaf3ad0172ce88ee651f1ca0252384e8b0efe9dd21a1426c5cca1155fa2b224",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "16042bec031648f11a0347c9e8595f048542eb298f01a1951d809893843b80a9",
+          "telemetry.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-default-normal-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "normal",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "185f5b85f8dc7afc9865564feda4194992cf94eed60cfd120a6b365a98225387",
+          "telemetry.log": "3ea926e0ec751bb9b7a7d664d4cde263168a1308c959ff4896f0ec8d7a8ff6bc"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-default-denied-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "denied",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "82e2cef850735d9c9103939e5d33f912e9e164b81a952a2fa8b1b854b8c80b8f",
+          "telemetry.log": "83e1351d9c43369d9bdfb05474775b8bf6cf9ed4792cbf7b88c8cdcd26066a8f"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-default-overload-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "overload",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "8cee9d606b0cbb6942a0392ba8175cce22c6e297e8e150e51b78a9eb9ddc02a7",
+          "telemetry.log": "97900fe3f5ebf3ca801591a51863308028a80247f67be11ebaff8e40ac411add"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-default-jdbc-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "jdbc",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "18e6ca2bc65a9be6739c3cc45b7bb4ccdf7a4b84fd2a1eea167f150e9fd02956",
+          "telemetry.log": "8ce5c6a918b7cd207485afb3d5135fe1eb2a727d90e79950a975182dc63e64e0"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-default-cache-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "cache",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "cc44eb8e68e49a75381024c7d8ba91d16322144483cc009e53773c4865c69d43",
+          "telemetry.log": "db65fd8e41991e59561bbbe6e015902543456457451d46cdc95fdffd16cd01fb"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-default-reflection-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "reflection",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "41b9fb0945c44c4ec5fb7b51617f2e26c83afac462e20981f9f9320d80e56cd7",
+          "telemetry.log": "02fc057eeea36f6ccd18344d2de456d60da96d84552798abab995743df1184f6"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-default-async-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "async",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "337a6a5234ce26e65f83fac04697a041d6d4008f1bfd1c316f02673a437da96a",
+          "telemetry.log": "15e88aa0ebff557de08aeaacd09c64646e2bc58d187a59721122e608a0bf6d1a"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-default-recursive-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "recursive",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "7d8738ac014329b4bd45ca451cacf65b7cada644f3add1d5a797aeedda6bde67",
+          "telemetry.log": "751a48e8c54ac9dd4c3cc322adb65bd64ba989cd3b67bb24548e025631497303"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-default-error-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "error",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "447fbaccbb41ba97e14be435e145a1a13af6754f326e34e514a77a10af62a5e5",
+          "telemetry.log": "4e7309adb9459013da0b49701daba2d822cd4e5de2ddb854c1e17fab28408382"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-default-excluded-function",
+        "java": "21",
+        "mode": "default",
+        "scenario": "excluded",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "287692f02345cd33e4cf52caaf2a586b5c8372e77a555e01f3ab2d16dadfec50",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "6d0e4b3316ca34f31cc5ca982e2a3dd02cfad9ac4a669624f61f796b182dc5f6",
+          "telemetry.log": "c9aea3333adfb74f291b23e231a88caa7497583ed29e07e1cee4bdc7a3ecc4cd"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6"
+      },
+      {
+        "case": "21-method-b1-selected-normal-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "normal",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "4a59900ae40a2f13a243be3e49063c7bb6169a738689444d96911dc31339e640",
+          "telemetry.log": "de4dc8a9b0c21788e4c1985e311577945815f74ce7245acc3bcbfd031e65146a"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "21-method-b1-selected-denied-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "denied",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "e052df120a589380070b823f30dcb30299c4876124b0f975c7be00e82452bbbd",
+          "telemetry.log": "e8e8ca6e9097311d3b9bbe9fda8b4fa01ee40d1c314843e19c40a8a98a2fbb0b"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 3,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "21-method-b1-selected-overload-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "overload",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "d3e720eecbd6d67267c3a9b7ebb0a5421787e8d9b6ec3f83ed6fa82937b171e3",
+          "telemetry.log": "24208a8a42ce15fd795da54fa3cb97ab17b5337dda1d3ccd707c2f4752d6f06a"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "21-method-b1-selected-jdbc-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "jdbc",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "8ac503ea7cf161245b884095b58365fa25cabb12c679d5fafb519a1244715fc3",
+          "telemetry.log": "8ecf2a41e4c149ba85641b0b3b35222da2658e208be6f92982215035903f99ca"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.JdbcRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "21-method-b1-selected-cache-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "cache",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "fa3e379cd5789458331d314e58648ded552c1226d6736645863db9d7eac72d40",
+          "telemetry.log": "22e05088b435d2f4a25af37464cc5e2f3afbc3e92148b4ada179118559b671af"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.CachedRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.CachedRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.CachedRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [
+            {
+              "method": {
+                "class": "fixture.board.CachedRepository",
+                "method": "find",
+                "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+              },
+              "reason": "UNRESOLVED_CODE_SYMBOL; overload has no emitted descriptor"
+            }
+          ],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "21-method-b1-selected-reflection-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "reflection",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "2f69c6e4152a9ef871f1ecc548be073587caea2b75bacde589ab966f1a9c16a0",
+          "telemetry.log": "63ea6898c751c6264fcad3359c3b280400dad025d07cece4b0f71137212d654d"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": false,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "21-method-b1-selected-async-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "async",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "7b20359e5a90dbe96aeb1f9fdd7f1568247b5686b02a4093e3c4445f0443d838",
+          "telemetry.log": "a7d858d4ef51243623b574a72dd9e276f577bc8dbe41a9e0b139aaa30f9df82e"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 5,
+          "expectedSpanCount": 5,
+          "traceCount": 1,
+          "unresolvedSymbols": [
+            {
+              "class": "fixture.board.JdbcRepository",
+              "method": "find",
+              "candidates": [
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+                },
+                {
+                  "module": "method-fixture",
+                  "class": "fixture.board.JdbcRepository",
+                  "name": "find",
+                  "descriptor": "(Ljava/lang/String;I)Ljava/lang/String;"
+                }
+              ]
+            }
+          ],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": false,
+          "checkedRelationCount": 4
+        }
+      },
+      {
+        "case": "21-method-b1-selected-recursive-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "recursive",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 6,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "50d2046c707c59b733418d5fb851eae297091295fed8a4359843dafe059a0eb2",
+          "telemetry.log": "e71412e0a38fb5b88a1fed56f4ff5e5ab3058900bb36df4e4496a05f3cdcea28"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 6,
+          "expectedSpanCount": 6,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "21-method-b1-selected-error-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "error",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 4,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "c0e542e389e4646df394a398df4a39992200f42035eba772951807aec0b6d728",
+          "telemetry.log": "0b3c4940b3a8fd7df141d3146d80b223135348cf4277e3b08eb1be9bbe947e0c"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 4,
+          "expectedSpanCount": 4,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 2,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 3
+        }
+      },
+      {
+        "case": "21-method-b1-selected-excluded-function",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "excluded",
+        "variant": "B",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-b1",
+          "module": "method-fixture",
+          "artifactSha256": "ac9faa30a8e4523730e1eb2fa08a86ee6f5adb4cf0e12fd66290cc4cf52af3bf"
+        },
+        "telemetryConfigSha256": "260fae581037b5dbeb3ac307aa34640bfec55b4681c82e091347017026a76780",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 3,
+        "control": null,
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "f688c27123db9ee2eeb640ef79207a80d7267c9340a51331f7fb068c7124d773",
+          "telemetry.log": "834e97f685add282921942406feda4dd3338312fa93cd095573309b5e7c43849"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "runtime": {
+          "spanCount": 3,
+          "expectedSpanCount": 3,
+          "traceCount": 1,
+          "unresolvedSymbols": [],
+          "errorSpanCount": 0,
+          "unverifiedForbiddenMethods": [],
+          "descriptorComplete": true,
+          "checkedRelationCount": 2
+        }
+      },
+      {
+        "case": "21-method-a1-selected-normal-always-off",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "normal",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "fa26a96fb385db8d8a0e73e9d330ec53c7a10a8f858487cdc43f8b74137d7db9",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 0,
+        "control": "always-off",
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "206e06689769791c55102c8fa43265e437e3b2feb27ff6444af3cf79f8e8fd26",
+          "telemetry.log": "4140c179d41d0e64f72026295e43bcbdc3d9acd8e768276e8fec3f96cb7549c1"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "controlledAbsenceReason": "SAMPLING_ALWAYS_OFF; cause known from experiment control, not inferred from empty graph"
+      },
+      {
+        "case": "21-method-a1-selected-async-executor-disabled",
+        "java": "21",
+        "mode": "selected",
+        "scenario": "async",
+        "variant": "A",
+        "buildIdentity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "3e4d1296f2b47b8e26e9d9f6912d387b3ba9d95b",
+          "build": "method-a1",
+          "module": "method-fixture",
+          "artifactSha256": "a549b1f64e0d92aaced4342ad4f5d849c1dc85ba981201498d14e549d8e2a5b4"
+        },
+        "telemetryConfigSha256": "312bafa59412a4049309b2bdcbf8769f80c555fd2e748fcc2b388d1e4d0ecd01",
+        "businessOutcomesUnchanged": true,
+        "parsedSpanCount": 5,
+        "control": "executor-disabled",
+        "evidenceFilesSha256": {
+          "stdout.jsonl": "2302bd0dc454700f3784ce1a7934e785fd1e1272dc751f727813575e38059055",
+          "telemetry.log": "b049a2f3e6d2cba859384e4af6ff9ccd5dba07c265715ba468ee21e1720558c0"
+        },
+        "validatorSha256": "f0a6958bf6b788ea3174a295f74462b769a9ead4bc2a2c4b60d487523933ede6",
+        "controlledAbsenceReason": "ASYNC_PARENT_NOT_PROPAGATED; disconnected task retained, no parent guessed"
+      }
+    ]
+  },
+  "costSummary": [
+    {
+      "jdk": "17",
+      "mode": "none",
+      "repetitions": 5,
+      "warmupEach": 100,
+      "measurementEach": 1000,
+      "medianOfRunMediansNanos": 83.0,
+      "medianMaxRssBytes": 47300608,
+      "collectedSpansIncludingWarmup": 0,
+      "zeroDurationSamples": 0,
+      "budgetJudgement": "WITHHELD_NEAR_MEASUREMENT_RESOLUTION",
+      "baselineMedianNanos": 83.0,
+      "smallestPositiveBaselineSampleNanos": 41,
+      "resolutionGuard": "baseline median below 10x smallest positive baseline sample; guard for this experiment, not timer calibration"
+    },
+    {
+      "jdk": "17",
+      "mode": "default",
+      "repetitions": 5,
+      "warmupEach": 100,
+      "measurementEach": 1000,
+      "medianOfRunMediansNanos": 42.0,
+      "medianMaxRssBytes": 215236608,
+      "collectedSpansIncludingWarmup": 0,
+      "zeroDurationSamples": 261,
+      "budgetJudgement": "WITHHELD_NEAR_MEASUREMENT_RESOLUTION",
+      "baselineMedianNanos": 83.0,
+      "smallestPositiveBaselineSampleNanos": 41,
+      "resolutionGuard": "baseline median below 10x smallest positive baseline sample; guard for this experiment, not timer calibration"
+    },
+    {
+      "jdk": "17",
+      "mode": "selected",
+      "repetitions": 5,
+      "warmupEach": 100,
+      "measurementEach": 1000,
+      "medianOfRunMediansNanos": 10667.0,
+      "medianMaxRssBytes": 222085120,
+      "collectedSpansIncludingWarmup": 22000,
+      "zeroDurationSamples": 0,
+      "budgetJudgement": "WITHHELD_NEAR_MEASUREMENT_RESOLUTION",
+      "baselineMedianNanos": 83.0,
+      "smallestPositiveBaselineSampleNanos": 41,
+      "resolutionGuard": "baseline median below 10x smallest positive baseline sample; guard for this experiment, not timer calibration"
+    },
+    {
+      "jdk": "21",
+      "mode": "none",
+      "repetitions": 5,
+      "warmupEach": 100,
+      "measurementEach": 1000,
+      "medianOfRunMediansNanos": 84.0,
+      "medianMaxRssBytes": 49283072,
+      "collectedSpansIncludingWarmup": 0,
+      "zeroDurationSamples": 1,
+      "budgetJudgement": "WITHHELD_NEAR_MEASUREMENT_RESOLUTION",
+      "baselineMedianNanos": 84.0,
+      "smallestPositiveBaselineSampleNanos": 41,
+      "resolutionGuard": "baseline median below 10x smallest positive baseline sample; guard for this experiment, not timer calibration"
+    },
+    {
+      "jdk": "21",
+      "mode": "default",
+      "repetitions": 5,
+      "warmupEach": 100,
+      "measurementEach": 1000,
+      "medianOfRunMediansNanos": 42.0,
+      "medianMaxRssBytes": 237289472,
+      "collectedSpansIncludingWarmup": 0,
+      "zeroDurationSamples": 146,
+      "budgetJudgement": "WITHHELD_NEAR_MEASUREMENT_RESOLUTION",
+      "baselineMedianNanos": 84.0,
+      "smallestPositiveBaselineSampleNanos": 41,
+      "resolutionGuard": "baseline median below 10x smallest positive baseline sample; guard for this experiment, not timer calibration"
+    },
+    {
+      "jdk": "21",
+      "mode": "selected",
+      "repetitions": 5,
+      "warmupEach": 100,
+      "measurementEach": 1000,
+      "medianOfRunMediansNanos": 9145.5,
+      "medianMaxRssBytes": 251265024,
+      "collectedSpansIncludingWarmup": 22000,
+      "zeroDurationSamples": 0,
+      "budgetJudgement": "WITHHELD_NEAR_MEASUREMENT_RESOLUTION",
+      "baselineMedianNanos": 84.0,
+      "smallestPositiveBaselineSampleNanos": 41,
+      "resolutionGuard": "baseline median below 10x smallest positive baseline sample; guard for this experiment, not timer calibration"
+    }
+  ],
+  "unvalidated": [
+    "OTel JVM-descriptor emission and exact overload runtime resolution",
+    "sound incremental impact closure and independent partial-vs-full analysis",
+    "real exporter/transport fault injection",
+    "production benchmark and heap-independent RSS cap",
+    "complete BDD acceptance; infrastructure/CMDB/SIEM support"
+  ],
+  "verification": {
+    "pythonNewBoundaryTests": 14,
+    "pythonExistingRegressionTests": 32,
+    "javaStaticOracleJdks": [
+      "17.0.19+10",
+      "21.0.11+10-LTS"
+    ],
+    "functionalRuns": 124,
+    "costRuns": 30,
+    "rawExecutionsRevalidated": 154,
+    "sourceFormattingAndPythonCompile": "PASS",
+    "wikiExportPages": 8,
+    "independentReview": "PASS: initial config/cache findings fixed; complete method data/doc audit has no mandatory findings",
+    "koreanEditorialReview": "6 findings fixed across method and Boot prose; independent recheck 0 remaining",
+    "pythonBootAdditionalBoundaryTests": 13,
+    "pythonAllRelevantTests": 59,
+    "bootIndependentReview": "PASS: raw data, 13 regressions, 12 target tests, old/new artifact and container preservation; 0 mandatory findings"
+  },
+  "bootSupplement": {
+    "result": "execution-agent-results.json",
+    "successfulFlows": 3,
+    "failedBeforeParserFix": 1,
+    "targetRevision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+    "regressionTests": 13,
+    "outboxSdkContextRestored": false,
+    "redisClientSpansObserved": false
+  }
+}

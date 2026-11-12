@@ -1,0 +1,37 @@
+{
+  "binarySha256": {
+    "com.ibm.wala.core-1.9.0.jar": "b3947bee5425e5ea0e257d87ad6ca4a13932708810e48e20b5cb78b62236e9c6",
+    "com.ibm.wala.shrike-1.9.0.jar": "8a3186aa13a747c88ecc065f887ee2cfd68d017de1f56c1f36a3d76fd0754f3f",
+    "com.ibm.wala.util-1.9.0.jar": "63962088a49117b143900866e0ab1d09a5526ddbac3bd2cd0402fa87c99e5d79",
+    "gson-2.14.0.jar": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f",
+    "javaparser-core-3.28.2.jar": "b5499a3b1c40b16c0671fabe478c9aafeab38160c6fde74a6c13f42d86716ecd",
+    "javaparser-symbol-solver-core-3.28.2.jar": "4cb097c0834427939c01f4169dd0bab20068673913341c5b6db27be1a7445098"
+  },
+  "officialApiSources": {
+    "javaparser-method-descriptor": "https://github.com/javaparser/javaparser/blob/e72889831e5e06532f2185ec9ae16531237f9f69/javaparser-core/src/main/java/com/github/javaparser/resolution/declarations/ResolvedMethodDeclaration.java",
+    "wala-binary-scope": "https://github.com/wala/WALA/blob/ab3bd3b2b9291e047b203cddd248cbbcfcff6f1e/core/src/main/java/com/ibm/wala/core/util/config/AnalysisScopeReader.java",
+    "wala-cha": "https://github.com/wala/WALA/blob/ab3bd3b2b9291e047b203cddd248cbbcfcff6f1e/core/src/main/java/com/ibm/wala/ipa/callgraph/cha/CHACallGraph.java"
+  },
+  "purpose": "experimental comparison, not product adoption",
+  "schema": "jjamtong.analysis-upstream.v1",
+  "upstreams": {
+    "javaparser": {
+      "license": "Apache-2.0 OR LGPL-3.0-or-later; Apache-2.0 selected",
+      "licenseSha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "licenseUrl": "https://raw.githubusercontent.com/javaparser/javaparser/e72889831e5e06532f2185ec9ae16531237f9f69/LICENSE.APACHE",
+      "pomSha256": "4f2ae4a378430e45ca951c706fe7f08b79a3cc8b37dd151e94c8d4ef6896fef6",
+      "pomUrl": "https://repo.maven.apache.org/maven2/com/github/javaparser/javaparser-symbol-solver-core/3.28.2/javaparser-symbol-solver-core-3.28.2.pom",
+      "sourceCommit": "e72889831e5e06532f2185ec9ae16531237f9f69",
+      "version": "3.28.2"
+    },
+    "wala": {
+      "license": "EPL-2.0",
+      "licenseSha256": "721c2da257578bace3332b14d8ea06643d7d26753e7ef25a837b4e904edc0bf5",
+      "licenseUrl": "https://raw.githubusercontent.com/wala/WALA/ab3bd3b2b9291e047b203cddd248cbbcfcff6f1e/LICENSE",
+      "pomSha256": "690d824acf4b3effcf8b0686cc87f54302d989bdf1eb7e4f7c2d72d9d3aa77b8",
+      "pomUrl": "https://repo.maven.apache.org/maven2/com/ibm/wala/com.ibm.wala.core/1.9.0/com.ibm.wala.core-1.9.0.pom",
+      "sourceCommit": "ab3bd3b2b9291e047b203cddd248cbbcfcff6f1e",
+      "version": "1.9.0"
+    }
+  }
+}
