@@ -50,3 +50,7 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 [JavaParser·WALA 어댑터](../../tools/java-call-analysis/README.md)와 [버전별 근거 연결 CLI](../../tools/method_evidence/README.md)를 만들고, 별도 Java 대상에서 [124개 기능 실행·30회 비용 측정·빌드/이력 반례](../experiments/METHOD-OBSERVABILITY-RESULTS.md)를 확인했다. private 호출·비동기 문맥·재귀·오류를 관측하고 정적 후보와 실제 부모 관계를 따로 보관한다. OTel의 descriptor 부재로 정확한 overload 실행 선언은 미해결이며, 실제 부분 재분석과 전체 BDD 통과로 처리하지 않는다. [ADR 0004](../decisions/0004-method-evidence-comparison.md)는 이번 비교와 제품 채택을 구분한다.
 
 별도로 [실제 Boot·가상 스레드·Netty·Kafka의 3개 흐름](../experiments/METHOD-OBSERVABILITY-RESULTS.md#실제-boot가상-스레드nettykafka에도-적용했다)에도 OTel을 붙였다. 테스트 앱의 trace 플래그 파서를 수정한 새 빌드에서 앱 처리는 성공했으나, HTTP→예약 outbox 발행의 SDK 추적은 분리됐다. Redis 왕복 성공과 Redis 전용 span 미관측도 구분해 남겼다.
+
+## 적용 전후 성능은 얼마나 다른가
+
+같은 Boot 빌드에서 미적용·기본 추적·메서드 추적을 [27회 반복 비교](../experiments/EXECUTION-PERFORMANCE-RESULTS.md)했다. 지연·처리량·CPU·메모리·기동 시간, 원시 측정값과 한계를 남겼다. 기존 버전 계약·수동 검증 코드가 공통으로 있는 앱에 OTel을 추가한 비용이며, 전체 플랫폼 비용이나 운영 SLO를 확정한 결과는 아니다.

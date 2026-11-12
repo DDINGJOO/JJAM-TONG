@@ -136,8 +136,12 @@ python3 experiments/method_history.py \
 
 [실행 도구](../../experiments/execution_agent_smoke.py)에 별도 대상·새 빌드·새 무시 출력 디렉터리를 지정한다. 실제 실행 명령은 `python3 experiments/execution_agent_smoke.py --target "$TARGET_ROOT" --build-id method-agent-b1 --agent "$OTEL_AGENT_JAR" --output "$NEW_SMOKE_OUTPUT" --run`이다. 비용 측정과 동시에 실행하지 않는다.
 
+## HTTP 부하의 적용 전후 비교
+
+이 문서의 짧은 Java 호출에서는 성능 비율 판정을 보류했다. 후속 [실제 HTTP 비교](EXECUTION-PERFORMANCE-RESULTS.md)는 같은 Boot 빌드에서 미적용·기본 추적·메서드 추적을 별도로 측정했다. 27회 실행의 지연·처리량·CPU·메모리·기동 시간과 24,300건의 원시 측정값을 공개한다. 전체 JJAM-TONG 비용과 운영 SLO 검증으로 확대하지 않는다.
+
 ## 공식 근거와 남은 작업
 
 선택 계측의 이름 매칭과 descriptor 부재는 [고정 메서드 계측 코드](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/d9045e02e0711837d54f0fd058cd55f77742506d/instrumentation/methods/javaagent/src/main/java/io/opentelemetry/javaagent/instrumentation/methods/MethodInstrumentation.java), [code 속성 추출](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/d9045e02e0711837d54f0fd058cd55f77742506d/instrumentation-api-incubator/src/main/java/io/opentelemetry/instrumentation/api/incubator/semconv/code/CodeAttributesExtractor.java)과 대조했다. JSON 형식은 agent에 포함된 SDK 1.67.0의 [logging exporter](https://github.com/open-telemetry/opentelemetry-java/blob/b4b3a1b354425c3f1411173c0e48cb24a1cba224/exporters/logging-otlp/src/main/java/io/opentelemetry/exporter/logging/otlp/OtlpJsonLoggingSpanExporter.java), SQL 설정은 [JDBC metadata](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/d9045e02e0711837d54f0fd058cd55f77742506d/instrumentation/jdbc/metadata.yaml)에 근거한다. 분석기 공식 API·라이선스는 [어댑터 원문 목록](../../tools/java-call-analysis/dependency-provenance.json)에 있다.
 
-정확한 overload 계측, 실제 부분 영향 범위와 전체 결과 비교, exporter 장애·버전별 이벤트 문맥, 운영에 가까운 비용 입력을 다음 검증으로 남긴다. 자동 등록·지속 갱신 서비스, 권한·보존 서버, Kubernetes·AWS·CMDB·SIEM의 구현 완료를 뜻하지 않는다. 모두 플랫폼 구현 대상이며 이 실험은 그 근거 연결의 첫 구현이다.
+정확한 overload 계측, 실제 부분 영향 범위와 전체 결과 비교, exporter 장애·버전별 이벤트 문맥, 다른 업무 부하·운영 환경의 비용 입력을 다음 검증으로 남긴다. 자동 등록·지속 갱신 서비스, 권한·보존 서버, Kubernetes·AWS·CMDB·SIEM의 구현 완료를 뜻하지 않는다. 모두 플랫폼 구현 대상이며 이 실험은 그 근거 연결의 첫 구현이다.
