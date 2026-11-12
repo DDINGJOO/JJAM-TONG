@@ -38,3 +38,7 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 실제 실행은 [보관·조회 비교 T24 #43](https://github.com/DDINGJOO/JJAM-TONG/issues/43)과 [외부 프로젝트의 라이브러리 로컬 검증 T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)로 이어간다. 첫 구현물은 재사용할 라이브러리와 연동 도구이며, 관측 대상 앱은 별도 저장소에서 관리한다. 두 태스크의 상태와 선행 조건은 이슈에서 관리한다.
 
 새 실험은 기대 결과·실패 판정·버전·입력·명령·실제 결과·한계를 남기고 [설계 결정](Architecture-and-Decisions.md)과 다음 이슈에 연결한다. 성공한 항목만 골라 기록하지 않는다.
+
+## 첫 라이브러리 구현
+
+[빌드 식별 계약 라이브러리](../../libraries/evidence-contract-java/README.md)는 외부 의존성 없는 Java JAR로 만들었다. JDK 17·21에서 각 23개 계약 검증을 통과했으며, JDK 17 JAR을 JDK 21 소비자가 사용하는 검증도 통과했다. [ADR 0002](../decisions/0002-experimental-build-identity.md)와 [실행 기록](../experiments/library-contract-results.json)에 범위와 조건을 남긴다. 메타데이터의 일치를 확인하는 공통부이며 자동 메서드 분석·실행 수집 완료를 뜻하지 않는다. 사용자 요청에 따라 실제 Kafka·Redis·PostgreSQL을 쓰는 합성 MSA 대상도 별도 로컬 저장소에 만들었다. [외부 앱 적용·장애 복구 9개 시나리오와 실행 한계](../experiments/LOCAL-MSA-TARGET.md)를 확인할 수 있다.

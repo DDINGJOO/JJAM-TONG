@@ -1,0 +1,41 @@
+{
+  "scope": "experimental metadata consistency library; not method analysis or runtime tracing",
+  "environment": {
+    "os": "Darwin",
+    "machine": "arm64"
+  },
+  "release": 17,
+  "dependencies": [],
+  "runs": [
+    {
+      "compiler": "JDK 17.0.19",
+      "runtime": "JDK 17.0.19",
+      "result": "PASS 23 contract checks on 17.0.19+10"
+    },
+    {
+      "compiler": "JDK 21.0.11",
+      "runtime": "JDK 21.0.11",
+      "result": "PASS 23 contract checks on 21.0.11+10-LTS"
+    },
+    {
+      "compiler": "JDK17 library / JDK21 separate consumer",
+      "runtime": "JDK 21.0.11",
+      "result": "PASS 23 contract checks on 21.0.11+10-LTS"
+    }
+  ],
+  "integration_jar_sha256": "b706b1c8911021ba94542b4feca75124030ef7a7bc910ee384249149d46d51b5",
+  "limits": [
+    "Caller-supplied metadata is not provenance attestation.",
+    "No automatic method analysis, runtime collection, schema compatibility, source freshness or access checks.",
+    "Original 47 draft BDD scenarios have not been executed by this harness.",
+    "JAR includes archive timestamps; byte-for-byte reproducibility not asserted."
+  ],
+  "source_sha256": {
+    "libraries/evidence-contract-java/src/main/java/io/jjamtong/evidence/AnalysisIdentity.java": "1a87aa7fa46d5287eb01b6657cd452e2565959550e11ac6a251dfe5d9c816253",
+    "libraries/evidence-contract-java/src/main/java/io/jjamtong/evidence/ArtifactDigests.java": "0eff200dc022e24d0601b12328dc32fd08be4e07c9cc58a1344adc40a96d256b",
+    "libraries/evidence-contract-java/src/main/java/io/jjamtong/evidence/BuildIdentity.java": "6922ee4f83e43bd433f87c48bc9482c2fcbef2aba18fef9ef024bd896d435a36",
+    "libraries/evidence-contract-java/src/main/java/io/jjamtong/evidence/EvidenceLinker.java": "f7dd52f11fc1e84482c0493e4c8cf557842c778fdf4fdcab5b2d77760206e6cc",
+    "libraries/evidence-contract-java/src/main/java/io/jjamtong/evidence/IdentityChecks.java": "41f2c49d2ee74f9eef43c54ea1e97d01995176dc28e7bce84045c61be04c74a5",
+    "libraries/evidence-contract-java/src/test/java/io/jjamtong/evidence/ContractTest.java": "37d205d52f67bbd1455cfdd6cbb358a42df3eeb1b393c1be974be9578fa6079d"
+  }
+}
