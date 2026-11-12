@@ -10,6 +10,8 @@
 
 [수용량·과부하·복구 검증 계획](docs/experiments/CAPACITY-VALIDATION.md)은 업무 서비스와 JJAM-TONG의 처리 한계를 구분한다. 목표를 만족하는 지속 부하, 수집·분석·조회 적체, 데이터 규모와 부하 감소 후 복구를 검증할 요구이며 수용량 실측 결과는 아직 없다.
 
+[엔터프라이즈 운영 요구](docs/requirements/ENTERPRISE.md)는 기업의 여러 조직·팀과 다중 환경을 기준으로 격리·권한·감사·고가용성·재해복구·업그레이드를 명세한다. 현재는 품질 요구와 검증 계획이며 운영 적합성이나 지원 규모를 입증한 상태는 아니다.
+
 첫 개발 목표는 **별도로 관리하는 프로젝트에 도입할 코드 관측성 라이브러리와 필요한 연동 도구**다. 대상 앱은 별도 저장소에 유지하고, 로컬에서 라이브러리를 적용해 정적 호출 후보·실제 실행·빌드 버전의 연결을 검증한다. 상세 범위는 [첫 개발 단계](docs/PROJECT.md#첫-개발-단계-외부-프로젝트에-도입할-라이브러리)에 있다. 별도 로컬 MSA 대상에 이 JAR을 적용했고, [Kafka·Redis·DB 장애와 복구의 9개 시나리오](docs/experiments/LOCAL-MSA-TARGET.md)를 실행했다. 실제 RDS·Kubernetes 지원은 아직 검증하지 않았다.
 
 자동 갱신은 [비교 실험실](experiments/architecture_lab/README.md)에서 세 방식으로 구현해 실행했다. [16개 시나리오의 결과](docs/experiments/RESULTS.md)와 [방법론·아키텍처 비교 계획](docs/experiments/ARCHITECTURE-EXPERIMENTS.md)을 공개한다. 합성 공급원·동일 SQLite의 로컬 실험이며 실제 GitHub·코드 계측·AWS 통합이나 전체 BDD 통과를 뜻하지 않는다.
