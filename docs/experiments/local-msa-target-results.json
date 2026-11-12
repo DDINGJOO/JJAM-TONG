@@ -1,0 +1,216 @@
+{
+  "target_commit": "acb83684c4b8c318b7c0ca77edbb5948af0952ac",
+  "report_recorded_at": "2026-11-12T05:30:00.241003+00:00",
+  "passed": 9,
+  "scenario_seconds": {
+    "create-read-cache-and-async-projection": 3.088,
+    "redis-outage-database-fallback": 0.972,
+    "kafka-outage-outbox-and-recovery": 3.621,
+    "duplicate-event-no-duplicate-effect": 2.397,
+    "consumer-database-outage-retains-offset-and-recovers": 44.764,
+    "real-database-read-delay-preserves-result": 1.024,
+    "database-error-rolls-back-post-and-outbox": 0.552,
+    "update-delete-cache-and-projection": 0.549,
+    "deployed-artifact-and-two-build-identities": 0.071
+  },
+  "parser_fixtures": {
+    "unused_empty_partition": true,
+    "first_record_uncommitted_unknown_preserved": true,
+    "normal_committed_partition": true
+  },
+  "independent_smoke": "both readiness/build endpoints + 4 artifact hashes + create/read/one async projection PASS",
+  "target_remote_published": false,
+  "builds": {
+    "maven_image": "maven:3.9.9-eclipse-temurin-21",
+    "contract_sha256": "b706b1c8911021ba94542b4feca75124030ef7a7bc910ee384249149d46d51b5",
+    "artifacts": [
+      {
+        "repository": "local:jjamtong-sandbox",
+        "revision": "acb83684c4b8c318b7c0ca77edbb5948af0952ac",
+        "build": "sandbox-b1",
+        "module": "board-api",
+        "artifactSha256": "4a2b5bf88400ed9195e821f115100f96ff7b38999db6f08f38375e349be22261",
+        "sourceState": "clean",
+        "bytes": 59661319,
+        "build_seconds": 3.264
+      },
+      {
+        "repository": "local:jjamtong-sandbox",
+        "revision": "acb83684c4b8c318b7c0ca77edbb5948af0952ac",
+        "build": "sandbox-b1",
+        "module": "activity-worker",
+        "artifactSha256": "f05b599bbf4368f58925444a2ab129b86c14069e5551be6a4ad47e7dd78e2120",
+        "sourceState": "clean",
+        "bytes": 47226440,
+        "build_seconds": 3.287
+      },
+      {
+        "repository": "local:jjamtong-sandbox",
+        "revision": "acb83684c4b8c318b7c0ca77edbb5948af0952ac",
+        "build": "sandbox-b2",
+        "module": "board-api",
+        "artifactSha256": "f0fbb300130b5fcc7ef530a7505086836a55394b474c09830162bd824aafd659",
+        "sourceState": "clean",
+        "bytes": 59661320,
+        "build_seconds": 3.345
+      },
+      {
+        "repository": "local:jjamtong-sandbox",
+        "revision": "acb83684c4b8c318b7c0ca77edbb5948af0952ac",
+        "build": "sandbox-b2",
+        "module": "activity-worker",
+        "artifactSha256": "938ee62ce2fb8b574e54c25e889521df4fba6816623f1dd436f6c8fd9057b231",
+        "sourceState": "clean",
+        "bytes": 47226442,
+        "build_seconds": 3.371
+      }
+    ]
+  },
+  "tools": {
+    "recorded_at": "2026-11-12T05:26:25.495118+00:00",
+    "build_image": "maven:3.9.9-eclipse-temurin-21",
+    "runtime_base": "eclipse-temurin:21.0.13_9-jre-noble@sha256:0d57a8e90c2bb844c5a8e1b2b71e11eff06dad7edcfd803cd21ed4ae203b2515",
+    "build_java": "openjdk version \"21.0.7\" 2025-04-15 LTS\nOpenJDK Runtime Environment Temurin-21.0.7+6 (build 21.0.7+6-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.7+6 (build 21.0.7+6-LTS, mixed mode, sharing)",
+    "runtime_java": "openjdk version \"21.0.13\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode, sharing)",
+    "docker": "29.5.3",
+    "compose": "Docker Compose version v5.1.4",
+    "upstream_image_digests": {
+      "maven:3.9.9-eclipse-temurin-21": [
+        "maven@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e"
+      ],
+      "apache/kafka:4.3.2": [
+        "apache/kafka@sha256:852a0d49fc4e656b022e7f23785411802c9a088c78a7c5e39f33969de9c227a7"
+      ],
+      "redis:8.10.3-alpine": [
+        "redis@sha256:7958cfbb9d152f87dadfbc89f1b0b15938f0b81ff8982feb327476f4911935c3"
+      ],
+      "postgres:17.11-alpine": [
+        "postgres@sha256:e5d2edd28b1f8d40a0a6c0c9cdc545b19b56a0d5d88f94bc11a97d970d4700d0"
+      ]
+    }
+  },
+  "integration": {
+    "recorded_at": "2026-11-12T05:30:00.241003+00:00",
+    "passed": 9,
+    "parser_fixtures": {
+      "unused_empty_partition": true,
+      "first_record_uncommitted_unknown_preserved": true,
+      "normal_committed_partition": true
+    },
+    "scenarios": [
+      {
+        "scenario": "create-read-cache-and-async-projection",
+        "passed": true,
+        "seconds": 3.088,
+        "detail": {
+          "cache": "HIT",
+          "projection_count": 1
+        }
+      },
+      {
+        "scenario": "redis-outage-database-fallback",
+        "passed": true,
+        "seconds": 0.972,
+        "detail": {
+          "cache": "FALLBACK",
+          "readiness": "UP",
+          "response_preserved": true
+        }
+      },
+      {
+        "scenario": "kafka-outage-outbox-and-recovery",
+        "passed": true,
+        "seconds": 3.621,
+        "detail": {
+          "persisted_while_down": true,
+          "eventually_projected": true,
+          "projection_count": 1
+        }
+      },
+      {
+        "scenario": "duplicate-event-no-duplicate-effect",
+        "passed": true,
+        "seconds": 2.397,
+        "detail": {
+          "event_id_replayed": true,
+          "consumer_lag_zero": true,
+          "projection_count": 1
+        }
+      },
+      {
+        "scenario": "consumer-database-outage-retains-offset-and-recovers",
+        "passed": true,
+        "seconds": 44.764,
+        "detail": {
+          "activity_db_connections_disabled": true,
+          "activity_http_status_while_blocked": 500,
+          "failed_delivery_attempts": 12,
+          "lag_during_outage": {
+            "2": 1
+          },
+          "published_outbox_retained_consumer_offset": true,
+          "projection_count_after_recovery": 1
+        }
+      },
+      {
+        "scenario": "real-database-read-delay-preserves-result",
+        "passed": true,
+        "seconds": 1.024,
+        "detail": {
+          "elapsed_seconds": 1.012,
+          "response_preserved": true
+        }
+      },
+      {
+        "scenario": "database-error-rolls-back-post-and-outbox",
+        "passed": true,
+        "seconds": 0.552,
+        "detail": {
+          "failed_status": 500,
+          "post_and_outbox_rolled_back": true,
+          "next_write_succeeded": true
+        }
+      },
+      {
+        "scenario": "update-delete-cache-and-projection",
+        "passed": true,
+        "seconds": 0.549,
+        "detail": {
+          "update_visible": true,
+          "delete_not_found": true,
+          "activity_actions": 3
+        }
+      },
+      {
+        "scenario": "deployed-artifact-and-two-build-identities",
+        "passed": true,
+        "seconds": 0.071,
+        "detail": {
+          "services": 2,
+          "distinct_builds": 2,
+          "digests_verified": true,
+          "analysis_link": "UNRESOLVED"
+        }
+      }
+    ],
+    "images": {
+      "postgres": "\"postgres:17.11-alpine\" \"sha256:e5d2edd28b1f8d40a0a6c0c9cdc545b19b56a0d5d88f94bc11a97d970d4700d0\"",
+      "redis": "\"redis:8.10.3-alpine\" \"sha256:7958cfbb9d152f87dadfbc89f1b0b15938f0b81ff8982feb327476f4911935c3\"",
+      "kafka": "\"apache/kafka:4.3.2\" \"sha256:852a0d49fc4e656b022e7f23785411802c9a088c78a7c5e39f33969de9c227a7\"",
+      "board-api": "\"jjamtong-sandbox/board-api:sandbox-b1\" \"sha256:a79551b88fa08ff2c120dbd2d84340d6690f96cd36e83b0d5068cf0473e7efe8\"",
+      "activity-worker": "\"jjamtong-sandbox/activity-worker:sandbox-b1\" \"sha256:409824a843f7330be3d91a031ccba579f977217baa2940fdd1a79231cc6ab958\""
+    },
+    "unrelated_containers_preserved": true,
+    "limitations": [
+      "local synthetic target, not production workload",
+      "no real AWS RDS or Kubernetes execution",
+      "no automatic method analysis or runtime tracing",
+      "single outbox publisher; no multi-pod claiming validation",
+      "poison records retry without limit and stall consumer progress; no DLQ policy yet"
+    ]
+  },
+  "limitations": [
+    "Target source is in a separate local Git repository and is not published here.",
+    "These checks do not implement automatic method analysis, runtime tracing, AWS RDS or Kubernetes deployment."
+  ]
+}

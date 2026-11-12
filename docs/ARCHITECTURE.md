@@ -60,7 +60,7 @@ CI는 코드 구조를 분석하고 빌드에 대응하는 snapshot을 만든다
 | analyzer·schema·config version | 도구·형식·진입점·classpath·포함 범위를 재현 |
 | service·environment·deployment identity | 실행 앱·배포·빌드와 인프라 관계 연결 |
 
-각 필드의 정규화·해시 대상·필수 여부·호환 규칙은 첫 데이터 계약 ADR에서 정한다. 소스 커밋만으로 바이트코드나 분석 결과가 같다고 가정하지 않는다.
+[ADR 0002](decisions/0002-experimental-build-identity.md)는 로컬 Java 계약의 필수 빌드 필드·해시 정규화·일치 판정만 정한다. 플랫폼 전체의 형식·호환·보존 계약은 남아 있다. 소스 커밋만으로 바이트코드나 분석 결과가 같다고 가정하지 않는다.
 
 런타임은 배포 artifact에 대응하는 manifest를 읽는 방식을 우선 검증한다. 분석 index를 함께 패키징할지 별도 보관할지는 비용과 배포 흐름을 비교한다. artifact 전체 해시를 해당 artifact 내부에 다시 넣는 순환 구조는 만들지 않는다.
 

@@ -30,3 +30,7 @@
 ## 현재 확인 수준
 
 요구사항과 로컬 비교 실험이 있으며 운영용 메서드 분석기·계측·통합 조회 제품은 아직 없다. Python/SQLite 실험은 제품 기술 채택이 아니다. 블로그 작성·발행은 이 프로젝트의 목표에 포함하지 않는다. 실제 구현·미검증의 구분은 [실험 페이지](Research-and-Experiments.md)에서 확인한다.
+
+## 첫 라이브러리 구현
+
+[빌드 식별 계약 라이브러리](../../libraries/evidence-contract-java/README.md)는 외부 의존성 없는 Java JAR로 만들었다. JDK 17·21에서 각 23개 계약 검증을 통과했으며, JDK 17 JAR을 JDK 21 소비자가 사용하는 검증도 통과했다. [ADR 0002](../decisions/0002-experimental-build-identity.md)와 [실행 기록](../experiments/library-contract-results.json)에 범위와 조건을 남긴다. 메타데이터의 일치를 확인하는 공통부이며 자동 메서드 분석·실행 수집 완료를 뜻하지 않는다. 사용자 요청에 따라 실제 Kafka·Redis·PostgreSQL을 쓰는 합성 MSA 대상도 별도 로컬 저장소에 만들었다. [외부 앱 적용·장애 복구 9개 시나리오와 실행 한계](../experiments/LOCAL-MSA-TARGET.md)를 확인할 수 있다.
