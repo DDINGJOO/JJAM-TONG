@@ -80,4 +80,4 @@ docker compose --project-name jjamtong-sandbox ps
 
 현재 앱은 Kubernetes로 옮길 수 있도록 컨테이너·환경 변수·준비 상태·자원 한도를 갖춘 로컬 대상이다. Kubernetes·EKS·ECS에 배포한 결과는 없다. Redis/DB 사이의 원자적 일관성, 다중 발행자, 운영 부하·고가용성도 검증하지 않았다. 다음 단계는 앱 기능 추가보다 **정적 호출 후보와 실제 메서드 실행을 연결할 도구 선택 및 C01~C12 실행**이다. #44와 기존 47개 Draft BDD의 전체 완료로 집계하지 않는다.
 
-추가 비교는 [실행 모델과 이벤트 경계 검증](CODE-ANALYSIS-COMPARISON.md#실행-모델과-이벤트-경계도-함께-검증한다)에 정리했다. 현재 HTTP 구성은 MVC/Tomcat이고 Redis 클라이언트는 Netty 기반 Lettuce다. 가상 스레드·WebFlux/Netty·추적 문맥 전파의 비교는 아직 실행하지 않았다.
+추가 비교는 [실행 모델과 이벤트 경계 검증](CODE-ANALYSIS-COMPARISON.md#실행-모델과-이벤트-경계도-함께-검증한다)에 정리했다. 기존 게시판의 HTTP 구성은 MVC/Tomcat이고 Redis 클라이언트는 Netty 기반 Lettuce다. 이후 별도 비교 모듈에서 [MVC 일반·가상 스레드와 WebFlux/Netty의 수동 문맥 검증 21개](EXECUTION-MODEL-RESULTS.md)를 실행했다. 위의 게시판 9개 통합 검증과 구분하며, 자동 메서드 계측이나 전체 조건의 통과를 뜻하지 않는다.

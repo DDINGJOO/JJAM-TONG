@@ -48,9 +48,11 @@ fixture는 비교에 사용하는 고정 입력이며, oracle은 도구 출력�
 
 ## 실행 모델과 이벤트 경계도 함께 검증한다
 
-사용자 추가 요구에 따라 Spring Boot 4 계열의 가상 스레드와 Netty 기반 실행을 C06 비동기·C07 오류·C08 부분 수집 조건에 함께 대입한다. **다음은 추가 검증 조건이며 아직 실행하지 않았다.** 현재 별도 대상은 Boot 4.1.2의 MVC/Tomcat이며 가상 스레드 활성화 설정은 없다. Redis의 Lettuce가 Netty를 사용한다는 사실과 HTTP 서버가 Netty라는 판단은 구분한다.
+사용자 추가 요구에 따라 Spring Boot 4 계열의 가상 스레드와 Netty 기반 실행을 C06 비동기·C07 오류·C08 부분 수집 조건에 함께 대입한다. **아래 조건 중 수동 문맥 전달·재처리·작업 상한·타임아웃과 별도 JDK pinning 입력을 먼저 실행했다.** [구성별 7개 로컬 결과와 미실행 항목](EXECUTION-MODEL-RESULTS.md)을 구분한다. 기존 게시판은 Boot 4.1.2의 MVC/Tomcat을 유지하고 가상 스레드 설정이 없다. 비교 모듈은 별도로 추가했다. Redis의 Lettuce가 Netty를 사용한다는 사실과 HTTP 서버가 Netty라는 판단은 구분한다.
 
-가상 스레드는 스레드 실행 방식이고, Netty는 이벤트루프에서 I/O를 처리한다. 둘은 조합할 수 있다. 비교할 때 HTTP 서버·클라이언트·작업 실행기를 각각 식별하며, Boot 설정 하나가 Kafka 소비자나 모든 Netty 작업까지 가상 스레드로 바꾼다고 가정하지 않는다. [Boot 작업 실행](https://docs.spring.io/spring-boot/4.1/reference/features/task-execution-and-scheduling.html), [WebFlux 실행 모델](https://docs.spring.io/spring-framework/reference/web/webflux/new-framework.html), [Lettuce의 Netty 사용](https://docs.spring.io/spring-data-redis/reference/4.0/redis/drivers.html)을 기준으로 한다.
+가상 스레드는 스레드 실행 방식이고, Netty는 이벤트루프에서 I/O를 처리한다. 둘은 조합할 수 있다. 비교할 때 HTTP 서버·클라이언트·작업 실행기를 각각 식별하며, Boot 설정 하나가 모든 Kafka·Netty 작업에 일괄 적용된다고 가정하지 않는다. [Boot 작업 실행](https://docs.spring.io/spring-boot/4.1/reference/features/task-execution-and-scheduling.html), [WebFlux 실행 모델](https://docs.spring.io/spring-framework/reference/web/webflux/new-framework.html), [Lettuce의 Netty 사용](https://docs.spring.io/spring-data-redis/reference/4.0/redis/drivers.html)을 기준으로 한다.
+
+이번 Boot 4.1.2 기본 자동구성에서는 가상 스레드를 켠 MVC 비교 모듈의 Kafka listener도 가상 스레드로 실행됐다. 버전·사용자 실행기 설정에 따라 적용 범위를 확인하며, [실제 스레드 표와 고정 버전 원문](EXECUTION-MODEL-RESULTS.md#실제-스레드는-경계마다-확인한다)을 근거로 남긴다.
 
 | 비교 구성 | 확인할 실행 경계 |
 | --- | --- |
@@ -109,6 +111,6 @@ JDK 17·21의 정확한 배포판·패치 버전, OS·CPU, classpath와 artifact
 
 ## 다음 판정과 남은 일
 
-[후속 최소 재현 T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)에는 후보·설정·실제 명령·입력 hash, C01~C12의 기대/실제 관계·누락 이유, 시간·메모리·출력량을 함께 남긴다. 도구 선택에는 소유자의 명시적 선택과 ADR이 필요하다. 이 문서의 확인은 공식 원문과 비교 조건에 한하며 실제 빌드·계측·호환성·비용 검증은 미실행이다.
+[후속 최소 재현 T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)에는 후보·설정·실제 명령·입력 hash, C01~C12의 기대/실제 관계·누락 이유, 시간·메모리·출력량을 함께 남긴다. 도구 선택에는 소유자의 명시적 선택과 ADR이 필요하다. 분석기·계측기 후보의 실제 빌드·계측·호환성·비용 검증은 미실행이다. 수동 문맥을 사용하는 별도 앱의 실행 모델 비교는 [첫 로컬 결과](EXECUTION-MODEL-RESULTS.md)로 구분한다.
 
 관측성·코드·에이전트/SRE·MSA·Kubernetes·인프라·CMDB·SIEM은 모두 구현 대상이다. 이 실험은 그 근거를 정확한 버전으로 연결하기 위한 출발점이며, AWS EKS·ECS·일반 Kubernetes 및 온프레미스·AWS 자원 매핑의 지원 완료나 플랫폼 설치 환경의 결정은 아니다.
