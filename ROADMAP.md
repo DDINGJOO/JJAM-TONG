@@ -82,10 +82,12 @@ S01~S09는 코드·관측성·에이전트·SRE·MSA·Kubernetes·인프라·CMD
 
 SRE가 느린 구간·혼합 성공/실패·부분 수집을 구분한다. (구현 대상 · 행동 초안 명세)
 
-[BDD 원본](specs/features/05-sre-analysis.feature) · BDD-SRE-001, BDD-SRE-002, BDD-SRE-003, BDD-SRE-004
+[BDD 원본](specs/features/05-sre-analysis.feature) · BDD-SRE-001~008
 
 - [#18 지연·오류·비동기 SRE 행동 명세](https://github.com/DDINGJOO/JJAM-TONG/issues/18)
 - [#19 비용·상한·부분 수집의 검증 계획](https://github.com/DDINGJOO/JJAM-TONG/issues/19) · 선행: [#18](https://github.com/DDINGJOO/JJAM-TONG/issues/18)
+
+[수용량·과부하·복구 계획](docs/experiments/CAPACITY-VALIDATION.md)은 #19의 요구사항 검토와 #44의 계측 적용 비교에 연결한다. 수치 목표·수용량은 아직 검증하지 않았다.
 
 ### S06 · [#20 서비스·배포·워크로드 문맥을 연결한다](https://github.com/DDINGJOO/JJAM-TONG/issues/20)
 

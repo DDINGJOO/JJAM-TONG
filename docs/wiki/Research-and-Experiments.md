@@ -54,3 +54,7 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 ## 적용 전후 성능은 얼마나 다른가
 
 같은 Boot 빌드에서 미적용·기본 추적·메서드 추적을 [27회 반복 비교](../experiments/EXECUTION-PERFORMANCE-RESULTS.md)했다. 지연·처리량·CPU·메모리·기동 시간, 원시 측정값과 한계를 남겼다. 기존 버전 계약·수동 검증 코드가 공통으로 있는 앱에 OTel을 추가한 비용이며, 전체 플랫폼 비용이나 운영 SLO를 확정한 결과는 아니다.
+
+## 서비스와 플랫폼은 어디까지 감당하는가
+
+[수용량·과부하·복구 검증 계획](../experiments/CAPACITY-VALIDATION.md)은 업무 서비스의 계측 전후 한계와 JJAM-TONG의 수집·분석·조회 한계를 나누어 검증할 요구다. 부하 발생기의 제한, 데이터·버전 규모, 적체·신선도·유실, 정상 부하로 낮춘 뒤의 복구를 포함한다. [BDD-SRE-005~008](../../specs/features/05-sre-analysis.feature)과 [T10 #19](https://github.com/DDINGJOO/JJAM-TONG/issues/19)·[T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)에 연결하며, 수치 목표와 수용량 실측은 아직 없다.
