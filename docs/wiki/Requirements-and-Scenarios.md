@@ -15,12 +15,13 @@
 | 배포 뒤 게시글 조회가 느려짐 | 느린 실행과 비교 조건·누락을 조회하고 원인 가설과 사실을 구분 | [에이전트 근거](../../specs/features/04-agent-evidence.feature), [SRE 분석](../../specs/features/05-sre-analysis.feature), [S04 #13](https://github.com/DDINGJOO/JJAM-TONG/issues/13), [S05 #17](https://github.com/DDINGJOO/JJAM-TONG/issues/17) |
 | 요청·수집 부하와 코드·버전 규모가 늘거나 한 서비스가 폭주함 | 업무와 플랫폼의 목표 충족 부하, 적체·신선도·서비스별 격리와 부하 감소 후 복구를 각각 검증 | [수용량 계획](../experiments/CAPACITY-VALIDATION.md), [BDD-SRE-005~008](../../specs/features/05-sre-analysis.feature), [T10 #19](https://github.com/DDINGJOO/JJAM-TONG/issues/19) |
 | 여러 조직·팀이 사용하며 권한 회수·장애·복원·업그레이드를 수행함 | 조직 격리와 현재 권한·감사·기업 운영 목표를 유지하고 검증 수준과 미측정을 설명 | [기업 운영 요구](../requirements/ENTERPRISE.md), [BDD-ENT-001~009](../../specs/features/11-enterprise-operations.feature) |
+| 입력 폭주·자동 확장·축소와 자원 교체가 발생함 | 단계별 신호·기동·인계·후속 병목·예산을 판정하고 대상의 당시 배포/빌드 연결을 보존 | [자동 확장 요구](../requirements/AUTOSCALING.md), [BDD-ASC-001~009](../../specs/features/12-autoscaling.feature), [#19](https://github.com/DDINGJOO/JJAM-TONG/issues/19)·[#37](https://github.com/DDINGJOO/JJAM-TONG/issues/37) |
 | EKS·ECS·일반 Kubernetes 배포가 같은 DB를 사용 | 서비스·배포·실제 자원·공유 관계를 시점과 출처로 구분 | [인프라](../../specs/features/06-infrastructure.feature), [카탈로그 매핑](../../specs/features/09-catalog-mapping.feature), [S06 #20](https://github.com/DDINGJOO/JJAM-TONG/issues/20), [S09 #30](https://github.com/DDINGJOO/JJAM-TONG/issues/30) |
 | 자산 소유자가 바뀌고 관련 보안 이벤트가 발견됨 | 당시 소유권·관계 이력과 허용된 보안 근거를 연결 | [CMDB](../../specs/features/07-cmdb.feature), [보안](../../specs/features/08-security.feature), [S07 #24](https://github.com/DDINGJOO/JJAM-TONG/issues/24), [S08 #27](https://github.com/DDINGJOO/JJAM-TONG/issues/27) |
 
 ## BDD를 읽는 규칙
 
-BDD는 사용자의 행동과 기대 결과를 시나리오로 표현하는 방식이다. 전체 명세는 **기능 명세 파일 11개와 시나리오 60개**로 구성되어 있고, 모두 `@draft @required`로 표시한다. `@required`는 구현 대상을, `@draft`는 검토 중인 세부 행동을 뜻한다. 현재는 시나리오를 실행하는 테스트 도구가 없으므로 명세를 작성한 것과 수락 테스트를 통과한 것을 구분한다. 시나리오 ID와 상위 스토리·검증 태스크의 연결 관계는 [원본 인덱스](../requirements/README.md)와 [로드맵](../../ROADMAP.md)에서 확인한다.
+BDD는 사용자의 행동과 기대 결과를 시나리오로 표현하는 방식이다. 전체 명세는 **기능 명세 파일 12개와 시나리오 69개**로 구성되어 있고, 모두 `@draft @required`로 표시한다. `@required`는 구현 대상을, `@draft`는 검토 중인 세부 행동을 뜻한다. 현재는 시나리오를 실행하는 테스트 도구가 없으므로 명세를 작성한 것과 수락 테스트를 통과한 것을 구분한다. 시나리오 ID와 상위 스토리·검증 태스크의 연결 관계는 [원본 인덱스](../requirements/README.md)와 [로드맵](../../ROADMAP.md)에서 확인한다.
 
 새 요구는 먼저 사용자·전제·행동·기대 결과를 쓰고, 정상 예와 함께 누락·충돌·권한·버전 불일치 반례를 붙인다. 기존 시나리오에 연결할 수 있으면 중복 이슈를 만들지 않는다. 구현 전에는 검증용 예제와 입력(fixture), 판정 방법, 아직 정하지 않은 정책을 이슈에 남긴다.
 

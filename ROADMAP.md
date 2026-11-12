@@ -152,6 +152,8 @@ SIEM 근거를 같은 서비스·배포·자산의 운영 증거와 함께 조�
 
 [엔터프라이즈 운영 요구](docs/requirements/ENTERPRISE.md)와 [BDD-ENT-001~009](specs/features/11-enterprise-operations.feature)는 여러 조직·팀의 격리·권한·감사·수용량·가용성·복원·업그레이드 검증을 기존 #14/#15/#19/#26/#29/#37/#43/#44에 연결한다. 제품 구조·수치 목표·운영 적합성은 아직 검증하지 않았다.
 
+[자동 확장·축소 요구](docs/requirements/AUTOSCALING.md)와 [BDD-ASC-001~009](specs/features/12-autoscaling.feature)는 지표 오류·실제 자원 확보·후속 병목·축소 중 인계·반복 증감·0개 축소·조직별 공정성과 예산·관측 대상의 자원 교체를 #19/#37과 연결한다. 제어기·설치 환경·수치 목표는 미결이며 자동 확장 검증을 완료한 상태는 아니다.
+
 문서 탐색과 기록 규칙은 [프로젝트 위키](docs/wiki/Home.md)에서 확인한다. [T23 #40 위키형 문서 허브](https://github.com/DDINGJOO/JJAM-TONG/issues/40)는 기존 요구사항·실험 이슈의 상태와 계층을 보존하는 별도 문서 작업이며, [P1 문서·지식 기반](https://github.com/DDINGJOO/JJAM-TONG/milestone/11)에서 관리한다.
 
 제품 중심을 자동 발견·등록·지속 갱신과 근거 기반 분석·운영 자동화로 확인했다. [자동화 제품 기획](docs/requirements/AUTOMATION.md)과 [온보딩 BDD 10개](specs/features/10-automated-onboarding.feature)를 S03의 #10·#11·#12와 S09의 #30·#31·#32에 연결한다. 기존 이슈·상태·부모 관계를 유지하며 세부 동작·정책은 Draft다. 다음 검토는 GitHub 연결로 게시판의 두 서비스를 발견하고 중복·역순·누락·권한 회수에도 관계를 정확히 유지하는 행동이다.
