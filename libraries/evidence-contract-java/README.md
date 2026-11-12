@@ -53,4 +53,4 @@ JDK 17·21에서 각각 23개 계약 검증을 통과했다. JDK 17로 만든 JA
 
 최종 앱 JAR을 만든 뒤 외부 파일에 식별 정보를 남기는 방식을 적용한다. 이 외부 파일을 sidecar manifest라 부른다. 앱 내부에 최종 앱 JAR 전체의 해시를 넣으면 파일 자체가 바뀌므로, 전체 해시를 그 파일 안에 다시 넣지 않는다. 앱 시작 시 실제 파일과 sidecar의 해시를 대조하는 것은 대상 프로젝트의 연동 책임이다. 해시를 계산하는 동안 파일이 바뀌지 않아야 한다.
 
-별도 MSA 대상에 JAR을 적용한 [로컬 검증 결과](../../docs/experiments/LOCAL-MSA-TARGET.md)를 남겼다. 후속 분석·계측 비교는 [T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)에서 관리한다. 자동 메서드 분석·실행 수집·OTel 연동은 아직 구현하지 않았다.
+별도 MSA 대상에 JAR을 적용한 [로컬 검증 결과](../../docs/experiments/LOCAL-MSA-TARGET.md)를 남겼다. 후속 [자동 메서드 분석·OTel 실행 연결](../../docs/experiments/METHOD-OBSERVABILITY-RESULTS.md)은 별도 도구에서 비교하며 [T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)로 관리한다. 이 계약 JAR 자체에는 분석기·계측 agent를 포함하지 않는다.

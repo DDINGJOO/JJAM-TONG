@@ -4,13 +4,13 @@
 
 목표는 “배포 이후 왜 느려졌는가?” 같은 질문에 **trace → 실행된 메서드 → 일치하는 빌드·소스 → 배포·인프라 → 관련 자산·보안 이벤트**의 근거를 기계가 조회할 수 있게 제공하는 것이다. 확인한 사실과 분석 가설, 아직 없는 근거를 구분한다.
 
-이 저장소는 새로 시작한다. **BDD 요구사항·OSS 비교 실험과 작은 공통 라이브러리 구현**을 진행한다. [버전 근거 계약 Java 라이브러리](libraries/evidence-contract-java/README.md)는 빌드 정보의 일치·불일치·누락을 비교한다. 자동 메서드 분석·실행 수집이나 통합 플랫폼은 아직 구현하지 않았다.
+이 저장소는 **BDD 요구사항·OSS 비교 실험과 첫 라이브러리·연동 도구 구현**을 진행한다. [버전 근거 계약 Java 라이브러리](libraries/evidence-contract-java/README.md)는 빌드 정보의 일치·불일치·누락을 비교한다. [정적 호출 후보·자동 메서드 계측의 로컬 구현](docs/experiments/METHOD-OBSERVABILITY-RESULTS.md)도 검증했으며, 정확한 overload 실행 식별·부분 재분석과 통합 플랫폼 구현은 남아 있다.
 
-첫 개발 목표는 **별도로 관리하는 프로젝트에 도입할 코드 관측성 라이브러리와 필요한 연동 도구**다. 대상 앱은 별도 저장소에 유지하고, 로컬에서 라이브러리를 적용해 정적 호출 후보·실제 실행·빌드 버전의 연결을 검증한다. 상세 범위는 [첫 개발 단계](docs/PROJECT.md#첫-개발-단계-외부-프로젝트에-도입할-라이브러리)에 있다. 별도 로컬 MSA 대상에 이 JAR을 적용했고, [Kafka·Redis·DB 장애와 복구의 9개 시나리오](docs/experiments/LOCAL-MSA-TARGET.md)를 실행했다. 메서드 자동 분석·추적과 실제 RDS·Kubernetes 검증은 남아 있다.
+첫 개발 목표는 **별도로 관리하는 프로젝트에 도입할 코드 관측성 라이브러리와 필요한 연동 도구**다. 대상 앱은 별도 저장소에 유지하고, 로컬에서 라이브러리를 적용해 정적 호출 후보·실제 실행·빌드 버전의 연결을 검증한다. 상세 범위는 [첫 개발 단계](docs/PROJECT.md#첫-개발-단계-외부-프로젝트에-도입할-라이브러리)에 있다. 별도 로컬 MSA 대상에 이 JAR을 적용했고, [Kafka·Redis·DB 장애와 복구의 9개 시나리오](docs/experiments/LOCAL-MSA-TARGET.md)를 실행했다. 실제 RDS·Kubernetes 지원은 아직 검증하지 않았다.
 
 자동 갱신은 [비교 실험실](experiments/architecture_lab/README.md)에서 세 방식으로 구현해 실행했다. [16개 시나리오의 결과](docs/experiments/RESULTS.md)와 [방법론·아키텍처 비교 계획](docs/experiments/ARCHITECTURE-EXPERIMENTS.md)을 공개한다. 합성 공급원·동일 SQLite의 로컬 실험이며 실제 GitHub·코드 계측·AWS 통합이나 전체 BDD 통과를 뜻하지 않는다.
 
-다음 [원본 재확인 실험](experiments/reconciliation_lab/README.md)은 실제 Git 원본·loopback 웹훅·공개 GitHub REST 읽기와 in-process/one-shot worker를 비교한다. [주기적 확인과 변경 알림의 결합](docs/decisions/0001-reconciliation-baseline.md)을 관계 갱신의 검증 기본안으로 기록했으며, [실행 결과](docs/experiments/HYBRID-RESULTS.md)에서 실측·주입 장애·미실행을 구분한다. 현재 인덱스는 파일·blob 관계로 메서드 분석·실제 trace 수집은 후속이다.
+다음 [원본 재확인 실험](experiments/reconciliation_lab/README.md)은 실제 Git 원본·loopback 웹훅·공개 GitHub REST 읽기와 in-process/one-shot worker를 비교한다. [주기적 확인과 변경 알림의 결합](docs/decisions/0001-reconciliation-baseline.md)을 관계 갱신의 검증 기본안으로 기록했으며, [실행 결과](docs/experiments/HYBRID-RESULTS.md)에서 실측·주입 장애·미실행을 구분한다. 이 갱신 실험의 색인은 파일·blob 관계다. 메서드 근거는 별도 [분석 어댑터](tools/java-call-analysis/README.md)와 [버전별 연결 도구](tools/method_evidence/README.md)로 비교한다.
 
 ```sh
 python3 -m unittest discover -s experiments/architecture_lab -p 'test_*.py' -v

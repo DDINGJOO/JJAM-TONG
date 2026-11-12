@@ -142,7 +142,7 @@ SIEM 근거를 같은 서비스·배포·자산의 운영 증거와 함께 조�
 - [#37 공급원별 수집·복구 정책과 상시 worker 검증](https://github.com/DDINGJOO/JJAM-TONG/issues/37) · 선행: [#36](https://github.com/DDINGJOO/JJAM-TONG/issues/36); 실제 권한·연결·list/watch·호출 예산·보존과 장기 실행 복구.
 - [#38 버전 근거 보관·조회와 실제 코드 분석의 비교 조건 구체화](https://github.com/DDINGJOO/JJAM-TONG/issues/38) · 선행: [#36](https://github.com/DDINGJOO/JJAM-TONG/issues/36); 과거 시점·원본 중단·권한, 실제 정적 분석·계측의 판정과 실험 조건.
 - [#43 버전 근거 보관·조회 3대안의 동일 질문 실행 비교](https://github.com/DDINGJOO/JJAM-TONG/issues/43) · 선행: [#38](https://github.com/DDINGJOO/JJAM-TONG/issues/38); 공통 예상값과 실제 응답·보관량·원본 호출·예산 제한을 대조.
-- [#44 외부 프로젝트에 적용할 관측성 라이브러리와 로컬 최소 검증](https://github.com/DDINGJOO/JJAM-TONG/issues/44) · 선행: [#38](https://github.com/DDINGJOO/JJAM-TONG/issues/38)과 [#4](https://github.com/DDINGJOO/JJAM-TONG/issues/4)의 관련 검토; 대상 앱은 별도 저장소에서 유지하고 후보 선택 후 라이브러리를 로컬에서 빌드·적용해 관계·버전·비용을 확인.
+- [#44 외부 프로젝트에 적용할 관측성 라이브러리와 로컬 최소 검증](https://github.com/DDINGJOO/JJAM-TONG/issues/44) · 선행: [#38](https://github.com/DDINGJOO/JJAM-TONG/issues/38)과 [#4](https://github.com/DDINGJOO/JJAM-TONG/issues/4)의 관련 검토; 대상 앱을 별도 저장소에 유지하며 [실제 메서드 분석·계측·빌드 연결](docs/experiments/METHOD-OBSERVABILITY-RESULTS.md)을 비교. 정확한 overload 식별·부분 재분석 등 남은 조건은 이슈에서 관리.
 
 기존 32개 요구사항 이슈의 완료 조건·상태·부모 관계를 유지하며, 별도 실험 에픽·스토리·태스크를 추가했다. 실제 진행 상태는 GitHub에서 확인한다.
 

@@ -30,7 +30,7 @@
 
 별도 게시판 프로젝트는 라이브러리의 소비자이자 검증 대상이다. 사용자 요청에 따라 Kafka·Redis·PostgreSQL을 사용하는 합성 MSA 대상을 별도 로컬 저장소에 만든다. 앱 기능 확장 자체를 플랫폼 목표로 삼거나 앱 소스를 플랫폼 저장소에 복사하지 않는다. 대상 프로젝트의 로컬 위치·검증할 revision·포함 패키지·실행 명령은 실제 연동 전에 기록한다. 실제 앱 코드·요청 본문·로컬 경로를 공개 검증 자료에 싣지 않고 합성 입력이나 공개 가능한 메타데이터로 재현 근거를 남긴다.
 
-라이브러리를 앱 의존성으로 추가할지 별도 계측 agent로 적용할지, 정적 분석을 어떤 도구·실행 경계에 둘지는 비교 후 선택한다. 초기 로컬 검증은 전체 플랫폼의 설치 환경이나 GitHub 기반 자동 온보딩의 구현 순서를 확정하지 않는다. 실행 태스크는 [T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)이며, 현재 [빌드 식별 계약 라이브러리](../libraries/evidence-contract-java/README.md)의 검증 근거가 있다. [별도 로컬 MSA 대상의 9개 시나리오](experiments/LOCAL-MSA-TARGET.md)도 실행했으며, 자동 분석·계측과 C01~C12 전체 검증은 완료하지 않았다.
+라이브러리를 앱 의존성으로 추가할지 별도 계측 agent로 적용할지, 정적 분석을 어떤 도구·실행 경계에 둘지는 비교 후 선택한다. 초기 로컬 검증은 전체 플랫폼의 설치 환경이나 GitHub 기반 자동 온보딩의 구현 순서를 확정하지 않는다. 실행 태스크는 [T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)이며, [빌드 식별 계약 라이브러리](../libraries/evidence-contract-java/README.md)와 [별도 로컬 MSA 대상의 9개 시나리오](experiments/LOCAL-MSA-TARGET.md)를 검증했다. 이어 [정적 호출 후보·자동 메서드 계측](experiments/METHOD-OBSERVABILITY-RESULTS.md)을 실제 빌드와 연결했다. 정확한 overload 식별·실제 부분 재분석 등 미해결 조건을 보존하며 C01~C12 전체 통과로 처리하지 않는다.
 
 ## 사용자와 첫 시나리오 후보
 

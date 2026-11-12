@@ -1,6 +1,8 @@
 # 정적 관계·실제 실행 비교 조건
 
-상태: **공식 원문 확인·후속 실험 설계 / 분석기·계측기 실행 및 제품 채택 전 · 2026-11-12**.
+상태: **공식 원문·비교 조건과 첫 실제 실행 연결 / 제품 채택 전 · 2026-11-12**.
+
+이 문서는 실행 전에 정한 비교 조건을 보존한다. 후속 [정적 분석·자동 메서드 계측 결과](METHOD-OBSERVABILITY-RESULTS.md)에서 124개 기능 실행·30회 비용 측정과 미해결 조건을 구분한다. 아래 기대값과 예산 제안을 실제 전체 통과로 해석하지 않는다.
 
 [T22 #38](https://github.com/DDINGJOO/JJAM-TONG/issues/38) · [근거 보관·조회 비교 조건](VERSIONED-EVIDENCE-COMPARISON.md) · [후보 조사](../RESEARCH.md)
 
@@ -8,7 +10,7 @@
 
 ## 후보별로 확인한 사실과 실행할 비교
 
-아래 버전은 조사 시점에 확인한 릴리스다. 링크의 고정 커밋으로 원문을 대조했으며 패키지를 설치하거나 지원 조합을 실행하지 않았다. 라이선스는 해당 저장소의 원문 표기다. 전이 의존성·전체 보안 이력·재배포 적합성의 검토나 JJAM-TONG의 라이선스 결정을 대신하지 않는다.
+아래 버전은 조사 시점에 확인한 릴리스다. 조사 단계에서는 고정 커밋의 원문을 대조했다. 이후 JavaParser·WALA·OTel의 일부 조합을 실제 실행했으며 [ADR 0004](../decisions/0004-method-evidence-comparison.md)에 그 범위를 기록한다. 라이선스는 해당 저장소의 원문 표기다. 전이 의존성·전체 보안 이력·재배포 적합성의 검토나 JJAM-TONG의 라이선스 결정을 대신하지 않는다.
 
 | 후보·고정 버전 | 공식 원문에서 확인한 내용 | 같은 입력에서 비교할 책임 |
 | --- | --- | --- |
@@ -21,11 +23,11 @@ WALA는 실행 JVM과 소스 빌드 조건도 다르다. 고정 빌드 안내는
 
 OTel의 고정 메서드 계측 코드는 Byte Buddy를 사용한다. 두 도구를 독립적인 완성 제품 두 개로 비교하기보다, 기존 agent를 확장하는 책임과 계측을 직접 구현하는 책임을 비교한다. 해당 코드는 접근 제한자 조건 없이 메서드 이름을 매칭하고 생성자를 제외한다. 이름이 같은 overload의 선택과 각 실행의 식별은 별도 문제다. private/self-call 지원 여부는 실제 입력에서 확인한다. [고정 계측 코드](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/d9045e02e0711837d54f0fd058cd55f77742506d/instrumentation/methods/javaagent/src/main/java/io/opentelemetry/javaagent/instrumentation/methods/MethodInstrumentation.java).
 
-**다음 실험의 우선 비교안**은 JavaParser의 선언 해석과 WALA의 호출 후보 분석, OTel 기본 계측과 선택 메서드 계측이다. 해결되지 않은 요구가 있으면 Byte Buddy 자체 계측과도 비교한다. 이는 비교 순서 제안이며 기술 채택이 아니다. 기존 SootUp·AppMap·SkyWalking 후보를 제외하는 결정도 아니다.
+**우선 비교안**인 JavaParser의 선언 해석과 WALA의 호출 후보 분석, OTel 기본·선택 메서드 계측을 로컬에서 실행했다. 정확한 overload 실행 식별 등 미해결 요구가 있어 Byte Buddy 자체 계측도 비교 대안으로 유지한다. Byte Buddy 직접 구현과 제품 기술 채택은 아직 수행하지 않았다. 기존 SootUp·AppMap·SkyWalking 후보를 제외하는 결정도 아니다.
 
 ## 같은 게시판 입력과 독립 기대값
 
-fixture는 비교에 사용하는 고정 입력이며, oracle은 도구 출력과 별도로 작성하는 기대 결과다. 다음 표는 **별도 대상 프로젝트에서 로컬로 재현할 검증 조건**이다. JJAM-TONG은 도입할 라이브러리와 필요한 연동 도구를 구현하고, 대상 앱 코드는 별도 저장소에서 관리한다. 아직 라이브러리 적용·빌드·실행 로그를 만든 결과는 아니다. `fixture.board`는 합성 시나리오의 패키지 표기이며 실제 대상의 포함 패키지는 로컬 검증 계획에서 정한다. 공개 자료에는 실제 소스·인수·반환 본문·개인정보를 넣지 않는다. 보관·조회 비교 JSON은 합성 조회 입력이고, 아래 C01~C12는 실제 Java 분석·실행에서 대조할 조건이다.
+fixture는 비교에 사용하는 고정 입력이며, oracle은 도구 출력과 별도로 작성하는 기대 결과다. 다음 표는 **별도 대상 프로젝트에서 로컬로 재현할 검증 조건**이다. JJAM-TONG은 도입할 라이브러리와 필요한 연동 도구를 구현하고, 대상 앱 코드는 별도 저장소에서 관리한다. 이 표 자체는 실행 결과가 아니며 [후속 기록](METHOD-OBSERVABILITY-RESULTS.md)에 실제 빌드·실행·누락을 남겼다. `fixture.board`는 이번 작은 합성 대상의 포함 패키지다. 공개 자료에는 대상 소스·인수·반환 본문·개인정보를 넣지 않는다. 보관·조회 비교 JSON은 합성 조회 입력이고, 아래 C01~C12는 실제 Java 분석·실행에서 대조할 조건이다.
 
 합성 예시에서는 `Controller.list`가 `Service.list`를 호출한다. `Service.list`는 같은 클래스의 private `validate`를 호출하고, 반환을 받은 뒤 `Repository.find`를 호출한다. 두 호출의 부모는 모두 `Service.list`다. `JdbcRepository`와 `CachedRepository`가 별도 구현체이며 한 요청에는 지정한 구현체 하나만 사용한다. 직접 호출의 필수 관계, 인터페이스의 선언·구현 후보, 실제 실행한 경로를 각각 기대값으로 보관한다. 실제 대상 프로젝트의 대응 경로와 재현 가능한 조건은 로컬 검증 계획에 기록하며, 재현하지 못한 조건은 미검증으로 구분한다.
 
@@ -111,6 +113,6 @@ JDK 17·21의 정확한 배포판·패치 버전, OS·CPU, classpath와 artifact
 
 ## 다음 판정과 남은 일
 
-[후속 최소 재현 T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)에는 후보·설정·실제 명령·입력 hash, C01~C12의 기대/실제 관계·누락 이유, 시간·메모리·출력량을 함께 남긴다. 도구 선택에는 소유자의 명시적 선택과 ADR이 필요하다. 분석기·계측기 후보의 실제 빌드·계측·호환성·비용 검증은 미실행이다. 수동 문맥을 사용하는 별도 앱의 실행 모델 비교는 [첫 로컬 결과](EXECUTION-MODEL-RESULTS.md)로 구분한다.
+[후속 최소 재현 T25 #44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)에는 후보·설정·실제 명령·입력 hash, C01~C12의 기대/실제 관계·누락 이유, 시간·메모리·출력량을 함께 남긴다. [ADR 0004](../decisions/0004-method-evidence-comparison.md)의 승인 범위로 수행한 [첫 자동 분석·계측 결과](METHOD-OBSERVABILITY-RESULTS.md)는 정확한 overload 계측·부분 재분석 등의 미해결 조건을 보존한다. 수동 문맥을 사용하는 별도 앱의 실행 모델 비교는 [앞선 로컬 결과](EXECUTION-MODEL-RESULTS.md)로 구분한다. 제품 도구 선택은 미결이다.
 
 관측성·코드·에이전트/SRE·MSA·Kubernetes·인프라·CMDB·SIEM은 모두 구현 대상이다. 이 실험은 그 근거를 정확한 버전으로 연결하기 위한 출발점이며, AWS EKS·ECS·일반 Kubernetes 및 온프레미스·AWS 자원 매핑의 지원 완료나 플랫폼 설치 환경의 결정은 아니다.

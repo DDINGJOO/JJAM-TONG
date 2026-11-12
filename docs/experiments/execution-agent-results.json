@@ -1,0 +1,2303 @@
+{
+  "schema": "jjamtong.execution-agent-smoke.v1",
+  "date": "2026-11-12",
+  "firstFailure": {
+    "eventId": "c6bbc7a8-bf81-4f40-96cd-2165765229ef",
+    "mode": "mvc-platform",
+    "outboxSnapshot": {
+      "traceparent": "00-4f030bffb59c4e6d845792407b25dd89-771a807bd31c4557-01",
+      "published": true,
+      "attempts": 0,
+      "effects": 0
+    },
+    "brokerHeader": "00-9a2fee39cffe1a565119272b55e5b9aa-1d610a22d7561a3c-03",
+    "brokerKeyMatched": true,
+    "flags": "03",
+    "producerSpans": [
+      {
+        "traceId": "9a2fee39cffe1a565119272b55e5b9aa",
+        "spanId": "1d610a22d7561a3c",
+        "parentSpanId": "d690d45605edb519",
+        "kind": 4,
+        "scope": "io.opentelemetry.kafka-clients-0.11",
+        "resource": {
+          "jjamtong.artifact.sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+          "jjamtong.build": "execution-probe-b1",
+          "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+          "jjamtong.module": "execution-mvc",
+          "jjamtong.repository": "local:jjamtong-sandbox",
+          "jjamtong.revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "process.runtime.version": "21.0.13+9-LTS",
+          "service.name": "execution-agent-mvc-platform",
+          "telemetry.distro.version": "2.33.1",
+          "telemetry.sdk.version": "1.67.0"
+        },
+        "attributes": {
+          "messaging.system": "kafka",
+          "messaging.destination.name": "execution.probe.v1",
+          "thread.id": "43",
+          "thread.name": "scheduling-1",
+          "messaging.destination.partition.id": "0"
+        },
+        "error": false,
+        "links": []
+      }
+    ],
+    "consumerSpans": [
+      {
+        "traceId": "9a2fee39cffe1a565119272b55e5b9aa",
+        "spanId": "873fea9767d3de3c",
+        "parentSpanId": "1d610a22d7561a3c",
+        "kind": 5,
+        "scope": "io.opentelemetry.spring-kafka-2.7",
+        "resource": {
+          "jjamtong.artifact.sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+          "jjamtong.build": "execution-probe-b1",
+          "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+          "jjamtong.module": "execution-mvc",
+          "jjamtong.repository": "local:jjamtong-sandbox",
+          "jjamtong.revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "process.runtime.version": "21.0.13+9-LTS",
+          "service.name": "execution-agent-mvc-platform",
+          "telemetry.distro.version": "2.33.1",
+          "telemetry.sdk.version": "1.67.0"
+        },
+        "attributes": {
+          "messaging.kafka.consumer.group": "execution-probe-mvc-platform",
+          "messaging.destination.partition.id": "0",
+          "messaging.system": "kafka",
+          "messaging.destination.name": "execution.probe.v1",
+          "thread.id": "42",
+          "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+        },
+        "error": true,
+        "links": []
+      },
+      {
+        "traceId": "9a2fee39cffe1a565119272b55e5b9aa",
+        "spanId": "f784a2fc07f7333f",
+        "parentSpanId": "1d610a22d7561a3c",
+        "kind": 5,
+        "scope": "io.opentelemetry.spring-kafka-2.7",
+        "resource": {
+          "jjamtong.artifact.sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+          "jjamtong.build": "execution-probe-b1",
+          "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+          "jjamtong.module": "execution-mvc",
+          "jjamtong.repository": "local:jjamtong-sandbox",
+          "jjamtong.revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "process.runtime.version": "21.0.13+9-LTS",
+          "service.name": "execution-agent-mvc-platform",
+          "telemetry.distro.version": "2.33.1",
+          "telemetry.sdk.version": "1.67.0"
+        },
+        "attributes": {
+          "messaging.kafka.consumer.group": "execution-probe-mvc-platform",
+          "messaging.destination.partition.id": "0",
+          "messaging.system": "kafka",
+          "messaging.destination.name": "execution.probe.v1",
+          "thread.id": "42",
+          "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+        },
+        "error": true,
+        "links": []
+      },
+      {
+        "traceId": "9a2fee39cffe1a565119272b55e5b9aa",
+        "spanId": "bea10ad42726e5d9",
+        "parentSpanId": "1d610a22d7561a3c",
+        "kind": 5,
+        "scope": "io.opentelemetry.spring-kafka-2.7",
+        "resource": {
+          "jjamtong.artifact.sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+          "jjamtong.build": "execution-probe-b1",
+          "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+          "jjamtong.module": "execution-mvc",
+          "jjamtong.repository": "local:jjamtong-sandbox",
+          "jjamtong.revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "process.runtime.version": "21.0.13+9-LTS",
+          "service.name": "execution-agent-mvc-platform",
+          "telemetry.distro.version": "2.33.1",
+          "telemetry.sdk.version": "1.67.0"
+        },
+        "attributes": {
+          "messaging.kafka.consumer.group": "execution-probe-mvc-platform",
+          "messaging.destination.partition.id": "0",
+          "messaging.system": "kafka",
+          "messaging.destination.name": "execution.probe.v1",
+          "thread.id": "42",
+          "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+        },
+        "error": true,
+        "links": []
+      },
+      {
+        "traceId": "9a2fee39cffe1a565119272b55e5b9aa",
+        "spanId": "2c571e75758d28e8",
+        "parentSpanId": "1d610a22d7561a3c",
+        "kind": 5,
+        "scope": "io.opentelemetry.spring-kafka-2.7",
+        "resource": {
+          "jjamtong.artifact.sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+          "jjamtong.build": "execution-probe-b1",
+          "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+          "jjamtong.module": "execution-mvc",
+          "jjamtong.repository": "local:jjamtong-sandbox",
+          "jjamtong.revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "process.runtime.version": "21.0.13+9-LTS",
+          "service.name": "execution-agent-mvc-platform",
+          "telemetry.distro.version": "2.33.1",
+          "telemetry.sdk.version": "1.67.0"
+        },
+        "attributes": {
+          "messaging.kafka.consumer.group": "execution-probe-mvc-platform",
+          "messaging.destination.partition.id": "0",
+          "messaging.system": "kafka",
+          "messaging.destination.name": "execution.probe.v1",
+          "thread.id": "42",
+          "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+        },
+        "error": true,
+        "links": []
+      }
+    ],
+    "selectedConsumerMethodSpans": [
+      {
+        "traceId": "9a2fee39cffe1a565119272b55e5b9aa",
+        "spanId": "38e1d5e93e2d15da",
+        "parentSpanId": "873fea9767d3de3c",
+        "kind": 1,
+        "scope": "io.opentelemetry.methods",
+        "resource": {
+          "jjamtong.artifact.sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+          "jjamtong.build": "execution-probe-b1",
+          "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+          "jjamtong.module": "execution-mvc",
+          "jjamtong.repository": "local:jjamtong-sandbox",
+          "jjamtong.revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "process.runtime.version": "21.0.13+9-LTS",
+          "service.name": "execution-agent-mvc-platform",
+          "telemetry.distro.version": "2.33.1",
+          "telemetry.sdk.version": "1.67.0"
+        },
+        "attributes": {
+          "code.function": "accept",
+          "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+          "thread.id": "42",
+          "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+        },
+        "error": true,
+        "links": []
+      },
+      {
+        "traceId": "9a2fee39cffe1a565119272b55e5b9aa",
+        "spanId": "c4f7e491d6f9b8db",
+        "parentSpanId": "f784a2fc07f7333f",
+        "kind": 1,
+        "scope": "io.opentelemetry.methods",
+        "resource": {
+          "jjamtong.artifact.sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+          "jjamtong.build": "execution-probe-b1",
+          "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+          "jjamtong.module": "execution-mvc",
+          "jjamtong.repository": "local:jjamtong-sandbox",
+          "jjamtong.revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "process.runtime.version": "21.0.13+9-LTS",
+          "service.name": "execution-agent-mvc-platform",
+          "telemetry.distro.version": "2.33.1",
+          "telemetry.sdk.version": "1.67.0"
+        },
+        "attributes": {
+          "code.function": "accept",
+          "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+          "thread.id": "42",
+          "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+        },
+        "error": true,
+        "links": []
+      },
+      {
+        "traceId": "9a2fee39cffe1a565119272b55e5b9aa",
+        "spanId": "e98e1ef9a48aa95e",
+        "parentSpanId": "bea10ad42726e5d9",
+        "kind": 1,
+        "scope": "io.opentelemetry.methods",
+        "resource": {
+          "jjamtong.artifact.sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+          "jjamtong.build": "execution-probe-b1",
+          "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+          "jjamtong.module": "execution-mvc",
+          "jjamtong.repository": "local:jjamtong-sandbox",
+          "jjamtong.revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "process.runtime.version": "21.0.13+9-LTS",
+          "service.name": "execution-agent-mvc-platform",
+          "telemetry.distro.version": "2.33.1",
+          "telemetry.sdk.version": "1.67.0"
+        },
+        "attributes": {
+          "code.function": "accept",
+          "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+          "thread.id": "42",
+          "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+        },
+        "error": true,
+        "links": []
+      },
+      {
+        "traceId": "9a2fee39cffe1a565119272b55e5b9aa",
+        "spanId": "9bbc729aade95c5b",
+        "parentSpanId": "2c571e75758d28e8",
+        "kind": 1,
+        "scope": "io.opentelemetry.methods",
+        "resource": {
+          "jjamtong.artifact.sha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+          "jjamtong.build": "execution-probe-b1",
+          "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+          "jjamtong.module": "execution-mvc",
+          "jjamtong.repository": "local:jjamtong-sandbox",
+          "jjamtong.revision": "9f56f1d54c35ced8a5712efaadbe875a4d1aa5c4",
+          "process.runtime.version": "21.0.13+9-LTS",
+          "service.name": "execution-agent-mvc-platform",
+          "telemetry.distro.version": "2.33.1",
+          "telemetry.sdk.version": "1.67.0"
+        },
+        "attributes": {
+          "code.function": "accept",
+          "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+          "thread.id": "42",
+          "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+        },
+        "error": true,
+        "links": []
+      }
+    ],
+    "scheduledTraceDiffersFromHttpTrace": true,
+    "failure": "fixture flags validator rejected sampled+random 03 before writing any consumer attempt/effect",
+    "baselinePreserved": true,
+    "producerToConsumerRelationObserved": true
+  },
+  "correctedBuild": {
+    "schemaVersion": 1,
+    "agentVersion": "2.33.1",
+    "agentSha256": "e43a270df53c6f423e0ab157be9c27ccc01d5dc3232e162fe54777573db2f149",
+    "recordedAt": "2026-11-12T07:24:03.568082+00:00",
+    "observations": [
+      {
+        "mode": "mvc-platform",
+        "identity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+          "build": "method-agent-b1",
+          "module": "execution-mvc",
+          "artifactSha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+          "sourceState": "clean"
+        },
+        "configSha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+        "javaVersion": "21.0.13",
+        "server": "Tomcat",
+        "requestThreadEvidence": [
+          {
+            "stage": "request-ingress",
+            "traceparent": "00-efd2c5ef39c74f3eb30408d53bc8a35e-aa3b447abc304de4-01",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "http-nio-8080-exec-2",
+            "virtual": false,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf"
+          },
+          {
+            "stage": "request-work",
+            "traceparent": "00-efd2c5ef39c74f3eb30408d53bc8a35e-aa3b447abc304de4-01",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "http-nio-8080-exec-2",
+            "virtual": false,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf"
+          },
+          {
+            "stage": "outbox-publish",
+            "traceparent": "00-efd2c5ef39c74f3eb30408d53bc8a35e-aa3b447abc304de4-01",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "scheduling-1",
+            "virtual": false,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf"
+          },
+          {
+            "stage": "consumer-attempt",
+            "traceparent": "00-bb6939d157199bf0062aaec57ba7c42e-68acc7ee40569c04-03",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1",
+            "virtual": false,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf"
+          }
+        ],
+        "httpIncomingTraceId": "efd2c5ef39c74f3eb30408d53bc8a35e",
+        "httpExtractionObserved": true,
+        "selectedCreateInHttpTrace": true,
+        "producerTraceIds": [
+          "bb6939d157199bf0062aaec57ba7c42e"
+        ],
+        "consumerRecordTraceparents": [
+          "00-bb6939d157199bf0062aaec57ba7c42e-68acc7ee40569c04-03"
+        ],
+        "outboxOriginalTraceparent": "00-efd2c5ef39c74f3eb30408d53bc8a35e-aa3b447abc304de4-01",
+        "producerAndConsumerRelationObserved": true,
+        "consumerProducerDirectParents": 1,
+        "consumerProducerLinks": 0,
+        "selectedAcceptInProducerTrace": true,
+        "selectedAcceptDescendsFromConnectedConsumer": true,
+        "consumerHeaderMatchesProducerTrace": true,
+        "consumerHeaderMatchesOwnedProducerSpan": true,
+        "jdbcClientSpanCountInHttpTrace": 4,
+        "redisBusinessRoundTripObserved": true,
+        "redisClientSpanCountInHttpTrace": 0,
+        "redisCoverage": "BUSINESS_ROUND_TRIP_ONLY; client span absent, cause unverified",
+        "scheduledOutboxPreservedIncomingSdkTrace": false,
+        "manualCarrierOverwrittenAtTransport": true,
+        "effects": 1,
+        "spanCount": 367,
+        "spanCountsByScope": {
+          "io.opentelemetry.jdbc": 190,
+          "io.opentelemetry.kafka-clients-0.11": 1,
+          "io.opentelemetry.methods": 6,
+          "io.opentelemetry.spring-kafka-2.7": 3,
+          "io.opentelemetry.spring-scheduling-3.1": 162,
+          "io.opentelemetry.tomcat-10.0": 5
+        },
+        "selectedTraceSpans": [
+          {
+            "traceId": "efd2c5ef39c74f3eb30408d53bc8a35e",
+            "spanId": "35e276058a4e81f1",
+            "parentSpanId": "05a1ba5456229140",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "29",
+              "thread.name": "http-nio-8080-exec-2"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "efd2c5ef39c74f3eb30408d53bc8a35e",
+            "spanId": "1a9b39fa5c113697",
+            "parentSpanId": "05a1ba5456229140",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "29",
+              "thread.name": "http-nio-8080-exec-2"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "efd2c5ef39c74f3eb30408d53bc8a35e",
+            "spanId": "478580606474fc83",
+            "parentSpanId": "05a1ba5456229140",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "29",
+              "thread.name": "http-nio-8080-exec-2"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "efd2c5ef39c74f3eb30408d53bc8a35e",
+            "spanId": "b438cbde28ab2338",
+            "parentSpanId": "05a1ba5456229140",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "29",
+              "thread.name": "http-nio-8080-exec-2"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "efd2c5ef39c74f3eb30408d53bc8a35e",
+            "spanId": "3823aa6c23b29a10",
+            "parentSpanId": "aa3b447abc304de4",
+            "kind": 2,
+            "scope": "io.opentelemetry.tomcat-10.0",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "thread.id": "29",
+              "thread.name": "http-nio-8080-exec-2"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "efd2c5ef39c74f3eb30408d53bc8a35e",
+            "spanId": "05a1ba5456229140",
+            "parentSpanId": "266e729ee4cfe790",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "create",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "29",
+              "thread.name": "http-nio-8080-exec-2"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "efd2c5ef39c74f3eb30408d53bc8a35e",
+            "spanId": "266e729ee4cfe790",
+            "parentSpanId": "3823aa6c23b29a10",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "create",
+              "code.namespace": "io.jjamtong.sandbox.executionmvc.ExecutionMvcController",
+              "thread.id": "29",
+              "thread.name": "http-nio-8080-exec-2"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "0b9e35eca9374a29",
+            "parentSpanId": "2bf628c6596fab81",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "43",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "3c007a2ce553ebef",
+            "parentSpanId": "5b83905040f392fc",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "43",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "52e4f60a26d01d29",
+            "parentSpanId": "5b83905040f392fc",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "43",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "9b55db1d346c192c",
+            "parentSpanId": "2bf628c6596fab81",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "43",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "6309e1cc39e90c88",
+            "parentSpanId": "d23666ca160152b6",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "42",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "f8bc43c79f9c01c4",
+            "parentSpanId": "d23666ca160152b6",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "42",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "d45dcb196ffd0c33",
+            "parentSpanId": "d23666ca160152b6",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "42",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "df98f851f986e4fd",
+            "parentSpanId": "d23666ca160152b6",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "42",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "1422233a1dc89350",
+            "parentSpanId": "d23666ca160152b6",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "42",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "2bf628c6596fab81",
+            "parentSpanId": null,
+            "kind": 1,
+            "scope": "io.opentelemetry.spring-scheduling-3.1",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "publishPending",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "43",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "7490f0960f6a4a61",
+            "parentSpanId": "68acc7ee40569c04",
+            "kind": 5,
+            "scope": "io.opentelemetry.spring-kafka-2.7",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "messaging.kafka.consumer.group": "execution-probe-mvc-platform",
+              "messaging.destination.partition.id": "0",
+              "messaging.system": "kafka",
+              "messaging.destination.name": "execution.probe.v1",
+              "thread.id": "42",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "68acc7ee40569c04",
+            "parentSpanId": "5b83905040f392fc",
+            "kind": 4,
+            "scope": "io.opentelemetry.kafka-clients-0.11",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "messaging.system": "kafka",
+              "messaging.destination.name": "execution.probe.v1",
+              "thread.id": "43",
+              "thread.name": "scheduling-1",
+              "messaging.destination.partition.id": "0"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "5b83905040f392fc",
+            "parentSpanId": "2bf628c6596fab81",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "publish",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "43",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "bb6939d157199bf0062aaec57ba7c42e",
+            "spanId": "d23666ca160152b6",
+            "parentSpanId": "7490f0960f6a4a61",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "fb55037a26b02a372c020d6eb2e66fc6fe80e7a3dec00ec237acf738fd92c304",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-platform",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "accept",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "42",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          }
+        ],
+        "selectedTraceSpanLimit": 200,
+        "spanFieldsPolicy": "allowlisted identifiers, scope, kind, parent/links, code/thread/messaging-system metadata; no bodies, args, returns, SQL, URLs, exceptions or process paths"
+      },
+      {
+        "mode": "mvc-virtual",
+        "identity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+          "build": "method-agent-b1",
+          "module": "execution-mvc",
+          "artifactSha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+          "sourceState": "clean"
+        },
+        "configSha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+        "javaVersion": "21.0.13",
+        "server": "Tomcat",
+        "requestThreadEvidence": [
+          {
+            "stage": "request-ingress",
+            "traceparent": "00-8df4a1a2bf134e83902f5af0df52c48b-f7d9eac25d2c4af7-01",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "tomcat-handler-7",
+            "virtual": true,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf"
+          },
+          {
+            "stage": "request-work",
+            "traceparent": "00-8df4a1a2bf134e83902f5af0df52c48b-f7d9eac25d2c4af7-01",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "tomcat-handler-7",
+            "virtual": true,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf"
+          },
+          {
+            "stage": "outbox-publish",
+            "traceparent": "00-8df4a1a2bf134e83902f5af0df52c48b-f7d9eac25d2c4af7-01",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "scheduling-1",
+            "virtual": true,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf"
+          },
+          {
+            "stage": "consumer-attempt",
+            "traceparent": "00-3044e117016143366216f7ae2687a606-35ec2dbfdca94646-03",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "kafka-1",
+            "virtual": true,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf"
+          }
+        ],
+        "httpIncomingTraceId": "8df4a1a2bf134e83902f5af0df52c48b",
+        "httpExtractionObserved": true,
+        "selectedCreateInHttpTrace": true,
+        "producerTraceIds": [
+          "3044e117016143366216f7ae2687a606"
+        ],
+        "consumerRecordTraceparents": [
+          "00-3044e117016143366216f7ae2687a606-35ec2dbfdca94646-03"
+        ],
+        "outboxOriginalTraceparent": "00-8df4a1a2bf134e83902f5af0df52c48b-f7d9eac25d2c4af7-01",
+        "producerAndConsumerRelationObserved": true,
+        "consumerProducerDirectParents": 1,
+        "consumerProducerLinks": 0,
+        "selectedAcceptInProducerTrace": true,
+        "selectedAcceptDescendsFromConnectedConsumer": true,
+        "consumerHeaderMatchesProducerTrace": true,
+        "consumerHeaderMatchesOwnedProducerSpan": true,
+        "jdbcClientSpanCountInHttpTrace": 4,
+        "redisBusinessRoundTripObserved": true,
+        "redisClientSpanCountInHttpTrace": 0,
+        "redisCoverage": "BUSINESS_ROUND_TRIP_ONLY; client span absent, cause unverified",
+        "scheduledOutboxPreservedIncomingSdkTrace": false,
+        "manualCarrierOverwrittenAtTransport": true,
+        "effects": 1,
+        "spanCount": 244,
+        "spanCountsByScope": {
+          "io.opentelemetry.jdbc": 129,
+          "io.opentelemetry.kafka-clients-0.11": 1,
+          "io.opentelemetry.methods": 6,
+          "io.opentelemetry.spring-kafka-2.7": 3,
+          "io.opentelemetry.spring-scheduling-3.1": 100,
+          "io.opentelemetry.tomcat-10.0": 5
+        },
+        "selectedTraceSpans": [
+          {
+            "traceId": "8df4a1a2bf134e83902f5af0df52c48b",
+            "spanId": "60707c1394b6546a",
+            "parentSpanId": "18279a6a9fdb6469",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "51",
+              "thread.name": "tomcat-handler-7"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "8df4a1a2bf134e83902f5af0df52c48b",
+            "spanId": "8521e9445b5bc3e8",
+            "parentSpanId": "18279a6a9fdb6469",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "51",
+              "thread.name": "tomcat-handler-7"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "8df4a1a2bf134e83902f5af0df52c48b",
+            "spanId": "2290a603a8352520",
+            "parentSpanId": "18279a6a9fdb6469",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "51",
+              "thread.name": "tomcat-handler-7"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "8df4a1a2bf134e83902f5af0df52c48b",
+            "spanId": "7bcb9f769044a42a",
+            "parentSpanId": "18279a6a9fdb6469",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "51",
+              "thread.name": "tomcat-handler-7"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "8df4a1a2bf134e83902f5af0df52c48b",
+            "spanId": "18279a6a9fdb6469",
+            "parentSpanId": "3113f17c113cc9ba",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "create",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "51",
+              "thread.name": "tomcat-handler-7"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "8df4a1a2bf134e83902f5af0df52c48b",
+            "spanId": "3113f17c113cc9ba",
+            "parentSpanId": "e8030747a6e541ae",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "create",
+              "code.namespace": "io.jjamtong.sandbox.executionmvc.ExecutionMvcController",
+              "thread.id": "51",
+              "thread.name": "tomcat-handler-7"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "8df4a1a2bf134e83902f5af0df52c48b",
+            "spanId": "e8030747a6e541ae",
+            "parentSpanId": "f7d9eac25d2c4af7",
+            "kind": 2,
+            "scope": "io.opentelemetry.tomcat-10.0",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "thread.id": "51",
+              "thread.name": "tomcat-handler-7"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "0bdc90c51eeeb0fd",
+            "parentSpanId": "c0ba69dd036cd259",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "35",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "8cc3d68675aff7f7",
+            "parentSpanId": "54fc3946b71cdb01",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "35",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "88509952b20ed3d4",
+            "parentSpanId": "54fc3946b71cdb01",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "35",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "b341c15555a274ff",
+            "parentSpanId": "cce6708f3cee5553",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "32",
+              "thread.name": "kafka-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "d37531081676455f",
+            "parentSpanId": "54fc3946b71cdb01",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "35",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "3170dce5bfc08cb4",
+            "parentSpanId": "cce6708f3cee5553",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "32",
+              "thread.name": "kafka-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "366b5e72946d8e39",
+            "parentSpanId": "cce6708f3cee5553",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "32",
+              "thread.name": "kafka-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "ff52dd798e18b452",
+            "parentSpanId": "c0ba69dd036cd259",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "35",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "e5c774ae9f22f9b8",
+            "parentSpanId": "cce6708f3cee5553",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "32",
+              "thread.name": "kafka-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "d434d01188799eb2",
+            "parentSpanId": "cce6708f3cee5553",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "32",
+              "thread.name": "kafka-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "c0ba69dd036cd259",
+            "parentSpanId": null,
+            "kind": 1,
+            "scope": "io.opentelemetry.spring-scheduling-3.1",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "publishPending",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "35",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "35ec2dbfdca94646",
+            "parentSpanId": "54fc3946b71cdb01",
+            "kind": 4,
+            "scope": "io.opentelemetry.kafka-clients-0.11",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "messaging.system": "kafka",
+              "messaging.destination.name": "execution.probe.v1",
+              "thread.id": "35",
+              "thread.name": "scheduling-1",
+              "messaging.destination.partition.id": "2"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "54fc3946b71cdb01",
+            "parentSpanId": "c0ba69dd036cd259",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "publish",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "35",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "cce6708f3cee5553",
+            "parentSpanId": "4c8b209d54c108cb",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "accept",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "32",
+              "thread.name": "kafka-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "3044e117016143366216f7ae2687a606",
+            "spanId": "4c8b209d54c108cb",
+            "parentSpanId": "35ec2dbfdca94646",
+            "kind": 5,
+            "scope": "io.opentelemetry.spring-kafka-2.7",
+            "resource": {
+              "jjamtong.artifact.sha256": "93ab80c32ab81a5295e50a2ff239b732f455032d2f7be0600b67c5b6205d33cf",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "8975d9dce733b8bfaef36fe634244de1196df2412830d6cdd9cd9483ccc04cae",
+              "jjamtong.module": "execution-mvc",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-mvc-virtual",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "messaging.kafka.consumer.group": "execution-probe-mvc-virtual",
+              "messaging.destination.partition.id": "2",
+              "messaging.system": "kafka",
+              "messaging.destination.name": "execution.probe.v1",
+              "thread.id": "32",
+              "thread.name": "kafka-1"
+            },
+            "error": false,
+            "links": []
+          }
+        ],
+        "selectedTraceSpanLimit": 200,
+        "spanFieldsPolicy": "allowlisted identifiers, scope, kind, parent/links, code/thread/messaging-system metadata; no bodies, args, returns, SQL, URLs, exceptions or process paths"
+      },
+      {
+        "mode": "netty",
+        "identity": {
+          "repository": "local:jjamtong-sandbox",
+          "revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+          "build": "method-agent-b1",
+          "module": "execution-netty",
+          "artifactSha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+          "sourceState": "clean"
+        },
+        "configSha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+        "javaVersion": "21.0.13",
+        "server": "Netty",
+        "requestThreadEvidence": [
+          {
+            "stage": "request-ingress",
+            "traceparent": "00-96ac48a810434ffaa480fa53bb54ab97-65e15005d3de4dc2-01",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "reactor-http-nio-1",
+            "virtual": false,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76"
+          },
+          {
+            "stage": "request-work",
+            "traceparent": "00-96ac48a810434ffaa480fa53bb54ab97-65e15005d3de4dc2-01",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "probe-blocking-0",
+            "virtual": false,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76"
+          },
+          {
+            "stage": "outbox-publish",
+            "traceparent": "00-96ac48a810434ffaa480fa53bb54ab97-65e15005d3de4dc2-01",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "scheduling-1",
+            "virtual": false,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76"
+          },
+          {
+            "stage": "consumer-attempt",
+            "traceparent": "00-6746a8205e8be9dd598b477a2d209164-e371cb8cd9a404e9-03",
+            "context_before": null,
+            "context_after": null,
+            "thread_name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1",
+            "virtual": false,
+            "build_id": "method-agent-b1",
+            "artifact_sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76"
+          }
+        ],
+        "httpIncomingTraceId": "96ac48a810434ffaa480fa53bb54ab97",
+        "httpExtractionObserved": true,
+        "selectedCreateInHttpTrace": true,
+        "producerTraceIds": [
+          "6746a8205e8be9dd598b477a2d209164"
+        ],
+        "consumerRecordTraceparents": [
+          "00-6746a8205e8be9dd598b477a2d209164-e371cb8cd9a404e9-03"
+        ],
+        "outboxOriginalTraceparent": "00-96ac48a810434ffaa480fa53bb54ab97-65e15005d3de4dc2-01",
+        "producerAndConsumerRelationObserved": true,
+        "consumerProducerDirectParents": 1,
+        "consumerProducerLinks": 0,
+        "selectedAcceptInProducerTrace": true,
+        "selectedAcceptDescendsFromConnectedConsumer": true,
+        "consumerHeaderMatchesProducerTrace": true,
+        "consumerHeaderMatchesOwnedProducerSpan": true,
+        "jdbcClientSpanCountInHttpTrace": 4,
+        "redisBusinessRoundTripObserved": true,
+        "redisClientSpanCountInHttpTrace": 0,
+        "redisCoverage": "BUSINESS_ROUND_TRIP_ONLY; client span absent, cause unverified",
+        "scheduledOutboxPreservedIncomingSdkTrace": false,
+        "manualCarrierOverwrittenAtTransport": true,
+        "effects": 1,
+        "spanCount": 117,
+        "spanCountsByScope": {
+          "io.opentelemetry.jdbc": 71,
+          "io.opentelemetry.kafka-clients-0.11": 1,
+          "io.opentelemetry.methods": 6,
+          "io.opentelemetry.netty-4.1": 9,
+          "io.opentelemetry.spring-kafka-2.7": 3,
+          "io.opentelemetry.spring-scheduling-3.1": 27
+        },
+        "selectedTraceSpans": [
+          {
+            "traceId": "96ac48a810434ffaa480fa53bb54ab97",
+            "spanId": "ce2fb41642fbfe72",
+            "parentSpanId": "c08cc191d6afb06a",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "37",
+              "thread.name": "probe-blocking-0"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "96ac48a810434ffaa480fa53bb54ab97",
+            "spanId": "c650d2416fee2bba",
+            "parentSpanId": "c08cc191d6afb06a",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "37",
+              "thread.name": "probe-blocking-0"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "96ac48a810434ffaa480fa53bb54ab97",
+            "spanId": "f1e3660fc2dca1b7",
+            "parentSpanId": "65e15005d3de4dc2",
+            "kind": 2,
+            "scope": "io.opentelemetry.netty-4.1",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "thread.id": "26",
+              "thread.name": "reactor-http-nio-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "96ac48a810434ffaa480fa53bb54ab97",
+            "spanId": "c08cc191d6afb06a",
+            "parentSpanId": "3cdbd5888a7e0f7c",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "create",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "37",
+              "thread.name": "probe-blocking-0"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "96ac48a810434ffaa480fa53bb54ab97",
+            "spanId": "3cdbd5888a7e0f7c",
+            "parentSpanId": "f1e3660fc2dca1b7",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "create",
+              "code.namespace": "io.jjamtong.sandbox.executionnetty.ExecutionNettyController",
+              "thread.id": "26",
+              "thread.name": "reactor-http-nio-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "96ac48a810434ffaa480fa53bb54ab97",
+            "spanId": "28ebf7e0dd6f8634",
+            "parentSpanId": "c08cc191d6afb06a",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "37",
+              "thread.name": "probe-blocking-0"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "96ac48a810434ffaa480fa53bb54ab97",
+            "spanId": "001d2d1808cf94e2",
+            "parentSpanId": "c08cc191d6afb06a",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "37",
+              "thread.name": "probe-blocking-0"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "e371cb8cd9a404e9",
+            "parentSpanId": "7a0b4c31cd5a2b1f",
+            "kind": 4,
+            "scope": "io.opentelemetry.kafka-clients-0.11",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "messaging.system": "kafka",
+              "messaging.destination.name": "execution.probe.v1",
+              "thread.id": "32",
+              "thread.name": "scheduling-1",
+              "messaging.destination.partition.id": "0"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "3d1ba6bc2406a4cf",
+            "parentSpanId": null,
+            "kind": 1,
+            "scope": "io.opentelemetry.spring-scheduling-3.1",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "publishPending",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "32",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "7a0b4c31cd5a2b1f",
+            "parentSpanId": "3d1ba6bc2406a4cf",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "publish",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "32",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "b84f03bba96ffa77",
+            "parentSpanId": "3d1ba6bc2406a4cf",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "32",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "6437cf3b0c9a2e6b",
+            "parentSpanId": "7a0b4c31cd5a2b1f",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "32",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "bd2dfb1340d8f565",
+            "parentSpanId": "7a0b4c31cd5a2b1f",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "32",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "f466d72bd5c7622d",
+            "parentSpanId": "3d1ba6bc2406a4cf",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "32",
+              "thread.name": "scheduling-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "1443cd6f9417c5c8",
+            "parentSpanId": "56124a88ff5401f8",
+            "kind": 1,
+            "scope": "io.opentelemetry.methods",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "code.function": "accept",
+              "code.namespace": "io.jjamtong.sandbox.execution.ProbeService",
+              "thread.id": "31",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "56124a88ff5401f8",
+            "parentSpanId": "e371cb8cd9a404e9",
+            "kind": 5,
+            "scope": "io.opentelemetry.spring-kafka-2.7",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "messaging.kafka.consumer.group": "execution-probe-netty",
+              "messaging.destination.partition.id": "0",
+              "messaging.system": "kafka",
+              "messaging.destination.name": "execution.probe.v1",
+              "thread.id": "31",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "86764493af3b1ed7",
+            "parentSpanId": "1443cd6f9417c5c8",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "31",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "9b64c3668b3dc2fe",
+            "parentSpanId": "1443cd6f9417c5c8",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "31",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "696aa580b30f0ccd",
+            "parentSpanId": "1443cd6f9417c5c8",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "31",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "f02d4df130277394",
+            "parentSpanId": "1443cd6f9417c5c8",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "31",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          },
+          {
+            "traceId": "6746a8205e8be9dd598b477a2d209164",
+            "spanId": "6c573558b275bbc7",
+            "parentSpanId": "1443cd6f9417c5c8",
+            "kind": 3,
+            "scope": "io.opentelemetry.jdbc",
+            "resource": {
+              "jjamtong.artifact.sha256": "c5524b816dba85c709c633b460679749cfc419e7a5a0092e2a8d617016e19f76",
+              "jjamtong.build": "method-agent-b1",
+              "jjamtong.config.sha256": "0f091611994998b3ce1bb3f2d56821531ee024ced6f1cd57d11e5d5a0d8d7209",
+              "jjamtong.module": "execution-netty",
+              "jjamtong.repository": "local:jjamtong-sandbox",
+              "jjamtong.revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+              "process.runtime.version": "21.0.13+9-LTS",
+              "service.name": "execution-agent-netty",
+              "telemetry.distro.version": "2.33.1",
+              "telemetry.sdk.version": "1.67.0"
+            },
+            "attributes": {
+              "db.system": "postgresql",
+              "thread.id": "31",
+              "thread.name": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+            },
+            "error": false,
+            "links": []
+          }
+        ],
+        "selectedTraceSpanLimit": 200,
+        "spanFieldsPolicy": "allowlisted identifiers, scope, kind, parent/links, code/thread/messaging-system metadata; no bodies, args, returns, SQL, URLs, exceptions or process paths"
+      }
+    ],
+    "validatorCodeSha256": "08feebc266237a0c2370c1a4b5350c55803ff0be7b8e8da00242436d6ce71af7",
+    "rawLogSha256": {
+      "mvc-platform": "c90652a85f962353f29750f4b8c75bfad8cd86e599a15753bcb3d2c6646b2e4f",
+      "mvc-virtual": "c95dd3c7eebbce945ab5080fe4b6d5adbad831ea799a45432d3e75fb74c42061",
+      "netty": "df846719af91b337ae7d2f4de8e6471e00cdbcfae596f92e7820dee60ee8ad8b"
+    },
+    "inputBoundBytesPerLog": 67108864,
+    "selectedSpanLimitPerMode": 200,
+    "baselineContainersPreserved": true,
+    "baselineContainerCount": 11,
+    "addedContainersStoppedAndRemoved": true,
+    "businessPathsPassed": 3,
+    "telemetryScope": "selected concrete methods plus observed HTTP/JDBC/Kafka integration",
+    "limitations": [
+      "existing deployed revision/artifact retained; current target HEAD is not substituted",
+      "manual string/outbox correlation does not prove SDK context propagation; no outbox SDK context bridge was implemented",
+      "no complete-method coverage, sampling/production workload or cross-version support claim",
+      "Boot fixture has no static index/descriptor join in this smoke; its method spans carry class/name evidence",
+      "Redis business round trip succeeded, but no Redis/Lettuce client span was observed; cause unverified",
+      "consumer Record.headers and SDK span parent/links are observed; no broker payload is retained"
+    ]
+  },
+  "targetParserFix": {
+    "revision": "1707e7c9e01e19d52bb90fbf13cb70414d5d7a6d",
+    "targetMavenTests": 12,
+    "testLogSha256": "b896d698d20f073ba6044c279b15d9e7cc16c730059b4216c5d4ba30e29f53a8",
+    "scope": "version00 opaque two-hex flags; nonzero IDs and fixed length preserved; no SDK outbox context bridge"
+  },
+  "priorArtifactsRetained": [
+    {
+      "module": "execution-mvc",
+      "oldBuild": "execution-probe-b1",
+      "oldArtifactSha256": "2b4a676cb7f7cd593cd46feffa6f221de2b901b9d0182f36903d61f5562206d7",
+      "oldImageIdUnchanged": true
+    },
+    {
+      "module": "execution-netty",
+      "oldBuild": "execution-probe-b1",
+      "oldArtifactSha256": "20683964131cc727e392d55bd31c646756eeebe33b401d32005fed73c708a1b2",
+      "oldImageIdUnchanged": true
+    }
+  ],
+  "regression": {
+    "tests": 13,
+    "testCodeSha256": "a65faa18d3f1b2aa22dd0abf598ee4161a2e2abb510dfbaaa8f437c9bc1d9925",
+    "validation": "preserved raw logs independently revalidated with strengthened current validator; no app restart"
+  }
+}
