@@ -1,6 +1,8 @@
 # 구현 방법론·아키텍처 비교 실험
 
-상태: **첫 로컬 비교 구현·실행 / 제품 아키텍처 미채택 · 2026-11-12**.
+상태: **합성 비교와 실제 Git 재확인 구현·실행 / 관계 갱신 검증 기본안 기록 / 제품 스택 미채택 · 2026-11-12**.
+
+후속 [원본 재확인·변경 알림 실험](HYBRID-RECONCILIATION.md), [실행 결과](HYBRID-RESULTS.md), [ADR 0001](../decisions/0001-reconciliation-baseline.md)을 추가했다. 실제 Git·공개 GitHub REST 읽기와 in-process/one-shot worker를 비교하며, 첫 실험의 합성 이벤트 직접 반영과 후속 hints의 원본 재조회 의미를 구분한다. 아래 첫 실험 결과는 그대로 보존한다.
 
 작업 계층: [E05 #33](https://github.com/DDINGJOO/JJAM-TONG/issues/33) → [S10 #34](https://github.com/DDINGJOO/JJAM-TONG/issues/34) → [실험실 T19 #35](https://github.com/DDINGJOO/JJAM-TONG/issues/35) / [실제 연동 후속 T20 #36](https://github.com/DDINGJOO/JJAM-TONG/issues/36). 기존 요구사항 이슈와 별도 실험 milestone으로 관리한다.
 

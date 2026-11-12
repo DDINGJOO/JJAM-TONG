@@ -131,12 +131,16 @@ SIEM 근거를 같은 서비스·배포·자산의 운영 증거와 함께 조�
 
 [X1 비교 실험 milestone](https://github.com/DDINGJOO/JJAM-TONG/milestone/10) · [방법론·비교 축](docs/experiments/ARCHITECTURE-EXPERIMENTS.md) · [첫 실행 결과](docs/experiments/RESULTS.md)
 
+[원본 재확인·변경 알림 결과](docs/experiments/HYBRID-RESULTS.md) · [관계 갱신 검증 기본안 ADR](docs/decisions/0001-reconciliation-baseline.md)
+
 ### S10 · [#34 같은 시나리오로 자동 갱신 구조와 실행 경계를 비교한다](https://github.com/DDINGJOO/JJAM-TONG/issues/34)
 
 주기적 원본 조회·이벤트·혼합을 같은 계약과 입력으로 구현하고, 실제 공급원·분리 실행의 후속 비교로 이어간다. 전체 범위는 유지하며 어떤 제품 스택도 채택하지 않았다.
 
 - [#35 세 갱신 전략과 독립 판정 실험실 구현·검증](https://github.com/DDINGJOO/JJAM-TONG/issues/35) · X01~X16, 48회 합성 실행과 별도 테스트 9개; 목표 미달 13개도 공개.
-- [#36 실제 공급원 adapter와 분리 worker 비교 조건 구체화](https://github.com/DDINGJOO/JJAM-TONG/issues/36) · 선행: [#35](https://github.com/DDINGJOO/JJAM-TONG/issues/35); 실제 구현 대안·권한·환경·버전·실측 범위를 정할 후속 작업.
+- [#36 실제 공급원 adapter와 분리 worker 비교 조건 구체화](https://github.com/DDINGJOO/JJAM-TONG/issues/36) · 선행: [#35](https://github.com/DDINGJOO/JJAM-TONG/issues/35); 실제 Git·공개 GitHub GET·loopback 수신·두 실행 경계의 18회 비교와 테스트 17개. 제품 스택·운영 지원과 구분.
+- [#37 공급원별 수집·복구 정책과 상시 worker 검증](https://github.com/DDINGJOO/JJAM-TONG/issues/37) · 선행: [#36](https://github.com/DDINGJOO/JJAM-TONG/issues/36); 실제 권한·연결·list/watch·호출 예산·보존과 장기 실행 복구.
+- [#38 버전 근거 보관·조회와 실제 코드 분석의 비교 조건 구체화](https://github.com/DDINGJOO/JJAM-TONG/issues/38) · 선행: [#36](https://github.com/DDINGJOO/JJAM-TONG/issues/36); 과거 시점·원본 중단·권한, 실제 정적 분석·계측의 판정과 실험 조건.
 
 기존 32개 요구사항 이슈의 완료 조건·상태·부모 관계를 유지하며, 별도 실험 에픽·스토리·태스크를 추가했다. 실제 진행 상태는 GitHub에서 확인한다.
 
