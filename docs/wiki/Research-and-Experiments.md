@@ -4,7 +4,7 @@
 
 ## 오픈소스에서 무엇을 가져올 것인가
 
-Backstage의 카탈로그, Argo 계열의 원본 확인, Crossplane의 자원 제어, 관측·코드 분석·보안 생태계를 같은 사용자 질문과 반례로 비교한다. 제품 목록이나 화면 유사성만으로 채택하지 않는다. **버전이 맞는 근거 연결·지속 갱신·에이전트 조회에서 우리가 책임질 부분**을 검토한다.
+Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, 관측·코드 분석·보안 생태계를 같은 사용자 질문과 반례로 비교한다. 제품 목록이나 화면 유사성만으로 채택하지 않는다. **버전이 맞는 근거 연결·지속 갱신·에이전트 조회에서 우리가 책임질 부분**을 검토한다.
 
 | 자료 | 확인할 내용 |
 | --- | --- |
@@ -17,14 +17,16 @@ Backstage의 카탈로그, Argo 계열의 원본 확인, Crossplane의 자원 �
 
 ## 실행한 비교와 한계
 
+갱신 전략은 주기 확인, 변경 알림, 두 방식의 결합을 비교한다. 두 번째 실험에서는 같은 프로세스 안에서 실행하는 구성과 별도 프로세스를 한 번 띄워 실행하는 구성도 비교한다.
+
 | 실험 | 재현·결과 | 검증 범위 |
 | --- | --- | --- |
 | 합성 공급원 갱신 전략 | [실험실](../../experiments/architecture_lab/README.md), [결과](../experiments/RESULTS.md), [T19 #35](https://github.com/DDINGJOO/JJAM-TONG/issues/35) | 16개 시나리오 × 3방식, 48회 실행·66개 체크포인트·목표 미달 13개. 같은 SQLite의 로컬 합성 비교 |
-| 원본 재확인·알림·실행 경계 | [실험실](../../experiments/reconciliation_lab/README.md), [설계·판정](../experiments/HYBRID-RECONCILIATION.md), [결과](../experiments/HYBRID-RESULTS.md), [T20 #36](https://github.com/DDINGJOO/JJAM-TONG/issues/36) | 실제 임시 Git·loopback HTTP·공개 GitHub GET. 3방식 × 2경계 × 3반복, 18회 실행·144개 체크포인트·목표 미달 24개 |
+| 원본 재확인·알림·실행 경계 | [실험실](../../experiments/reconciliation_lab/README.md), [설계·판정](../experiments/HYBRID-RECONCILIATION.md), [결과](../experiments/HYBRID-RESULTS.md), [T20 #36](https://github.com/DDINGJOO/JJAM-TONG/issues/36) | 실제 임시 Git, 같은 장비 안에서 주고받는 loopback HTTP, 공개 GitHub GET. 갱신 전략 3개 × 실행 구성 2개 × 3회 반복, 총 18회 실행·144개 체크포인트·목표 미달 24개 |
 
-두 번째 비교에서 hybrid는 정해진 체크포인트의 현재 상태 목표를 충족했지만 **모든 방식에서 관측하지 못한 중간 커밋 공백**이 있었다. 반복된 체크포인트는 독립적인 실제 장애나 운영 SLO 표본이 아니다. 429·부분 응답은 loopback 주입, 연결 회수는 로컬 switch이며 실제 GitHub webhook/App 회수·클라우드 검증과 구분한다.
+두 번째 비교에서 두 전략을 결합한 hybrid는 정해진 체크포인트의 현재 상태 목표를 충족했지만, **세 방식 모두 일부 중간 커밋을 관측하지 못해 이력에 공백이 남았다.** 반복된 체크포인트는 독립적인 실제 장애나 운영 서비스 수준 목표(SLO)를 입증하는 표본이 아니다. HTTP 429(호출 제한)·부분 응답은 같은 컴퓨터 안에서 통신하는 테스트 서버에 주입했고, 연결 회수는 로컬 설정 전환으로 재현했다. 실제 GitHub 웹훅 등록이나 App 권한 회수, 클라우드 환경을 검증한 결과와는 구분한다.
 
-테스트 결과와 도구 버전·명령·판정 원본은 각 결과 문서에 있다. 실제 메서드 분석·계측·build/trace·AWS/Kubernetes·CMDB·SIEM과 전체 BDD의 수락은 아직 검증하지 않았다.
+테스트 결과와 도구 버전·명령·판정 원본은 각 결과 문서에 있다. 실제 메서드 분석·계측, 빌드 정보와 요청 추적 기록(trace)의 연결, AWS/Kubernetes·CMDB·SIEM 지원, 전체 BDD의 수락은 아직 검증하지 않았다.
 
 ## 후속 비교
 

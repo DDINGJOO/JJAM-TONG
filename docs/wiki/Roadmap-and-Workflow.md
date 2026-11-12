@@ -4,7 +4,7 @@
 
 ## 작업을 찾는 곳
 
-[프로젝트 #1](https://github.com/DDINGJOO/JJAM-TONG/issues/1)에서 부모·자식 이슈를 따라가고, [전체 로드맵](../../ROADMAP.md)에서 에픽·스토리·태스크와 선행 조건을 확인한다. milestone은 목표 구간이며 확정 출시일을 뜻하지 않는다.
+[프로젝트 #1](https://github.com/DDINGJOO/JJAM-TONG/issues/1)에서 부모·자식 이슈를 따라가고, [전체 로드맵](../../ROADMAP.md)에서 에픽·스토리·태스크와 선행 조건을 확인한다. 마일스톤(milestone)은 작업의 목표 구간이며 확정 출시일을 뜻하지 않는다.
 
 | 보고 싶은 것 | 바로가기 |
 | --- | --- |
@@ -13,7 +13,7 @@
 | 다음 작업·차단 | [착수 가능](https://github.com/DDINGJOO/JJAM-TONG/issues?q=is%3Aopen+label%3A%22status%3Aready%22), [백로그](https://github.com/DDINGJOO/JJAM-TONG/issues?q=is%3Aopen+label%3A%22status%3Abacklog%22), [막힘](https://github.com/DDINGJOO/JJAM-TONG/issues?q=is%3Aopen+label%3A%22status%3Ablocked%22) |
 | 완료·변경 기록 | [닫힌 이슈](https://github.com/DDINGJOO/JJAM-TONG/issues?q=is%3Aissue+is%3Aclosed), [PR](https://github.com/DDINGJOO/JJAM-TONG/pulls?q=is%3Apr), [milestone](https://github.com/DDINGJOO/JJAM-TONG/milestones) |
 
-위키에는 진행 상태나 완료율을 다시 적지 않는다. 실제 상태는 GitHub open/closed·단일 `status:*` 라벨·Parent/Sub-issues·milestone이 기준이다. 개인 진행 leaf 태스크는 한 번에 하나다.
+위키에는 진행 상태나 완료율을 다시 적지 않는다. 실제 상태는 GitHub의 열림·닫힘 상태, 단일 `status:*` 라벨, 부모·자식 이슈 관계, 마일스톤이 기준이다. 개인이 진행하는 최하위 태스크는 한 번에 하나다.
 
 ## 어떤 이야기를 어디에 남기는가
 
