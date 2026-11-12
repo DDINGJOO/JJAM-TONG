@@ -17,6 +17,9 @@
 | S07 자산·소유권 | [07-cmdb.feature](../../specs/features/07-cmdb.feature) | BDD-CMDB-001~003 | 구현 대상 |
 | S08 보안 상관 분석 | [08-security.feature](../../specs/features/08-security.feature) | BDD-SEC-001~003 | 구현 대상 |
 | S09 카탈로그 기반 자원 매핑 | [09-catalog-mapping.feature](../../specs/features/09-catalog-mapping.feature) | BDD-CAT-001~006 | 구현 대상 |
+| S03·S09 공통 자동 온보딩 | [10-automated-onboarding.feature](../../specs/features/10-automated-onboarding.feature) | BDD-ONB-001~010 | 구현 대상 |
+
+[자동화 제품 기획](AUTOMATION.md)은 GitHub 기반 발견·등록·지속 갱신과 운영 자동화의 흐름, 확인한 방향·세부 제안·미결 정책을 구분한다. 새 10개 시나리오는 기존 S03·S09의 명세·검증 태스크에 연결한다. 전체 10개 feature·47개 시나리오는 실행기 없는 Draft이며 새 스토리·태스크를 중복 생성하지 않는다.
 
 각 스토리는 요구사항·미결정 사항 검토 태스크와 검증 계획 태스크에 연결한다. 실제 이슈 번호·부모 관계·상태는 [ROADMAP](../../ROADMAP.md)의 GitHub 링크에서 확인한다. 시나리오 파일이나 이슈를 만들었다는 이유로 기능을 완료 처리하지 않는다.
 
