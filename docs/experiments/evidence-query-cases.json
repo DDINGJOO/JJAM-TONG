@@ -1,0 +1,124 @@
+{
+  "schema": "jjamtong-t22-design-fixture-1",
+  "evidence_level": "expected_only_not_executed",
+  "time_unit": "logical_fixture_order_not_seconds",
+  "identities": {
+    "A": {
+      "scope": "fixture-team",
+      "repository": "fixture/community",
+      "commit": "fixture-same-commit",
+      "build": "build-A",
+      "artifact": "sha256:fixture-a",
+      "module": "board-api",
+      "analysis_run": "fixture-run-A",
+      "analyzer": "synthetic-fixture-v1",
+      "schema": "fixture-schema-1",
+      "config": "include-board",
+      "index_digest": "fixture-index-A"
+    },
+    "B": {
+      "scope": "fixture-team",
+      "repository": "fixture/community",
+      "commit": "fixture-same-commit",
+      "build": "build-B",
+      "artifact": "sha256:fixture-b",
+      "module": "board-api",
+      "analysis_run": "fixture-run-B",
+      "analyzer": "synthetic-fixture-v1",
+      "schema": "fixture-schema-1",
+      "config": "include-board",
+      "index_digest": "fixture-index-B"
+    },
+    "A2": {
+      "scope": "fixture-team",
+      "repository": "fixture/community",
+      "commit": "fixture-same-commit",
+      "build": "build-A",
+      "artifact": "sha256:fixture-a",
+      "module": "board-api",
+      "analysis_run": "fixture-run-A2",
+      "analyzer": "synthetic-fixture-v1",
+      "schema": "fixture-schema-1",
+      "config": "exclude-validation",
+      "index_digest": "fixture-index-A2"
+    }
+  },
+  "records": [
+    {"id": "graph-A", "kind": "static_candidate", "identity": "A", "event_at": 10, "recorded_at": 12, "source_ref": "fixture/analysis/A", "relations": [["fixture.board.Controller.list()V", "fixture.board.Service.list()V"], ["fixture.board.Service.list()V", "fixture.board.Service.validate()V"], ["fixture.board.Service.list()V", "fixture.board.Repository.find()Ljava/util/List;"]], "dispatch_candidates": [["fixture.board.Repository.find()Ljava/util/List;", "fixture.board.JdbcRepository.find()Ljava/util/List;"], ["fixture.board.Repository.find()Ljava/util/List;", "fixture.board.CacheRepository.find()Ljava/util/List;"]]},
+    {"id": "request-A", "kind": "runtime_observed", "identity": "A", "event_at": 11, "recorded_at": 13, "source_ref": "fixture/traces/A", "relations": [["fixture.board.Controller.list()V", "fixture.board.Service.list()V"], ["fixture.board.Service.list()V", "fixture.board.Service.validate()V"], ["fixture.board.Service.list()V", "fixture.board.JdbcRepository.find()Ljava/util/List;"]], "coverage": "selected-methods; sampling unknown outside fixture"},
+    {"id": "deployment-A", "kind": "deployment_observed", "identity": "A", "event_at": 10, "recorded_at": 12, "source_ref": "fixture/inventory/A", "resource": "fixture-pod-A", "asset_ref": "fixture-shared-db"},
+    {"id": "detail-A", "kind": "raw_detail", "identity": "A", "event_at": 11, "recorded_at": 13, "source_ref": "fixture/traces/A/detail", "attributes": {"fixture.operation": "board-list"}},
+    {"id": "graph-B", "kind": "static_candidate", "identity": "B", "event_at": 20, "recorded_at": 22, "source_ref": "fixture/analysis/B", "relations": [["fixture.board.Controller.list()V", "fixture.board.Service.list()V"], ["fixture.board.Service.list()V", "fixture.board.Service.validate()V"], ["fixture.board.Service.list()V", "fixture.board.Repository.find()Ljava/util/List;"]], "dispatch_candidates": [["fixture.board.Repository.find()Ljava/util/List;", "fixture.board.JdbcRepository.find()Ljava/util/List;"], ["fixture.board.Repository.find()Ljava/util/List;", "fixture.board.CacheRepository.find()Ljava/util/List;"]]},
+    {"id": "request-B", "kind": "runtime_observed", "identity": "B", "event_at": 21, "recorded_at": 23, "source_ref": "fixture/traces/B", "relations": [["fixture.board.Controller.list()V", "fixture.board.Service.list()V"], ["fixture.board.Service.list()V", "fixture.board.Service.validate()V"], ["fixture.board.Service.list()V", "fixture.board.JdbcRepository.find()Ljava/util/List;"]], "coverage": "selected-methods; sampling unknown outside fixture"},
+    {"id": "deployment-B", "kind": "deployment_observed", "identity": "B", "event_at": 20, "recorded_at": 22, "source_ref": "fixture/inventory/B", "resource": "fixture-pod-B", "asset_ref": "fixture-shared-db"},
+    {"id": "detail-B", "kind": "raw_detail", "identity": "B", "event_at": 21, "recorded_at": 23, "source_ref": "fixture/traces/B/detail", "attributes": {"fixture.operation": "board-list"}},
+    {"id": "graph-A2", "kind": "static_candidate", "identity": "A2", "event_at": 10, "recorded_at": 24, "source_ref": "fixture/analysis/A2", "relations": [["fixture.board.Controller.list()V", "fixture.board.Service.list()V"], ["fixture.board.Service.list()V", "fixture.board.Repository.find()Ljava/util/List;"]], "coverage": "validate excluded; not proof of no call", "dispatch_candidates": [["fixture.board.Repository.find()Ljava/util/List;", "fixture.board.JdbcRepository.find()Ljava/util/List;"], ["fixture.board.Repository.find()Ljava/util/List;", "fixture.board.CacheRepository.find()Ljava/util/List;"]]},
+    {"id": "late-A", "kind": "runtime_observed", "identity": "A", "event_at": 11, "recorded_at": 30, "source_ref": "fixture/traces/late-A", "relations": [["fixture.board.Service.list()V", "fixture.board.JdbcRepository.find()Ljava/util/List;"]], "coverage": "one late edge only"}
+  ],
+  "retention": {
+    "central": [
+      "graph-A",
+      "request-A",
+      "deployment-A",
+      "detail-A",
+      "graph-B",
+      "request-B",
+      "deployment-B",
+      "detail-B",
+      "graph-A2",
+      "late-A"
+    ],
+    "federated": [],
+    "minimum": [
+      "graph-A",
+      "request-A",
+      "deployment-A",
+      "graph-B",
+      "request-B",
+      "deployment-B",
+      "graph-A2",
+      "late-A"
+    ]
+  },
+  "common_manifest": "Every option retains identity, source reference, event_at, recorded_at, coverage and deletion status for observed records; no method/edge payload in federated manifest.",
+  "defaults": {
+    "query": {
+      "scope": "fixture-team",
+      "question": "historical_path",
+      "identity": "A",
+      "event_before": 15,
+      "known_before": 15,
+      "max_records": 100
+    },
+    "state": {
+      "query_permission": "allowed",
+      "collection_permission": "allowed",
+      "source": "available",
+      "purged_ids": [],
+      "absent_ids": [],
+      "expired_ids": []
+    }
+  },
+  "cases": [
+    {"id": "E01", "title": "원본 정상: 과거 A 실행 경로", "query_overrides": {}, "state_overrides": {}, "bdd": ["BDD-AGT-001", "BDD-VER-001"], "expected": {"central": {"status": "available", "evidence_ids": ["graph-A", "request-A", "deployment-A"], "reason": "none"}, "federated": {"status": "available", "evidence_ids": ["graph-A", "request-A", "deployment-A"], "reason": "none"}, "minimum": {"status": "available", "evidence_ids": ["graph-A", "request-A", "deployment-A"], "reason": "none"}}},
+    {"id": "E02", "title": "원본 중단: 과거 A 경로", "query_overrides": {}, "state_overrides": {"source": "unavailable"}, "bdd": ["BDD-AGT-002"], "expected": {"central": {"status": "available", "evidence_ids": ["graph-A", "request-A", "deployment-A"], "reason": "retained_historical"}, "federated": {"status": "unavailable", "evidence_ids": [], "reason": "source_down"}, "minimum": {"status": "available", "evidence_ids": ["graph-A", "request-A", "deployment-A"], "reason": "retained_historical"}}},
+    {"id": "E03", "title": "원본 중단: 상세 원문", "query_overrides": {"question": "raw_detail"}, "state_overrides": {"source": "unavailable"}, "bdd": ["BDD-AGT-002"], "expected": {"central": {"status": "available", "evidence_ids": ["detail-A"], "reason": "retained_historical"}, "federated": {"status": "unavailable", "evidence_ids": [], "reason": "source_down"}, "minimum": {"status": "unavailable", "evidence_ids": [], "reason": "detail_not_retained_source_down"}}},
+    {"id": "E04", "title": "원본에서만 A 이력 만료", "query_overrides": {}, "state_overrides": {"source": "expired"}, "bdd": ["BDD-AGT-002"], "expected": {"central": {"status": "available", "evidence_ids": ["graph-A", "request-A", "deployment-A"], "reason": "retained_historical"}, "federated": {"status": "expired", "evidence_ids": [], "reason": "source_history_expired"}, "minimum": {"status": "available", "evidence_ids": ["graph-A", "request-A", "deployment-A"], "reason": "retained_historical"}}},
+    {"id": "E05", "title": "현재 플랫폼 조회 권한 회수", "query_overrides": {}, "state_overrides": {"query_permission": "denied"}, "bdd": ["BDD-AGT-003"], "expected": {"central": {"status": "forbidden", "evidence_ids": [], "reason": "current_query_denied"}, "federated": {"status": "forbidden", "evidence_ids": [], "reason": "current_query_denied"}, "minimum": {"status": "forbidden", "evidence_ids": [], "reason": "current_query_denied"}}},
+    {"id": "E06", "title": "수집 연결 회수 후 과거 조회는 별도 정책으로 허용", "query_overrides": {}, "state_overrides": {"collection_permission": "revoked", "source": "forbidden"}, "bdd": ["BDD-AGT-003", "BDD-AGT-004"], "expected": {"central": {"status": "available", "evidence_ids": ["graph-A", "request-A", "deployment-A"], "reason": "retained_collection_stopped"}, "federated": {"status": "forbidden", "evidence_ids": [], "reason": "delegated_source_denied"}, "minimum": {"status": "available", "evidence_ids": ["graph-A", "request-A", "deployment-A"], "reason": "retained_collection_stopped"}}},
+    {"id": "E07", "title": "현재 권한 정책을 확인할 수 없음", "query_overrides": {}, "state_overrides": {"query_permission": "unknown"}, "bdd": ["BDD-AGT-003"], "expected": {"central": {"status": "policy_unavailable", "evidence_ids": [], "reason": "current_query_policy_unknown"}, "federated": {"status": "policy_unavailable", "evidence_ids": [], "reason": "current_query_policy_unknown"}, "minimum": {"status": "policy_unavailable", "evidence_ids": [], "reason": "current_query_policy_unknown"}}},
+    {"id": "E08", "title": "삭제 의무로 A 근거 전체 제거", "query_overrides": {}, "state_overrides": {"purged_ids": ["graph-A", "request-A", "deployment-A", "detail-A", "graph-A2", "late-A"], "source": "purged"}, "bdd": ["BDD-AGT-002", "BDD-AGT-003"], "expected": {"central": {"status": "purged", "evidence_ids": [], "reason": "retention_policy_purge"}, "federated": {"status": "purged", "evidence_ids": [], "reason": "retention_policy_purge"}, "minimum": {"status": "purged", "evidence_ids": [], "reason": "retention_policy_purge"}}},
+    {"id": "E09", "title": "같은 커밋의 B 실행은 B 산출물로만 결합", "query_overrides": {"identity": "B", "event_before": 25, "known_before": 25}, "state_overrides": {}, "bdd": ["BDD-VER-002"], "expected": {"central": {"status": "available", "evidence_ids": ["graph-B", "request-B", "deployment-B"], "reason": "none"}, "federated": {"status": "available", "evidence_ids": ["graph-B", "request-B", "deployment-B"], "reason": "none"}, "minimum": {"status": "available", "evidence_ids": ["graph-B", "request-B", "deployment-B"], "reason": "none"}}},
+    {"id": "E10", "title": "A 실행에 B 코드만 존재", "query_overrides": {"event_before": 25, "known_before": 25}, "state_overrides": {"absent_ids": ["graph-A", "graph-A2"]}, "bdd": ["BDD-VER-003"], "expected": {"central": {"status": "version_mismatch", "evidence_ids": [], "reason": "only_different_build_available"}, "federated": {"status": "version_mismatch", "evidence_ids": [], "reason": "only_different_build_available"}, "minimum": {"status": "version_mismatch", "evidence_ids": [], "reason": "only_different_build_available"}}},
+    {"id": "E11", "title": "알 수 없는 artifact는 HEAD로 대체하지 않음", "query_overrides": {"artifact_override": "sha256:fixture-unknown"}, "state_overrides": {}, "bdd": ["BDD-VER-003"], "expected": {"central": {"status": "version_mismatch", "evidence_ids": [], "reason": "artifact_unknown"}, "federated": {"status": "version_mismatch", "evidence_ids": [], "reason": "artifact_unknown"}, "minimum": {"status": "version_mismatch", "evidence_ids": [], "reason": "artifact_unknown"}}},
+    {"id": "E12", "title": "사건은 과거지만 기록 cutoff 전에 몰랐던 근거", "query_overrides": {"question": "single_record", "record_id": "late-A", "event_before": 15, "known_before": 20}, "state_overrides": {}, "bdd": ["BDD-AGT-002"], "expected": {"central": {"status": "not_known", "evidence_ids": [], "reason": "recorded_after_cutoff"}, "federated": {"status": "not_known", "evidence_ids": [], "reason": "recorded_after_cutoff"}, "minimum": {"status": "not_known", "evidence_ids": [], "reason": "recorded_after_cutoff"}}},
+    {"id": "E13", "title": "늦게 수집한 단일 관계는 기록 이후에만 조회", "query_overrides": {"question": "single_record", "record_id": "late-A", "event_before": 15, "known_before": 35}, "state_overrides": {}, "bdd": ["BDD-AGT-002"], "expected": {"central": {"status": "partial", "evidence_ids": ["late-A"], "reason": "single_edge_not_full_request"}, "federated": {"status": "partial", "evidence_ids": ["late-A"], "reason": "single_edge_not_full_request"}, "minimum": {"status": "partial", "evidence_ids": ["late-A"], "reason": "single_edge_not_full_request"}}},
+    {"id": "E14", "title": "다른 분석 설정의 재분석을 원래 run으로 대체하지 않음", "query_overrides": {"identity": "A2", "question": "analysis_graph", "known_before": 25}, "state_overrides": {}, "bdd": ["BDD-VER-003", "BDD-REL-003"], "expected": {"central": {"status": "partial", "evidence_ids": ["graph-A2"], "reason": "validation_excluded"}, "federated": {"status": "partial", "evidence_ids": ["graph-A2"], "reason": "validation_excluded"}, "minimum": {"status": "partial", "evidence_ids": ["graph-A2"], "reason": "validation_excluded"}}},
+    {"id": "E15", "title": "관측되지 않은 중간 버전", "query_overrides": {"question": "missing_version", "identity": "unseen"}, "state_overrides": {}, "bdd": ["BDD-UPD-003", "BDD-AGT-002"], "expected": {"central": {"status": "unknown", "evidence_ids": [], "reason": "history_gap_not_observed"}, "federated": {"status": "unknown", "evidence_ids": [], "reason": "history_gap_not_observed"}, "minimum": {"status": "unknown", "evidence_ids": [], "reason": "history_gap_not_observed"}}},
+    {"id": "E16", "title": "원본 중단 중 현재 상태를 질문", "query_overrides": {"question": "current_state"}, "state_overrides": {"source": "unavailable"}, "bdd": ["BDD-AGT-002"], "expected": {"central": {"status": "unavailable", "evidence_ids": [], "reason": "current_state_not_verified"}, "federated": {"status": "unavailable", "evidence_ids": [], "reason": "current_state_not_verified"}, "minimum": {"status": "unavailable", "evidence_ids": [], "reason": "current_state_not_verified"}}},
+    {"id": "E17", "title": "원본 정상: 상세 원문은 위임 조회로도 반환", "query_overrides": {"question": "raw_detail"}, "state_overrides": {}, "bdd": ["BDD-AGT-002"], "expected": {"central": {"status": "available", "evidence_ids": ["detail-A"], "reason": "none"}, "federated": {"status": "available", "evidence_ids": ["detail-A"], "reason": "none"}, "minimum": {"status": "available", "evidence_ids": ["detail-A"], "reason": "none"}}},
+    {"id": "E18", "title": "응답 상한으로 경로 일부만 반환", "query_overrides": {"max_records": 1}, "state_overrides": {}, "bdd": ["BDD-AGT-003"], "expected": {"central": {"status": "partial", "evidence_ids": ["graph-A"], "reason": "response_limit_truncated"}, "federated": {"status": "partial", "evidence_ids": ["graph-A"], "reason": "response_limit_truncated"}, "minimum": {"status": "partial", "evidence_ids": ["graph-A"], "reason": "response_limit_truncated"}}},
+    {"id": "E19", "title": "다른 scope의 요청", "query_overrides": {"scope": "fixture-other-team"}, "state_overrides": {}, "bdd": ["BDD-AGT-003"], "expected": {"central": {"status": "forbidden", "evidence_ids": [], "reason": "scope_denied"}, "federated": {"status": "forbidden", "evidence_ids": [], "reason": "scope_denied"}, "minimum": {"status": "forbidden", "evidence_ids": [], "reason": "scope_denied"}}},
+    {"id": "E20", "title": "로컬과 원본 모두 상세 원문 만료", "query_overrides": {"question": "raw_detail"}, "state_overrides": {"expired_ids": ["detail-A"], "source": "expired"}, "bdd": ["BDD-AGT-002"], "expected": {"central": {"status": "expired", "evidence_ids": [], "reason": "detail_expired"}, "federated": {"status": "expired", "evidence_ids": [], "reason": "detail_expired"}, "minimum": {"status": "expired", "evidence_ids": [], "reason": "detail_expired"}}}
+  ]
+}
