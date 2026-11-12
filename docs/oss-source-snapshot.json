@@ -1,0 +1,174 @@
+{
+  "research_date": "2026-11-12",
+  "retrieved_at_utc": "2026-11-12T00:30:37.367314+00:00",
+  "method": "Public GitHub releases/latest and repository license at returned release tag; decoded license text inspected. Metadata only, no binaries executed.",
+  "compatibility_verified": false,
+  "security_audit_completed": false,
+  "repositories": [
+    {
+      "repository": "backstage/backstage",
+      "release": "v1.56.4",
+      "release_published_at": "2026-11-09T22:03:35Z",
+      "release_url": "https://github.com/backstage/backstage/releases/tag/v1.56.4",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/backstage/backstage/blob/v1.56.4/LICENSE",
+      "license_sha256": "e3620220d6f8a43cb5c968720f86d4e7c6e97847ee61a9c7694039896efb869b",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "openchoreo/openchoreo",
+      "release": "v1.3.3",
+      "release_published_at": "2026-10-29T06:42:58Z",
+      "release_url": "https://github.com/openchoreo/openchoreo/releases/tag/v1.3.3",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/openchoreo/openchoreo/blob/v1.3.3/LICENSE",
+      "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "open-telemetry/opentelemetry-collector",
+      "release": "v0.165.0",
+      "release_published_at": "2026-11-06T23:42:20Z",
+      "release_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.165.0",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.165.0/LICENSE",
+      "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "open-telemetry/opentelemetry-collector-contrib",
+      "release": "v0.165.1",
+      "release_published_at": "2026-11-09T20:08:08Z",
+      "release_url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.165.1",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.165.1/LICENSE",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "open-telemetry/opentelemetry-java-instrumentation",
+      "release": "v2.33.1",
+      "release_published_at": "2026-10-26T20:12:35Z",
+      "release_url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.33.1",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.33.1/LICENSE",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "apache/skywalking",
+      "release": "v11.1.0",
+      "release_published_at": "2026-11-06T12:01:57Z",
+      "release_url": "https://github.com/apache/skywalking/releases/tag/v11.1.0",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/apache/skywalking/blob/v11.1.0/LICENSE",
+      "license_sha256": "65502332e13374ba80fef53501e2f19f2b4119b82ce2ebe1c5cdf21d7d23e021",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "soot-oss/SootUp",
+      "release": "v3.0.1",
+      "release_published_at": "2026-08-07T09:11:36Z",
+      "release_url": "https://github.com/soot-oss/SootUp/releases/tag/v3.0.1",
+      "license_api_spdx": "LGPL-2.1",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/soot-oss/SootUp/blob/v3.0.1/LICENSE",
+      "license_sha256": "324d40357f5f4faf26678069b172740312be83c20f62d352ab5a8de250a57a29",
+      "license_reading": "LGPL-2.1"
+    },
+    {
+      "repository": "cartography-cncf/cartography",
+      "release": "0.144.0",
+      "release_published_at": "2026-10-29T20:05:46Z",
+      "release_url": "https://github.com/cartography-cncf/cartography/releases/tag/0.144.0",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/cartography-cncf/cartography/blob/0.144.0/LICENSE",
+      "license_sha256": "92f2c405161a43546f5278bacbb4e2f6e1dea28aa78cfa28ea7ffed093b51137",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "netbox-community/netbox",
+      "release": "v4.7.5",
+      "release_published_at": "2026-11-10T16:34:32Z",
+      "release_url": "https://github.com/netbox-community/netbox/releases/tag/v4.7.5",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE.txt",
+      "license_url": "https://github.com/netbox-community/netbox/blob/v4.7.5/LICENSE.txt",
+      "license_sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "crossplane/crossplane",
+      "release": "v2.4.3",
+      "release_published_at": "2026-10-22T15:50:21Z",
+      "release_url": "https://github.com/crossplane/crossplane/releases/tag/v2.4.3",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/crossplane/crossplane/blob/v2.4.3/LICENSE",
+      "license_sha256": "f2f9d4a90cfafb534c4c1fe08423861179de9e62e1db6b3ecde4a6e66156c669",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "fluxcd/flux2",
+      "release": "v2.10.0",
+      "release_published_at": "2026-10-26T15:37:42Z",
+      "release_url": "https://github.com/fluxcd/flux2/releases/tag/v2.10.0",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/fluxcd/flux2/blob/v2.10.0/LICENSE",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "wazuh/wazuh",
+      "release": "v4.14.10",
+      "release_published_at": "2026-11-09T10:33:53Z",
+      "release_url": "https://github.com/wazuh/wazuh/releases/tag/v4.14.10",
+      "license_api_spdx": "NOASSERTION",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/wazuh/wazuh/blob/v4.14.10/LICENSE",
+      "license_sha256": "9136fd9ef577a45b1bcea8c8cd761e8c9c21e15cc2a09e7c139755e581bde00e",
+      "license_reading": "GPL v2 표기 및 예외·별도 조항; API는 NOASSERTION"
+    },
+    {
+      "repository": "falcosecurity/falco",
+      "release": "0.45.2",
+      "release_published_at": "2026-10-29T16:48:27Z",
+      "release_url": "https://github.com/falcosecurity/falco/releases/tag/0.45.2",
+      "license_api_spdx": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/falcosecurity/falco/blob/0.45.2/LICENSE",
+      "license_sha256": "908a8e97d551fac9b859f653b53ac905d9de0e22d2f3099ca3120cc2525e7159",
+      "license_reading": "Apache-2.0"
+    },
+    {
+      "repository": "grafana/pyroscope",
+      "release": "v2.4.3",
+      "release_published_at": "2026-11-03T21:09:45Z",
+      "release_url": "https://github.com/grafana/pyroscope/releases/tag/v2.4.3",
+      "license_api_spdx": "AGPL-3.0",
+      "license_path": "LICENSE",
+      "license_url": "https://github.com/grafana/pyroscope/blob/v2.4.3/LICENSE",
+      "license_sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+      "license_reading": "AGPL-3.0"
+    },
+    {
+      "repository": "getappmap/appmap-java",
+      "release": "v1.30.2",
+      "release_published_at": "2026-09-18T17:55:50Z",
+      "release_url": "https://github.com/getappmap/appmap-java/releases/tag/v1.30.2",
+      "license_api_spdx": "NOASSERTION",
+      "license_path": "LICENSE.txt",
+      "license_url": "https://github.com/getappmap/appmap-java/blob/v1.30.2/LICENSE.txt",
+      "license_sha256": "44f55422e8629ff8ee3c662f1ed23b941ec8bcb50d264a30eede3d540000388e",
+      "license_reading": "MIT + Commons Clause; API는 NOASSERTION"
+    }
+  ]
+}
