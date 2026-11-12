@@ -141,6 +141,8 @@ SIEM 근거를 같은 서비스·배포·자산의 운영 증거와 함께 조�
 - [#36 실제 공급원 adapter와 분리 worker 비교 조건 구체화](https://github.com/DDINGJOO/JJAM-TONG/issues/36) · 선행: [#35](https://github.com/DDINGJOO/JJAM-TONG/issues/35); 실제 Git·공개 GitHub GET·loopback 수신·두 실행 경계의 18회 비교와 테스트 17개. 제품 스택·운영 지원과 구분.
 - [#37 공급원별 수집·복구 정책과 상시 worker 검증](https://github.com/DDINGJOO/JJAM-TONG/issues/37) · 선행: [#36](https://github.com/DDINGJOO/JJAM-TONG/issues/36); 실제 권한·연결·list/watch·호출 예산·보존과 장기 실행 복구.
 - [#38 버전 근거 보관·조회와 실제 코드 분석의 비교 조건 구체화](https://github.com/DDINGJOO/JJAM-TONG/issues/38) · 선행: [#36](https://github.com/DDINGJOO/JJAM-TONG/issues/36); 과거 시점·원본 중단·권한, 실제 정적 분석·계측의 판정과 실험 조건.
+- [#43 버전 근거 보관·조회 3대안의 동일 질문 실행 비교](https://github.com/DDINGJOO/JJAM-TONG/issues/43) · 선행: [#38](https://github.com/DDINGJOO/JJAM-TONG/issues/38); 공통 예상값과 실제 응답·보관량·원본 호출·예산 제한을 대조.
+- [#44 게시판 실제 분석·계측 fixture와 선택 후보 최소 재현](https://github.com/DDINGJOO/JJAM-TONG/issues/44) · 선행: [#38](https://github.com/DDINGJOO/JJAM-TONG/issues/38)과 [#4](https://github.com/DDINGJOO/JJAM-TONG/issues/4)의 관련 검토; 후보 선택 후 실제 소스·빌드·계측·비용을 확인.
 
 기존 32개 요구사항 이슈의 완료 조건·상태·부모 관계를 유지하며, 별도 실험 에픽·스토리·태스크를 추가했다. 실제 진행 상태는 GitHub에서 확인한다.
 

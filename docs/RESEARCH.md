@@ -38,6 +38,8 @@ AppMap Java v1.30.2의 원문은 MIT에 **Commons Clause 조건**을 더하므�
 
 ## 비교 실험
 
+[T22 #38](https://github.com/DDINGJOO/JJAM-TONG/issues/38)의 [실제 후보 고정 버전·호환성·코드 반례](experiments/CODE-ANALYSIS-COMPARISON.md)와 [버전 근거 보관·조회 조건](experiments/VERSIONED-EVIDENCE-COMPARISON.md)을 추가했다. 공식 원문 확인과 공통 입력·예상 판정 설계이며, 후보 설치·실행이나 기술 채택을 뜻하지 않는다. 파서의 선언 해석과 호출 그래프 분석, 기본 자동 계측과 선택 메서드 계측을 서로 다른 능력으로 비교한다.
+
 | 질문 | 같은 fixture에서 확인할 것 |
 | --- | --- |
 | 어떤 관계를 찾는가? | overload·private/self-call·인터페이스 구현체·재귀·reflection의 정답/후보/미해결 |
