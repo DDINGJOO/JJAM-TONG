@@ -2,7 +2,13 @@
 import hashlib
 import json
 import urllib.parse
-from psycopg import Error as PostgresError
+
+try:
+    from psycopg import OperationalError, InterfaceError
+except ImportError:
+    DATABASE_ERRORS = ()  # In-memory/HTTP-only checks need no PostgreSQL driver.
+else:
+    DATABASE_ERRORS = (OperationalError, InterfaceError)
 
 from experiments.storage_lab.stores import quote
 
@@ -143,5 +149,12 @@ def view(journal, store, catalog):
         return "ready" if projection_rows(store, rows) == expected else "partial"
     except Conflict:
         return "conflict"
-    except (OSError, RuntimeError, PostgresError):
+    except OSError:
         return "unavailable"
+    except DATABASE_ERRORS as error:
+        # Preserve server-side query/transaction failures rather than calling
+        # them expected outages. No SQLSTATE is typical of a transport failure.
+        state = error.sqlstate
+        if state is None or state.startswith("08") or state in ("57P01", "57P02", "57P03"):
+            return "unavailable"
+        raise

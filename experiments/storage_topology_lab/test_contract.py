@@ -88,6 +88,19 @@ class ContractTests(unittest.TestCase):
                 raise ConnectionRefusedError("database stopped")
         self.assertEqual(view(Unavailable(), Model(self.rows), "import-1"), "unavailable")
 
+    def test_query_or_invariant_failure_is_not_an_outage(self):
+        class Broken:
+            def get(self, key):
+                raise RuntimeError("partial response or query budget exceeded")
+        with self.assertRaisesRegex(RuntimeError, "partial response"):
+            view(Broken(), Model(self.rows), "import-1")
+        publish(self.journal, "import-1", self.rows)
+        class BrokenProjection:
+            def select(self, selected, kind):
+                raise RuntimeError("projection query invariant failed")
+        with self.assertRaisesRegex(RuntimeError, "projection query invariant"):
+            view(self.journal, BrokenProjection(), "import-1")
+
     def test_tombstone_requires_absence_of_active_projection(self):
         rows = [dict(self.rows[0], deleted=1, seq=2)] + self.rows[1:]
         publish(self.journal, "import-deleted", rows)
