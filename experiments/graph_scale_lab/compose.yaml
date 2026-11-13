@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:17.11-alpine
+    cpus: 1.0
+    mem_limit: 1g
+    ports: ["127.0.0.1:29532:5432"]
+    environment:
+      POSTGRES_USER: graphlab
+      POSTGRES_PASSWORD: synthetic-local-only
+      POSTGRES_DB: graphlab
+    command: ["postgres", "-c", "shared_buffers=128MB", "-c", "work_mem=16MB"]
+    volumes: ["postgres:/var/lib/postgresql/data"]
+  neo4j:
+    image: neo4j:5.26.33-community
+    cpus: 1.0
+    mem_limit: 1g
+    ports: ["127.0.0.1:29574:7474"]
+    environment:
+      NEO4J_AUTH: neo4j/synthetic-local-only
+      NEO4J_server_memory_heap_initial__size: 512m
+      NEO4J_server_memory_heap_max__size: 512m
+      NEO4J_server_memory_pagecache_size: 128m
+      NEO4J_db_transaction_timeout: 10s
+    volumes: ["neo4j:/data"]
+volumes:
+  postgres:
+  neo4j:
