@@ -11,7 +11,7 @@ The tool emits JVM method descriptors, including return types, and module/class/
 
 ## Build and verify
 
-The build uses the existing local `maven:3.9.9-eclipse-temurin-21` Docker image (`--pull=never`) and an isolated `.local/method-analysis-m2` cache. It reads published Maven Central binaries and compiles this adapter with `--release 17`.
+The build uses `maven:3.9.9-eclipse-temurin-21` pinned by its multi-platform SHA-256 digest and an isolated `.local/method-analysis-m2` cache. Docker pulls that exact image when it is not cached, including on a fresh CI runner. It reads published Maven Central binaries and compiles this adapter with `--release 17`.
 
 ```sh
 python3 tools/java-call-analysis/build.py
