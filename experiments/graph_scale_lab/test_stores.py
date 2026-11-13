@@ -88,6 +88,27 @@ class StoreContractTest(unittest.TestCase):
                 stores.Neo4jStore()._cypher("bad")
         self.assertEqual("Neo.ClientError.Statement.SyntaxError", caught.exception.code)
 
+    def test_observed_http_client_configuration_timeout_preserves_code(self):
+        store = stores.Neo4jStore()
+        payload = {"errors": [{"code": "Neo.ClientError.Transaction.TransactionTimedOutClientConfiguration", "message": "native transaction limit"}], "results": []}
+        response = unittest.mock.Mock(status=200)
+        response.read.return_value = json.dumps(payload).encode()
+        connection = unittest.mock.Mock()
+        connection.getresponse.return_value = response
+        with patch("experiments.graph_scale_lab.stores.http.client.HTTPConnection", return_value=connection):
+            with self.assertRaises(stores.BudgetExceeded) as caught:
+                store._cypher("RETURN 1")
+        self.assertEqual(caught.exception.code, payload["errors"][0]["code"])
+        self.assertEqual(connection.request.call_count, 1)
+
+    def test_transport_timeout_does_not_become_native_budget(self):
+        connection = unittest.mock.Mock()
+        connection.request.side_effect = TimeoutError("socket timed out")
+        with patch("experiments.graph_scale_lab.stores.http.client.HTTPConnection", return_value=connection):
+            with self.assertRaises(TimeoutError):
+                stores.Neo4jStore()._cypher("RETURN 1")
+        connection.close.assert_called_once()
+
 
 if __name__ == "__main__":
     unittest.main()

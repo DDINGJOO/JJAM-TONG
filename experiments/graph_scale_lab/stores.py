@@ -19,6 +19,10 @@ NEO4J_PORT = 29574
 NEO4J_AUTH = "neo4j:synthetic-local-only"
 REQUEST_TIMEOUT = 45
 NATIVE_BUDGET_SECONDS = 10
+NEO4J_TIMEOUT_CODES = frozenset((
+    "Neo.ClientError.Transaction.TransactionTimedOut",
+    "Neo.ClientError.Transaction.TransactionTimedOutClientConfiguration",
+))
 _BATCH_SIZE = 1000
 _MAX_FRONTIER = 1000000
 
@@ -261,7 +265,7 @@ class Neo4jStore(_BaseStore):
         if errors:
             error = errors[0]
             code = error.get("code", "Neo4j.Unknown")
-            if code == "Neo.ClientError.Transaction.TransactionTimedOut":
+            if code in NEO4J_TIMEOUT_CODES:
                 raise BudgetExceeded(code, error)
             raise ServerError(code, error)
         if response.status not in (200, 201):

@@ -411,7 +411,8 @@ def check_sample(sample, count, digest):
         if sample["count"] != count or sample["sha256"] != digest or sample["round_trips"] < 1:
             raise ValueError("wrong query result")
     elif sample["status"] == "budget_exceeded":
-        if sample["code"] not in ("57014", "Neo.ClientError.Transaction.TransactionTimedOut", "application.deadline"):
+        if sample["code"] not in ("57014", "Neo.ClientError.Transaction.TransactionTimedOut",
+                                  "Neo.ClientError.Transaction.TransactionTimedOutClientConfiguration", "application.deadline"):
             raise ValueError("unexpected timeout classification")
     else:
         raise ValueError("unexpected sample status")
