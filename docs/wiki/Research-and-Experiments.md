@@ -63,6 +63,12 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 
 별도로 [실제 Boot·가상 스레드·Netty·Kafka의 3개 흐름](../experiments/METHOD-OBSERVABILITY-RESULTS.md#실제-boot가상-스레드nettykafka에도-적용했다)에도 OTel을 붙였다. 테스트 앱의 trace 플래그 파서를 수정한 새 빌드에서 앱 처리는 성공했으나, HTTP→예약 outbox 발행의 SDK 추적은 분리됐다. Redis 왕복 성공과 Redis 전용 span 미관측도 구분해 남겼다.
 
+## GitHub의 코드 변경을 DB 이력으로 가져온다
+
+[별도 Playground](https://github.com/DDINGJOO/JJAM-TONG-playground)의 `method-fixture`를 Actions에서 분석하고, 로컬 수집기가 성공한 실행의 결과를 검증해 PostgreSQL에 저장하는 경로를 연결했다. 커밋별 메서드 추가·이름 변경·삭제와 이전 관계 보존의 실제 판정은 [검증 결과](../experiments/GITHUB-EVIDENCE-SYNC.md)에 있다. [실행 명령](../../tools/github_evidence_sync/README.md)과 [ADR 0006](../decisions/0006-github-method-evidence-pull.md)을 함께 읽는다.
+
+DB는 로컬 루프백에 두고 Actions에는 DB 접속 권한을 주지 않는다. 수집기는 실행 회차·커밋·artifact와 내부 색인의 해시를 대조하며 최신 버전으로 대체하지 않는다. 첫 연결은 일반 Java JAR의 정적 후보이며, Boot 서비스 전체 분석·trace의 지속 수집·화면 자동 갱신과 구분한다.
+
 ## 적용 전후 성능은 얼마나 다른가
 
 같은 Boot 빌드에서 미적용·기본 추적·메서드 추적을 [27회 반복 비교](../experiments/EXECUTION-PERFORMANCE-RESULTS.md)했다. 지연·처리량·CPU·메모리·기동 시간, 원시 측정값과 한계를 남겼다. 기존 버전 계약·수동 검증 코드가 공통으로 있는 앱에 OTel을 추가한 비용이며, 전체 플랫폼 비용이나 운영 SLO를 확정한 결과는 아니다.

@@ -1,0 +1,368 @@
+{
+  "schema": "jjamtong.github-sync-results.v1",
+  "date": "2026-11-13",
+  "scope": "plain Java method-fixture; full static analysis; not Boot service or runtime ingestion",
+  "tenant": "playground-github-sync",
+  "versions": [
+    {
+      "label": "A",
+      "revision": "9fcee03059866b9774abf33ebbb59f091d6bcd8d",
+      "analysisRunId": "gh-1456346630-43399888465-1",
+      "indexSha256": "294b5901be3988c1aa4712103e9a8409c2ed89e206df68067f842b13685e9344",
+      "buildIdentity": {
+        "build": "gh-43399888465-1",
+        "module": "method-fixture",
+        "revision": "9fcee03059866b9774abf33ebbb59f091d6bcd8d",
+        "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+        "artifactSha256": "524d68a1a1fda919e9dd8e372cf45366198f8d783b6272dfcb6b69fc09c4a803"
+      },
+      "receipt": {
+        "analysis_run_id": "gh-1456346630-43399888465-1",
+        "archive_sha256": "7d4349a2767094bc020506b4780bebc8a7c7307ea1ec54d456490532eb1e18c6",
+        "artifact_id": "14024019299",
+        "artifact_url": "https://api.github.com/repos/DDINGJOO/JJAM-TONG-playground/actions/artifacts/14024019299",
+        "attempt": "1",
+        "build": "gh-43399888465-1",
+        "index_sha256": "294b5901be3988c1aa4712103e9a8409c2ed89e206df68067f842b13685e9344",
+        "revision": "9fcee03059866b9774abf33ebbb59f091d6bcd8d",
+        "run_id": "43399888465",
+        "run_url": "https://github.com/DDINGJOO/JJAM-TONG-playground/actions/runs/43399888465",
+        "status": "replay",
+        "tenant": "playground-github-sync"
+      },
+      "analyzers": {
+        "javaparser": {
+          "status": "PARTIAL",
+          "reasons": [
+            "ANALYZER_EXCLUDED",
+            "ANALYZER_UNRESOLVED",
+            "DANGLING_STATIC_CALLS"
+          ],
+          "coverage": {
+            "excluded": 2,
+            "inputCalls": 28,
+            "unresolved": 8,
+            "indexedCalls": 25,
+            "danglingCalls": 3,
+            "analyzerVersion": "3.28.2",
+            "inventoryMethods": 27
+          },
+          "policyMethods": [
+            "legacyCheck",
+            "validate"
+          ],
+          "reachablePolicyMethods": [
+            "legacyCheck",
+            "validate"
+          ],
+          "policyCalls": [
+            {
+              "kind": "declared-call",
+              "line": 8,
+              "caller": {
+                "name": "validate",
+                "class": "fixture.board.RefreshPolicy",
+                "module": "method-fixture",
+                "descriptor": "(Ljava/lang/String;)V"
+              },
+              "source": "fixture/board/RefreshPolicy.java",
+              "target": {
+                "name": "legacyCheck",
+                "class": "fixture.board.RefreshPolicy",
+                "module": "method-fixture",
+                "descriptor": "(Ljava/lang/String;)V"
+              }
+            }
+          ],
+          "graphMethods": 6,
+          "graphCalls": 5
+        },
+        "wala": {
+          "status": "PARTIAL",
+          "reasons": [
+            "ANALYZER_EXCLUDED",
+            "ANALYZER_UNRESOLVED"
+          ],
+          "coverage": {
+            "excluded": 2,
+            "inputCalls": 29,
+            "unresolved": 8,
+            "indexedCalls": 29,
+            "danglingCalls": 0,
+            "analyzerVersion": "1.9.0",
+            "inventoryMethods": 31
+          },
+          "policyMethods": [
+            "legacyCheck",
+            "validate"
+          ],
+          "reachablePolicyMethods": [
+            "legacyCheck",
+            "validate"
+          ],
+          "policyCalls": [
+            {
+              "kind": "possible-call",
+              "caller": {
+                "name": "validate",
+                "class": "fixture.board.RefreshPolicy",
+                "module": "method-fixture",
+                "descriptor": "(Ljava/lang/String;)V"
+              },
+              "target": {
+                "name": "legacyCheck",
+                "class": "fixture.board.RefreshPolicy",
+                "module": "method-fixture",
+                "descriptor": "(Ljava/lang/String;)V"
+              },
+              "bytecodeIndex": 1
+            }
+          ],
+          "graphMethods": 8,
+          "graphCalls": 7
+        }
+      },
+      "rowCounts": {
+        "analysis": 1,
+        "method": 58,
+        "call": 54
+      },
+      "firstPublicationReceipt": {
+        "analysis_run_id": "gh-1456346630-43399888465-1",
+        "archive_sha256": "7d4349a2767094bc020506b4780bebc8a7c7307ea1ec54d456490532eb1e18c6",
+        "artifact_id": "14024019299",
+        "artifact_url": "https://api.github.com/repos/DDINGJOO/JJAM-TONG-playground/actions/artifacts/14024019299",
+        "attempt": "1",
+        "build": "gh-43399888465-1",
+        "index_sha256": "294b5901be3988c1aa4712103e9a8409c2ed89e206df68067f842b13685e9344",
+        "revision": "9fcee03059866b9774abf33ebbb59f091d6bcd8d",
+        "run_id": "43399888465",
+        "run_url": "https://github.com/DDINGJOO/JJAM-TONG-playground/actions/runs/43399888465",
+        "status": "created",
+        "tenant": "playground-github-sync"
+      },
+      "github": {
+        "runId": 43399888465,
+        "runAttempt": 1,
+        "conclusion": "success",
+        "runUrl": "https://github.com/DDINGJOO/JJAM-TONG-playground/actions/runs/43399888465",
+        "artifactId": 14024019299,
+        "digest": "sha256:7d4349a2767094bc020506b4780bebc8a7c7307ea1ec54d456490532eb1e18c6"
+      }
+    },
+    {
+      "label": "B",
+      "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+      "analysisRunId": "gh-1456346630-43401783284-1",
+      "indexSha256": "0b6175c812f0f94febc87bd42fc2f5eec759979b70075cf4a818a5ccad240f6a",
+      "buildIdentity": {
+        "build": "gh-43401783284-1",
+        "module": "method-fixture",
+        "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+        "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+        "artifactSha256": "e3c6d484868baf5893be72648a1a5901255f8959e780f3687f5ef0d045206e95"
+      },
+      "receipt": {
+        "analysis_run_id": "gh-1456346630-43401783284-1",
+        "archive_sha256": "1bb445fe46d85cb58177aff8afb11c4503ce6ab13ecaa321af449f21a7c0cb00",
+        "artifact_id": "14025193954",
+        "artifact_url": "https://api.github.com/repos/DDINGJOO/JJAM-TONG-playground/actions/artifacts/14025193954",
+        "attempt": "1",
+        "build": "gh-43401783284-1",
+        "index_sha256": "0b6175c812f0f94febc87bd42fc2f5eec759979b70075cf4a818a5ccad240f6a",
+        "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+        "run_id": "43401783284",
+        "run_url": "https://github.com/DDINGJOO/JJAM-TONG-playground/actions/runs/43401783284",
+        "status": "replay",
+        "tenant": "playground-github-sync"
+      },
+      "analyzers": {
+        "javaparser": {
+          "status": "PARTIAL",
+          "reasons": [
+            "ANALYZER_EXCLUDED",
+            "ANALYZER_UNRESOLVED",
+            "DANGLING_STATIC_CALLS"
+          ],
+          "coverage": {
+            "excluded": 2,
+            "inputCalls": 28,
+            "unresolved": 8,
+            "indexedCalls": 25,
+            "danglingCalls": 3,
+            "analyzerVersion": "3.28.2",
+            "inventoryMethods": 27
+          },
+          "policyMethods": [
+            "hasKey",
+            "validateInput"
+          ],
+          "reachablePolicyMethods": [
+            "hasKey",
+            "validateInput"
+          ],
+          "policyCalls": [
+            {
+              "kind": "declared-call",
+              "line": 8,
+              "caller": {
+                "name": "validateInput",
+                "class": "fixture.board.RefreshPolicy",
+                "module": "method-fixture",
+                "descriptor": "(Ljava/lang/String;)V"
+              },
+              "source": "fixture/board/RefreshPolicy.java",
+              "target": {
+                "name": "hasKey",
+                "class": "fixture.board.RefreshPolicy",
+                "module": "method-fixture",
+                "descriptor": "(Ljava/lang/String;)Z"
+              }
+            }
+          ],
+          "graphMethods": 6,
+          "graphCalls": 5
+        },
+        "wala": {
+          "status": "PARTIAL",
+          "reasons": [
+            "ANALYZER_EXCLUDED",
+            "ANALYZER_UNRESOLVED"
+          ],
+          "coverage": {
+            "excluded": 2,
+            "inputCalls": 29,
+            "unresolved": 8,
+            "indexedCalls": 29,
+            "danglingCalls": 0,
+            "analyzerVersion": "1.9.0",
+            "inventoryMethods": 31
+          },
+          "policyMethods": [
+            "hasKey",
+            "validateInput"
+          ],
+          "reachablePolicyMethods": [
+            "hasKey",
+            "validateInput"
+          ],
+          "policyCalls": [
+            {
+              "kind": "possible-call",
+              "caller": {
+                "name": "validateInput",
+                "class": "fixture.board.RefreshPolicy",
+                "module": "method-fixture",
+                "descriptor": "(Ljava/lang/String;)V"
+              },
+              "target": {
+                "name": "hasKey",
+                "class": "fixture.board.RefreshPolicy",
+                "module": "method-fixture",
+                "descriptor": "(Ljava/lang/String;)Z"
+              },
+              "bytecodeIndex": 1
+            }
+          ],
+          "graphMethods": 8,
+          "graphCalls": 7
+        }
+      },
+      "rowCounts": {
+        "analysis": 1,
+        "method": 58,
+        "call": 54
+      },
+      "firstPublicationReceipt": {
+        "analysis_run_id": "gh-1456346630-43401783284-1",
+        "archive_sha256": "1bb445fe46d85cb58177aff8afb11c4503ce6ab13ecaa321af449f21a7c0cb00",
+        "artifact_id": "14025193954",
+        "artifact_url": "https://api.github.com/repos/DDINGJOO/JJAM-TONG-playground/actions/artifacts/14025193954",
+        "attempt": "1",
+        "build": "gh-43401783284-1",
+        "index_sha256": "0b6175c812f0f94febc87bd42fc2f5eec759979b70075cf4a818a5ccad240f6a",
+        "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+        "run_id": "43401783284",
+        "run_url": "https://github.com/DDINGJOO/JJAM-TONG-playground/actions/runs/43401783284",
+        "status": "created",
+        "tenant": "playground-github-sync"
+      },
+      "explicitReplayReceipt": {
+        "analysis_run_id": "gh-1456346630-43401783284-1",
+        "archive_sha256": "1bb445fe46d85cb58177aff8afb11c4503ce6ab13ecaa321af449f21a7c0cb00",
+        "artifact_id": "14025193954",
+        "artifact_url": "https://api.github.com/repos/DDINGJOO/JJAM-TONG-playground/actions/artifacts/14025193954",
+        "attempt": "1",
+        "build": "gh-43401783284-1",
+        "index_sha256": "0b6175c812f0f94febc87bd42fc2f5eec759979b70075cf4a818a5ccad240f6a",
+        "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+        "run_id": "43401783284",
+        "run_url": "https://github.com/DDINGJOO/JJAM-TONG-playground/actions/runs/43401783284",
+        "status": "replay",
+        "tenant": "playground-github-sync"
+      },
+      "github": {
+        "runId": 43401783284,
+        "runAttempt": 1,
+        "conclusion": "success",
+        "runUrl": "https://github.com/DDINGJOO/JJAM-TONG-playground/actions/runs/43401783284",
+        "artifactId": 14025193954,
+        "digest": "sha256:1bb445fe46d85cb58177aff8afb11c4503ce6ab13ecaa321af449f21a7c0cb00"
+      }
+    }
+  ],
+  "checks": {
+    "crossVersionHashRejectedBothDirections": true,
+    "deletedMethodNoFallbackBothAnalyzers": true,
+    "oldSnapshotUnchangedAfterNewCommit": true,
+    "realCommitsNotOverlayVariants": true,
+    "duplicateReplayPreservesRows": true,
+    "sourceAndJarOmittedFromBundle": true,
+    "archiveDigestMatchesGitHubMetadata": true
+  },
+  "producerPlatformCommit": "d9f8e71f997f25500e7df5d952dc87b9ee6896c7",
+  "collectorMode": {
+    "firstImportA": "explicit pull",
+    "firstImportB": "automatic watch",
+    "intervalSeconds": 30,
+    "windowPagesPerEvent": 3,
+    "manualImportBForFirstPublication": false,
+    "continuousStartupService": false
+  },
+  "localDatabase": {
+    "engine": "PostgreSQL 17.11",
+    "bind": "127.0.0.1:29632",
+    "schema": "jjamtong_evidence_v1",
+    "actionsConnectsToDatabase": false
+  },
+  "expectedRelations": {
+    "A": [
+      "Service.validate → RefreshPolicy.validate",
+      "RefreshPolicy.validate → RefreshPolicy.legacyCheck"
+    ],
+    "B": [
+      "Service.validate → RefreshPolicy.validateInput",
+      "RefreshPolicy.validateInput → RefreshPolicy.hasKey"
+    ]
+  },
+  "limitations": [
+    "plain Java 17 bytecode method-fixture only; Boot nested executable JARs unsupported",
+    "full static reanalysis; no incremental impact computation",
+    "partial and unresolved analyzer coverage retained; no runtime call guarantee",
+    "bounded per-event discovery window and 7-day artifact retention; no complete-history guarantee",
+    "local sequential collector and database; no autostart, enterprise authorization, backoff or capacity certification",
+    "no continuous trace ingestion, UI update or AWS/Kubernetes deployment"
+  ],
+  "verification": {
+    "tests": 60,
+    "failed": 0,
+    "skipped": 0,
+    "realPostgresTests": 17,
+    "syntaxFiles": 9,
+    "wikiExportFiles": 8,
+    "localMarkdownLinksChecked": 127,
+    "lsp": "unavailable; no lsp_diagnostics tool",
+    "independentCodeReview": "COMMENT; zero defects; LSP unavailable",
+    "architectureRecheck": "pending; previously missing public record now added"
+  }
+}
