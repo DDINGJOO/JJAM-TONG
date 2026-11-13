@@ -1,0 +1,604 @@
+{
+  "schema": "jjamtong.evidence-store-replay.v1",
+  "tenant": "preserved-java-evidence",
+  "inputs": [
+    {
+      "name": "method-a1-jdk17.json",
+      "sha256": "c293c1628135b4cdf31f570ab98fdd74861293510cfb9f212c70ace5b211f67e"
+    },
+    {
+      "name": "method-b1-jdk17.json",
+      "sha256": "bf25ca88516f7edb07d22d849a2a7e851419aae328f7ed32f1b689f8bea9ec92"
+    },
+    {
+      "name": "telemetry.log",
+      "sha256": "9667b5faa0414a1424c2faa1fbe708a2572becb0f5ab0c72572bd3dd890aaffe"
+    }
+  ],
+  "sources": {
+    "__init__.py": "cd3ae0bb0a6e5be50f2f3f0b53b9d9591afcebfe3cecbf357e238e4a8160d2c1",
+    "__main__.py": "9b25b0078a64b1a584c9f9e8ef2ded80ab2d68cd0a823563553d47b0275d9cb5",
+    "compose.yaml": "9a0e70d809bbf7b906df57d2370781037333caf321e70a65f2bc1b0136274b94",
+    "contracts.py": "7f44097020e2ffef7714fa09e7bd4e8159f97321122bae0ca8b4471888aca2e1",
+    "postgres.py": "aca6234314b8e33b167ed067d3cd4b8da73141fca627493e1599e59020d3006a",
+    "schema.sql": "d65d14b0eb3fe4a567ae82cee8acb87015d5137ec1acbfee8377e675ea95560b",
+    "test_contracts.py": "ba7bf3833bfff849ac4eb4ce0c0ef4c454bf5b06a49b74223dc33fbe403be6d7",
+    "test_postgres.py": "ced8953fadf2b7f83bf7a85ed5abcf7dc6566996547a8637d0a568f4deaa89a6",
+    "validation.py": "066add5c46966a48ee723f0be2ae3698536d14b5c345f19eafa48059f85ff0df",
+    "verify_local.py": "8af5e0663499c8daea51093af1fab449603829168b7a0b85baf5963dd5fdec26"
+  },
+  "serverVersion": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "publications": [
+    {
+      "runId": "method-a1-jdk17",
+      "created": false
+    },
+    {
+      "runId": "method-b1-jdk17",
+      "created": false
+    }
+  ],
+  "graphChecks": [
+    {
+      "runId": "method-a1-jdk17",
+      "analyzer": "javaparser",
+      "result": {
+        "request": {
+          "ref": {
+            "tenant": "preserved-java-evidence",
+            "run_id": "method-a1-jdk17",
+            "index_sha256": "8a26f6be8766e2e7701c533348cdbbfe9543c4c724463035eb16857c6b5caded"
+          },
+          "analyzer": "javaparser",
+          "root": [
+            "method-fixture",
+            "fixture.board.Service",
+            "list",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          "max_depth": 4,
+          "max_nodes": 200,
+          "max_edges": 500
+        },
+        "status": "PARTIAL",
+        "methods": [
+          [
+            "method-fixture",
+            "fixture.board.Repository",
+            "find",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "list",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "neverExecuted",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "validate",
+            "(Ljava/lang/String;)V"
+          ]
+        ],
+        "calls": [
+          {
+            "kind": "declared-call",
+            "line": 16,
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "source": "fixture/board/Service.java",
+            "target": {
+              "name": "find",
+              "class": "fixture.board.Repository",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            }
+          },
+          {
+            "kind": "declared-call",
+            "line": 15,
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "source": "fixture/board/Service.java",
+            "target": {
+              "name": "neverExecuted",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            }
+          },
+          {
+            "kind": "declared-call",
+            "line": 14,
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "source": "fixture/board/Service.java",
+            "target": {
+              "name": "validate",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)V"
+            }
+          }
+        ],
+        "reasons": [
+          "ANALYZER_EXCLUDED",
+          "ANALYZER_UNRESOLVED",
+          "DANGLING_STATIC_CALLS"
+        ],
+        "coverage": {
+          "excluded": 2,
+          "inputCalls": 26,
+          "unresolved": 8,
+          "indexedCalls": 23,
+          "danglingCalls": 3,
+          "analyzerVersion": "3.28.2",
+          "inventoryMethods": 24
+        }
+      }
+    },
+    {
+      "runId": "method-a1-jdk17",
+      "analyzer": "wala",
+      "result": {
+        "request": {
+          "ref": {
+            "tenant": "preserved-java-evidence",
+            "run_id": "method-a1-jdk17",
+            "index_sha256": "8a26f6be8766e2e7701c533348cdbbfe9543c4c724463035eb16857c6b5caded"
+          },
+          "analyzer": "wala",
+          "root": [
+            "method-fixture",
+            "fixture.board.Service",
+            "list",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          "max_depth": 4,
+          "max_nodes": 200,
+          "max_edges": 500
+        },
+        "status": "PARTIAL",
+        "methods": [
+          [
+            "method-fixture",
+            "fixture.board.CachedRepository",
+            "find",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.JdbcRepository",
+            "find",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "list",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "neverExecuted",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "validate",
+            "(Ljava/lang/String;)V"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service$Denied",
+            "<init>",
+            "()V"
+          ]
+        ],
+        "calls": [
+          {
+            "kind": "possible-call",
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "target": {
+              "name": "find",
+              "class": "fixture.board.CachedRepository",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "bytecodeIndex": 25
+          },
+          {
+            "kind": "possible-call",
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "target": {
+              "name": "find",
+              "class": "fixture.board.JdbcRepository",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "bytecodeIndex": 25
+          },
+          {
+            "kind": "possible-call",
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "target": {
+              "name": "neverExecuted",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "bytecodeIndex": 16
+          },
+          {
+            "kind": "possible-call",
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "target": {
+              "name": "validate",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)V"
+            },
+            "bytecodeIndex": 2
+          },
+          {
+            "kind": "possible-call",
+            "caller": {
+              "name": "validate",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)V"
+            },
+            "target": {
+              "name": "<init>",
+              "class": "fixture.board.Service$Denied",
+              "module": "method-fixture",
+              "descriptor": "()V"
+            },
+            "bytecodeIndex": 13
+          }
+        ],
+        "reasons": [
+          "ANALYZER_EXCLUDED",
+          "ANALYZER_UNRESOLVED"
+        ],
+        "coverage": {
+          "excluded": 2,
+          "inputCalls": 27,
+          "unresolved": 8,
+          "indexedCalls": 27,
+          "danglingCalls": 0,
+          "analyzerVersion": "1.9.0",
+          "inventoryMethods": 28
+        }
+      }
+    },
+    {
+      "runId": "method-b1-jdk17",
+      "analyzer": "javaparser",
+      "result": {
+        "request": {
+          "ref": {
+            "tenant": "preserved-java-evidence",
+            "run_id": "method-b1-jdk17",
+            "index_sha256": "792723a5f8e6a89a00367a26c190807c928faa2d0303d3b9ba2332aa1652dc86"
+          },
+          "analyzer": "javaparser",
+          "root": [
+            "method-fixture",
+            "fixture.board.Service",
+            "list",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          "max_depth": 4,
+          "max_nodes": 200,
+          "max_edges": 500
+        },
+        "status": "PARTIAL",
+        "methods": [
+          [
+            "method-fixture",
+            "fixture.board.Repository",
+            "find",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "list",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "neverExecuted",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "validateV2",
+            "(Ljava/lang/String;)V"
+          ]
+        ],
+        "calls": [
+          {
+            "kind": "declared-call",
+            "line": 16,
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "source": "fixture/board/Service.java",
+            "target": {
+              "name": "find",
+              "class": "fixture.board.Repository",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            }
+          },
+          {
+            "kind": "declared-call",
+            "line": 15,
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "source": "fixture/board/Service.java",
+            "target": {
+              "name": "neverExecuted",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            }
+          },
+          {
+            "kind": "declared-call",
+            "line": 14,
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "source": "fixture/board/Service.java",
+            "target": {
+              "name": "validateV2",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)V"
+            }
+          }
+        ],
+        "reasons": [
+          "ANALYZER_EXCLUDED",
+          "ANALYZER_UNRESOLVED",
+          "DANGLING_STATIC_CALLS"
+        ],
+        "coverage": {
+          "excluded": 2,
+          "inputCalls": 26,
+          "unresolved": 8,
+          "indexedCalls": 23,
+          "danglingCalls": 3,
+          "analyzerVersion": "3.28.2",
+          "inventoryMethods": 24
+        }
+      }
+    },
+    {
+      "runId": "method-b1-jdk17",
+      "analyzer": "wala",
+      "result": {
+        "request": {
+          "ref": {
+            "tenant": "preserved-java-evidence",
+            "run_id": "method-b1-jdk17",
+            "index_sha256": "792723a5f8e6a89a00367a26c190807c928faa2d0303d3b9ba2332aa1652dc86"
+          },
+          "analyzer": "wala",
+          "root": [
+            "method-fixture",
+            "fixture.board.Service",
+            "list",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          "max_depth": 4,
+          "max_nodes": 200,
+          "max_edges": 500
+        },
+        "status": "PARTIAL",
+        "methods": [
+          [
+            "method-fixture",
+            "fixture.board.CachedRepository",
+            "find",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.JdbcRepository",
+            "find",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "list",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "neverExecuted",
+            "(Ljava/lang/String;)Ljava/lang/String;"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service",
+            "validateV2",
+            "(Ljava/lang/String;)V"
+          ],
+          [
+            "method-fixture",
+            "fixture.board.Service$Denied",
+            "<init>",
+            "()V"
+          ]
+        ],
+        "calls": [
+          {
+            "kind": "possible-call",
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "target": {
+              "name": "find",
+              "class": "fixture.board.CachedRepository",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "bytecodeIndex": 25
+          },
+          {
+            "kind": "possible-call",
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "target": {
+              "name": "find",
+              "class": "fixture.board.JdbcRepository",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "bytecodeIndex": 25
+          },
+          {
+            "kind": "possible-call",
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "target": {
+              "name": "neverExecuted",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "bytecodeIndex": 16
+          },
+          {
+            "kind": "possible-call",
+            "caller": {
+              "name": "list",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            "target": {
+              "name": "validateV2",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)V"
+            },
+            "bytecodeIndex": 2
+          },
+          {
+            "kind": "possible-call",
+            "caller": {
+              "name": "validateV2",
+              "class": "fixture.board.Service",
+              "module": "method-fixture",
+              "descriptor": "(Ljava/lang/String;)V"
+            },
+            "target": {
+              "name": "<init>",
+              "class": "fixture.board.Service$Denied",
+              "module": "method-fixture",
+              "descriptor": "()V"
+            },
+            "bytecodeIndex": 13
+          }
+        ],
+        "reasons": [
+          "ANALYZER_EXCLUDED",
+          "ANALYZER_UNRESOLVED"
+        ],
+        "coverage": {
+          "excluded": 2,
+          "inputCalls": 27,
+          "unresolved": 8,
+          "indexedCalls": 27,
+          "danglingCalls": 0,
+          "analyzerVersion": "1.9.0",
+          "inventoryMethods": 28
+        }
+      }
+    }
+  ],
+  "traceStatuses": [
+    "OBSERVED",
+    "MISMATCH"
+  ],
+  "traceSpanCounts": [
+    5,
+    0
+  ],
+  "limitations": [
+    "Replays preserved local synthetic Java analysis and telemetry; no fresh JVM run.",
+    "Tenant labels are SQL scopes, not authentication or row-level authorization.",
+    "Small fixture correctness only; no throughput, HA or capacity claim."
+  ]
+}

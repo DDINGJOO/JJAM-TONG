@@ -25,6 +25,7 @@ flowchart LR
 | [ADR 0002: 로컬 빌드 식별 계약](../decisions/0002-experimental-build-identity.md) | Java 실험 API에서 빌드 메타데이터의 일치·불일치·누락 비교 | 자동 분석·계측, 출처 검증, 플랫폼 형식·호환·보존 계약 |
 | [ADR 0003: 실행 모델 비교의 경계](../decisions/0003-execution-model-comparison.md) | 별도 로컬 모듈에서 MVC·가상 스레드·Netty와 수동 이벤트 문맥을 비교 | 제품 실행 모델·계측 도구, 자동 호출 관계와 실행 기록의 결합 |
 | [ADR 0004: 메서드 근거 비교](../decisions/0004-method-evidence-comparison.md) | JavaParser·WALA 후보와 OTel 실행을 지정한 빌드·분석에 연결하는 로컬 실험 | 정확한 overload 계측·부분 재분석·운영 수집과 제품 도구 채택 |
+| [ADR 0005: 버전별 메서드 근거 저장](../decisions/0005-local-versioned-evidence-store.md) | 첫 로컬 공통부에 PostgreSQL 적용. 불변 분석 보관과 그래프 조회 계약을 분리하고 버전 혼입을 거부 | 실제 대체 엔진, 보존·삭제·마이그레이션·기업 권한·지속 수용량과 전체 플랫폼 스택 |
 
 관계 갱신 기본안은 현재 상태 복구에 관한 것이다. **놓친 중간 커밋·trace·보안 사건의 발생 이력이 자동 복원되지는 않는다.** 갱신 실험의 색인은 파일·blob 관계다. 별도 [메서드 근거 실험](../experiments/METHOD-OBSERVABILITY-RESULTS.md)은 실제 빌드·분석·span을 연결하며, 빠진 이력과 overload 식별의 한계를 그대로 반환한다.
 
