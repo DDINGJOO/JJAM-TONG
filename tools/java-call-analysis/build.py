@@ -8,12 +8,12 @@ import subprocess
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
-IMAGE = "maven:3.9.9-eclipse-temurin-21"
+IMAGE = "maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e"
 
 
 def main():
     command = [
-        "docker", "run", "--rm", "--pull=never", "--memory=1536m", "--cpus=2",
+        "docker", "run", "--rm", "--memory=1536m", "--cpus=2",
         "-e", "MAVEN_CONFIG=/tmp/maven-method-analysis/.m2",
         "--user", f"{os.getuid()}:{os.getgid()}", "-v", f"{REPO}:/workspace",
         "-w", "/workspace", IMAGE, "mvn", "-B", "-ntp",
