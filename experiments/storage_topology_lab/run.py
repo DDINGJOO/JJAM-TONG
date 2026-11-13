@@ -13,7 +13,7 @@ import uuid
 from experiments.storage_lab.fixtures import dataset, record
 from experiments.storage_lab.provenance import source_hashes
 from experiments.storage_lab.run import COMPOSE, IMAGES, ROOT, command, correctness, ready
-from experiments.storage_lab.stores import STORES
+from experiments.storage_lab.stores import HTTP, STORES
 from .authority import Conflict, Journal, digest, load, publish, stage, view
 
 ENGINES = tuple(STORES)
@@ -35,12 +35,25 @@ QUERY_CHECKS = ("static-forward-1", "static-forward-3", "static-forward-6",
                 "actual-trace-stays-observed", "missing-query-scope-rejected")
 
 
+class PerRequestHTTP(HTTP):
+    """No idle keep-alive survives long restart scenarios; never retry writes."""
+    def request(self, *args, **kwargs):
+        try:
+            return super().request(*args, **kwargs)
+        finally:
+            self.close()
+
+
 def compose(*args):
     return command(COMPOSE + ["-p", "jjamtong-topology-lab"] + list(args)).stdout.strip()
 
 
 def fresh(name):
     s = ready(name)
+    if hasattr(s, "http"):
+        port, auth = s.http.connection.port, s.http.auth
+        s.http.close()
+        s.http = PerRequestHTTP(port, auth)
     if name == "elasticsearch":
         s.index = "jjamtong-topology-evidence"
     return s

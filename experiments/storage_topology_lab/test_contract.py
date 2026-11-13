@@ -1,6 +1,7 @@
 """Regression tests for publication and readiness, independent of DB engines."""
 import copy
 import unittest
+from unittest.mock import Mock, patch
 
 from experiments.storage_lab.fixtures import dataset
 from .authority import Conflict, digest, load, manifest_for, publish, stage, view
@@ -106,6 +107,22 @@ class ContractTests(unittest.TestCase):
         publish(self.journal, "import-deleted", rows)
         self.assertEqual(view(self.journal, Model(self.rows), "import-deleted"), "partial")
         self.assertEqual(view(self.journal, Model(rows), "import-deleted"), "ready")
+
+
+class TransportTests(unittest.TestCase):
+    def test_connections_close_after_success_and_failure_without_retry(self):
+        from .run import PerRequestHTTP
+        for failure in (None, ConnectionResetError("connection lost")):
+            client = PerRequestHTTP(1)
+            client.connection = Mock()
+            with patch("experiments.storage_lab.stores.HTTP.request", return_value={"ok": True}, side_effect=failure) as request:
+                if failure:
+                    with self.assertRaises(ConnectionResetError):
+                        client.request("POST", "/mutation")
+                else:
+                    self.assertEqual(client.request("POST", "/mutation"), {"ok": True})
+                request.assert_called_once_with("POST", "/mutation")
+                client.connection.close.assert_called_once_with()
 
 
 if __name__ == "__main__":
