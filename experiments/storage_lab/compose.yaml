@@ -1,0 +1,52 @@
+name: jjamtong-storage-lab
+services:
+  postgres:
+    image: postgres:17.11-alpine
+    cpus: 1
+    mem_limit: 384m
+    ports: ["127.0.0.1:29432:5432"]
+    environment:
+      POSTGRES_DB: evidence_lab
+      POSTGRES_USER: lab
+      POSTGRES_PASSWORD: synthetic-local-only
+    volumes: ["pg-data:/var/lib/postgresql/data"]
+  neo4j:
+    image: neo4j:5.26.33-community
+    cpus: 1
+    mem_limit: 1024m
+    stop_grace_period: 30s
+    ports: ["127.0.0.1:29474:7474"]
+    environment:
+      NEO4J_AUTH: none
+      NEO4J_server_memory_heap_initial__size: 256m
+      NEO4J_server_memory_heap_max__size: 256m
+      NEO4J_server_memory_pagecache_size: 128m
+    volumes: ["neo-data:/data"]
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.5.6
+    cpus: 1
+    mem_limit: 1536m
+    stop_grace_period: 30s
+    ports: ["127.0.0.1:29420:9200"]
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+    volumes: ["es-data:/usr/share/elasticsearch/data"]
+  clickhouse:
+    image: clickhouse/clickhouse-server:26.8.36.3
+    cpus: 1
+    mem_limit: 1024m
+    ports: ["127.0.0.1:29423:8123"]
+    environment:
+      CLICKHOUSE_USER: lab
+      CLICKHOUSE_PASSWORD: synthetic-local-only
+      CLICKHOUSE_DB: evidence_lab
+    volumes:
+      - ch-data:/var/lib/clickhouse
+      - ./clickhouse.xml:/etc/clickhouse-server/config.d/lab.xml:ro
+volumes:
+  pg-data:
+  neo-data:
+  es-data:
+  ch-data:

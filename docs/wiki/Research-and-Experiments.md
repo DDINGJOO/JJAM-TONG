@@ -17,6 +17,10 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 
 ## 실행한 비교와 한계
 
+[버전 근거·그래프·검색·집계의 DB 비교](../experiments/STORAGE-ENGINE-COMPARISON.md)는 PostgreSQL·Neo4j·Elasticsearch·ClickHouse를 같은 합성 입력으로 실행한다. [구현과 재현 명령](../../experiments/storage_lab/README.md), [원시 표본](../experiments/storage-engine-run.json)에서 버전 분리·관계 조회·검색·집계·짧은 동시 부하와 실제 중단·복구를 확인할 수 있다. PostgreSQL 원장과 세 읽기 모델의 재처리, PostgreSQL·Neo4j·Elasticsearch 통합 조회도 시험했다. 제품 DB 채택·기업 권한 격리·지속 수용량·고가용성은 앞으로 검증한다. 기존 보관 방식 비교 T24나 라이브러리 적용 T25의 완료와는 구분한다.
+
+이 비교는 단일 노드·공유 호스트에서 수행했다. 서버의 CPU 상한은 1개로 맞췄지만 메모리 상한은 384~1,536 MiB로 다르며, PostgreSQL은 Psycopg 연결, 나머지는 HTTP 어댑터를 썼다. 동시 조회도 1·4·8개 클라이언트가 각각 12회 수행한 짧은 표본이므로 엔진 성능 순위나 지속 수용량을 입증하지 않는다.
+
 갱신 전략은 주기 확인, 변경 알림, 두 방식의 결합을 비교한다. 두 번째 실험에서는 같은 프로세스 안에서 실행하는 구성과 별도 프로세스를 한 번 띄워 실행하는 구성도 비교한다.
 
 | 실험 | 재현·결과 | 검증 범위 |
