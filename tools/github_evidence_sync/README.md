@@ -1,6 +1,6 @@
 # GitHub의 메서드 분석 결과를 로컬 DB에 저장한다
 
-별도 [Playground](https://github.com/DDINGJOO/JJAM-TONG-playground)에 코드를 올리면 GitHub Actions가 해당 커밋의 `method-fixture`를 빌드·분석한다. 이 수집기는 성공한 실행의 artifact를 검증하고 기존 PostgreSQL 저장 어댑터로 가져온다. **Actions는 로컬 DB에 접속하지 않는다.** [설계 경계](../../docs/decisions/0006-github-method-evidence-pull.md)와 [실제 두 커밋의 검증 결과](../../docs/experiments/GITHUB-EVIDENCE-SYNC.md)를 함께 읽는다.
+별도 [Playground](https://github.com/DDINGJOO/JJAM-TONG-playground)에 코드를 올리면 GitHub Actions가 해당 커밋의 `method-fixture`를 빌드·분석한다. 이 수집기는 성공한 실행의 분석 산출물(artifact)을 검증하고 기존 PostgreSQL 저장 어댑터로 가져온다. **Actions는 로컬 DB에 접속하지 않는다.** [설계 경계](../../docs/decisions/0006-github-method-evidence-pull.md)와 [실제 두 커밋의 검증 결과](../../docs/experiments/GITHUB-EVIDENCE-SYNC.md)를 함께 읽는다.
 
 첫 경로는 Java 17 일반 JAR의 정적 호출 후보를 다룬다. MSA 게시판 전체의 Spring Boot 실행 JAR 분석이나 실제 trace의 지속 수집은 아직 연결하지 않았다. 결과에는 메서드 이름·관계와 버전 정보가 있으며 소스 본문과 JAR은 넣지 않는다.
 

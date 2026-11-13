@@ -4,7 +4,7 @@
 
 사용자가 기존 프로젝트를 지정하는 대신 Kafka·Redis·RDS를 사용하는 실제와 비슷한 MSA 대상을 만들어 달라고 요청했다. 관측 대상은 **별도 로컬 Git 저장소**에 만들었다. JJAM-TONG에는 재사용할 라이브러리와 검증 근거만 둔다. 아래는 최초 로컬 검증의 기록이다.
 
-2026-11-13에 대상을 [공개 Playground 저장소](https://github.com/DDINGJOO/JJAM-TONG-playground)로 발행했다. [GitHub 분석 결과 수집 검증](GITHUB-EVIDENCE-SYNC.md)은 그 안의 별도 `method-fixture`를 다룬다. MSA 게시판 전체의 Boot 실행 JAR 분석과 구분한다.
+2026-11-13에 대상을 [공개 Playground 저장소](https://github.com/DDINGJOO/JJAM-TONG-playground)로 발행했다. [GitHub 분석 결과 수집 검증](GITHUB-EVIDENCE-SYNC.md)은 그 안의 별도 `method-fixture`를 다룬다. MSA 게시판 전체의 Spring Boot 실행 JAR 분석과 구분한다.
 
 ## 구성과 요청 흐름
 

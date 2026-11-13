@@ -67,7 +67,7 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 
 [별도 Playground](https://github.com/DDINGJOO/JJAM-TONG-playground)의 `method-fixture`를 Actions에서 분석하고, 로컬 수집기가 성공한 실행의 결과를 검증해 PostgreSQL에 저장하는 경로를 연결했다. 커밋별 메서드 추가·이름 변경·삭제와 이전 관계 보존의 실제 판정은 [검증 결과](../experiments/GITHUB-EVIDENCE-SYNC.md)에 있다. [실행 명령](../../tools/github_evidence_sync/README.md)과 [ADR 0006](../decisions/0006-github-method-evidence-pull.md)을 함께 읽는다.
 
-DB는 로컬 루프백에 두고 Actions에는 DB 접속 권한을 주지 않는다. 수집기는 실행 회차·커밋·artifact와 내부 색인의 해시를 대조하며 최신 버전으로 대체하지 않는다. 첫 연결은 일반 Java JAR의 정적 후보이며, Boot 서비스 전체 분석·trace의 지속 수집·화면 자동 갱신과 구분한다.
+DB는 로컬 루프백에 두고 Actions에는 DB 접속 권한을 주지 않는다. 수집기는 실행 회차·커밋·artifact와 내부 색인의 해시를 대조하며 최신 버전으로 대체하지 않는다. 첫 연결은 일반 Java JAR의 정적 후보이며, Spring Boot 서비스 전체 분석·trace의 지속 수집·화면 자동 갱신과 구분한다.
 
 ## 적용 전후 성능은 얼마나 다른가
 

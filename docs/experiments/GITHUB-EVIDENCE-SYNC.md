@@ -18,7 +18,7 @@ flowchart LR
 
 Actions는 로컬 DB에 접속하지 않는다. 로컬 수집기가 HTTPS로 GitHub의 결과를 가져온다. DB는 `127.0.0.1:29632`에만 연결한다. Python 3.9와 기존 Psycopg 3.2.12, PostgreSQL 17.11 저장 어댑터를 재사용했다. 수집·발행을 위한 새 패키지는 추가하지 않았다.
 
-첫 분석 대상은 `method-fixture`의 일반 Java JAR이다. 빌드 JDK는 21이고 분석할 바이트코드는 Java 17을 대상으로 만든다. 분석기는 JavaParser 3.28.2와 WALA 1.9.0이다. Actions에서 가져오는 플랫폼 코드는 [`d9f8e71`](https://github.com/DDINGJOO/JJAM-TONG/commit/d9f8e71f997f25500e7df5d952dc87b9ee6896c7)로 고정했다. 실행마다 실제 JAR·소스 해시를 확인하고 커밋·빌드·모듈·분석기·스키마·설정 정보를 색인에 넣었다.
+첫 분석 대상은 `method-fixture`의 일반 Java JAR이다. 빌드 JDK는 21이고 분석 대상 바이트코드는 Java 17 기준으로 만든다. 분석기는 JavaParser 3.28.2와 WALA 1.9.0이다. Actions에서 가져오는 플랫폼 코드는 [`d9f8e71`](https://github.com/DDINGJOO/JJAM-TONG/commit/d9f8e71f997f25500e7df5d952dc87b9ee6896c7)로 고정했다. 실행마다 실제 JAR·소스 해시를 확인하고 커밋·빌드·모듈·분석기·스키마·설정 정보를 색인에 넣었다.
 
 ## 실제 소스를 수정한 두 커밋
 
@@ -29,7 +29,7 @@ Actions는 로컬 DB에 접속하지 않는다. 로컬 수집기가 HTTPS로 Git
 
 B에서는 `validate`를 `validateInput`으로 바꾸고 `legacyCheck`를 삭제했으며, boolean 값을 반환하는 private 메서드 `hasKey`를 추가했다. `Service`의 호출 대상도 새 메서드로 바꿨다. 변경 전후의 기대 관계는 소스에서 먼저 정했고, 각 분석기의 DB 조회 결과와 대조했다. A·B는 비교 이름이며, 같은 커밋에 소스 변형을 덧씌운 두 빌드를 뜻하지 않는다. 두 실행 모두 실제 커밋의 원본을 분석한다.
 
-두 Actions 실행에서 라이브러리·대상 빌드, 분석기 정확성 검증, 메서드 분석과 MSA 통합 시나리오 9개가 각각 통과했다. 두 번째 커밋의 로컬 사전 확인에서도 기존 기능 시나리오 10개를 통과했다. 최종 색인은 미커밋 소스의 사전 빌드가 아니라 깨끗한 CI 체크아웃에서 만들었다.
+두 Actions 실행에서 라이브러리·대상 빌드, 분석기 정확성 검증, 메서드 분석과 MSA 통합 시나리오 9개가 각각 통과했다. B로 커밋할 소스의 로컬 사전 확인에서도 `method-fixture`의 기능 시나리오 10개를 통과했다. 최종 색인은 미커밋 소스의 사전 빌드가 아니라 깨끗한 CI 체크아웃에서 만들었다. 각 CI의 단계별 판정·9개 시나리오 결과와 커밋 전 사전 확인은 JSON 결과의 `ciValidation`·`localPreCommitSmoke`에 구분했다.
 
 ## 수집 결과와 과거 관계를 대조했다
 

@@ -148,6 +148,81 @@
         "runUrl": "https://github.com/DDINGJOO/JJAM-TONG-playground/actions/runs/43399888465",
         "artifactId": 14024019299,
         "digest": "sha256:7d4349a2767094bc020506b4780bebc8a7c7307ea1ec54d456490532eb1e18c6"
+      },
+      "ciValidation": {
+        "evidenceArtifactId": 14024203225,
+        "archiveSha256": "7f5afb475f6d6bc570863447655417c34fb6a974468be9a0877a7d96ee452635",
+        "recordedAt": "2026-11-13T09:19:09.774129+00:00",
+        "passed": 9,
+        "scenarios": [
+          {
+            "scenario": "create-read-cache-and-async-projection",
+            "passed": true,
+            "seconds": 3.481
+          },
+          {
+            "scenario": "redis-outage-database-fallback",
+            "passed": true,
+            "seconds": 1.042
+          },
+          {
+            "scenario": "kafka-outage-outbox-and-recovery",
+            "passed": true,
+            "seconds": 5.649
+          },
+          {
+            "scenario": "duplicate-event-no-duplicate-effect",
+            "passed": true,
+            "seconds": 4.885
+          },
+          {
+            "scenario": "consumer-database-outage-retains-offset-and-recovers",
+            "passed": true,
+            "seconds": 45.838
+          },
+          {
+            "scenario": "real-database-read-delay-preserves-result",
+            "passed": true,
+            "seconds": 1.017
+          },
+          {
+            "scenario": "database-error-rolls-back-post-and-outbox",
+            "passed": true,
+            "seconds": 0.542
+          },
+          {
+            "scenario": "update-delete-cache-and-projection",
+            "passed": true,
+            "seconds": 0.531
+          },
+          {
+            "scenario": "deployed-artifact-and-two-build-identities",
+            "passed": true,
+            "seconds": 0.305
+          }
+        ],
+        "steps": [
+          {
+            "name": "Build and test the library and both application builds",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build and verify the static method analyzers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Analyze this exact commit's Java method fixture",
+            "conclusion": "success"
+          },
+          {
+            "name": "Exercise nine MSA integration scenarios",
+            "conclusion": "success"
+          },
+          {
+            "name": "Publish the immutable method-analysis bundle",
+            "conclusion": "success"
+          }
+        ]
       }
     },
     {
@@ -308,6 +383,81 @@
         "runUrl": "https://github.com/DDINGJOO/JJAM-TONG-playground/actions/runs/43401783284",
         "artifactId": 14025193954,
         "digest": "sha256:1bb445fe46d85cb58177aff8afb11c4503ce6ab13ecaa321af449f21a7c0cb00"
+      },
+      "ciValidation": {
+        "evidenceArtifactId": 14024764966,
+        "archiveSha256": "1e576422fe5358bcd23debd10430f624227c9c8752fc9c896923e97a9e5146f0",
+        "recordedAt": "2026-11-13T09:32:57.546687+00:00",
+        "passed": 9,
+        "scenarios": [
+          {
+            "scenario": "create-read-cache-and-async-projection",
+            "passed": true,
+            "seconds": 3.614
+          },
+          {
+            "scenario": "redis-outage-database-fallback",
+            "passed": true,
+            "seconds": 1.04
+          },
+          {
+            "scenario": "kafka-outage-outbox-and-recovery",
+            "passed": true,
+            "seconds": 7.282
+          },
+          {
+            "scenario": "duplicate-event-no-duplicate-effect",
+            "passed": true,
+            "seconds": 7.06
+          },
+          {
+            "scenario": "consumer-database-outage-retains-offset-and-recovers",
+            "passed": true,
+            "seconds": 52.58
+          },
+          {
+            "scenario": "real-database-read-delay-preserves-result",
+            "passed": true,
+            "seconds": 1.021
+          },
+          {
+            "scenario": "database-error-rolls-back-post-and-outbox",
+            "passed": true,
+            "seconds": 0.549
+          },
+          {
+            "scenario": "update-delete-cache-and-projection",
+            "passed": true,
+            "seconds": 0.546
+          },
+          {
+            "scenario": "deployed-artifact-and-two-build-identities",
+            "passed": true,
+            "seconds": 0.421
+          }
+        ],
+        "steps": [
+          {
+            "name": "Build and test the library and both application builds",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build and verify the static method analyzers",
+            "conclusion": "success"
+          },
+          {
+            "name": "Analyze this exact commit's Java method fixture",
+            "conclusion": "success"
+          },
+          {
+            "name": "Exercise nine MSA integration scenarios",
+            "conclusion": "success"
+          },
+          {
+            "name": "Publish the immutable method-analysis bundle",
+            "conclusion": "success"
+          }
+        ]
       }
     }
   ],
@@ -363,6 +513,22 @@
     "localMarkdownLinksChecked": 127,
     "lsp": "unavailable; no lsp_diagnostics tool",
     "independentCodeReview": "COMMENT; zero defects; LSP unavailable",
-    "architectureRecheck": "pending; previously missing public record now added"
+    "architectureRecheck": "CLEAR; committed public two-version evidence verified",
+    "koreanEditorialReview": {
+      "initialRequests": 4,
+      "fixed": 4,
+      "recheck": "PASS",
+      "remaining": 0,
+      "reviewer": "independent AI Korean editor"
+    },
+    "reviewSynthesis": "COMMENT: code defects 0; architecture CLEAR; LSP unavailable"
+  },
+  "localPreCommitSmoke": {
+    "target": "method-fixture",
+    "mode": "allow-dirty smoke only; not published",
+    "passed": 10,
+    "baseRevision": "9fcee03059866b9774abf33ebbb59f091d6bcd8d",
+    "sourceState": "dirty",
+    "sourceDigest": "a153342148e41d45ba2d4f5ed34dd06602c16c62aa004c5e734674af284bfc4c"
   }
 }
