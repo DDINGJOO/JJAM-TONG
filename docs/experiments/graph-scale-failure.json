@@ -1,0 +1,98 @@
+{
+  "schema": "graph-scale-run/v1",
+  "run_id": "cb238ffab95141109047ec6ae87246d4",
+  "commit": "7b040cb68781c0526074cf719b9fedb9d241d01b",
+  "source_hashes": {
+    "experiments/graph_scale_lab/__init__.py": "fb5157983ef88e7aa0c3c8a673f2cae5cbee1977ecb87448c8288b489283aa61",
+    "experiments/graph_scale_lab/compose.yaml": "1f44645c002f55850b132fcfda51c963fe17aa2486b3920af0902fff23be2552",
+    "experiments/graph_scale_lab/fixtures.py": "aabdc163d8756805003acb7da14db71f3889d6cc33fe250b9acfe8b10a01aad2",
+    "experiments/graph_scale_lab/provenance.py": "d2c2e78dcff8b5c52602c4ed55043c011b2b391ccf5be77aefc03d358a18d26c",
+    "experiments/graph_scale_lab/run.py": "12142eb58875b5a0c49aa5fee3ae35c5b3007c4fb1174a835950e9e5f6110182",
+    "experiments/graph_scale_lab/stores.py": "48f46c078bfe1f76cc21bcfe387e309d41dea0559b473434eb4378a565d09184",
+    "experiments/graph_scale_lab/test_fixtures.py": "902040d709d97f3a3282c07cfee5e27ade71d79501b27015d42528edd6c8aac8",
+    "experiments/graph_scale_lab/test_run.py": "0b92ff1ec9ec4fef37396649fee8088b36cebe417d36754dbeabd481525e3e28",
+    "experiments/graph_scale_lab/test_stores.py": "47c12265a8f9edbc0c73ca344b98b5a3cb70ff409e204c39af82678dfeb5c9fe",
+    "experiments/storage_lab/requirements.txt": "cf66e7c1a2f036e5603e28a2decdd933096864f50551e14fd3f28964a74bf8d0"
+  },
+  "started_utc": "2026-11-13T06:07:54.805245+00:00",
+  "finished_utc": "2026-11-13T06:13:16.799897+00:00",
+  "status": "failed",
+  "case_plan": [
+    {
+      "engine": "postgres",
+      "methods_per_build": 10000,
+      "local_static_degree": 2,
+      "status": "complete"
+    },
+    {
+      "engine": "postgres",
+      "methods_per_build": 10000,
+      "local_static_degree": 6,
+      "status": "complete"
+    },
+    {
+      "engine": "postgres",
+      "methods_per_build": 100000,
+      "local_static_degree": 2,
+      "status": "complete"
+    },
+    {
+      "engine": "postgres",
+      "methods_per_build": 100000,
+      "local_static_degree": 6,
+      "status": "complete"
+    },
+    {
+      "engine": "neo4j",
+      "methods_per_build": 10000,
+      "local_static_degree": 2,
+      "status": "complete"
+    },
+    {
+      "engine": "neo4j",
+      "methods_per_build": 10000,
+      "local_static_degree": 6,
+      "status": "failed"
+    },
+    {
+      "engine": "neo4j",
+      "methods_per_build": 100000,
+      "local_static_degree": 2,
+      "status": "pending"
+    },
+    {
+      "engine": "neo4j",
+      "methods_per_build": 100000,
+      "local_static_degree": 6,
+      "status": "pending"
+    }
+  ],
+  "failure": {
+    "engine": "neo4j",
+    "scope": "c10a1bf42476231d74eab2bed00e80bf5ac6dff40a76ef57c0212b4a3e64c2a7",
+    "question": {
+      "label": "hub_6",
+      "start": 0,
+      "depth": 6,
+      "reverse": false,
+      "relation": "STATIC"
+    },
+    "mode": "frontier",
+    "ms": 14616.985625000041,
+    "code": "Neo.ClientError.Transaction.TransactionTimedOutClientConfiguration",
+    "error": "Neo.ClientError.Transaction.TransactionTimedOutClientConfiguration: {'code': 'Neo.ClientError.Transaction.TransactionTimedOutClientConfiguration', 'message': 'The transaction has been terminated. Retry your operation in a new transaction, and you should see a successful result. The transaction has not completed within the timeout specified at its start by the client. You may want to retry with a longer timeout. '}"
+  },
+  "cleanup": {
+    "lab_containers_removed": true,
+    "unrelated_still_running": true
+  },
+  "excluded_from_comparison": true,
+  "active_case": {
+    "engine": "neo4j",
+    "methods_per_build": 10000,
+    "local_static_degree": 6,
+    "status": "failed",
+    "stage": "concurrent:frontier:4"
+  },
+  "raw_local_sha256": "31608d68a33d8a784562fd71f614c8fd62e15c176d7b8c1fa819677eef35a60d"
+}
