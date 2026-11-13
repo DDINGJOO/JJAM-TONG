@@ -15,6 +15,7 @@ import uuid
 
 from .fixtures import ANALYSIS, dataset, expected_counts, expected_events, expected_reachable, fingerprint, key, record, scope
 from .pipeline import Outbox
+from .provenance import source_hashes, stamped
 from .stores import STORES, Postgres
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -170,7 +171,9 @@ def concurrent_reads(name, rows):
     counts = expected_counts(rows, selected)
     results = []
     for clients in (1, 4, 8):
-        barrier = threading.Barrier(clients + 1)
+        started = []
+        # The action runs before any participant can leave the barrier.
+        barrier = threading.Barrier(clients + 1, action=lambda: started.append(time.perf_counter()))
         def worker():
             adapter = STORES[name]()
             samples = []
@@ -191,9 +194,8 @@ def concurrent_reads(name, rows):
         with concurrent.futures.ThreadPoolExecutor(max_workers=clients) as pool:
             futures = [pool.submit(worker) for _ in range(clients)]
             barrier.wait(timeout=60)
-            start_time = time.perf_counter()
             samples = [sample for future in futures for sample in future.result()]
-            elapsed = time.perf_counter() - start_time
+            elapsed = time.perf_counter() - started[0]
         ordered = sorted(samples)
         results.append(dict(clients=clients, operations=len(samples), elapsed_seconds=elapsed,
                             operations_per_second=len(samples) / elapsed, p50_ms=statistics.median(samples),
@@ -228,6 +230,8 @@ def pipeline_checks(name, sink):
     row = record("pipeline", stream, "event", "pipeline-event", message="synthetic timeout", level="ERROR", service="board")
     selected = scope("pipeline", stream)
     checks, timings = [], {}
+    restored_sink = rebuild_sink = None
+    succeeded = False
     try:
         # Rollback proves the source and outbox obligation share a transaction.
         try:
@@ -287,8 +291,10 @@ def pipeline_checks(name, sink):
         assert_equal(restored_sink.events(selected), [row["id"]], "recovered after DB outage")
         checks.append("real-database-stop-start-and-backlog-recovery")
         # Delete only this synthetic scope, then replay its retained original stream.
+        outbox.invalidate()
         restored_sink.purge_scope(selected)
         assert_equal(restored_sink.events(selected), [], "projection really removed")
+        assert_equal(outbox.watermark()["status"], "stale", "retired projection cannot remain ready")
         rebuild_sink = restored_sink
         if name == "elasticsearch":
             # delete_by_query advances internal versions. Rebuild in a fresh generation.
@@ -299,24 +305,32 @@ def pipeline_checks(name, sink):
         replayed, timings["rebuild_from_retained_outbox_ms"] = timed(rebuild.drain)
         assert_equal(replayed, 4, "rebuild replays all four committed events")
         assert_equal(rebuild_sink.events(selected), [row["id"]], "rebuilt latest state")
+        assert_equal(rebuild.watermark()["status"], "ready", "rebuilt projection has its own checkpoint")
         if rebuild_sink is not restored_sink:
-            rebuild_sink.http.request("DELETE", "/" + rebuild_sink.index)
-            rebuild_sink.close()
+            restored_sink.close()
             timings["rebuild_mode"] = "fresh-index-generation; atomic alias switch not implemented"
         else:
             timings["rebuild_mode"] = "purge isolated synthetic scope and replay original retained stream"
         checks.append("purged-projection-rebuilt-from-retained-outbox")
-        return {"checks": checks, "timings": timings, "watermark": outbox.watermark()}, restored_sink
+        succeeded = True
+        return {"checks": checks, "timings": timings, "watermark": rebuild.watermark(),
+                "retired_watermark": outbox.watermark(), "consumer": rebuild.consumer,
+                "projection": getattr(rebuild_sink, "index", name)}, rebuild_sink
     finally:
         primary.close()
+        if not succeeded:
+            for adapter in (restored_sink, rebuild_sink):
+                if adapter is not None:
+                    adapter.close()
 
 
 def run_engine(name, scales, repetitions, do_pipeline):
     print("START " + name, flush=True)
-    compose("up", "-d", name)
-    store = ready(name)
+    store = None
     results = {"engine": name, "image": IMAGES[name], "scales": []}
     try:
+        compose("up", "-d", name)
+        store = ready(name)
         for label, methods, events in scales:
             rows = dataset(methods, events)
             store.reset()
@@ -353,12 +367,22 @@ def run_engine(name, scales, repetitions, do_pipeline):
         results["image_identity"] = json.loads(command(["docker", "image", "inspect", IMAGES[name], "--format", "{{json .RepoDigests}}" ]).stdout)
         results["store_files_du_kib"] = command(["docker", "exec", container, "du", "-sk", {"postgres": "/var/lib/postgresql/data", "neo4j": "/data", "elasticsearch": "/usr/share/elasticsearch/data", "clickhouse": "/var/lib/clickhouse"}[name]], False).stdout.strip()
         print("DONE " + name, flush=True)
+        results["status"] = "passed"
         return results
     finally:
-        store.close()
-        compose("stop", name)
-        if name != "postgres":
-            compose("stop", "postgres")
+        try:
+            if store is not None:
+                try:
+                    if name == "elasticsearch" and store.index != STORES[name].index:
+                        store.http.request("DELETE", "/" + store.index, allowed=(200, 404))
+                finally:
+                    store.close()
+        finally:
+            try:
+                compose("stop", name)
+            finally:
+                if name != "postgres":
+                    compose("stop", "postgres")
 
 
 def main():
@@ -371,9 +395,13 @@ def main():
     args = parser.parse_args()
     if args.repetitions < 1:
         parser.error("repetitions must be positive")
+    if command(["git", "status", "--porcelain", "--", "experiments/storage_lab"]).stdout.strip():
+        parser.error("commit storage-lab source changes before measuring a reproducible comparison")
     args.output.mkdir(parents=True, exist_ok=True)
     scales = [("small", 150, 1000)] if args.quick else [("small", 150, 1000), ("medium", 1500, 20000)]
-    environment = dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    environment = dict(run_id=uuid.uuid4().hex, source_sha256=source_hashes(), source_tree_dirty=False,
+                       engines=args.engines, pipeline_enabled=not args.no_pipeline,
+                       timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                        platform=platform.platform(), python=sys.version, machine=platform.machine(),
                        git_commit=command(["git", "rev-parse", "HEAD"]).stdout.strip(),
                        docker=json.loads(command(["docker", "info", "--format", "{{json .}}" ]).stdout),
@@ -387,7 +415,7 @@ def main():
     failed = False
     for name in args.engines:
         try:
-            result = run_engine(name, scales, args.repetitions, not args.no_pipeline)
+            result = stamped(run_engine(name, scales, args.repetitions, not args.no_pipeline), environment)
         except Exception as error:
             failed = True
             result = {"engine": name, "status": "failed", "error": repr(error)}

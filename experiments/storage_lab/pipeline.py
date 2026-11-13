@@ -34,6 +34,11 @@ class Outbox:
         actual = self.primary.sql("SELECT offset_id AS n FROM storage_lab_checkpoints WHERE consumer=%s AND stream=%s", (self.consumer, self.stream))[0]["n"]
         return dict(required=expected, applied=actual, status="ready" if actual >= expected else "stale")
 
+    def invalidate(self):
+        """Retire this consumer's claim before its isolated read model is removed."""
+        self.primary.sql("UPDATE storage_lab_checkpoints SET offset_id=0 WHERE consumer=%s AND stream=%s",
+                         (self.consumer, self.stream))
+
     def drain(self, crash_after_apply=False):
         position = self.watermark()["applied"]
         pending = self.primary.sql("SELECT offset_id,payload FROM storage_lab_outbox WHERE stream=%s AND offset_id>%s ORDER BY offset_id", (self.stream, position))

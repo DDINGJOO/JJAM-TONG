@@ -4,7 +4,7 @@ PostgreSQL·Neo4j·Elasticsearch·ClickHouse에 같은 합성 근거를 넣고, 
 
 ## 실행
 
-저장소 루트에서 실행한다. Docker Compose, Python 3.9 이상과 실험용 Psycopg가 필요하다. 네 종류의 서버와 드라이버는 이번 비교에만 추가했다. 제품 라이브러리의 의존성은 바꾸지 않는다.
+저장소 루트에서 실행한다. Docker Compose, Python 3.9 이상과 실험용 Psycopg가 필요하다. 네 종류의 서버와 드라이버는 이번 비교에만 추가했다. 제품 라이브러리의 의존성은 바꾸지 않는다. 측정 소스는 먼저 커밋한다. `experiments/storage_lab/`에 미커밋 변경이 있으면 실행기가 측정을 거부한다.
 
 ```sh
 python3 -m venv .local/storage-lab/venv
@@ -33,10 +33,12 @@ docker compose -f experiments/storage_lab/compose.yaml config --quiet
 - `stores.py`: PostgreSQL 재귀 SQL, Neo4j 가변 길이 경로, Elasticsearch·ClickHouse의 깊이가 제한된 클라이언트 탐색을 비교한다. 검색은 합성 영문 메시지의 `timeout` 토큰으로 의미를 맞춘다.
 - `run.py`: 독립 예상값, 단일 클라이언트 지연, 1·4·8개 클라이언트의 짧은 부하, 자원 표본·저장량, 실제 DB 중단·재시작을 실행한다.
 - `pipeline.py`: PostgreSQL의 근거와 전송할 작업을 한 트랜잭션에 보관하는 outbox를 구현한다. 처리 완료 위치는 조회용 DB가 반영된 뒤 전진한다. 실제 자식 프로세스를 종료 코드 73으로 끊어 재처리를 검증한다.
-- `federation.py`: PostgreSQL 원장·Neo4j 그래프·Elasticsearch 검색을 함께 조회한다. 한쪽 반영이 늦거나 artifact가 다르면 완전한 결합 결과를 반환하지 않는다.
-- `report.py`: 원시 표본·입력 해시·이미지 digest·환경 요약을 공개용 JSON으로 묶는다.
+- `federation.py`: PostgreSQL 원장·Neo4j 그래프·Elasticsearch 검색을 함께 조회한다. 한쪽 반영이 늦거나 요청한 artifact가 원장과 다르면 완전한 결합 결과를 반환하지 않는다. 빌드마다 artifact가 하나라는 합성 입력을 전제로 하며, 읽기 모델 자체의 artifact 무결성을 확인하지는 않는다.
+- `provenance.py`·`report.py`: 실행 시작 때 고정한 ID·Git 커밋·소스 해시로 결과를 묶는다. 서로 다른 실행·입력·소스, 빠진 재시작·복구·통합 시험은 공개용 결과에서 거부한다.
 
-outbox의 **at-least-once**는 같은 작업이 여러 번 전달될 수 있다는 뜻이다. 이 실험에서는 ID와 순서 번호로 중복·이전 버전의 재적용을 처리한다. 동일 근거의 같은 순서 번호에는 같은 내용이 와야 한다. 다중 작성자·다중 소비자 경합과 분산 트랜잭션은 구현하지 않았다.
+outbox의 **at-least-once**는 같은 작업이 여러 번 전달될 수 있다는 뜻이다. 이 실험에서는 ID와 순서 번호로 중복·이전 버전의 재적용을 처리한다. 동일 근거의 같은 순서 번호에는 같은 내용이 와야 한다. 이는 입력의 전제이며, 다른 event ID로 같은 순서 번호에 상충한 내용을 보낼 때 거부한다는 보장은 없다. 다중 작성자·다중 소비자 경합과 분산 트랜잭션은 구현하지 않았다.
+
+재구축을 위해 읽기 모델을 지우기 전에 기존 소비자의 완료 위치를 무효화한다. 새 소비자의 완료 위치와 복원한 실제 데이터를 함께 검증하며, Elasticsearch의 새 색인은 이 검증이 끝난 뒤 실행기 정리 단계에서 삭제한다. alias 전환이나 서비스 중 재구축은 시험하지 않았다.
 
 ## 결과·정리
 

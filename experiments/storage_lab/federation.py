@@ -7,6 +7,7 @@ import uuid
 from .fixtures import key, record, scope
 from .pipeline import Outbox
 from .run import ROOT, assert_equal, compose, ready
+from .provenance import load_environment, stamped
 
 
 def joined(primary, graph, search, graph_outbox, search_outbox, selected, expected_artifact):
@@ -24,10 +25,12 @@ def joined(primary, graph, search, graph_outbox, search_outbox, selected, expect
 
 
 def run():
-    compose("up", "-d", "postgres", "neo4j", "elasticsearch")
     primary = graph = search = None
     try:
-        primary, graph, search = ready("postgres"), ready("neo4j"), ready("elasticsearch")
+        compose("up", "-d", "postgres", "neo4j", "elasticsearch")
+        primary = ready("postgres")
+        graph = ready("neo4j")
+        search = ready("elasticsearch")
         stream = "federated-" + uuid.uuid4().hex[:8]
         graph_queue = Outbox(primary, graph, stream, stream + "-graph")
         search_queue = Outbox(primary, search, stream, stream + "-search")
@@ -49,9 +52,9 @@ def run():
         assert_equal(complete["status"], "ready", "both watermarks current")
         assert_equal(complete["static_candidates"], [b["id"]], "native graph projection")
         assert_equal(complete["events"], [event["id"]], "native search projection")
-        checks.append("postgres-neo4j-elasticsearch-exact-build-join")
+        checks.append("fixture-build-assumed-artifact-join")
         assert_equal(joined(primary, graph, search, graph_queue, search_queue, selected, "sha256:wrong"), {"status": "version_mismatch"}, "wrong artifact cannot join")
-        checks.append("artifact-mismatch-rejected")
+        checks.append("requested-artifact-mismatch-with-source-rejected")
         assert_equal(joined(primary, graph, search, graph_queue, search_queue, scope(stream, "unknown"), a["artifact"]), {"status": "version_mismatch"}, "no latest-build fallback")
         checks.append("unknown-build-has-no-latest-fallback")
         late = record(stream, "build-A", "event", "event-late", message="timeout late", known=300, occurred=120)
@@ -62,8 +65,9 @@ def run():
         search_queue.drain()
         assert_equal(joined(primary, graph, search, graph_queue, search_queue, selected, a["artifact"])["events"], sorted([event["id"], late["id"]]), "late event reaches joined view")
         checks.append("catch-up-restores-joined-view")
-        return {"checks": checks, "partial_example": partial, "ready_example": complete,
+        return {"status": "passed", "checks": checks, "partial_example": partial, "ready_example": complete,
                 "limits": ["single writer and consumer per projection", "no distributed snapshot during concurrent updates",
+                           "fixture assumes one artifact per build; projection artifact integrity is not independently checked",
                            "no real policy engine or database tenant authorization", "no alias cutover or cloud deployment"]}
     finally:
         for store in (primary, graph, search):
@@ -76,7 +80,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, default=ROOT / "results/storage-lab/federation.json")
     args = parser.parse_args()
-    result = run()
+    environment = load_environment(args.output.parent)
+    result = stamped(run(), environment)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2))
     print("PASS federation checks=%d" % len(result["checks"]))
