@@ -1,0 +1,20 @@
+name: jjamtong-evidence-store
+services:
+  postgres:
+    image: postgres:17.11
+    cpus: 1
+    mem_limit: 1024m
+    ports: ["127.0.0.1:29632:5432"]
+    environment:
+      POSTGRES_USER: evidence
+      POSTGRES_PASSWORD: synthetic-local-only
+      POSTGRES_DB: evidence
+    volumes:
+      - evidence-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U evidence -d evidence"]
+      interval: 1s
+      timeout: 2s
+      retries: 30
+volumes:
+  evidence-data:
