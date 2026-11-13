@@ -1,0 +1,1123 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+  "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1",
+  "source_sha256": {
+    "experiments/storage_lab/fixtures.py": "0acfe972467e7ab172af8d0e2296a8b3754f578aae3b271ee692cb05c42f98fc",
+    "experiments/storage_lab/stores.py": "de472ac4a4f43d1846d4b3bed4043410d0706a65a62736af4162ca9f7e93b301",
+    "experiments/storage_lab/pipeline.py": "8c232bd0dfcec6f575348809c4d1db57076ba3f9709a7b0b44ce5d4cd337b4da",
+    "experiments/storage_lab/run.py": "3271624146ba5b8100e54d7cfdf76111754b0fc30f06e2e6c385a44bbafedb3d",
+    "experiments/storage_lab/federation.py": "a960f4f9572357da47f3f3293e619fa94ff557cf8fdc65026aedc19482ddf107",
+    "experiments/storage_lab/provenance.py": "1a48cc209a7b2c0a8a56fa88473fe3e1bf1a0110b56b5fea2f00d8a6f83a5ff6",
+    "experiments/storage_lab/report.py": "d85efa3b8cb3db46b045e44b08a9fd0d1c671d115da601192fafa16e2ab0db55",
+    "experiments/storage_lab/test_fixtures.py": "8cf7840c72e857ace4ad0b45f22427409bb33aeda05e31970380ab05089c4ce0",
+    "experiments/storage_lab/test_regressions.py": "7a2719a661f976afae6048618ec1851006364ecf767bb853a25b8fd389e637e0",
+    "experiments/storage_lab/test_evidence.py": "a0af9dfff4ea272d8492ba2a0909349dd34006b7cb1f79fbfbd9edd7c42f2012",
+    "experiments/storage_lab/test_runner.py": "579f39abbc56abe63de6078c3ec52cf163559729f6ffea5a82cfd7674664795a",
+    "experiments/storage_lab/compose.yaml": "339c52e80f281519e849d2f4b2e9681869675d667a29361ec0743fda9dda8c1f",
+    "experiments/storage_lab/clickhouse.xml": "2f2bf5b2ace23eb9f0f75b8bfdfd99b6f6af715b9fedb0091ce4e70a2c94d1bc",
+    "experiments/storage_lab/requirements.txt": "cf66e7c1a2f036e5603e28a2decdd933096864f50551e14fd3f28964a74bf8d0",
+    "experiments/storage_topology_lab/__init__.py": "077e64638fd95dd41d68f506dae49739fe27dbc598182d46845bc24854c39c3b",
+    "experiments/storage_topology_lab/authority.py": "8ae9c3cd3e525cd6bec0c9bd9fb37ba91bbc2c0ad2033c08436a733579b951f5",
+    "experiments/storage_topology_lab/run.py": "7c8e47a37a2a237a362e9de354bfa9f3059504a08b1fb2bc3b07319390c24784",
+    "experiments/storage_topology_lab/test_contract.py": "0d0816846f83a654fecc733be0cb49ee61d03c296e72f2dd255e7701937a7c08"
+  },
+  "source_tree_dirty": false,
+  "started_at": "2026-11-13T04:50:32.595306+00:00",
+  "repetitions": 5,
+  "images": {
+    "postgres": {
+      "tag": "postgres:17.11-alpine",
+      "id": "sha256:e5d2edd28b1f8d40a0a6c0c9cdc545b19b56a0d5d88f94bc11a97d970d4700d0",
+      "digests": [
+        "postgres@sha256:e5d2edd28b1f8d40a0a6c0c9cdc545b19b56a0d5d88f94bc11a97d970d4700d0"
+      ]
+    },
+    "neo4j": {
+      "tag": "neo4j:5.26.33-community",
+      "id": "sha256:577eb43120e8688e62e753e962c47d30044ecaa95147ee5386c29f226b878008",
+      "digests": [
+        "neo4j@sha256:577eb43120e8688e62e753e962c47d30044ecaa95147ee5386c29f226b878008"
+      ]
+    },
+    "elasticsearch": {
+      "tag": "docker.elastic.co/elasticsearch/elasticsearch:9.5.6",
+      "id": "sha256:79b4f1de4c15e6eca824723086a51e5934406d614d410cc11be77748cafac537",
+      "digests": [
+        "docker.elastic.co/elasticsearch/elasticsearch@sha256:79b4f1de4c15e6eca824723086a51e5934406d614d410cc11be77748cafac537"
+      ]
+    },
+    "clickhouse": {
+      "tag": "clickhouse/clickhouse-server:26.8.36.3",
+      "id": "sha256:d426d2f612e1e189c90f9a3f8dcd85a03c6851273833817a296bb327e63aa7a7",
+      "digests": [
+        "clickhouse/clickhouse-server@sha256:d426d2f612e1e189c90f9a3f8dcd85a03c6851273833817a296bb327e63aa7a7"
+      ]
+    }
+  },
+  "results": [
+    {
+      "authority": "postgres",
+      "projection": "postgres",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 15.96700000000001,
+        "initial_projection_ms": 10.569625000000027,
+        "rebuild_projection_ms": 26.213292,
+        "validated_view_samples_ms": [
+          11.042540999999684,
+          11.192540999999778,
+          12.668416999999987,
+          13.302042000000291,
+          13.936457999999874
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "postgres",
+      "projection": "neo4j",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 31.93950000000001,
+        "initial_projection_ms": 906.1815839999987,
+        "rebuild_projection_ms": 613.7822499999999,
+        "validated_view_samples_ms": [
+          219.04495900000143,
+          207.7673329999996,
+          210.9518339999994,
+          190.21483299999886,
+          168.26233300000126
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "postgres",
+      "projection": "elasticsearch",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 21.871500000003152,
+        "initial_projection_ms": 343.2745829999959,
+        "rebuild_projection_ms": 212.17712499999664,
+        "validated_view_samples_ms": [
+          465.5640419999969,
+          411.37849999999787,
+          341.04283300000304,
+          403.7697919999914,
+          376.02158299999644
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "postgres",
+      "projection": "clickhouse",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 20.06466699999976,
+        "initial_projection_ms": 58.69208400000048,
+        "rebuild_projection_ms": 83.53691700000354,
+        "validated_view_samples_ms": [
+          63.9012500000149,
+          62.98108300001104,
+          61.995874999979605,
+          60.08387500000367,
+          64.77145799999562
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "neo4j",
+      "projection": "postgres",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 221.23600000000465,
+        "initial_projection_ms": 13.028707999978906,
+        "rebuild_projection_ms": 132.3957500000006,
+        "validated_view_samples_ms": [
+          90.3130410000017,
+          80.73237499999664,
+          73.34441599999764,
+          88.55658299998481,
+          92.37933299999668
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "neo4j",
+      "projection": "neo4j",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 428.64141699999436,
+        "initial_projection_ms": 472.5269580000031,
+        "rebuild_projection_ms": 2916.4402919999757,
+        "validated_view_samples_ms": [
+          311.4049170000044,
+          296.92241700001887,
+          279.60804199997824,
+          216.7517919999966,
+          222.40545900001507
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "neo4j",
+      "projection": "elasticsearch",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 381.83700000001863,
+        "initial_projection_ms": 376.6932920000272,
+        "rebuild_projection_ms": 193.12491699997736,
+        "validated_view_samples_ms": [
+          484.70579199999975,
+          436.1209590000499,
+          459.81362499998113,
+          509.67712499999607,
+          502.7825419999772
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "neo4j",
+      "projection": "clickhouse",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 210.16133300003048,
+        "initial_projection_ms": 67.9308330000481,
+        "rebuild_projection_ms": 190.29229200003783,
+        "validated_view_samples_ms": [
+          171.12712499999816,
+          167.71370800000795,
+          163.90708300002643,
+          167.88475000004155,
+          153.30458300002192
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "elasticsearch",
+      "projection": "postgres",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 88.75466599999982,
+        "initial_projection_ms": 15.441542000019126,
+        "rebuild_projection_ms": 66.33254099995156,
+        "validated_view_samples_ms": [
+          26.534209000033115,
+          27.995166999971843,
+          24.68012499997485,
+          25.62870799999928,
+          25.536416000022655
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "elasticsearch",
+      "projection": "neo4j",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 166.3614160000293,
+        "initial_projection_ms": 1109.9317090000227,
+        "rebuild_projection_ms": 558.3010000000286,
+        "validated_view_samples_ms": [
+          113.7072079999939,
+          168.51470899996457,
+          128.0097920000003,
+          190.1790410000217,
+          206.10008300002391
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "elasticsearch",
+      "projection": "elasticsearch",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 89.14245799996934,
+        "initial_projection_ms": 166.0476250000329,
+        "rebuild_projection_ms": 690.8294170000318,
+        "validated_view_samples_ms": [
+          568.6144590000595,
+          498.39624999992793,
+          446.86779200003457,
+          364.64904200011006,
+          416.5395410000201
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "elasticsearch",
+      "projection": "clickhouse",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "passed",
+        "same_content": [
+          "accepted",
+          "accepted"
+        ],
+        "different_content": [
+          "accepted",
+          "conflict"
+        ]
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 227.90454199991927,
+        "initial_projection_ms": 65.02020799996444,
+        "rebuild_projection_ms": 125.18233399998735,
+        "validated_view_samples_ms": [
+          592.0477910000272,
+          373.74370800000634,
+          270.9057910000183,
+          262.2134590000087,
+          418.96879199998693
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "clickhouse",
+      "projection": "postgres",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "unsupported",
+        "reason": "plain MergeTree has no native create-only identity gate in this adapter",
+        "retained_conflicting_payloads": 2
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 310.5841660000124,
+        "initial_projection_ms": 20.209708999914255,
+        "rebuild_projection_ms": 60.97141699990516,
+        "validated_view_samples_ms": [
+          35.97424999998111,
+          36.09095800004525,
+          34.121499999969274,
+          34.51674999996612,
+          35.27900000005957
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "clickhouse",
+      "projection": "neo4j",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "unsupported",
+        "reason": "plain MergeTree has no native create-only identity gate in this adapter",
+        "retained_conflicting_payloads": 2
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 305.8679170000005,
+        "initial_projection_ms": 499.54858299997795,
+        "rebuild_projection_ms": 514.647875000037,
+        "validated_view_samples_ms": [
+          239.14608400002635,
+          263.927208000041,
+          228.43629200008309,
+          285.67754200003037,
+          301.7608750000136
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "clickhouse",
+      "projection": "elasticsearch",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "projection-outage-is-unavailable",
+        "publish-while-projection-is-down",
+        "projection-restart-catches-up-from-authority",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "unsupported",
+        "reason": "plain MergeTree has no native create-only identity gate in this adapter",
+        "retained_conflicting_payloads": 2
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 264.60487499991814,
+        "initial_projection_ms": 175.14762499990866,
+        "rebuild_projection_ms": 291.9592079999802,
+        "validated_view_samples_ms": [
+          413.0084999999326,
+          389.0235420000181,
+          345.7379579999724,
+          502.37875000004806,
+          376.18958300004124
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    },
+    {
+      "authority": "clickhouse",
+      "projection": "clickhouse",
+      "status": "passed",
+      "checks": [
+        "staged-without-catalog-is-missing",
+        "empty-projection-is-partial",
+        "partial-projection-is-partial",
+        "complete-projection-is-ready",
+        "same-catalog-retry-is-idempotent",
+        "conflicting-catalog-rejected",
+        "unknown-catalog-has-no-latest-fallback",
+        "wrong-artifact-is-partial",
+        "worker-exit-73-before-ack",
+        "replay-after-lost-ack-is-idempotent",
+        "authority-outage-is-unavailable",
+        "authority-restart-retains-snapshot",
+        "rebuild-from-authority-only",
+        "tombstone-then-older-replay-stays-deleted"
+      ],
+      "query_checks": [
+        "static-forward-1",
+        "static-forward-3",
+        "static-forward-6",
+        "higher-degree-dispatcher",
+        "reverse-impact-with-cycle",
+        "infra-vpc-rds-s3",
+        "same-commit-different-artifact",
+        "different-analysis-configuration",
+        "unknown-build-is-empty",
+        "fulltext-timeout",
+        "late-record-known-time",
+        "error-group-by-service",
+        "tenant-filter-alpha-vs-beta",
+        "actual-trace-stays-observed",
+        "missing-query-scope-rejected"
+      ],
+      "capability": {
+        "status": "unsupported",
+        "reason": "plain MergeTree has no native create-only identity gate in this adapter",
+        "retained_conflicting_payloads": 2
+      },
+      "fixture_sha256": "bbe136fe85666d35bbb3819925e77850aa43f3be5683fe49bfb342b5e04b06db",
+      "fixture_rows": 323,
+      "metrics": {
+        "publish_snapshot_ms": 308.9509579999685,
+        "initial_projection_ms": 64.52008299993395,
+        "rebuild_projection_ms": 93.6248750000459,
+        "validated_view_samples_ms": [
+          98.04624999992484,
+          95.76945800006342,
+          100.06537500009927,
+          95.49141599995892,
+          99.32462500000838
+        ]
+      },
+      "run_id": "39eb5cb7efb1403daef79f19f0407b71",
+      "git_commit": "12a20f0eaa546d21ee06693ac759ad95f92677b1"
+    }
+  ],
+  "summary": {
+    "topologies": 16,
+    "single": 4,
+    "directed_pairs": 12,
+    "workflow_checks": 260,
+    "query_checks": 240,
+    "native_uniqueness_passed": 12,
+    "native_uniqueness_unsupported": 4
+  },
+  "finished_at": "2026-11-13T05:07:10.835420+00:00"
+}

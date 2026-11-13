@@ -17,7 +17,7 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 
 ## 실행한 비교와 한계
 
-[원본 책임별 구성 비교](../experiments/STORAGE-TOPOLOGY-COMPARISON.md)는 PostgreSQL을 필수 원장으로 두었던 가정을 제거하고, 네 DB의 단독 구성 4개와 방향별 두 DB 조합 12개를 검증한다. 각 구성은 해당 원본 DB의 스냅샷으로 조회 모델을 복원한다. [구현·재현 명령](../../experiments/storage_topology_lab/README.md)에서 실제 중단·재처리·버전 혼입 판정과 동시 발행 시험을 확인할 수 있다. 단일 발행자 기능 판정과 여러 발행자의 고유성 보장은 분리하며, ClickHouse의 현재 일반 MergeTree 구성은 후자를 제공하지 않는 제한을 명시한다. 작은 합성 입력·정상 중단/재시작·전체 데이터 대조 방식의 실험이며, 전체 플랫폼의 수용량·고가용성·권한·물리 삭제와 DB 채택은 앞으로 검증한다.
+[원본 책임별 구성 비교](../experiments/STORAGE-TOPOLOGY-COMPARISON.md)는 PostgreSQL을 필수 원장으로 두었던 가정을 제거하고, 네 DB의 단독 구성 4개와 방향별 두 DB 조합 12개를 모두 실행했다. 각 원본 DB의 스냅샷에서 조회 모델을 복원했으며, 기능·복구 판정 260개와 조회 정확성 판정 240개가 통과했다. [구현·재현 명령](../../experiments/storage_topology_lab/README.md)과 [원시 결과](../experiments/storage-topology-run.json)에서 실제 중단·재처리·버전 혼입·동시 발행 시험을 확인할 수 있다. 단일 발행자 기능 판정과 여러 발행자의 고유성 보장은 분리한다. 고유성 시험은 12개 구성이 통과했고, ClickHouse 원본 4개 구성은 현재 일반 MergeTree 어댑터에서 `unsupported`로 기록했다. 별도 단위 시험은 기존 23개·추가 13개로 총 36개가 통과했다. 작은 합성 입력·정상 중단/재시작·전체 데이터 대조 방식의 실험이며, 전체 플랫폼의 수용량·고가용성·권한·물리 삭제와 DB 채택은 앞으로 검증한다.
 
 [버전 근거·그래프·검색·집계의 DB 비교](../experiments/STORAGE-ENGINE-COMPARISON.md)는 PostgreSQL·Neo4j·Elasticsearch·ClickHouse를 같은 합성 입력으로 실행한다. [구현과 재현 명령](../../experiments/storage_lab/README.md), [원시 표본](../experiments/storage-engine-run.json)에서 버전 분리·관계 조회·검색·집계·짧은 동시 부하와 실제 중단·복구를 확인할 수 있다. PostgreSQL 원장과 세 읽기 모델의 재처리, PostgreSQL·Neo4j·Elasticsearch 통합 조회도 시험했다. 제품 DB 채택·기업 권한 격리·지속 수용량·고가용성은 앞으로 검증한다. 기존 보관 방식 비교 T24나 라이브러리 적용 T25의 완료와는 구분한다.
 
