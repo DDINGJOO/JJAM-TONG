@@ -17,6 +17,8 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 
 ## 실행한 비교와 한계
 
+[버전별 코드 그래프 규모 비교](../experiments/GRAPH-SCALE-COMPARISON.md)는 PostgreSQL과 Neo4j에 빌드당 메서드 1만·10만 개, 기본 호출 2개·6개, 이전·새 빌드를 넣어 조회했다. 두 조회 방식과 동시 클라이언트 1·4·8개를 실행했고, 최종 실행의 순차 조회 3,888건·동시 조회 1,248건이 정답과 일치했다. [구현·재현 명령](../../experiments/graph_scale_lab/README.md)과 [원시 결과](../experiments/graph-scale-run.json)를 연결한다. 빌드당 10만 메서드·기본 호출 6개 조건에서 진입점 6단계의 넓은 순차 조회는 PostgreSQL이, 내부 메서드 12단계의 직접 조회와 여섯 질문을 섞은 짧은 동시 조회는 Neo4j가 더 낮은 지연을 보였다. 이 결과는 10만 메서드 조건 전체나 지속 부하의 우위를 뜻하지 않으므로 질문별로 판단한다. 첫 실행의 시간 초과 코드 분류 실패와 수정·전체 재실행도 남겼다. 합성 관계·단일 노드·서로 다른 클라이언트·재사용한 볼륨의 짧은 표본이며 제품 DB 채택·실제 코드 그래프·지속 수용량은 앞으로 검증한다.
+
 [원본 책임별 구성 비교](../experiments/STORAGE-TOPOLOGY-COMPARISON.md)는 PostgreSQL을 필수 원장으로 두었던 가정을 제거하고, 네 DB의 단독 구성 4개와 방향별 두 DB 조합 12개를 모두 실행했다. 각 원본 DB의 스냅샷에서 조회 모델을 복원했으며, 기능·복구 판정 260개와 조회 정확성 판정 240개가 통과했다. [구현·재현 명령](../../experiments/storage_topology_lab/README.md)과 [원시 결과](../experiments/storage-topology-run.json)에서 실제 중단·재처리·버전 혼입·동시 발행 시험을 확인할 수 있다. 단일 발행자 기능 판정과 여러 발행자의 고유성 보장은 분리한다. 고유성 시험은 12개 구성이 통과했고, ClickHouse 원본 4개 구성은 현재 일반 MergeTree 어댑터에서 `unsupported`로 기록했다. 별도 단위 시험은 기존 23개·추가 13개로 총 36개가 통과했다. 작은 합성 입력·정상 중단/재시작·전체 데이터 대조 방식의 실험이며, 전체 플랫폼의 수용량·고가용성·권한·물리 삭제와 DB 채택은 앞으로 검증한다.
 
 [버전 근거·그래프·검색·집계의 DB 비교](../experiments/STORAGE-ENGINE-COMPARISON.md)는 PostgreSQL·Neo4j·Elasticsearch·ClickHouse를 같은 합성 입력으로 실행한다. [구현과 재현 명령](../../experiments/storage_lab/README.md), [원시 표본](../experiments/storage-engine-run.json)에서 버전 분리·관계 조회·검색·집계·짧은 동시 부하와 실제 중단·복구를 확인할 수 있다. PostgreSQL 원장과 세 읽기 모델의 재처리, PostgreSQL·Neo4j·Elasticsearch 통합 조회도 시험했다. 제품 DB 채택·기업 권한 격리·지속 수용량·고가용성은 앞으로 검증한다. 기존 보관 방식 비교 T24나 라이브러리 적용 T25의 완료와는 구분한다.
