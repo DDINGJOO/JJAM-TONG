@@ -16,6 +16,27 @@ class ConflictHTTP:
 
 
 class ProjectionRegressions(unittest.TestCase):
+    def test_graph_reset_deletes_in_bounded_transactions_until_empty(self):
+        adapter = Neo4j()
+        adapter.http.close()
+        remaining, batches = [2501], []
+
+        def cypher(query, params=None):
+            if "DETACH DELETE" not in query:
+                return []
+            if "LIMIT" not in query:
+                raise RuntimeError("unbounded deletion exceeds the lab heap")
+            deleted = min(remaining[0], params["limit"])
+            remaining[0] -= deleted
+            batches.append(deleted)
+            return [[deleted]]
+
+        adapter.cypher = cypher
+        adapter.reset()
+        self.assertEqual(remaining[0], 0)
+        self.assertGreater(len(batches), 1)
+        self.assertLessEqual(max(batches), 1000)
+
     def test_search_conflict_without_retained_evidence_is_not_success(self):
         adapter = Elasticsearch()
         adapter.http.close()

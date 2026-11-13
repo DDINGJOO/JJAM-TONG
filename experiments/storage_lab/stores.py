@@ -161,7 +161,9 @@ class Neo4j(Store):
         return [r["row"] for r in result["results"][0]["data"]]
 
     def reset(self):
-        self.cypher("MATCH (n) DETACH DELETE n")
+        # A previous medium fixture exceeds the 256 MiB heap in one delete tx.
+        while self.cypher("MATCH (n) WITH n LIMIT $limit DETACH DELETE n RETURN count(*)", {"limit": 1000})[0][0]:
+            pass
         self.cypher("CREATE CONSTRAINT evidence_id IF NOT EXISTS FOR (n:Evidence) REQUIRE n.id IS UNIQUE")
         self.cypher("CREATE INDEX evidence_scope IF NOT EXISTS FOR (n:Evidence) ON (n.tenant,n.build,n.analysis,n.kind)")
         self.cypher("CREATE FULLTEXT INDEX event_text IF NOT EXISTS FOR (n:Event) ON EACH [n.message]")
