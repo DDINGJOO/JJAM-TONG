@@ -10,7 +10,7 @@
 | --- | --- | --- | --- |
 | S01 메서드 관계 | [01-code-relations.feature](../../specs/features/01-code-relations.feature) | BDD-REL-001~004 | 구현 대상 |
 | S02 분석·실행 버전 | [02-version-identity.feature](../../specs/features/02-version-identity.feature) | BDD-VER-001~003 | 구현 대상 |
-| S03 자동 갱신 | [03-graph-refresh.feature](../../specs/features/03-graph-refresh.feature) | BDD-UPD-001~004 | 구현 대상 |
+| S03 자동 갱신 | [03-graph-refresh.feature](../../specs/features/03-graph-refresh.feature) | BDD-UPD-001~010 | 구현 대상 |
 | S04 에이전트 근거 조회 | [04-agent-evidence.feature](../../specs/features/04-agent-evidence.feature) | BDD-AGT-001~004 | 구현 대상 |
 | S05 SRE 분석 | [05-sre-analysis.feature](../../specs/features/05-sre-analysis.feature) | BDD-SRE-001~008 | 구현 대상 |
 | S06 인프라 문맥 | [06-infrastructure.feature](../../specs/features/06-infrastructure.feature) | BDD-INF-001~006 | 구현 대상 |
@@ -21,7 +21,7 @@
 | 전체 영역 공통 기업 운영 | [11-enterprise-operations.feature](../../specs/features/11-enterprise-operations.feature) | BDD-ENT-001~009 | 구현 대상 |
 | 전체 영역 공통 자동 확장·축소 | [12-autoscaling.feature](../../specs/features/12-autoscaling.feature) | BDD-ASC-001~009 | 구현 대상 |
 
-[자동화 제품 기획](AUTOMATION.md)은 GitHub 기반 발견·등록·지속 갱신과 운영 자동화의 흐름, 확인한 방향·세부 제안·미결 정책을 구분한다. 온보딩 10개 시나리오는 기존 S03·S09의 명세·검증 태스크에 연결한다. 수용량·복구 4개와 기업 운영 9개 및 자동 확장·축소 9개를 포함한 전체 12개 feature·69개 시나리오는 실행기 없는 Draft이며 새 스토리·태스크를 중복 생성하지 않는다.
+[자동화 제품 기획](AUTOMATION.md)은 GitHub 기반 발견·등록·지속 갱신과 운영 자동화의 흐름, 확인한 방향·세부 제안·미결 정책을 구분한다. 온보딩 10개 시나리오는 기존 S03·S09의 명세·검증 태스크에 연결한다. 수용량·복구 4개와 기업 운영 9개 및 자동 확장·축소 9개를 포함한 전체 12개 feature·75개 시나리오는 실행기 없는 Draft이며 새 스토리·태스크를 중복 생성하지 않는다.
 
 [수용량 검증 계획](../experiments/CAPACITY-VALIDATION.md)의 BDD-SRE-005~008은 업무 서비스의 계측 전후 수용량, 플랫폼의 수집·분석·조회와 데이터 규모, 과부하 복구와 서비스별 격리를 명세한다. T10 #19에서 목표·판정 조건을 검토하고 T25 #44의 로컬 적용 비교에 연결한다. 현재 수치 목표와 수용량 실측은 없다.
 
@@ -98,6 +98,10 @@
 
 시나리오마다 원하는 행동, 반례, 합성 입력, 관측 가능한 판정, 아직 모르는 조건을 함께 검토한다. 다음으로 어떤 fixture·테스트 층·원본 근거로 확인할지 정하고, 그 뒤 구현 태스크를 만든다.
 
-이 디렉터리의 전체 BDD 검증은 파일별 태그·고유 ID·Given/When/Then 구조와 스토리 매핑에 한정한다. 별도 [비교 실험](../experiments/ARCHITECTURE-EXPERIMENTS.md)에서는 17개 BDD ID의 일부 조건을 16개 합성 시나리오에 연결해 세 갱신 전략을 실행했다. 전체 60개 BDD의 실행 통과·실제 공급원 호환성·분산 성능 검증과 구분한다.
+이 디렉터리의 전체 BDD 검증은 파일별 태그·고유 ID·Given/When/Then 구조와 스토리 매핑에 한정한다. 별도 [비교 실험](../experiments/ARCHITECTURE-EXPERIMENTS.md)에서는 17개 BDD ID의 일부 조건을 16개 합성 시나리오에 연결해 세 갱신 전략을 실행했다. 전체 BDD의 실행 통과·실제 공급원 호환성·분산 성능 검증과 구분한다.
 
 후속 [원본 재확인 실험](../experiments/HYBRID-RECONCILIATION.md)은 H01~H14의 파일·blob 갱신 계약과 실제 Git·공개 REST 읽기·loopback 수신·단일 머신 실행 경계를 확인한다. 메서드 분석·build/trace·AWS/Kubernetes·CMDB·SIEM 전체 행동의 실행 수락과 별도로 집계한다.
+
+## 대규모 코드 분석
+
+[복잡 구조 요구](CODE-ANALYSIS-SCALE.md)는 정리된 예제 밖의 호출 관계와 분석 공백을 다룬다. BDD-UPD-005~010과 [#61](https://github.com/DDINGJOO/JJAM-TONG/issues/61)에서 재사용·변경 전파·실패 경계를 검증한다. [실측 결과](../experiments/ANALYSIS-REUSE-RESULTS.md)와 전체 BDD의 Draft 상태를 구분한다.

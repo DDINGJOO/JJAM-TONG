@@ -1,0 +1,681 @@
+{
+  "schema": "jjamtong.analysis-reuse-experiment.v1",
+  "synthetic": true,
+  "environment": {
+    "os": "Darwin",
+    "architecture": "arm64",
+    "python": "3.9.6",
+    "logicalCpus": 15,
+    "javaRelease": "21.0.11"
+  },
+  "limits": {
+    "jvmHeapBytes": 1073741824,
+    "adapterSeconds": 60,
+    "outputBytes": 10485760
+  },
+  "cases": {
+    "scale-100000": {
+      "input": {
+        "sourceFiles": 110,
+        "actualLines": 100723,
+        "artifactBytes": 746863,
+        "compileSeconds": 0.905392708
+      },
+      "stages": {
+        "cold": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 5.3614774579999995,
+          "peakProcessRssBytes": 1362362368,
+          "receipt": {
+            "analysisSeconds": 5.0735389159999995,
+            "cacheKey": "679e051f6c92044544e4a7e97b013b2600d94da4a0943a53b6386ad2e84548b6",
+            "inputSeconds": 0.058817667,
+            "publishSeconds": 0.111043542,
+            "resultBytes": 3361126,
+            "sourceCacheOrigin": "analyzed",
+            "status": "analyzed"
+          },
+          "outputPublished": true,
+          "outputBytes": 3361126,
+          "inventory": {
+            "javaparser": {
+              "methods": 2181,
+              "calls": 2180,
+              "unresolved": 0
+            },
+            "wala": {
+              "methods": 2291,
+              "calls": 2180,
+              "unresolved": 0
+            }
+          }
+        },
+        "warm": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 0.22928758299999963,
+          "peakProcessRssBytes": 55361536,
+          "receipt": {
+            "analysisSeconds": 0.0,
+            "cacheKey": "679e051f6c92044544e4a7e97b013b2600d94da4a0943a53b6386ad2e84548b6",
+            "inputSeconds": 0.05858100000000001,
+            "publishSeconds": 0.11394125000000001,
+            "resultBytes": 3361137,
+            "sourceCacheOrigin": "reused",
+            "status": "reused"
+          },
+          "outputPublished": true,
+          "outputBytes": 3361137,
+          "inventory": {
+            "javaparser": {
+              "methods": 2181,
+              "calls": 2180,
+              "unresolved": 0
+            },
+            "wala": {
+              "methods": 2291,
+              "calls": 2180,
+              "unresolved": 0
+            }
+          }
+        },
+        "changed": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 5.642130917,
+          "peakProcessRssBytes": 1375404032,
+          "receipt": {
+            "analysisSeconds": 5.351037666,
+            "cacheKey": "4eb3af8b679a86dfca641123040af7c02b3331789e6338bc071f200c565f3a5f",
+            "inputSeconds": 0.0595005,
+            "publishSeconds": 0.11107691700000011,
+            "resultBytes": 3361154,
+            "sourceCacheOrigin": "analyzed",
+            "status": "analyzed"
+          },
+          "outputPublished": true,
+          "outputBytes": 3361154,
+          "inventory": {
+            "javaparser": {
+              "methods": 2181,
+              "calls": 2180,
+              "unresolved": 0
+            },
+            "wala": {
+              "methods": 2291,
+              "calls": 2180,
+              "unresolved": 0
+            }
+          }
+        },
+        "reference": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 5.08410825,
+          "peakProcessRssBytes": 1384873984,
+          "outputPublished": true,
+          "outputBytes": 3361154,
+          "inventory": {
+            "javaparser": {
+              "methods": 2181,
+              "calls": 2180,
+              "unresolved": 0
+            },
+            "wala": {
+              "methods": 2291,
+              "calls": 2180,
+              "unresolved": 0
+            }
+          }
+        }
+      },
+      "equality": true
+    },
+    "scale-300000": {
+      "input": {
+        "sourceFiles": 327,
+        "actualLines": 301231,
+        "artifactBytes": 2379114,
+        "compileSeconds": 1.9642093749999994
+      },
+      "stages": {
+        "cold": {
+          "success": false,
+          "exitCode": 1,
+          "wallSeconds": 5.3117350829999985,
+          "peakProcessRssBytes": 1234649088,
+          "failure": "jvm-heap",
+          "outputPublished": false
+        }
+      },
+      "equality": null
+    },
+    "legacy": {
+      "input": {
+        "sourceFiles": 12,
+        "actualLines": 43,
+        "artifactBytes": 6027,
+        "compileSeconds": 0.33046545899999996
+      },
+      "stages": {
+        "cold": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 1.306286166,
+          "peakProcessRssBytes": 972144640,
+          "receipt": {
+            "analysisSeconds": 1.096767292,
+            "cacheKey": "6739f27e08b64587b033abe52d474a9ed2099fc1b5f1631830bbf87634b7cd3c",
+            "inputSeconds": 0.05920295899999999,
+            "publishSeconds": 0.05571887500000017,
+            "resultBytes": 38325,
+            "sourceCacheOrigin": "analyzed",
+            "status": "analyzed"
+          },
+          "outputPublished": true,
+          "outputBytes": 38325,
+          "inventory": {
+            "javaparser": {
+              "methods": 17,
+              "calls": 16,
+              "unresolved": 5
+            },
+            "wala": {
+              "methods": 28,
+              "calls": 18,
+              "unresolved": 5
+            }
+          }
+        },
+        "warm": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 0.14525737500000013,
+          "peakProcessRssBytes": 18776064,
+          "receipt": {
+            "analysisSeconds": 0.0,
+            "cacheKey": "6739f27e08b64587b033abe52d474a9ed2099fc1b5f1631830bbf87634b7cd3c",
+            "inputSeconds": 0.054648625000000006,
+            "publishSeconds": 0.05583587500000001,
+            "resultBytes": 38351,
+            "sourceCacheOrigin": "reused",
+            "status": "reused"
+          },
+          "outputPublished": true,
+          "outputBytes": 38351,
+          "inventory": {
+            "javaparser": {
+              "methods": 17,
+              "calls": 16,
+              "unresolved": 5
+            },
+            "wala": {
+              "methods": 28,
+              "calls": 18,
+              "unresolved": 5
+            }
+          }
+        },
+        "changed": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 1.138548542,
+          "peakProcessRssBytes": 991461376,
+          "receipt": {
+            "analysisSeconds": 0.933499959,
+            "cacheKey": "71b0d33963ac1b827b7d52d1ca7d46caee38771b79e48034766ee3918ed01deb",
+            "inputSeconds": 0.054748083,
+            "publishSeconds": 0.05767566599999996,
+            "resultBytes": 37173,
+            "sourceCacheOrigin": "analyzed",
+            "status": "analyzed"
+          },
+          "outputPublished": true,
+          "outputBytes": 37173,
+          "inventory": {
+            "javaparser": {
+              "methods": 16,
+              "calls": 15,
+              "unresolved": 5
+            },
+            "wala": {
+              "methods": 27,
+              "calls": 18,
+              "unresolved": 5
+            }
+          }
+        },
+        "reference": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 0.8936473749999996,
+          "peakProcessRssBytes": 1006157824,
+          "outputPublished": true,
+          "outputBytes": 37173,
+          "inventory": {
+            "javaparser": {
+              "methods": 16,
+              "calls": 15,
+              "unresolved": 5
+            },
+            "wala": {
+              "methods": 27,
+              "calls": 18,
+              "unresolved": 5
+            }
+          }
+        }
+      },
+      "equality": true,
+      "checks": {
+        "interfaceDeclaration": true,
+        "twoImplementationCandidates": true,
+        "cycleRetained": true,
+        "overloadsDistinct": true,
+        "reflectionGapReported": true,
+        "noInventedReflectionEdge": true,
+        "lambdaGapReported": true,
+        "methodReferenceGapReported": true,
+        "compilerBridgeDistinct": true,
+        "crossPackageCandidate": true,
+        "removedMethodAbsent": true
+      }
+    }
+  },
+  "modular": {
+    "independentUnits": [
+      {
+        "input": {
+          "sourceFiles": 110,
+          "actualLines": 100723,
+          "artifactBytes": 746863,
+          "compileSeconds": 0.8796768340000014
+        },
+        "stages": {
+          "cold": {
+            "success": true,
+            "exitCode": 0,
+            "wallSeconds": 5.312243957999996,
+            "peakProcessRssBytes": 1383268352,
+            "receipt": {
+              "analysisSeconds": 5.023270541,
+              "cacheKey": "ec2c246511d37f87025a1e9a70c0c2043876915313e553c0272270de346a4fd9",
+              "inputSeconds": 0.06083662499999999,
+              "publishSeconds": 0.10744874999999965,
+              "resultBytes": 3308342,
+              "sourceCacheOrigin": "analyzed",
+              "status": "analyzed"
+            }
+          },
+          "warm": {
+            "success": true,
+            "exitCode": 0,
+            "wallSeconds": 0.22314770799999906,
+            "peakProcessRssBytes": 55115776,
+            "receipt": {
+              "analysisSeconds": 0.0,
+              "cacheKey": "ec2c246511d37f87025a1e9a70c0c2043876915313e553c0272270de346a4fd9",
+              "inputSeconds": 0.059961792,
+              "publishSeconds": 0.10959437500000001,
+              "resultBytes": 3308342,
+              "sourceCacheOrigin": "reused",
+              "status": "reused"
+            }
+          }
+        }
+      },
+      {
+        "input": {
+          "sourceFiles": 110,
+          "actualLines": 100723,
+          "artifactBytes": 746863,
+          "compileSeconds": 0.8779901249999966
+        },
+        "stages": {
+          "cold": {
+            "success": true,
+            "exitCode": 0,
+            "wallSeconds": 5.303109208000002,
+            "peakProcessRssBytes": 1382907904,
+            "receipt": {
+              "analysisSeconds": 5.009707958,
+              "cacheKey": "f6a72bd067bc700da98323f0dca2e60abb8a8547d734d7b03d12d0a62fc54850",
+              "inputSeconds": 0.060946292000000006,
+              "publishSeconds": 0.1090614160000003,
+              "resultBytes": 3308342,
+              "sourceCacheOrigin": "analyzed",
+              "status": "analyzed"
+            }
+          },
+          "warm": {
+            "success": true,
+            "exitCode": 0,
+            "wallSeconds": 0.22686308400000144,
+            "peakProcessRssBytes": 55132160,
+            "receipt": {
+              "analysisSeconds": 0.0,
+              "cacheKey": "f6a72bd067bc700da98323f0dca2e60abb8a8547d734d7b03d12d0a62fc54850",
+              "inputSeconds": 0.060127875,
+              "publishSeconds": 0.1138335,
+              "resultBytes": 3308342,
+              "sourceCacheOrigin": "reused",
+              "status": "reused"
+            }
+          }
+        }
+      },
+      {
+        "input": {
+          "sourceFiles": 110,
+          "actualLines": 100723,
+          "artifactBytes": 746863,
+          "compileSeconds": 0.9008352909999999
+        },
+        "stages": {
+          "cold": {
+            "success": true,
+            "exitCode": 0,
+            "wallSeconds": 5.522325457999997,
+            "peakProcessRssBytes": 1395539968,
+            "receipt": {
+              "analysisSeconds": 5.228339875,
+              "cacheKey": "b2d3961728160ca87a58fca859d5e3177ec34ca20059b71d82e3091e3aa70882",
+              "inputSeconds": 0.061000208,
+              "publishSeconds": 0.11373162499999978,
+              "resultBytes": 3308342,
+              "sourceCacheOrigin": "analyzed",
+              "status": "analyzed"
+            }
+          },
+          "warm": {
+            "success": true,
+            "exitCode": 0,
+            "wallSeconds": 0.23684208400000273,
+            "peakProcessRssBytes": 55918592,
+            "receipt": {
+              "analysisSeconds": 0.0,
+              "cacheKey": "b2d3961728160ca87a58fca859d5e3177ec34ca20059b71d82e3091e3aa70882",
+              "inputSeconds": 0.062039709000000005,
+              "publishSeconds": 0.11005845800000001,
+              "resultBytes": 3308342,
+              "sourceCacheOrigin": "reused",
+              "status": "reused"
+            }
+          }
+        }
+      }
+    ],
+    "crossUnitGraphMerge": false,
+    "nextBuild": {
+      "stages": [
+        {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 5.559740666,
+          "peakProcessRssBytes": 1370439680,
+          "receipt": {
+            "analysisSeconds": 5.263195833,
+            "cacheKey": "2086b64b48f54a58df2aa0a84178cfc7deb736b0c326361b3f493c0fe8962227",
+            "inputSeconds": 0.060701625,
+            "publishSeconds": 0.10898766599999998,
+            "resultBytes": 3308370,
+            "sourceCacheOrigin": "analyzed",
+            "status": "analyzed"
+          }
+        },
+        {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 0.22872816600000068,
+          "peakProcessRssBytes": 55099392,
+          "receipt": {
+            "analysisSeconds": 0.0,
+            "cacheKey": "f6a72bd067bc700da98323f0dca2e60abb8a8547d734d7b03d12d0a62fc54850",
+            "inputSeconds": 0.06021908399999999,
+            "publishSeconds": 0.11463629200000001,
+            "resultBytes": 3308343,
+            "sourceCacheOrigin": "reused",
+            "status": "reused"
+          }
+        },
+        {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 0.23473158400000038,
+          "peakProcessRssBytes": 57196544,
+          "receipt": {
+            "analysisSeconds": 0.0,
+            "cacheKey": "b2d3961728160ca87a58fca859d5e3177ec34ca20059b71d82e3091e3aa70882",
+            "inputSeconds": 0.063793875,
+            "publishSeconds": 0.11134233300000002,
+            "resultBytes": 3308343,
+            "sourceCacheOrigin": "reused",
+            "status": "reused"
+          }
+        }
+      ],
+      "reference": {
+        "success": true,
+        "exitCode": 0,
+        "wallSeconds": 5.4946906250000005,
+        "peakProcessRssBytes": 1386102784
+      },
+      "reusedUnits": 2,
+      "totalUnits": 3,
+      "equality": true
+    }
+  },
+  "jdk17Structural": {
+    "schema": "jjamtong.analysis-reuse-experiment.v1",
+    "synthetic": true,
+    "environment": {
+      "os": "Darwin",
+      "architecture": "arm64",
+      "python": "3.9.6",
+      "logicalCpus": 15,
+      "javaRelease": "17.0.19"
+    },
+    "limits": {
+      "jvmHeapBytes": 1073741824,
+      "adapterSeconds": 60,
+      "outputBytes": 10485760
+    },
+    "cases": {
+      "legacy": {
+        "input": {
+          "sourceFiles": 12,
+          "actualLines": 43,
+          "artifactBytes": 6007,
+          "compileSeconds": 0.32673725
+        },
+        "stages": {
+          "cold": {
+            "success": true,
+            "exitCode": 0,
+            "wallSeconds": 1.0924463329999998,
+            "peakProcessRssBytes": 907804672,
+            "receipt": {
+              "analysisSeconds": 0.899102292,
+              "cacheKey": "c0b934d641a1b6460bc2adb56c72336473ebb3457a27a202a6ee63af8c5a3c1a",
+              "inputSeconds": 0.055410584,
+              "publishSeconds": 0.050930249999999955,
+              "resultBytes": 38326,
+              "sourceCacheOrigin": "analyzed",
+              "status": "analyzed"
+            },
+            "outputPublished": true,
+            "outputBytes": 38326,
+            "inventory": {
+              "javaparser": {
+                "methods": 17,
+                "calls": 16,
+                "unresolved": 5
+              },
+              "wala": {
+                "methods": 28,
+                "calls": 18,
+                "unresolved": 5
+              }
+            }
+          },
+          "warm": {
+            "success": true,
+            "exitCode": 0,
+            "wallSeconds": 0.1432882080000002,
+            "peakProcessRssBytes": 18644992,
+            "receipt": {
+              "analysisSeconds": 0.0,
+              "cacheKey": "c0b934d641a1b6460bc2adb56c72336473ebb3457a27a202a6ee63af8c5a3c1a",
+              "inputSeconds": 0.050482083999999997,
+              "publishSeconds": 0.05114624999999999,
+              "resultBytes": 38352,
+              "sourceCacheOrigin": "reused",
+              "status": "reused"
+            },
+            "outputPublished": true,
+            "outputBytes": 38352,
+            "inventory": {
+              "javaparser": {
+                "methods": 17,
+                "calls": 16,
+                "unresolved": 5
+              },
+              "wala": {
+                "methods": 28,
+                "calls": 18,
+                "unresolved": 5
+              }
+            }
+          },
+          "changed": {
+            "success": true,
+            "exitCode": 0,
+            "wallSeconds": 1.0306634170000002,
+            "peakProcessRssBytes": 901169152,
+            "receipt": {
+              "analysisSeconds": 0.840001209,
+              "cacheKey": "42b9241339897a5d2ebba81e095e8933fd3f2ff4437d272a9329a2b13aab53ef",
+              "inputSeconds": 0.05143087500000001,
+              "publishSeconds": 0.05073162499999995,
+              "resultBytes": 37174,
+              "sourceCacheOrigin": "analyzed",
+              "status": "analyzed"
+            },
+            "outputPublished": true,
+            "outputBytes": 37174,
+            "inventory": {
+              "javaparser": {
+                "methods": 16,
+                "calls": 15,
+                "unresolved": 5
+              },
+              "wala": {
+                "methods": 27,
+                "calls": 18,
+                "unresolved": 5
+              }
+            }
+          },
+          "reference": {
+            "success": true,
+            "exitCode": 0,
+            "wallSeconds": 0.8503077500000003,
+            "peakProcessRssBytes": 911704064,
+            "outputPublished": true,
+            "outputBytes": 37174,
+            "inventory": {
+              "javaparser": {
+                "methods": 16,
+                "calls": 15,
+                "unresolved": 5
+              },
+              "wala": {
+                "methods": 27,
+                "calls": 18,
+                "unresolved": 5
+              }
+            }
+          }
+        },
+        "equality": true,
+        "checks": {
+          "interfaceDeclaration": true,
+          "twoImplementationCandidates": true,
+          "cycleRetained": true,
+          "overloadsDistinct": true,
+          "reflectionGapReported": true,
+          "noInventedReflectionEdge": true,
+          "lambdaGapReported": true,
+          "methodReferenceGapReported": true,
+          "compilerBridgeDistinct": true,
+          "crossPackageCandidate": true,
+          "removedMethodAbsent": true
+        }
+      }
+    }
+  },
+  "date": "2026-11-14",
+  "measurement": {
+    "repetitions": 1,
+    "scope": "local synthetic experiment; not enterprise capacity",
+    "peakRssMeaning": "per-command peak process RSS from /usr/bin/time, not sum of concurrent processes or JVM heap",
+    "sourceLines": "physical lines; generated arithmetic bodies, no blank/comment padding",
+    "targetBytecodeRelease": 17,
+    "syntheticRevisions": true
+  },
+  "codeSha256": {
+    "tools/analysis_reuse/reuse.py": "50dce40cd49b8cf5771b4fb412f1001d7850d7ed1bcb7699599434f9299d75dc",
+    "experiments/analysis_reuse/run.py": "266f71f7b79bf3207c794b33d6962da490c0ef14bed63cc99eedea0602943fc7",
+    "tools/java-call-analysis/analyze.py": "0e9a072545a3ef8853cd390a5cf6d58fab2cf18951f53d0675ae411550ccc574",
+    "tools/java-call-analysis/target/java-call-analysis-0.1.0.jar": "9d56ac12328263d4e695ba97810cd4c2dce965d51c4be6fd616d5d53b5c4ac52"
+  },
+  "concurrentProcesses": {
+    "processes": 2,
+    "receipts": [
+      {
+        "analysisSeconds": 0.992397416,
+        "cacheKey": "6739f27e08b64587b033abe52d474a9ed2099fc1b5f1631830bbf87634b7cd3c",
+        "inputSeconds": 0.060266083000000005,
+        "publishSeconds": 0.05591295799999996,
+        "resultBytes": 38351,
+        "sourceCacheOrigin": "analyzed",
+        "status": "analyzed"
+      },
+      {
+        "analysisSeconds": 0.0,
+        "cacheKey": "6739f27e08b64587b033abe52d474a9ed2099fc1b5f1631830bbf87634b7cd3c",
+        "inputSeconds": 0.06025512500000001,
+        "publishSeconds": 0.05475704199999987,
+        "resultBytes": 38351,
+        "sourceCacheOrigin": "reused",
+        "status": "reused"
+      }
+    ],
+    "equality": true
+  },
+  "verification": {
+    "unitTests": 12,
+    "existingConsumerRegressionTests": 21,
+    "consumerIndexMethods": 28,
+    "consumerIndexValidated": true,
+    "evidenceStorePrepareAccepted": true,
+    "pythonAstFiles": 6,
+    "featureFiles": 12,
+    "draftScenarios": 75,
+    "localLinksChecked": 221,
+    "newDependencies": 0,
+    "lsp": "unavailable; no diagnostic service installed",
+    "independentCodeReview": {
+      "initialFindings": 3,
+      "remainingBlockingFindings": 0,
+      "recheckVerdict": "COMMENT; reviewer could not execute tests/diagnostics in read-only sandbox; leader ran tests separately"
+    },
+    "koreanEditorialReview": {
+      "initialFindings": 3,
+      "remainingFindings": 0,
+      "verdict": "APPROVE",
+      "independentAiEditor": true
+    }
+  }
+}
