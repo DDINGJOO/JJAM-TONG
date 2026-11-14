@@ -62,8 +62,22 @@ def validate_schema(index):
     for key in ("schema", "analysisRunId", "configSha256", "identityAssurance", "indexSha256"):
         text(index[key])
     inputs = {"artifactSha256", "classInputSha256", "metadataInputSha256", "sourceTreeSha256"}
-    fields(index["input"], inputs)
-    for value in index["input"].values():
+    fields(index["input"], inputs | {"dependencyArtifacts"})
+    for key, value in index["input"].items():
+        if key == "dependencyArtifacts":
+            dependencies = sequence(value)
+            if len(dependencies) > 256:
+                raise ValueError("Too many dependency artifacts")
+            seen = set()
+            for dependency in dependencies:
+                fields(dependency, {"entry", "sha256"}, {"entry", "sha256"})
+                entry = dependency["entry"]
+                text(entry)
+                if (not re.fullmatch(r"BOOT-INF/lib/[A-Za-z0-9_.+\-]+\.jar", entry) or entry in seen or
+                        not isinstance(dependency["sha256"], str) or not HEX64.fullmatch(dependency["sha256"])):
+                    raise ValueError("Invalid dependency artifact metadata")
+                seen.add(entry)
+            continue
         if not isinstance(value, str) or not HEX64.fullmatch(value):
             raise ValueError("Invalid input digest")
     provenance = {"adapterVersion", "dependencyMode", "javaVendor", "javaVersion", "maximumBytecodeRelease"}

@@ -69,6 +69,12 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 
 DB는 로컬 루프백에 두고 Actions에는 DB 접속 권한을 주지 않는다. 수집기는 실행 회차·커밋·artifact와 내부 색인의 해시를 대조하며 최신 버전으로 대체하지 않는다. 첫 연결은 일반 Java JAR의 정적 후보이며, Spring Boot 서비스 전체 분석·trace의 지속 수집·화면 자동 갱신과 구분한다.
 
+## 실제 Boot 서비스의 메서드와 요청을 연결한다
+
+[실제 게시판의 로컬 연결](../experiments/BOOT-METHOD-EVIDENCE.md)에서 Boot 실행 JAR 두 빌드를 분석하고, 실제 등록 요청의 메서드 기록을 같은 빌드의 PostgreSQL 색인과 대조했다. Controller·Service·private 메서드의 유일 후보 연결, 다른 실제 빌드·해시 거부를 확인했다. 같은 이름의 `validate` 시그니처 두 개는 실행 단계에서 미해결로 남겼다. 중첩 타입 식별자 오류를 수정한 새 분석 ID와 재실행 근거도 보존했다. [ADR 0007](../decisions/0007-local-boot-method-evidence.md)과 [구조화한 결과](../experiments/boot-method-evidence-results.json)를 연결한다.
+
+가상 시작점으로 얻은 정적 후보와 실제 span은 구분한다. trace는 외부 부모가 수집되지 않아 `PARTIAL`이며, Boot CI 발행·지속 수집·화면 갱신은 다음 검증 범위다.
+
 ## 적용 전후 성능은 얼마나 다른가
 
 같은 Boot 빌드에서 미적용·기본 추적·메서드 추적을 [27회 반복 비교](../experiments/EXECUTION-PERFORMANCE-RESULTS.md)했다. 지연·처리량·CPU·메모리·기동 시간, 원시 측정값과 한계를 남겼다. 기존 버전 계약·수동 검증 코드가 공통으로 있는 앱에 OTel을 추가한 비용이며, 전체 플랫폼 비용이나 운영 SLO를 확정한 결과는 아니다.

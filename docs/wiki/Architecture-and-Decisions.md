@@ -27,6 +27,7 @@ flowchart LR
 | [ADR 0004: 메서드 근거 비교](../decisions/0004-method-evidence-comparison.md) | JavaParser·WALA 후보와 OTel 실행을 지정한 빌드·분석에 연결하는 로컬 실험 | 정확한 overload 계측·부분 재분석·운영 수집과 제품 도구 채택 |
 | [ADR 0005: 버전별 메서드 근거 저장](../decisions/0005-local-versioned-evidence-store.md) | 첫 로컬 공통부에 PostgreSQL 적용. 불변 분석 보관과 그래프 조회 계약을 분리하고 버전 혼입을 거부 | 실제 대체 엔진, 보존·삭제·마이그레이션·기업 권한·지속 수용량과 전체 플랫폼 스택 |
 | [ADR 0006: GitHub 분석 결과의 로컬 수집](../decisions/0006-github-method-evidence-pull.md) | 별도 Java 검증 모듈을 Actions에서 분석하고, 로컬 수집기가 출처·버전·해시 대조 후 DB에 발행 | Spring Boot 서비스 전체 분석·상시 실행 관리·장기 보존·운영 권한과 호출 예산 |
+| [ADR 0007: 실제 Boot 메서드 근거의 로컬 연결](../decisions/0007-local-boot-method-evidence.md) | 원본 실행 JAR과 파생 클래스·라이브러리 해시를 구분하고 실제 요청을 같은 빌드의 색인으로 조회 | Spring 호출 조건의 정밀 분석·Boot CI 발행·trace 지속 수집·운영 검증 |
 
 관계 갱신 기본안은 현재 상태 복구에 관한 것이다. **놓친 중간 커밋·trace·보안 사건의 발생 이력이 자동 복원되지는 않는다.** 갱신 실험의 색인은 파일·blob 관계다. 별도 [메서드 근거 실험](../experiments/METHOD-OBSERVABILITY-RESULTS.md)은 실제 빌드·분석·span을 연결하며, 빠진 이력과 overload 식별의 한계를 그대로 반환한다.
 
