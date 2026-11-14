@@ -36,6 +36,8 @@ flowchart LR
 
 [논리 모델과 관계도](../requirements/EVIDENCE-MODEL.md)는 저장소·모듈·빌드·서비스·배포·실행·인프라·자산·보안을 구분한다. [#76](https://github.com/DDINGJOO/JJAM-TONG/issues/76)은 [#65](https://github.com/DDINGJOO/JJAM-TONG/issues/65)의 첫 하위 작업으로, DB를 추가하기 전에 재빌드·롤링 배포·공유 자원·지연 수집의 오연결을 검증한다. 이 관계도 전체가 수집·저장된다는 의미는 아니다.
 
+[빌드 명세와 기준선 비교](../requirements/BUILD-INVENTORY.md)·[ADR 0013](../decisions/0013-build-inventory-baselines.md)·[#78](https://github.com/DDINGJOO/JJAM-TONG/issues/78)은 정적 발견 후보와 검증 명세를 분리한다. 선언한 모듈 의존 관계를 기준선과 비교하며 실제 요청의 실행 경로로 바꾸어 해석하지 않는다. 과거 에이전트의 정답표와 재생은 [#79](https://github.com/DDINGJOO/JJAM-TONG/issues/79)에 연결한다.
+
 관계 갱신 기본안은 현재 상태 복구에 관한 것이다. **놓친 중간 커밋·trace·보안 사건의 발생 이력이 자동 복원되지는 않는다.** 갱신 실험의 색인은 파일·blob 관계다. 별도 [메서드 근거 실험](../experiments/METHOD-OBSERVABILITY-RESULTS.md)은 실제 빌드·분석·span을 연결하며, 빠진 이력과 overload 식별의 한계를 그대로 반환한다.
 
 ## 폴링과 알림을 함께 비교하는 이유
