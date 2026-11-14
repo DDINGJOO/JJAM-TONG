@@ -30,6 +30,7 @@ flowchart LR
 | [ADR 0007: 실제 Boot 메서드 근거의 로컬 연결](../decisions/0007-local-boot-method-evidence.md) | 원본 실행 JAR과 파생 클래스·라이브러리 해시를 구분하고 실제 요청을 같은 빌드의 색인으로 조회 | Spring 호출 조건의 정밀 분석·Boot CI 발행·trace 지속 수집·운영 검증 |
 | [ADR 0008: 정확 입력 분석 재사용](../decisions/0008-exact-input-analysis-reuse.md) | 소스·원본 JAR·분석 설정·도구가 같은 전체 입력 결과를 로컬에서 재사용 | 큰 단위 내부의 증분 분석·의존성 변경 전파·작업 큐·CI/DB/화면 연동 |
 | [ADR 0009: Java 파서의 보관 정책 분리](../decisions/0009-java-parser-retention.md) | 직접 파싱의 소스 위치를 유지하고 타입 조회용 파서의 토큰·주석 보관과 캐시 항목 수를 제한 | 전체 프로세스 자원 제한·최적 캐시 크기·고밀도 입력·작업과 출력 분할 |
+| [ADR 0010: 분석 작업의 완료 증거와 발행 비교](../decisions/0010-analysis-job-publication.md) | 로컬 실험에서 입력·시도·필수 단계와 검증한 완료 증거를 분리하고 단일 파일·분할 결과를 비교 | 기존 생산자·소비자·DB·화면 전환, 운영 자원 예산·분산 소유권·내구성 |
 
 관계 갱신 기본안은 현재 상태 복구에 관한 것이다. **놓친 중간 커밋·trace·보안 사건의 발생 이력이 자동 복원되지는 않는다.** 갱신 실험의 색인은 파일·blob 관계다. 별도 [메서드 근거 실험](../experiments/METHOD-OBSERVABILITY-RESULTS.md)은 실제 빌드·분석·span을 연결하며, 빠진 이력과 overload 식별의 한계를 그대로 반환한다.
 
