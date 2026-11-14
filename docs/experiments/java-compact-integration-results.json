@@ -1,0 +1,651 @@
+{
+  "schema": "jjamtong.java-compact-verification.v1",
+  "date": "2026-11-14",
+  "syntheticInputOnly": true,
+  "syntheticTraceOnly": true,
+  "pipelineReplay": {
+    "schema": "jjamtong.java-publication-integration.v1",
+    "syntheticInputOnly": true,
+    "syntheticTraceOnly": true,
+    "tenant": "java-publication-73",
+    "adapterVersion": "0.2.3",
+    "results": {
+      "old": {
+        "buildIdentity": {
+          "repository": "https://example.invalid/jjamtong-synthetic-analysis",
+          "revision": "b47a1e56849948f11d10ff61f9020fd59cdefcfd",
+          "build": "scale-400000-400000-v0",
+          "module": "scale-400000",
+          "artifactSha256": "eba9c20a3b2567be1fb0e11e39034ad56cbc164395b7d940332b0646611c92e2"
+        },
+        "analysisRunId": "scale-old",
+        "indexSha256": "2b134819fde2e952e8e69f4f5b82d5e576ebbb47b1cfd013568097853931b6b3",
+        "configSha256": "cf6727b54c9d8432f54e121a46f768959e750be418bbe5cdbe511c504c6519b4",
+        "rawSha256": "9d81471a9c8aa3a6d816d4acb19834db699d9fb7d47037c2cd7e1270d2b77af4",
+        "rawBytes": 7647610,
+        "indexFileSha256": "7f3c473b4f38f581452469d78134548669005dea42ec51e3e97604b40e1b77e1",
+        "indexBytes": 8433388,
+        "prepareBytes": 9207836,
+        "methods": 9116,
+        "java": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 31.796970124999998,
+          "peakProcessRssBytes": 1330233344
+        },
+        "indexSeconds": 0.10060495799999813,
+        "saveSeconds": 0.08935562500000316,
+        "prepareSeconds": 0.3820884169999985,
+        "dbPublishSeconds": 0.641856666999999,
+        "dbLoadSeconds": 0.13363366600000148,
+        "dbCreated": false,
+        "exactDbRoundtrip": true,
+        "sameHashRetryCreated": false,
+        "coverage": {
+          "javaparser": {
+            "inventoryMethods": 8681,
+            "inputCalls": 8680,
+            "indexedCalls": 8680,
+            "danglingCalls": 0,
+            "unresolved": 0,
+            "excluded": 0,
+            "analyzerVersion": "3.28.2"
+          },
+          "wala": {
+            "inventoryMethods": 9116,
+            "inputCalls": 8680,
+            "indexedCalls": 8680,
+            "danglingCalls": 0,
+            "unresolved": 0,
+            "excluded": 0,
+            "analyzerVersion": "1.9.0"
+          }
+        },
+        "boundedGraph": {
+          "javaparser": {
+            "status": "PARTIAL",
+            "reasons": [
+              "NODE_LIMIT"
+            ],
+            "methods": 1,
+            "calls": 0
+          },
+          "wala": {
+            "status": "PARTIAL",
+            "reasons": [
+              "NODE_LIMIT"
+            ],
+            "methods": 1,
+            "calls": 0
+          }
+        }
+      },
+      "new": {
+        "buildIdentity": {
+          "repository": "https://example.invalid/jjamtong-synthetic-analysis",
+          "revision": "1a31174b10c496515877a96df59cc5c0b37b67fc",
+          "build": "scale-400000-400000-v1",
+          "module": "scale-400000",
+          "artifactSha256": "3403f8d011ad0e95186db530fcc2a3db439b3007fceaf958d622de1c7567859f"
+        },
+        "analysisRunId": "scale-new",
+        "indexSha256": "2b12ab1360fb1034782fdfae79354d9b80c1d8073f48c9fda2d709f7d1a4de7b",
+        "configSha256": "cf6727b54c9d8432f54e121a46f768959e750be418bbe5cdbe511c504c6519b4",
+        "rawSha256": "60c54ae833f83601aeaea90453cbfc108fa93c710de421070d580b5b0b1c7eb4",
+        "rawBytes": 7647638,
+        "indexFileSha256": "7bf1dc9207025a7338be865119d2f5c35a825d7961772b5a720b990fffb2b16a",
+        "indexBytes": 8433423,
+        "prepareBytes": 9207871,
+        "methods": 9116,
+        "java": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 30.18039025000001,
+          "peakProcessRssBytes": 1365164032
+        },
+        "indexSeconds": 0.09666358299999445,
+        "saveSeconds": 0.0795919170000019,
+        "prepareSeconds": 0.37697608399999183,
+        "dbPublishSeconds": 0.636758209000007,
+        "dbLoadSeconds": 0.16891899999998827,
+        "dbCreated": false,
+        "exactDbRoundtrip": true,
+        "sameHashRetryCreated": false,
+        "coverage": {
+          "javaparser": {
+            "inventoryMethods": 8681,
+            "inputCalls": 8680,
+            "indexedCalls": 8680,
+            "danglingCalls": 0,
+            "unresolved": 0,
+            "excluded": 0,
+            "analyzerVersion": "3.28.2"
+          },
+          "wala": {
+            "inventoryMethods": 9116,
+            "inputCalls": 8680,
+            "indexedCalls": 8680,
+            "danglingCalls": 0,
+            "unresolved": 0,
+            "excluded": 0,
+            "analyzerVersion": "1.9.0"
+          }
+        },
+        "boundedGraph": {
+          "javaparser": {
+            "status": "PARTIAL",
+            "reasons": [
+              "NODE_LIMIT"
+            ],
+            "methods": 1,
+            "calls": 0
+          },
+          "wala": {
+            "status": "PARTIAL",
+            "reasons": [
+              "NODE_LIMIT"
+            ],
+            "methods": 1,
+            "calls": 0
+          }
+        }
+      }
+    },
+    "checks": {
+      "differentContentSameRun": "rejected",
+      "wrongSnapshotHash": "rejected",
+      "oldAnalysisWithNewInput": "rejected",
+      "oldHistoryAfterNewPublish": "exact",
+      "baselineExceptAdapterVersion": "exact full JSON including source positions"
+    },
+    "methodChanges": {
+      "removed": [
+        [
+          "scale-400000",
+          "fixture.scale.Unit0000",
+          "m19",
+          "(I)I"
+        ]
+      ],
+      "added": [
+        [
+          "scale-400000",
+          "fixture.scale.Unit0000",
+          "m19Updated",
+          "(I)I"
+        ]
+      ]
+    },
+    "producerSha256": {
+      "tools/java-call-analysis/target/java-call-analysis-0.1.0.jar": "6488dad2722129db2154b811600adf9de6710694eaa6cce67805e6c255fe4f27",
+      "tools/java-call-analysis/target/dependency-sha256.json": "3256e32a0ad73ee091eedfba22e1f706112f979b7c5a91ef6d457c32c38204e0",
+      "tools/java-call-analysis/dependency-provenance.json": "fada4ff94ada970500836c664626c1404f4b6cb02a5f1ec94dde4d610fcbc413",
+      "tools/java-call-analysis/src/main/java/io/jjamtong/analysis/AnalysisInput.java": "5d8e0ccc75c70c219d654e0baa27f48db92b23b6ec71c318dd444aba31befeca",
+      "tools/java-call-analysis/src/main/java/io/jjamtong/analysis/Config.java": "f651b5cc3276fa47a0a5c49fed4381ff01d12c97c5d54754bb85c0fb9dc1762d",
+      "tools/java-call-analysis/src/main/java/io/jjamtong/analysis/JavaParserAnalysis.java": "58d889c94ec92cfc6fdb86f9dd406c117cc854ffd051cf5149c4bcec182a2c7a",
+      "tools/java-call-analysis/src/main/java/io/jjamtong/analysis/Main.java": "fe2aabf025bc40f071fd7c08351b2dd22b5e4af5fed75be4e4c634896e89a81a",
+      "tools/java-call-analysis/src/main/java/io/jjamtong/analysis/Model.java": "2a060804240c0b067cf3bbb1331e447e354010649371f724acde718d60067fe0",
+      "tools/java-call-analysis/src/main/java/io/jjamtong/analysis/ResultPublication.java": "167986eca57555f69b5f56ddba5bdef5e6ab1f2efa2172bbbc2173040063cd7c",
+      "tools/java-call-analysis/src/main/java/io/jjamtong/analysis/WalaAnalysis.java": "6ee01acd9cb87f728e5ca4653168dea3bf7d36e1207f3f38484aff1621ba4de5",
+      "tools/java-call-analysis/target/dependency/checker-qual-3.55.1.jar": "857658c8bdcbff794949a8d9922f88d63ee3751c203c7cd7d21ea97f9e745288",
+      "tools/java-call-analysis/target/dependency/com.ibm.wala.core-1.9.0.jar": "b3947bee5425e5ea0e257d87ad6ca4a13932708810e48e20b5cb78b62236e9c6",
+      "tools/java-call-analysis/target/dependency/com.ibm.wala.shrike-1.9.0.jar": "8a3186aa13a747c88ecc065f887ee2cfd68d017de1f56c1f36a3d76fd0754f3f",
+      "tools/java-call-analysis/target/dependency/com.ibm.wala.util-1.9.0.jar": "63962088a49117b143900866e0ab1d09a5526ddbac3bd2cd0402fa87c99e5d79",
+      "tools/java-call-analysis/target/dependency/error_prone_annotations-2.48.0.jar": "b49c5c958316ed67a09c699dda9aa749caf434d51d863dea599ef36a49b9c855",
+      "tools/java-call-analysis/target/dependency/failureaccess-1.0.3.jar": "cbfc3906b19b8f55dd7cfd6dfe0aa4532e834250d7f080bd8d211a3e246b59cb",
+      "tools/java-call-analysis/target/dependency/gson-2.14.0.jar": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f",
+      "tools/java-call-analysis/target/dependency/guava-33.6.0-jre.jar": "dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3",
+      "tools/java-call-analysis/target/dependency/j2objc-annotations-3.1.jar": "84d3a150518485f8140ea99b8a985656749629f6433c92b80c75b36aba3b099b",
+      "tools/java-call-analysis/target/dependency/javaparser-core-3.28.2.jar": "b5499a3b1c40b16c0671fabe478c9aafeab38160c6fde74a6c13f42d86716ecd",
+      "tools/java-call-analysis/target/dependency/javaparser-symbol-solver-core-3.28.2.jar": "4cb097c0834427939c01f4169dd0bab20068673913341c5b6db27be1a7445098",
+      "tools/java-call-analysis/target/dependency/javassist-3.31.0-GA.jar": "44b6b900ca352f4a0048e9428efab16582a014e10f8f65b4e58f5136c704624e",
+      "tools/java-call-analysis/target/dependency/jctools-core-4.0.7.jar": "fab373e48733e00bdf7114edbdb49f54114b0237e088b161c05984a6705fed50",
+      "tools/java-call-analysis/target/dependency/json-20260814.jar": "7dd2de1533e766e2b6c07d8194da85145ad313a167a4760050f5c9b6839604fe",
+      "tools/java-call-analysis/target/dependency/jspecify-1.0.1.jar": "070d75f261fe4c5b8202508366715f7f2d4660f88c8ef7e6d3575e48c9683b66",
+      "tools/java-call-analysis/target/dependency/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99"
+    },
+    "baselineEvidence": {
+      "rawSha256": "70113d968d50f8a04720dc0762658ca475c5f2c8e4678bb7c2f4ad9bbbf6369d",
+      "producerCommit": "7748983c75f988fd94acdc6b70101581e51ed873",
+      "comparisonRecordSha256": "11833de0a713e57e7b01c8153a012c13bcfbfc6464ff534a4b79bc51c183c2e8",
+      "adapterVersion": "0.2.2-probe32"
+    }
+  },
+  "historicalReplay": {
+    "schema": "jjamtong.java-publication-probe.v1",
+    "adapterVersion": "0.2.2-probe32",
+    "javaExitCode": 0,
+    "javaSeconds": 31.709999041999996,
+    "javaPeakRssBytes": null,
+    "outputBytes": 13372075,
+    "fixture": "scale-400000",
+    "javaOutput": "analysis complete: 13372075 bytes",
+    "producerCommit": "7748983c75f988fd94acdc6b70101581e51ed873",
+    "historicalSourceSha256": {
+      "src/main/java/io/jjamtong/analysis/AnalysisInput.java": "5d8e0ccc75c70c219d654e0baa27f48db92b23b6ec71c318dd444aba31befeca",
+      "src/main/java/io/jjamtong/analysis/Config.java": "f651b5cc3276fa47a0a5c49fed4381ff01d12c97c5d54754bb85c0fb9dc1762d",
+      "src/main/java/io/jjamtong/analysis/JavaParserAnalysis.java": "58d889c94ec92cfc6fdb86f9dd406c117cc854ffd051cf5149c4bcec182a2c7a",
+      "src/main/java/io/jjamtong/analysis/Main.java": "b004ee038c31c25822012a8a3c1a39b53465d50c19728adce38f710c8add345a",
+      "src/main/java/io/jjamtong/analysis/Model.java": "2a060804240c0b067cf3bbb1331e447e354010649371f724acde718d60067fe0",
+      "src/main/java/io/jjamtong/analysis/ResultPublication.java": "bb7a3bd7a7a8d05dec8dc35af48a998a04e74ffc95ea01f612d72b2b6138bbb7",
+      "src/main/java/io/jjamtong/analysis/WalaAnalysis.java": "6ee01acd9cb87f728e5ca4653168dea3bf7d36e1207f3f38484aff1621ba4de5"
+    },
+    "dependencyContractSha256": "fada4ff94ada970500836c664626c1404f4b6cb02a5f1ec94dde4d610fcbc413",
+    "runtimeDependencySha256": {
+      "checker-qual-3.55.1.jar": "857658c8bdcbff794949a8d9922f88d63ee3751c203c7cd7d21ea97f9e745288",
+      "com.ibm.wala.core-1.9.0.jar": "b3947bee5425e5ea0e257d87ad6ca4a13932708810e48e20b5cb78b62236e9c6",
+      "com.ibm.wala.shrike-1.9.0.jar": "8a3186aa13a747c88ecc065f887ee2cfd68d017de1f56c1f36a3d76fd0754f3f",
+      "com.ibm.wala.util-1.9.0.jar": "63962088a49117b143900866e0ab1d09a5526ddbac3bd2cd0402fa87c99e5d79",
+      "error_prone_annotations-2.48.0.jar": "b49c5c958316ed67a09c699dda9aa749caf434d51d863dea599ef36a49b9c855",
+      "failureaccess-1.0.3.jar": "cbfc3906b19b8f55dd7cfd6dfe0aa4532e834250d7f080bd8d211a3e246b59cb",
+      "gson-2.14.0.jar": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f",
+      "guava-33.6.0-jre.jar": "dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3",
+      "j2objc-annotations-3.1.jar": "84d3a150518485f8140ea99b8a985656749629f6433c92b80c75b36aba3b099b",
+      "javaparser-core-3.28.2.jar": "b5499a3b1c40b16c0671fabe478c9aafeab38160c6fde74a6c13f42d86716ecd",
+      "javaparser-symbol-solver-core-3.28.2.jar": "4cb097c0834427939c01f4169dd0bab20068673913341c5b6db27be1a7445098",
+      "javassist-3.31.0-GA.jar": "44b6b900ca352f4a0048e9428efab16582a014e10f8f65b4e58f5136c704624e",
+      "jctools-core-4.0.7.jar": "fab373e48733e00bdf7114edbdb49f54114b0237e088b161c05984a6705fed50",
+      "json-20260814.jar": "7dd2de1533e766e2b6c07d8194da85145ad313a167a4760050f5c9b6839604fe",
+      "jspecify-1.0.1.jar": "070d75f261fe4c5b8202508366715f7f2d4660f88c8ef7e6d3575e48c9683b66",
+      "listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99"
+    },
+    "buildDependencyManifestSha256": "3256e32a0ad73ee091eedfba22e1f706112f979b7c5a91ef6d457c32c38204e0",
+    "rawSha256": "70113d968d50f8a04720dc0762658ca475c5f2c8e4678bb7c2f4ad9bbbf6369d"
+  },
+  "initialSequentialMeasurements": {
+    "producerJarSha256": "6e6bbf397a5121e8acc0260a80f7710e3f37f9843ed879e761a98b9eb0bce3ac",
+    "results": {
+      "old": {
+        "buildIdentity": {
+          "repository": "https://example.invalid/jjamtong-synthetic-analysis",
+          "revision": "b47a1e56849948f11d10ff61f9020fd59cdefcfd",
+          "build": "scale-400000-400000-v0",
+          "module": "scale-400000",
+          "artifactSha256": "eba9c20a3b2567be1fb0e11e39034ad56cbc164395b7d940332b0646611c92e2"
+        },
+        "analysisRunId": "scale-old",
+        "indexSha256": "2b134819fde2e952e8e69f4f5b82d5e576ebbb47b1cfd013568097853931b6b3",
+        "configSha256": "cf6727b54c9d8432f54e121a46f768959e750be418bbe5cdbe511c504c6519b4",
+        "rawSha256": "9d81471a9c8aa3a6d816d4acb19834db699d9fb7d47037c2cd7e1270d2b77af4",
+        "rawBytes": 7647610,
+        "indexFileSha256": "7f3c473b4f38f581452469d78134548669005dea42ec51e3e97604b40e1b77e1",
+        "indexBytes": 8433388,
+        "prepareBytes": 9207836,
+        "methods": 9116,
+        "java": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 29.935432083000002,
+          "peakProcessRssBytes": 1364836352
+        },
+        "indexSeconds": 0.09852150000000037,
+        "saveSeconds": 0.07839620799999736,
+        "prepareSeconds": 0.38723212499999704,
+        "dbPublishSeconds": 1.358883458000001,
+        "dbLoadSeconds": 0.15954729200000628,
+        "dbCreated": true,
+        "exactDbRoundtrip": true,
+        "sameHashRetryCreated": false,
+        "coverage": {
+          "javaparser": {
+            "inventoryMethods": 8681,
+            "inputCalls": 8680,
+            "indexedCalls": 8680,
+            "danglingCalls": 0,
+            "unresolved": 0,
+            "excluded": 0,
+            "analyzerVersion": "3.28.2"
+          },
+          "wala": {
+            "inventoryMethods": 9116,
+            "inputCalls": 8680,
+            "indexedCalls": 8680,
+            "danglingCalls": 0,
+            "unresolved": 0,
+            "excluded": 0,
+            "analyzerVersion": "1.9.0"
+          }
+        },
+        "boundedGraph": {
+          "javaparser": {
+            "status": "PARTIAL",
+            "reasons": [
+              "NODE_LIMIT"
+            ],
+            "methods": 1,
+            "calls": 0
+          },
+          "wala": {
+            "status": "PARTIAL",
+            "reasons": [
+              "NODE_LIMIT"
+            ],
+            "methods": 1,
+            "calls": 0
+          }
+        }
+      },
+      "new": {
+        "buildIdentity": {
+          "repository": "https://example.invalid/jjamtong-synthetic-analysis",
+          "revision": "1a31174b10c496515877a96df59cc5c0b37b67fc",
+          "build": "scale-400000-400000-v1",
+          "module": "scale-400000",
+          "artifactSha256": "3403f8d011ad0e95186db530fcc2a3db439b3007fceaf958d622de1c7567859f"
+        },
+        "analysisRunId": "scale-new",
+        "indexSha256": "2b12ab1360fb1034782fdfae79354d9b80c1d8073f48c9fda2d709f7d1a4de7b",
+        "configSha256": "cf6727b54c9d8432f54e121a46f768959e750be418bbe5cdbe511c504c6519b4",
+        "rawSha256": "60c54ae833f83601aeaea90453cbfc108fa93c710de421070d580b5b0b1c7eb4",
+        "rawBytes": 7647638,
+        "indexFileSha256": "7bf1dc9207025a7338be865119d2f5c35a825d7961772b5a720b990fffb2b16a",
+        "indexBytes": 8433423,
+        "prepareBytes": 9207871,
+        "methods": 9116,
+        "java": {
+          "success": true,
+          "exitCode": 0,
+          "wallSeconds": 29.672228333,
+          "peakProcessRssBytes": 1386119168
+        },
+        "indexSeconds": 0.09633395899999897,
+        "saveSeconds": 0.0803840420000057,
+        "prepareSeconds": 0.37689491700000133,
+        "dbPublishSeconds": 1.4471615420000035,
+        "dbLoadSeconds": 0.174058708000004,
+        "dbCreated": true,
+        "exactDbRoundtrip": true,
+        "sameHashRetryCreated": false,
+        "coverage": {
+          "javaparser": {
+            "inventoryMethods": 8681,
+            "inputCalls": 8680,
+            "indexedCalls": 8680,
+            "danglingCalls": 0,
+            "unresolved": 0,
+            "excluded": 0,
+            "analyzerVersion": "3.28.2"
+          },
+          "wala": {
+            "inventoryMethods": 9116,
+            "inputCalls": 8680,
+            "indexedCalls": 8680,
+            "danglingCalls": 0,
+            "unresolved": 0,
+            "excluded": 0,
+            "analyzerVersion": "1.9.0"
+          }
+        },
+        "boundedGraph": {
+          "javaparser": {
+            "status": "PARTIAL",
+            "reasons": [
+              "NODE_LIMIT"
+            ],
+            "methods": 1,
+            "calls": 0
+          },
+          "wala": {
+            "status": "PARTIAL",
+            "reasons": [
+              "NODE_LIMIT"
+            ],
+            "methods": 1,
+            "calls": 0
+          }
+        }
+      }
+    },
+    "note": "Single sequential old/new samples. Later integrity replays ran alongside historical replay; none are a throughput benchmark or format ranking."
+  },
+  "validation": {
+    "pythonTests": 100,
+    "postgresAndWebTests": 37,
+    "jdk17": "Temurin 17.0.19; four oracles passed; PublicationOracle 38 checks",
+    "jdk21": "Corretto 21.0.11; four oracles passed; PublicationOracle 38 checks",
+    "cleanMavenBuild": "passed; pinned direct dependency bytes verified"
+  },
+  "browserQa": {
+    "status": "passed",
+    "mode": "Actual local PostgreSQL evidence and explicitly synthetic saved OTLP QA records",
+    "cases": {
+      "oldBuildMethods": {
+        "identity": "scale-400000 · scale-old · 커밋 b47a1e568499",
+        "methods": [
+          "Unit0000.m0",
+          "Unit0000.m1",
+          "Unit0000.m10",
+          "Unit0000.m11",
+          "Unit0000.m12",
+          "Unit0000.m13",
+          "Unit0000.m14",
+          "Unit0000.m15",
+          "Unit0000.m16",
+          "Unit0000.m17",
+          "Unit0000.m18",
+          "Unit0000.m19",
+          "Unit0000.m2",
+          "Unit0000.m3",
+          "Unit0000.m4",
+          "Unit0000.m5",
+          "Unit0000.m6",
+          "Unit0000.m7",
+          "Unit0000.m8",
+          "Unit0000.m9"
+        ],
+        "state": "20개 중 20개 · javaparser"
+      },
+      "newBuildMethods": {
+        "identity": "scale-400000 · scale-new · 커밋 1a31174b10c4",
+        "state": "21개 중 21개 · wala",
+        "methods": [
+          "Unit0000.<init>",
+          "Unit0000.m0",
+          "Unit0000.m1",
+          "Unit0000.m10",
+          "Unit0000.m11",
+          "Unit0000.m12",
+          "Unit0000.m13",
+          "Unit0000.m14",
+          "Unit0000.m15",
+          "Unit0000.m16",
+          "Unit0000.m17",
+          "Unit0000.m18",
+          "Unit0000.m19Updated",
+          "Unit0000.m2",
+          "Unit0000.m3",
+          "Unit0000.m4",
+          "Unit0000.m5",
+          "Unit0000.m6",
+          "Unit0000.m7",
+          "Unit0000.m8",
+          "Unit0000.m9"
+        ]
+      },
+      "staticTerminal": {
+        "identity": "scale-400000 · scale-new · 커밋 1a31174b10c4",
+        "title": "Unit0000.m19Updated",
+        "state": "정적 호출 후보",
+        "counts": "메서드 1 · 호출 근거 0",
+        "overflow": false,
+        "methods": [
+          "Unit0000.<init>",
+          "Unit0000.m0",
+          "Unit0000.m1",
+          "Unit0000.m10",
+          "Unit0000.m11",
+          "Unit0000.m12",
+          "Unit0000.m13",
+          "Unit0000.m14",
+          "Unit0000.m15",
+          "Unit0000.m16",
+          "Unit0000.m17",
+          "Unit0000.m18",
+          "Unit0000.m19Updated",
+          "Unit0000.m2",
+          "Unit0000.m3",
+          "Unit0000.m4",
+          "Unit0000.m5",
+          "Unit0000.m6",
+          "Unit0000.m7",
+          "Unit0000.m8",
+          "Unit0000.m9"
+        ]
+      },
+      "nodeLimit": {
+        "identity": "scale-400000 · scale-old · 커밋 b47a1e568499",
+        "inventory": "메서드 9116 · 호출 근거 8680 · 분석 전체 미해결 0",
+        "methods": "2개 중 2개 · wala",
+        "graph": "부분 결과 · 알려진 분석 한계가 있어요.",
+        "counts": "메서드 80 · 호출 근거 79",
+        "notes": "메서드 표시 상한에 도달했어요분석기 전체: 메서드 9116, 미해결 0, 목록 밖 호출 0. 선택한 흐름에서 발생했다는 뜻은 아니에요.",
+        "overflow": false
+      },
+      "depthLimit": {
+        "title": "Unit0000.m0",
+        "state": "부분 결과 · 알려진 분석 한계가 있어요.",
+        "counts": "메서드 5 · 호출 근거 4",
+        "notes": "표시 깊이 상한에 도달했어요분석기 전체: 메서드 9116, 미해결 0, 목록 밖 호출 0. 선택한 흐름에서 발생했다는 뜻은 아니에요.",
+        "graph": "PARTIAL"
+      },
+      "paginationFirst": {
+        "count": 80,
+        "state": "9116개 중 80개 · wala"
+      },
+      "paginationMore": {
+        "count": 160,
+        "state": "9116개 중 160개 · wala",
+        "overflow": false
+      },
+      "emptySearchMobile": {
+        "identity": "scale-400000 · scale-new · 커밋 1a31174b10c4",
+        "methods": "검색 조건에 맞는 메서드가 없어요.",
+        "count": 0,
+        "graph": "메서드를 선택하면 호출 후보를 조회해요.",
+        "overflow": false,
+        "width": 390
+      },
+      "snapshotHashError": {
+        "injected": 1,
+        "title": "분석본을 조회하지 못했어요",
+        "error": "선택한 분석 해시와 저장된 근거가 달라요. 다른 버전으로 대체하지 않았어요.",
+        "count": 0,
+        "graph": "",
+        "trace": "",
+        "injection": "One-shot request changed index_sha256 to f*64; actual server rejected it. Native fetch restored before valid build selection."
+      },
+      "validBuildRecovery": {
+        "identity": "scale-400000 · scale-new · 커밋 1a31174b10c4",
+        "state": "21개 중 21개 · wala",
+        "methods": [
+          "Unit0000.<init>",
+          "Unit0000.m0",
+          "Unit0000.m1",
+          "Unit0000.m10",
+          "Unit0000.m11",
+          "Unit0000.m12",
+          "Unit0000.m13",
+          "Unit0000.m14",
+          "Unit0000.m15",
+          "Unit0000.m16",
+          "Unit0000.m17",
+          "Unit0000.m18",
+          "Unit0000.m19Updated",
+          "Unit0000.m2",
+          "Unit0000.m3",
+          "Unit0000.m4",
+          "Unit0000.m5",
+          "Unit0000.m6",
+          "Unit0000.m7",
+          "Unit0000.m8",
+          "Unit0000.m9"
+        ]
+      },
+      "matchingNewSyntheticTrace": {
+        "identity": "scale-400000 · scale-new · 커밋 1a31174b10c4",
+        "status": "PARTIAL",
+        "methods": [
+          "m19Updated"
+        ],
+        "reasons": [
+          "PARENT_EXTERNAL_OR_NOT_COLLECTED"
+        ]
+      },
+      "oldTraceOnNewBuild": {
+        "identity": "scale-400000 · scale-new · 커밋 1a31174b10c4",
+        "status": "MISMATCH",
+        "spans": 0,
+        "reasons": [
+          "BUILD_IDENTITY_MISMATCH",
+          "NO_MATCHING_SPANS"
+        ]
+      },
+      "matchingOldSyntheticTrace": {
+        "status": "PARTIAL",
+        "traceId": "11111111111111111111111111111111",
+        "analysisRunId": "scale-old",
+        "indexSha256": "2b134819fde2e952e8e69f4f5b82d5e576ebbb47b1cfd013568097853931b6b3",
+        "collectionReasons": [
+          "PARENT_EXTERNAL_OR_NOT_COLLECTED"
+        ],
+        "methods": [
+          "m19"
+        ]
+      },
+      "newTraceOnOldBuild": {
+        "status": "MISMATCH",
+        "traceId": "33333333333333333333333333333333",
+        "analysisRunId": "scale-old",
+        "indexSha256": "2b134819fde2e952e8e69f4f5b82d5e576ebbb47b1cfd013568097853931b6b3",
+        "collectionReasons": [
+          "BUILD_IDENTITY_MISMATCH",
+          "NO_MATCHING_SPANS"
+        ],
+        "methods": []
+      },
+      "mobileGraph": {
+        "width": 390,
+        "overflow": false,
+        "title": "Unit0000.m0",
+        "counts": "메서드 5 · 호출 근거 4"
+      },
+      "wideGraph": {
+        "width": 1440,
+        "height": 1100,
+        "overflow": false,
+        "identity": "scale-400000 · scale-new · 커밋 1a31174b10c4",
+        "graph": "Unit0000.m0",
+        "counts": "메서드 5 · 호출 근거 4",
+        "rawStatus": "PARTIAL"
+      }
+    },
+    "screenshots": {
+      "wide-graph": {
+        "file": "java-compact-qa/wide-graph.png",
+        "sha256": "00a3baa0ab965de1dc7bd5cd6f31e67ff75e2046edbddb6364b1578ceb9388ba",
+        "visuallyInspected": true
+      },
+      "mobile-graph": {
+        "file": "java-compact-qa/mobile-graph.png",
+        "sha256": "1720fcd3e185e127379bcb21c9bb7628f3a92e918a9f0f4811c9e1fdbaf6dcfd",
+        "visuallyInspected": true
+      },
+      "synthetic-trace": {
+        "file": "java-compact-qa/synthetic-trace.png",
+        "sha256": "7e4c0262e16708d0787f200ca4f4776768074db47bb8ae5562efdc361ec2d6a1",
+        "visuallyInspected": true
+      }
+    },
+    "console": {
+      "entries": [],
+      "truncated": false
+    },
+    "scope": "Actual Orca browser click/fill/select/zoom/pagination/viewport flows. The snapshot-error case injected an invalid request, not a fake response. No user study, live trace ingestion or enterprise capacity claim."
+  },
+  "independentReview": {
+    "code": "APPROVE 0 after complete source/runtime provenance fixes",
+    "architecture": "APPROVE; bounded #73/#68 local integration criteria satisfied",
+    "koreanEditorial": "PASS 0 after eight listed items and the trailing table-row wording fix",
+    "readOnlyReviews": true
+  }
+}
