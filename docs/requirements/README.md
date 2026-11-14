@@ -10,7 +10,7 @@
 | --- | --- | --- | --- |
 | S01 메서드 관계 | [01-code-relations.feature](../../specs/features/01-code-relations.feature) | BDD-REL-001~004 | 구현 대상 |
 | S02 분석·실행 버전 | [02-version-identity.feature](../../specs/features/02-version-identity.feature) | BDD-VER-001~003 | 구현 대상 |
-| S03 자동 갱신 | [03-graph-refresh.feature](../../specs/features/03-graph-refresh.feature) | BDD-UPD-001~010 | 구현 대상 |
+| S03 자동 갱신 | [03-graph-refresh.feature](../../specs/features/03-graph-refresh.feature) | BDD-UPD-001~012 | 구현 대상 |
 | S04 에이전트 근거 조회 | [04-agent-evidence.feature](../../specs/features/04-agent-evidence.feature) | BDD-AGT-001~004 | 구현 대상 |
 | S05 SRE 분석 | [05-sre-analysis.feature](../../specs/features/05-sre-analysis.feature) | BDD-SRE-001~008 | 구현 대상 |
 | S06 인프라 문맥 | [06-infrastructure.feature](../../specs/features/06-infrastructure.feature) | BDD-INF-001~006 | 구현 대상 |
@@ -21,7 +21,7 @@
 | 전체 영역 공통 기업 운영 | [11-enterprise-operations.feature](../../specs/features/11-enterprise-operations.feature) | BDD-ENT-001~009 | 구현 대상 |
 | 전체 영역 공통 자동 확장·축소 | [12-autoscaling.feature](../../specs/features/12-autoscaling.feature) | BDD-ASC-001~009 | 구현 대상 |
 
-[자동화 제품 기획](AUTOMATION.md)은 GitHub 기반 발견·등록·지속 갱신과 운영 자동화의 흐름, 확인한 방향·세부 제안·미결 정책을 구분한다. 온보딩 10개 시나리오는 기존 S03·S09의 명세·검증 태스크에 연결한다. 수용량·복구 4개와 기업 운영 9개 및 자동 확장·축소 9개를 포함한 전체 12개 feature·75개 시나리오는 실행기 없는 Draft이며 새 스토리·태스크를 중복 생성하지 않는다.
+[자동화 제품 기획](AUTOMATION.md)은 GitHub 기반 발견·등록·지속 갱신과 운영 자동화의 흐름, 확인한 방향·세부 제안·미결 정책을 구분한다. 온보딩 10개 시나리오는 기존 S03·S09의 명세·검증 태스크에 연결한다. 수용량·복구 4개와 기업 운영 9개 및 자동 확장·축소 9개, 분석 최적화·배치 독립성 2개를 포함한 전체 12개 feature·77개 시나리오는 실행기 없는 Draft이며 새 스토리·태스크를 중복 생성하지 않는다.
 
 [수용량 검증 계획](../experiments/CAPACITY-VALIDATION.md)의 BDD-SRE-005~008은 업무 서비스의 계측 전후 수용량, 플랫폼의 수집·분석·조회와 데이터 규모, 과부하 복구와 서비스별 격리를 명세한다. T10 #19에서 목표·판정 조건을 검토하고 T25 #44의 로컬 적용 비교에 연결한다. 현재 수치 목표와 수용량 실측은 없다.
 
@@ -105,3 +105,5 @@
 ## 대규모 코드 분석
 
 [복잡 구조 요구](CODE-ANALYSIS-SCALE.md)는 정리된 예제 밖의 호출 관계와 분석 공백을 다룬다. BDD-UPD-005~010과 [#61](https://github.com/DDINGJOO/JJAM-TONG/issues/61)에서 재사용·변경 전파·실패 경계를 검증한다. [실측 결과](../experiments/ANALYSIS-REUSE-RESULTS.md)와 전체 BDD의 Draft 상태를 구분한다.
+
+BDD-UPD-011·012와 [#63](https://github.com/DDINGJOO/JJAM-TONG/issues/63)은 최적화 전후의 소스 위치·관계 보존과 패키지·소스 배치가 다른 입력을 명세한다. [후속 실측](../experiments/JAVA-PARSER-MEMORY.md)은 한정된 Java 분석 도구의 결과다. 작업 공통 계약·빌드 발견·HTTP와 이벤트의 근거 계약은 [#64](https://github.com/DDINGJOO/JJAM-TONG/issues/64)·[#65](https://github.com/DDINGJOO/JJAM-TONG/issues/65)·[#66](https://github.com/DDINGJOO/JJAM-TONG/issues/66)으로 이어가며, 범용 지원 완료로 취급하지 않는다.

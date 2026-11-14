@@ -148,6 +148,15 @@ SIEM 근거를 같은 서비스·배포·자산의 운영 증거와 함께 조�
 - [#43 버전 근거 보관·조회 3대안의 동일 질문 실행 비교](https://github.com/DDINGJOO/JJAM-TONG/issues/43) · 선행: [#38](https://github.com/DDINGJOO/JJAM-TONG/issues/38); 공통 예상값과 실제 응답·보관량·원본 호출·예산 제한을 대조.
 - [#44 외부 프로젝트에 적용할 관측성 라이브러리와 로컬 최소 검증](https://github.com/DDINGJOO/JJAM-TONG/issues/44) · 선행: [#38](https://github.com/DDINGJOO/JJAM-TONG/issues/38)과 [#4](https://github.com/DDINGJOO/JJAM-TONG/issues/4)의 관련 검토; 대상 앱을 별도 저장소에 유지하며 [실제 메서드 분석·계측·빌드 연결](docs/experiments/METHOD-OBSERVABILITY-RESULTS.md)을 비교. 정확한 overload 식별·부분 재분석 등 남은 조건은 이슈에서 관리.
 
+#44의 범용 분석 후속 작업은 다음과 같이 나눈다. 아래 목록은 선행 관계이며 실제 진행 상태는 각 이슈가 기준이다.
+
+| 하위 작업 | 검증할 결과 | 선행 |
+| --- | --- | --- |
+| [#63 Java 분석 메모리와 소스 위치 보존](https://github.com/DDINGJOO/JJAM-TONG/issues/63) | 같은 입력의 선언·관계·소스 위치를 보존하며 파서 메모리 부담을 줄임 | #61 |
+| [#64 분석 작업 공통 계약](https://github.com/DDINGJOO/JJAM-TONG/issues/64) | 도구별 입력·지원 범위·자원·완료·실패 의미를 구분함 | #63 |
+| [#65 빌드·모듈 발견과 변경 영향](https://github.com/DDINGJOO/JJAM-TONG/issues/65) | 모듈·공통 라이브러리·산출물·배포 서비스와 변경 영향을 구분함 | #64 |
+| [#66 HTTP·이벤트 관계의 근거 계약](https://github.com/DDINGJOO/JJAM-TONG/issues/66) | 정적 후보·설정 추론·실제 Trace를 출처와 버전으로 연결함 | #65 |
+
 기존 32개 요구사항 이슈의 완료 조건·상태·부모 관계를 유지하며, 별도 실험 에픽·스토리·태스크를 추가했다. 실제 진행 상태는 GitHub에서 확인한다.
 
 ## 다음 단계

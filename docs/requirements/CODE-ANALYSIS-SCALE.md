@@ -2,6 +2,14 @@
 
 정리된 예제뿐 아니라 공통 모듈에 업무 코드가 몰리고 여러 구조가 공존하는 프로젝트에서도 유용한 근거를 제공해야 한다. 분석을 위해 대상 프로젝트의 구조 개선을 먼저 요구하지 않는다. 다만 지원 입력과 자원 상한을 넘어선 경우에는 원인과 빠진 범위를 알려야 한다.
 
+## 범용성의 검증 기준
+
+관측 대상의 이름·업무 도메인·폴더 깊이를 공통 식별 계약에 넣지 않는다. 언어·빌드 도구·프레임워크·관측 환경의 차이는 각 어댑터의 지원 조건으로 표현한다. 소스 모듈과 공통 라이브러리, 빌드 산출물과 배포 서비스는 별도로 식별한다. 현재 Java 입력의 작은 검증을 다른 언어·빌드 도구의 지원으로 확대하지 않는다.
+
+최적화 전후에는 같은 입력의 메서드 키·정적 관계·미해결 이유·상대 소스 경로·줄 번호를 대조한다. 패키지명과 소스 배치를 바꾼 예제, 캐시보다 많은 타입, 호출 밀도와 계층·공유 의존성의 변화도 검증 대상으로 둔다. 메모리를 줄였더라도 소스 위치나 관계를 잃으면 정확성 조건에 실패한다. 분석 정책 변경은 분석기 버전으로 구분하며 기존 결과를 같은 분석으로 덮어쓰지 않는다.
+
+[#63](https://github.com/DDINGJOO/JJAM-TONG/issues/63)은 파서 메모리와 소스 위치 보존을, [#64](https://github.com/DDINGJOO/JJAM-TONG/issues/64)는 작업 공통 계약을 다룬다. [#65](https://github.com/DDINGJOO/JJAM-TONG/issues/65)에서 빌드·모듈·변경 영향을, [#66](https://github.com/DDINGJOO/JJAM-TONG/issues/66)에서 HTTP·이벤트 관계의 근거 계약을 이어서 검증한다. 이 분할은 전체 플랫폼의 범위를 축소하거나 어댑터별 지원 완료를 뜻하지 않는다.
+
 ## 구조별 검증
 
 | 구조 | 기대 결과 | 현재 확인 또는 다음 검증 |
@@ -27,4 +35,4 @@
 
 화면에서는 서비스·API·빌드에서 범위를 좁히고 필요한 메서드 주변만 확장하도록 설계한다. 순환 묶음·높은 연결 수·누락 범위와 결과 수 상한을 표시하고 특정 Trace의 실제 호출과 정적 후보를 구분한다. 확대 수준과 화면 크기에 따른 정보량 조절은 실제 규모 데이터로 별도 QA한다.
 
-관련 근거는 [ADR 0008](../decisions/0008-exact-input-analysis-reuse.md), [실측 결과](../experiments/ANALYSIS-REUSE-RESULTS.md), [BDD-UPD-005~010](../../specs/features/03-graph-refresh.feature), [수용량 검증 계획](../experiments/CAPACITY-VALIDATION.md)이다.
+관련 근거는 [ADR 0008](../decisions/0008-exact-input-analysis-reuse.md), [기존 실측 결과](../experiments/ANALYSIS-REUSE-RESULTS.md), [파서 메모리 후속 검증](../experiments/JAVA-PARSER-MEMORY.md), [BDD-UPD-005~012](../../specs/features/03-graph-refresh.feature), [수용량 검증 계획](../experiments/CAPACITY-VALIDATION.md)이다.

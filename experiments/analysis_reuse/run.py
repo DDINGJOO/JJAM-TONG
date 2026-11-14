@@ -132,7 +132,7 @@ def command(root, java_home, module, package, output, cache=None):
     return [sys.executable, "-m", "tools.analysis_reuse", "--tenant", "synthetic-local", "--cache", str(cache), *common]
 
 
-def measure(command_, log):
+def measure(command_, log, timeout=100):
     timer = Path("/usr/bin/time")
     measured = timer.is_file() and platform.system() in ("Darwin", "Linux")
     prefix = [str(timer), "-l" if platform.system() == "Darwin" else "-v"] if measured else []
@@ -141,7 +141,7 @@ def measure(command_, log):
         process = subprocess.Popen([*prefix, *command_], cwd=ROOT, stdout=subprocess.PIPE, stderr=errors,
                                    text=True, start_new_session=True)
         try:
-            stdout, _ = process.communicate(timeout=100)
+            stdout, _ = process.communicate(timeout=timeout)
         except subprocess.TimeoutExpired:
             # The adapter owns a stricter 60 s JVM deadline. This outer deadline
             # bounds orchestration as well; inputs/output stay in this owned directory.

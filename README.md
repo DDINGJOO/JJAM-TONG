@@ -37,6 +37,8 @@ python3 -m experiments.reconciliation_lab.run --repetitions 3
 
 [정확 입력 분석 재사용](tools/analysis_reuse/README.md)은 소스·원본 JAR·도구·설정이 같은 전체 결과를 재사용한다. [실제 규모 비교](docs/experiments/ANALYSIS-REUSE-RESULTS.md)에서 10만 줄 동일 입력의 재사용 결과와 복잡 구조에서 확인한 호출 후보·해석 공백을 제시했으며, 30만 줄 단일 입력은 기존 힙 제한에서 실패했다. 메서드 단위 증분 분석과 기존 CI·DB·화면 연동은 다음 검증 범위다.
 
+[파서 메모리 후속 검증](docs/experiments/JAVA-PARSER-MEMORY.md)에서는 분석기 0.2.1로 소스 위치를 보존하면서 같은 1 GiB 힙에서 30만 줄 합성 입력을 완료했다. 이전 기준 결과와 위치·관계를 대조했으며, 40만 줄은 출력 상한으로 발행되지 않았다. [ADR 0009](docs/decisions/0009-java-parser-retention.md)는 선택·탈락한 설정과 범위를 기록한다. 실제 기업 코드의 수용량과 전체 파이프라인 연동은 앞으로 검증한다.
+
 ## 명세할 문제와 기대 결과
 
 - 코드에서 메서드와 **호출 가능 관계**를 분석한다.

@@ -94,3 +94,5 @@ DB는 로컬 루프백에 두고 Actions에는 DB 접속 권한을 주지 않는
 ## 대규모 코드와 복잡 구조의 분석
 
 [정확 입력 재사용 실험](../experiments/ANALYSIS-REUSE-RESULTS.md)은 실제 JavaParser·WALA로 최초·재사용·변경·독립 전체 분석을 대조한다. 10만 줄의 동일 입력은 재사용했고, 30만 줄 단일 입력은 기존 힙 상한에서 실패했다. 별도 작은 예제에서는 다형성·순환 호출·오버로드·브리지를 구분하고, 리플렉션·람다·메서드 참조의 해석 공백을 확인했다. 독립 단위 세 개의 성공은 실제 얽힌 전체 그래프의 분할 성공과 구분한다. [복잡 구조 요구](../requirements/CODE-ANALYSIS-SCALE.md), [ADR 0008](../decisions/0008-exact-input-analysis-reuse.md), [#61](https://github.com/DDINGJOO/JJAM-TONG/issues/61)에서 다음 검증을 연결한다.
+
+[파서 메모리 후속 검증](../experiments/JAVA-PARSER-MEMORY.md)은 분석기 0.2.1에서 소스 위치를 보존하며 같은 1 GiB 힙으로 30만 줄 합성 입력을 완료했다. 이전 분석기의 기준 본문과 대조했고 패키지·소스 배치를 바꾼 회귀 검사도 수행했다. 40만 줄은 10 MiB 출력 상한으로 발행되지 않았다. 조회 캐시의 32개 제한은 전체 구문 트리·힙·프로세스 메모리의 상한이 아니다. 선택과 탈락한 설정은 [ADR 0009](../decisions/0009-java-parser-retention.md), 작업과 후속 검증은 [#63](https://github.com/DDINGJOO/JJAM-TONG/issues/63)·[#64](https://github.com/DDINGJOO/JJAM-TONG/issues/64)·[#65](https://github.com/DDINGJOO/JJAM-TONG/issues/65)·[#66](https://github.com/DDINGJOO/JJAM-TONG/issues/66)으로 연결한다. 실제 상태는 각 이슈에서 관리한다.
