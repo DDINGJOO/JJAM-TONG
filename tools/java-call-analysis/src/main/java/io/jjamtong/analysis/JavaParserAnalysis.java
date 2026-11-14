@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 final class JavaParserAnalysis {
+    private static final int TYPE_SOLVER_CACHE_ENTRIES = 32;
     private JavaParserAnalysis() { }
 
     static Map<String, Object> run(Config config) throws Exception {
@@ -34,9 +35,15 @@ final class JavaParserAnalysis {
     }
     static Map<String, Object> run(Config config, List<Path> dependencies) throws Exception {
         var parserConfig = new ParserConfiguration().setLanguageLevel(config.boot() ? ParserConfiguration.LanguageLevel.JAVA_21 : ParserConfiguration.LanguageLevel.JAVA_17);
-        var solver = new CombinedTypeSolver(new JavaParserTypeSolver(config.sourceRoot(), parserConfig), new ReflectionTypeSolver());
+        // Direct parsing keeps token-backed source positions. Cached lookup units
+        // only resolve types; retaining their tokens duplicates the source graph.
+        var lookupConfig = new ParserConfiguration().setLanguageLevel(parserConfig.getLanguageLevel())
+                .setStoreTokens(false).setAttributeComments(false);
+        var solver = new CombinedTypeSolver(new JavaParserTypeSolver(config.sourceRoot(), lookupConfig, TYPE_SOLVER_CACHE_ENTRIES), new ReflectionTypeSolver());
         for (Path dependency : dependencies) solver.add(new JarTypeSolver(dependency));
-        parserConfig.setSymbolResolver(new JavaSymbolSolver(solver));
+        var resolver = new JavaSymbolSolver(solver);
+        parserConfig.setSymbolResolver(resolver);
+        lookupConfig.setSymbolResolver(resolver);
         var parser = new JavaParser(parserConfig);
         List<Map<String, Object>> methods = new ArrayList<>(), calls = new ArrayList<>(), unresolved = new ArrayList<>(), excluded = new ArrayList<>();
         try (var paths = Files.walk(config.sourceRoot())) {

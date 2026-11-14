@@ -12,7 +12,7 @@ def main():
     parser.add_argument("--java-home", required=True, type=Path)
     args = parser.parse_args()
     classpath = f"{HERE / 'target/test-classes'}:{HERE / 'target/classes'}:{HERE / 'target/dependency/*'}"
-    for oracle in ("SyntheticOracle", "BootInputOracle"):
+    for oracle in ("SyntheticOracle", "BootInputOracle", "SourceLocationOracle"):
         subprocess.run([str(args.java_home / "bin/java"), "-Xmx1g", "-cp", classpath,
                         "io.jjamtong.analysis." + oracle], check=True, timeout=60)
 

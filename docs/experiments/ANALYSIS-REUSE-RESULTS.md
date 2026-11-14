@@ -4,6 +4,8 @@
 
 관련 작업은 [#61](https://github.com/DDINGJOO/JJAM-TONG/issues/61)과 상위 [#44](https://github.com/DDINGJOO/JJAM-TONG/issues/44)다. [ADR 0008](../decisions/0008-exact-input-analysis-reuse.md), [복잡 구조 요구](../requirements/CODE-ANALYSIS-SCALE.md), [재현 CLI](../../tools/analysis_reuse/README.md), [구조화한 실측값](analysis-reuse-results.json)을 연결한다.
 
+이 문서는 분석기 0.2.0의 당시 결과를 보존한다. 분석기 0.2.1의 [파서 메모리 후속 검증](JAVA-PARSER-MEMORY.md)은 같은 힙의 30만 줄 완료와 소스 위치·관계 대조, 40만 줄 출력 상한 실패를 별도로 기록한다. 후속 성공으로 기존 실패 기록을 덮어쓰지 않는다.
+
 ## 입력과 측정 조건
 
 macOS arm64, 논리 CPU 15개, Python 3.9.6, Corretto 21.0.11에서 실행했다. 대상 바이트코드는 Java 17로 컴파일했다. 기존 JavaParser·SymbolSolver 3.28.2와 WALA 1.9.0의 실제 분석기를 사용했으며 JVM 힙 1 GiB·실행 60초·출력 10 MiB 제한을 유지했다. 컴파일 시간과 분석 시간은 나누어 기록했다.

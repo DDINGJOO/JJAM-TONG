@@ -28,8 +28,8 @@ flowchart LR
 | [ADR 0005: 버전별 메서드 근거 저장](../decisions/0005-local-versioned-evidence-store.md) | 첫 로컬 공통부에 PostgreSQL 적용. 불변 분석 보관과 그래프 조회 계약을 분리하고 버전 혼입을 거부 | 실제 대체 엔진, 보존·삭제·마이그레이션·기업 권한·지속 수용량과 전체 플랫폼 스택 |
 | [ADR 0006: GitHub 분석 결과의 로컬 수집](../decisions/0006-github-method-evidence-pull.md) | 별도 Java 검증 모듈을 Actions에서 분석하고, 로컬 수집기가 출처·버전·해시 대조 후 DB에 발행 | Spring Boot 서비스 전체 분석·상시 실행 관리·장기 보존·운영 권한과 호출 예산 |
 | [ADR 0007: 실제 Boot 메서드 근거의 로컬 연결](../decisions/0007-local-boot-method-evidence.md) | 원본 실행 JAR과 파생 클래스·라이브러리 해시를 구분하고 실제 요청을 같은 빌드의 색인으로 조회 | Spring 호출 조건의 정밀 분석·Boot CI 발행·trace 지속 수집·운영 검증 |
-
 | [ADR 0008: 정확 입력 분석 재사용](../decisions/0008-exact-input-analysis-reuse.md) | 소스·원본 JAR·분석 설정·도구가 같은 전체 입력 결과를 로컬에서 재사용 | 큰 단위 내부의 증분 분석·의존성 변경 전파·작업 큐·CI/DB/화면 연동 |
+| [ADR 0009: Java 파서의 보관 정책 분리](../decisions/0009-java-parser-retention.md) | 직접 파싱의 소스 위치를 유지하고 타입 조회용 파서의 토큰·주석 보관과 캐시 항목 수를 제한 | 전체 프로세스 자원 제한·최적 캐시 크기·고밀도 입력·작업과 출력 분할 |
 
 관계 갱신 기본안은 현재 상태 복구에 관한 것이다. **놓친 중간 커밋·trace·보안 사건의 발생 이력이 자동 복원되지는 않는다.** 갱신 실험의 색인은 파일·blob 관계다. 별도 [메서드 근거 실험](../experiments/METHOD-OBSERVABILITY-RESULTS.md)은 실제 빌드·분석·span을 연결하며, 빠진 이력과 overload 식별의 한계를 그대로 반환한다.
 
