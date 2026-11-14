@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JJAM-TONG · 제품 데모</title><link rel="icon" href="data:,">
+<link rel="stylesheet" href="/prototype.css">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body><div class="app product-demo" id="app"><div class="demo-notice" role="status"><strong>제품 데모 · 합성 데이터</strong><span>서비스·인프라·보안 수치와 실행 결과는 가상 예시입니다.</span><a class="btn primary" href="/">실제 근거 화면으로 돌아가기 ↗</a></div><div class="shell">
+<aside class="sidebar"><div class="brand"><span class="brand-mark">↗</span><div>JJAM-TONG<small>CONNECTED OPERATIONS</small></div></div><div class="org"><span class="org-logo">TW</span><div><strong>TONG Works</strong><small>가상 기업 · 전사 워크스페이스</small></div></div><div id="nav"></div><div class="sidebar-bottom"><span class="badge" style="background:#273d40;color:#b2cc9e">VISION PROTOTYPE</span><p>가상의 회사 데이터로<br>최종 제품의 사용 흐름을 체험합니다.</p><div style="border-top:1px solid #304055;padding-top:13px;margin-top:14px"><span class="avatar" style="background:#30435c;color:#c6d5e9">OP</span><span style="margin-left:8px">전사 운영자 · 시뮬레이션</span></div></div></aside>
+<div><header class="topbar"><div class="crumb"><span class="optional">Organization</span><span class="optional">/</span><b>TONG Works</b><span>/</span><span id="crumb-view">전사 현황</span></div><form class="global-search" id="search-form"><span>⌕</span><label class="sr-only" for="global-search">서비스·자원·이벤트 검색</label><input id="global-search" placeholder="서비스, 자원, 이벤트 검색" maxlength="100"><kbd>↵</kbd></form><div class="top-right"><span class="badge green"><i class="dot"></i>가상 기업 데이터</span><span class="avatar">OP</span></div></header>
+<main class="main"><div class="page-head"><div><div class="eyebrow" id="eyebrow">ORGANIZATION OVERVIEW</div><h1 id="page-title">전사 운영 현황</h1><p id="page-description">회사 전체의 서비스와 운영 근거를 한곳에서 확인합니다.</p></div><div class="actions"><button class="btn" data-go="agent">✧ 에이전트 근거 조회</button><button class="btn primary" data-go="connectors">＋ 연결·자동 발견</button></div></div>
+<div class="banner"><strong>최종 제품 목업</strong><span>코드·관측성·인프라·네트워크·CMDB·SIEM·자동화의 전체 사용 흐름을 담았습니다. 데이터와 실행 결과는 모두 합성 예시입니다.</span><span class="right">2026.11.12 · KST</span></div>
+<nav class="mobile-nav" id="mobile-nav" aria-label="모바일 메뉴"></nav>
+<div class="scopebar"><label for="scope-team">조회 범위</label><select class="select" id="scope-team" aria-label="조회할 조직 또는 팀"></select><select class="select" id="scope-env" aria-label="조회할 환경"><option value="all">모든 환경</option><option value="production">Production · AWS</option><option value="staging">Staging · AWS</option><option value="onprem">온프레미스 · Kubernetes</option></select><span class="scope-meta" id="scope-meta"></span></div>
+<div id="content"></div><footer class="footer"><span>JJAM-TONG PLATFORM · 자동으로 갱신되는 관계와, 출처·버전·시점이 있는 근거</span><span>로컬 시뮬레이션 · 외부 연결·실제 운영 변경·영구 저장 없음</span></footer></main></div>
+</div><dialog class="drawer" id="detail-dialog" aria-labelledby="detail-title"><div class="dialog-head"><div><div class="eyebrow" id="detail-eyebrow">EVIDENCE</div><h2 id="detail-title">근거 상세</h2><p id="detail-subtitle"></p></div><button class="close" data-close aria-label="상세 창 닫기">×</button></div><div class="dialog-body" id="detail-body"></div></dialog><div class="toast" id="toast" role="status" aria-live="polite"></div></div>
+<script src="/prototype.js"></script>
+<script src="/demo-entry.js"></script></body></html>

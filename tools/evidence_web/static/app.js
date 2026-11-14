@@ -218,6 +218,7 @@
     $('identityTitle').textContent = '분석본을 확인하는 중…';
     $('identityAssurance').textContent = '';
     $('identitySummary').textContent = ref.run_id;
+    $('buildPickerSummary').textContent = ref.run_id + ' · 확인 중';
     $('inventorySummary').textContent = '';
     $('traceTitle').textContent = '저장된 실행 기록';
     raw('snapshotRaw', null);
@@ -234,12 +235,16 @@
       identityRows(data);
       raw('snapshotRaw', data);
       state.ready = true;
+      $('buildPickerSummary').textContent = data.buildIdentity.build + ' · ' + data.ref.run_id;
+      $('buildPicker').open = false;
       loadMethods(true);
       loadTraces(true);
       if (state.traceId) loadTrace();
     } catch (error) {
       if (!current('selected', revision) || error.name === 'AbortError') return;
       $('identityTitle').textContent = '분석본을 조회하지 못했어요';
+      $('buildPickerSummary').textContent = ref.run_id + ' · 조회 실패';
+      $('buildPicker').open = true;
       $('identityAssurance').textContent = error.message;
       status('methodState', error.message, 'error');
       status('traceState', error.message, 'error');

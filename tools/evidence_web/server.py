@@ -12,6 +12,11 @@ from .service import MissingHistory
 
 STATIC = Path(__file__).with_name("static")
 ASSETS = {"/": ("index.html", "text/html; charset=utf-8"),
+          "/demo": ("demo.html", "text/html; charset=utf-8"),
+          "/prototype.css": ("prototype.css", "text/css; charset=utf-8"),
+          "/prototype.js": ("prototype.js", "text/javascript; charset=utf-8"),
+          "/platform.js": ("platform.js", "text/javascript; charset=utf-8"),
+          "/demo-entry.js": ("demo-entry.js", "text/javascript; charset=utf-8"),
           "/app.js": ("app.js", "text/javascript; charset=utf-8"),
           "/app.css": ("app.css", "text/css; charset=utf-8")}
 ROUTES = {"/api/context": "context", "/api/snapshots": "snapshots", "/api/snapshot": "snapshot",
@@ -63,15 +68,20 @@ class Handler(BaseHTTPRequestHandler):
         # Request URLs can contain identifiers; do not log input or local paths.
         pass
 
-    def _send(self, code, body, content_type="application/json; charset=utf-8"):
+    def _send(self, code, body, content_type="application/json; charset=utf-8", demo=False):
         self.send_response(code)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Referrer-Policy", "no-referrer")
-        self.send_header("Content-Security-Policy", "default-src 'none'; script-src 'self'; style-src 'self'; "
-                         "connect-src 'self'; img-src 'self' data:; frame-ancestors 'none'; "
+        # The preserved synthetic tour positions its cards with style attributes.
+        # It has no network connection permission. Keep the live consumer strict.
+        style_policy = "'self' 'unsafe-inline'" if demo else "'self'"
+        connect_policy = "'none'" if demo else "'self'"
+        self.send_header("Content-Security-Policy", "default-src 'none'; script-src 'self'; style-src "
+                         + style_policy + "; connect-src " + connect_policy +
+                         "; img-src 'self' data:; frame-ancestors 'none'; "
                          "base-uri 'none'; form-action 'none'")
         self.end_headers()
         try:
@@ -107,7 +117,8 @@ class Handler(BaseHTTPRequestHandler):
             params = {key: values[0] for key, values in params.items()}
             if url.path in ASSETS and not params:
                 filename, content_type = ASSETS[url.path]
-                return self._send(200, (STATIC / filename).read_bytes(), content_type)
+                return self._send(200, (STATIC / filename).read_bytes(), content_type,
+                                  demo=url.path == "/demo")
             if url.path not in ROUTES:
                 return self._error(404, "NOT_FOUND", "조회 경로를 찾을 수 없어요.")
             result = getattr(self.server.workspace, ROUTES[url.path])(params)

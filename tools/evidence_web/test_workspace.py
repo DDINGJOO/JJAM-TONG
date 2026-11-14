@@ -190,6 +190,23 @@ class HTTPTests(unittest.TestCase):
         self.assertNotIn("Access-Control-Allow-Origin", headers)
         self.assertEqual("build-a", json.loads(body)["buildIdentity"]["build"])
 
+    def test_platform_and_preserved_demo_keep_data_and_csp_separate(self):
+        status, headers, body = self.request("/")
+        self.assertEqual(200, status)
+        self.assertIn(b'/prototype.css', body)
+        self.assertIn(b'/app.js', body)
+        self.assertNotIn(b'/prototype.js', body)
+        self.assertNotIn("unsafe-inline", headers["Content-Security-Policy"])
+        status, headers, body = self.request("/demo")
+        self.assertEqual(200, status)
+        self.assertIn(b'/prototype.js', body)
+        self.assertNotIn(b'src="/app.js"', body)
+        self.assertIn("connect-src 'none'", headers["Content-Security-Policy"])
+        self.assertIn("script-src 'self'", headers["Content-Security-Policy"])
+        self.assertIn("style-src 'self' 'unsafe-inline'", headers["Content-Security-Policy"])
+        for path in ("/prototype.css", "/prototype.js", "/platform.js", "/demo-entry.js"):
+            self.assertEqual(200, self.request(path)[0])
+
     def test_rebinding_cross_origin_and_cross_site_fetch_are_blocked(self):
         for headers in ({"Host": "attacker.invalid"}, {"Origin": "https://attacker.invalid"},
                         {"Sec-Fetch-Site": "cross-site"}):

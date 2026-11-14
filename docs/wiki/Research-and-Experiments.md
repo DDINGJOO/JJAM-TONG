@@ -77,7 +77,7 @@ DB는 로컬 루프백에 두고 Actions에는 DB 접속 권한을 주지 않는
 
 ## 실제 근거를 화면에서 확인한다
 
-[로컬 근거 화면](../../tools/evidence_web/README.md)에서 DB의 분석본을 선택하고 메서드·정적 호출 후보·저장된 실제 Trace를 확인한다. [화면 시나리오와 QA](../experiments/LOCAL-EVIDENCE-WORKSPACE.md)는 버전 전환·부분 수집·불일치와 크기별 가독성을 함께 검증한다. Trace는 서버 시작 파일의 고정 캡처이며 지속 수집·실시간 갱신과 구분한다.
+[로컬 근거 화면](../../tools/evidence_web/README.md)에서 DB의 분석본을 선택하고 메서드·정적 호출 후보·저장된 실제 Trace를 확인한다. [화면 시나리오와 QA](../experiments/LOCAL-EVIDENCE-WORKSPACE.md)는 버전 전환·부분 수집·불일치와 크기별 가독성을 함께 검증한다. Trace는 서버 시작 파일의 고정 캡처이며 지속 수집·실시간 갱신과 구분한다. 기존 JJAM-TONG 프로토타입 HTML의 디자인과 메뉴를 실제 조회 화면에 재사용했으며 전체 제품 시안은 `/demo`에서 제공한다. [재사용 QA](../experiments/local-platform-reuse-qa.json)는 실제 조회와 합성 데이터의 구분, 메뉴 탐색과 선택 보존을 확인한다.
 
 ## 적용 전후 성능은 얼마나 다른가
 
