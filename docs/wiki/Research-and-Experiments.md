@@ -90,3 +90,7 @@ DB는 로컬 루프백에 두고 Actions에는 DB 접속 권한을 주지 않는
 [엔터프라이즈 운영 조건](../requirements/ENTERPRISE.md)을 수용량 설정에 추가한다. 여러 조직의 혼합 부하에서 권한·암호화·감사를 유지하고, 장애 영역 중단·별도 환경 복원·순차 업그레이드·사이트 재연결을 검증할 계획이다. [BDD-ENT-001~009](../../specs/features/11-enterprise-operations.feature)는 아직 실행하지 않은 명세다.
 
 [자동 확장·축소 검증 조건](../requirements/AUTOSCALING.md)은 고정 용량과 부하 반응형·사전 확보를 같은 입력·목표·기업 정책·공통 예산으로 비교한다. 지표 오류·실제 자원 확보·후속 병목·축소 중 인계/재균형·반복 증감·0개 축소·조직별 영향과 대상 자원 교체의 버전 연결을 포함한다. [BDD-ASC-001~009](../../specs/features/12-autoscaling.feature)는 명세이며 자동 확장·Kubernetes/ECS 배포나 새 부하 실험은 수행하지 않았다.
+
+## 대규모 코드와 복잡 구조의 분석
+
+[정확 입력 재사용 실험](../experiments/ANALYSIS-REUSE-RESULTS.md)은 실제 JavaParser·WALA로 최초·재사용·변경·독립 전체 분석을 대조한다. 10만 줄의 동일 입력은 재사용했고, 30만 줄 단일 입력은 기존 힙 상한에서 실패했다. 별도 작은 예제에서는 다형성·순환 호출·오버로드·브리지를 구분하고, 리플렉션·람다·메서드 참조의 해석 공백을 확인했다. 독립 단위 세 개의 성공은 실제 얽힌 전체 그래프의 분할 성공과 구분한다. [복잡 구조 요구](../requirements/CODE-ANALYSIS-SCALE.md), [ADR 0008](../decisions/0008-exact-input-analysis-reuse.md), [#61](https://github.com/DDINGJOO/JJAM-TONG/issues/61)에서 다음 검증을 연결한다.

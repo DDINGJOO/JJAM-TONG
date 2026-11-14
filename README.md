@@ -35,6 +35,8 @@ python3 -m unittest experiments.reconciliation_lab.test_reconciliation -v
 python3 -m experiments.reconciliation_lab.run --repetitions 3
 ```
 
+[정확 입력 분석 재사용](tools/analysis_reuse/README.md)은 소스·원본 JAR·도구·설정이 같은 전체 결과를 재사용한다. [실제 규모 비교](docs/experiments/ANALYSIS-REUSE-RESULTS.md)에서 10만 줄 동일 입력의 재사용 결과와 복잡 구조에서 확인한 호출 후보·해석 공백을 제시했으며, 30만 줄 단일 입력은 기존 힙 제한에서 실패했다. 메서드 단위 증분 분석과 기존 CI·DB·화면 연동은 다음 검증 범위다.
+
 ## 명세할 문제와 기대 결과
 
 - 코드에서 메서드와 **호출 가능 관계**를 분석한다.

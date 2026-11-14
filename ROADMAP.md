@@ -65,6 +65,8 @@ S01~S09는 코드·관측성·에이전트·SRE·MSA·Kubernetes·인프라·CMD
 - [#11 관계 지도 자동 갱신의 성공·실패 명세](https://github.com/DDINGJOO/JJAM-TONG/issues/11)
 - [#12 두 버전·삭제·동시 갱신 검증 예시](https://github.com/DDINGJOO/JJAM-TONG/issues/12) · 선행: [#11](https://github.com/DDINGJOO/JJAM-TONG/issues/11)
 
+[정확 입력 재사용·대규모 및 복잡 구조 검증 #61](https://github.com/DDINGJOO/JJAM-TONG/issues/61)은 #44의 하위 작업이며 [BDD-UPD-005~010](specs/features/03-graph-refresh.feature)에 연결한다. 실제 상태는 해당 이슈를 따른다.
+
 ### S04 · [#13 에이전트가 출처와 한계를 가진 근거를 조회한다](https://github.com/DDINGJOO/JJAM-TONG/issues/13)
 
 분석 질문에 버전·시점·커버리지·근거를 확인할 수 있는 응답을 요구한다. (구현 대상 · 행동 초안 명세)
