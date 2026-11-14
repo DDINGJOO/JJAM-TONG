@@ -1,0 +1,90 @@
+{
+  "schema": "jjamtong.analysis-job-evidence.v1",
+  "date": "2026-11-14",
+  "comparison": {
+    "schema": "jjamtong.analysis-job-comparison.v1",
+    "synthetic": true,
+    "scope": "Local publication and verification only; no Java/DB/CI integration or enterprise capacity claim.",
+    "environment": {
+      "python": "3.9.6",
+      "system": "Darwin",
+      "machine": "arm64"
+    },
+    "expectedRecordDigest": "d2d37f77b91fde3ca379dad962211909accd52d04348692a216431526d865bed",
+    "expectedRecords": 60000,
+    "cases": {
+      "single": {
+        "status": "output-limit",
+        "publishSeconds": 0.7082532079999999,
+        "newCompletionPublished": false,
+        "budget": {
+          "max_total_bytes": 33554432,
+          "max_chunk_bytes": 1048576,
+          "max_record_bytes": 131072,
+          "max_manifest_bytes": 1048576,
+          "max_chunks": 4096,
+          "max_file_bytes": 10485760
+        },
+        "pythonPeakAllocatedBytes": 291636,
+        "processMaxRssBytes": 17252352
+      },
+      "bundle": {
+        "status": "complete",
+        "publishSeconds": 1.454913334,
+        "verifyAndConsumeSeconds": 1.7576637500000003,
+        "recordDigest": "d2d37f77b91fde3ca379dad962211909accd52d04348692a216431526d865bed",
+        "records": 60000,
+        "bytes": 23816996,
+        "partsBytes": 23813730,
+        "parts": 23,
+        "manifestBytes": 3266,
+        "created": true,
+        "budget": {
+          "max_total_bytes": 33554432,
+          "max_chunk_bytes": 1048576,
+          "max_record_bytes": 131072,
+          "max_manifest_bytes": 1048576,
+          "max_chunks": 4096,
+          "max_file_bytes": 10485760
+        },
+        "pythonPeakAllocatedBytes": 2702225,
+        "processMaxRssBytes": 19939328
+      },
+      "single-expanded": {
+        "status": "complete",
+        "publishSeconds": 1.688358375,
+        "verifyAndConsumeSeconds": 1.584898375,
+        "recordDigest": "d2d37f77b91fde3ca379dad962211909accd52d04348692a216431526d865bed",
+        "records": 60000,
+        "bytes": 25970005,
+        "created": true,
+        "budget": {
+          "max_total_bytes": 33554432,
+          "max_chunk_bytes": 1048576,
+          "max_record_bytes": 131072,
+          "max_manifest_bytes": 1048576,
+          "max_chunks": 4096,
+          "max_file_bytes": 33554432
+        },
+        "pythonPeakAllocatedBytes": 342306,
+        "processMaxRssBytes": 17170432
+      }
+    }
+  },
+  "verification": {
+    "testsPassed": 24,
+    "featureFiles": 12,
+    "draftScenarios": 83,
+    "existingJavaProducerChanged": false,
+    "newDatabaseWrites": 0,
+    "browserQaPerformed": false
+  },
+  "implementationSha256": {
+    "experiments/analysis_job_lab/model.py": "2451ab4beb160cb857a3b92b0c9f1b599e9440f7f1119df29a4e988a2fd0598c",
+    "experiments/analysis_job_lab/publication.py": "6a304d585d2d23957b8a54ab834c857af622924ae0df8ac0dc48b399c951a11f",
+    "experiments/analysis_job_lab/run.py": "a7a8cd17e22216419667c7afcb6b882757c4f468399c96238bd8af28ac57ce43",
+    "experiments/analysis_job_lab/test_model.py": "0cc3cb108a73843f1694aab321cc8b5515576ede4590f37e6e2277f08e65e21f",
+    "experiments/analysis_job_lab/test_publication.py": "e20189a9a4d76746dd9e604b58e30dd0dc4f21543ccd1ec33c2796bf5186cc1d",
+    "experiments/analysis_job_lab/test_run.py": "46995702a6ab50b9371f7fc06d99633a1df19422611c874cf3c361a802342c9b"
+  }
+}

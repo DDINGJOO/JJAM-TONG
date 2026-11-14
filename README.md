@@ -39,6 +39,8 @@ python3 -m experiments.reconciliation_lab.run --repetitions 3
 
 [파서 메모리 후속 검증](docs/experiments/JAVA-PARSER-MEMORY.md)에서는 분석기 0.2.1로 소스 위치를 보존하면서 같은 1 GiB 힙에서 30만 줄 합성 입력을 완료했다. 이전 기준 결과와 위치·관계를 대조했으며, 40만 줄은 출력 상한으로 발행되지 않았다. [ADR 0009](docs/decisions/0009-java-parser-retention.md)는 선택·탈락한 설정과 범위를 기록한다. 실제 기업 코드의 수용량과 전체 파이프라인 연동은 앞으로 검증한다.
 
+[분석 작업·결과 발행 실험](docs/experiments/ANALYSIS-JOB-CONTRACT.md)은 입력·시도·자원·완료 계약을 구분하고 같은 합성 근거 6만 건을 단일 파일과 불변 조각·완료 명세로 비교한다. 모든 필수 결과를 검증해야 완료를 인정한다. 기존 Java·소비자·화면으로의 전환은 [#68](https://github.com/DDINGJOO/JJAM-TONG/issues/68)의 별도 검증 범위다.
+
 ## 명세할 문제와 기대 결과
 
 - 코드에서 메서드와 **호출 가능 관계**를 분석한다.

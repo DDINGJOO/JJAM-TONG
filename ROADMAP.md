@@ -156,6 +156,7 @@ SIEM 근거를 같은 서비스·배포·자산의 운영 증거와 함께 조�
 | [#64 분석 작업 공통 계약](https://github.com/DDINGJOO/JJAM-TONG/issues/64) | 도구별 입력·지원 범위·자원·완료·실패 의미를 구분함 | #63 |
 | [#65 빌드·모듈 발견과 변경 영향](https://github.com/DDINGJOO/JJAM-TONG/issues/65) | 모듈·공통 라이브러리·산출물·배포 서비스와 변경 영향을 구분함 | #64 |
 | [#66 HTTP·이벤트 관계의 근거 계약](https://github.com/DDINGJOO/JJAM-TONG/issues/66) | 정적 후보·설정 추론·실제 Trace를 출처와 버전으로 연결함 | #65 |
+| [#68 실제 결과 발행·소비자·화면 전환](https://github.com/DDINGJOO/JJAM-TONG/issues/68) | Java 분석 결과의 표현·상한·버전·저장과 조회 화면을 실제 경로에서 검증함 | #64 |
 
 기존 32개 요구사항 이슈의 완료 조건·상태·부모 관계를 유지하며, 별도 실험 에픽·스토리·태스크를 추가했다. 실제 진행 상태는 GitHub에서 확인한다.
 
