@@ -1,0 +1,660 @@
+{
+  "schema": "jjamtong.evidence-model-lab.v1",
+  "syntheticInputOnly": true,
+  "cases": [
+    {
+      "scenarioId": "BDD-MDL-001",
+      "name": "same revision and label with different artifacts",
+      "expected": {
+        "buildIdentity": {
+          "repository": "local:synthetic",
+          "revision": "rev-a",
+          "build": "build-a",
+          "module": "board",
+          "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "artifactDigests": [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "analysisRuns": [
+          "run-a",
+          "run-rebuilt"
+        ],
+        "distinctBuildRefs": true
+      },
+      "actual": {
+        "buildIdentity": {
+          "repository": "local:synthetic",
+          "revision": "rev-a",
+          "build": "build-a",
+          "module": "board",
+          "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "artifactDigests": [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "analysisRuns": [
+          "run-a",
+          "run-rebuilt"
+        ],
+        "distinctBuildRefs": true
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-002",
+      "name": "many modules and services",
+      "expected": {
+        "board": {
+          "status": "MATCH",
+          "claimIds": [
+            "board-common",
+            "board-module"
+          ],
+          "targetIds": [
+            "common-module",
+            "board-module"
+          ],
+          "reasons": []
+        },
+        "worker": {
+          "status": "MATCH",
+          "claimIds": [
+            "worker-common"
+          ],
+          "targetIds": [
+            "common-module"
+          ],
+          "reasons": []
+        }
+      },
+      "actual": {
+        "board": {
+          "status": "MATCH",
+          "claimIds": [
+            "board-common",
+            "board-module"
+          ],
+          "targetIds": [
+            "common-module",
+            "board-module"
+          ],
+          "reasons": []
+        },
+        "worker": {
+          "status": "MATCH",
+          "claimIds": [
+            "worker-common"
+          ],
+          "targetIds": [
+            "common-module"
+          ],
+          "reasons": []
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-003",
+      "name": "coexisting releases keep exact distinct builds",
+      "expected": {
+        "deployments": {
+          "status": "MATCH",
+          "claimIds": [
+            "deploy-new",
+            "deploy-old"
+          ],
+          "targetIds": [
+            "release-new",
+            "release-old"
+          ],
+          "reasons": []
+        },
+        "oldBuild": {
+          "repository": "local:synthetic",
+          "revision": "rev-a",
+          "build": "build-a",
+          "module": "board",
+          "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "newBuild": {
+          "repository": "local:synthetic",
+          "revision": "rev-a",
+          "build": "build-a",
+          "module": "board",
+          "artifactSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "separateRuntimeBindings": true
+      },
+      "actual": {
+        "deployments": {
+          "status": "MATCH",
+          "claimIds": [
+            "deploy-new",
+            "deploy-old"
+          ],
+          "targetIds": [
+            "release-new",
+            "release-old"
+          ],
+          "reasons": []
+        },
+        "oldBuild": {
+          "repository": "local:synthetic",
+          "revision": "rev-a",
+          "build": "build-a",
+          "module": "board",
+          "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "newBuild": {
+          "repository": "local:synthetic",
+          "revision": "rev-a",
+          "build": "build-a",
+          "module": "board",
+          "artifactSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "separateRuntimeBindings": true
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-004",
+      "name": "native scope and incarnation survive equivalence claims",
+      "expected": {
+        "sameAccountIdentity": false,
+        "sameWorkloadIdentity": false,
+        "equivalence": {
+          "status": "MATCH",
+          "claimIds": [
+            "equivalent"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "originalProviders": [
+          "aws:account-a:region-a",
+          "aws:account-b:region-a"
+        ]
+      },
+      "actual": {
+        "sameAccountIdentity": false,
+        "sameWorkloadIdentity": false,
+        "equivalence": {
+          "status": "MATCH",
+          "claimIds": [
+            "equivalent"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "originalProviders": [
+          "aws:account-a:region-a",
+          "aws:account-b:region-a"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-005",
+      "name": "many-valued catalog and a genuinely shared resource",
+      "expected": {
+        "board": {
+          "status": "MATCH",
+          "claimIds": [
+            "board-db",
+            "board-redis"
+          ],
+          "targetIds": [
+            "shared-db",
+            "redis"
+          ],
+          "reasons": []
+        },
+        "worker": {
+          "status": "MATCH",
+          "claimIds": [
+            "worker-db"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "observedOnly": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        }
+      },
+      "actual": {
+        "board": {
+          "status": "MATCH",
+          "claimIds": [
+            "board-db",
+            "board-redis"
+          ],
+          "targetIds": [
+            "shared-db",
+            "redis"
+          ],
+          "reasons": []
+        },
+        "worker": {
+          "status": "MATCH",
+          "claimIds": [
+            "worker-db"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "observedOnly": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-006",
+      "name": "valid time differs from knowledge cutoff",
+      "expected": {
+        "before": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        },
+        "after": {
+          "status": "MATCH",
+          "claimIds": [
+            "late"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "naiveTime": "REJECTED"
+      },
+      "actual": {
+        "before": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        },
+        "after": {
+          "status": "MATCH",
+          "claimIds": [
+            "late"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "naiveTime": "REJECTED"
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-007",
+      "name": "new record references, corrected validity and retraction preserve history",
+      "expected": {
+        "earlierKnowledge": {
+          "status": "MATCH",
+          "claimIds": [
+            "original"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "correctedOutsideInterval": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        },
+        "correctedInsideInterval": {
+          "status": "MATCH",
+          "claimIds": [
+            "corrected"
+          ],
+          "targetIds": [
+            "redis"
+          ],
+          "reasons": []
+        },
+        "afterRetraction": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        }
+      },
+      "actual": {
+        "earlierKnowledge": {
+          "status": "MATCH",
+          "claimIds": [
+            "original"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "correctedOutsideInterval": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        },
+        "correctedInsideInterval": {
+          "status": "MATCH",
+          "claimIds": [
+            "corrected"
+          ],
+          "targetIds": [
+            "redis"
+          ],
+          "reasons": []
+        },
+        "afterRetraction": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-008",
+      "name": "conflicting primary builds retain both sources",
+      "expected": {
+        "status": "CONFLICT",
+        "claimIds": [
+          "primary-a",
+          "primary-b"
+        ],
+        "sourceRecords": [
+          "record:primary-a",
+          "record:primary-b"
+        ]
+      },
+      "actual": {
+        "status": "CONFLICT",
+        "claimIds": [
+          "primary-a",
+          "primary-b"
+        ],
+        "sourceRecords": [
+          "record:primary-a",
+          "record:primary-b"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-009",
+      "name": "invalid types and immutable identity collisions are rejected",
+      "expected": {
+        "unknownKind": "REJECTED",
+        "wrongEndpoints": "REJECTED",
+        "collision": "REJECTED",
+        "preservedBuild": "build-a"
+      },
+      "actual": {
+        "unknownKind": "REJECTED",
+        "wrongEndpoints": "REJECTED",
+        "collision": "REJECTED",
+        "preservedBuild": "build-a"
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-010",
+      "name": "candidate declaration and inference never become observed execution",
+      "expected": {
+        "staticObserved": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        },
+        "mappingObserved": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        },
+        "promotion": "REJECTED"
+      },
+      "actual": {
+        "staticObserved": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        },
+        "mappingObserved": {
+          "status": "NO_MATCH_IN_KNOWN_EVIDENCE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "NO_MATCH_IN_KNOWN_EVIDENCE"
+          ]
+        },
+        "promotion": "REJECTED"
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-011",
+      "name": "hidden records do not change visible answers",
+      "expected": {
+        "withoutHidden": {
+          "status": "MATCH",
+          "claimIds": [
+            "visible"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "withHidden": {
+          "status": "MATCH",
+          "claimIds": [
+            "visible"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "incompleteScope": {
+          "status": "INCOMPLETE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "INCOMPLETE_VISIBILITY"
+          ]
+        }
+      },
+      "actual": {
+        "withoutHidden": {
+          "status": "MATCH",
+          "claimIds": [
+            "visible"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "withHidden": {
+          "status": "MATCH",
+          "claimIds": [
+            "visible"
+          ],
+          "targetIds": [
+            "shared-db"
+          ],
+          "reasons": []
+        },
+        "incompleteScope": {
+          "status": "INCOMPLETE",
+          "claimIds": [],
+          "targetIds": [],
+          "reasons": [
+            "INCOMPLETE_VISIBILITY"
+          ]
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-012",
+      "name": "limits apply to ordinary and conflicting results",
+      "expected": {
+        "ordinary": {
+          "status": "PARTIAL",
+          "claimIds": [
+            "hidden-secret"
+          ],
+          "targetIds": [
+            "redis"
+          ],
+          "reasons": [
+            "QUERY_LIMIT"
+          ]
+        },
+        "conflictStatus": "PARTIAL",
+        "conflictIds": [
+          "primary-a"
+        ],
+        "conflictReasons": [
+          "CONFLICTING_SINGLE_VALUE",
+          "QUERY_LIMIT"
+        ],
+        "boolLimit": "REJECTED"
+      },
+      "actual": {
+        "ordinary": {
+          "status": "PARTIAL",
+          "claimIds": [
+            "hidden-secret"
+          ],
+          "targetIds": [
+            "redis"
+          ],
+          "reasons": [
+            "QUERY_LIMIT"
+          ]
+        },
+        "conflictStatus": "PARTIAL",
+        "conflictIds": [
+          "primary-a"
+        ],
+        "conflictReasons": [
+          "CONFLICTING_SINGLE_VALUE",
+          "QUERY_LIMIT"
+        ],
+        "boolLimit": "REJECTED"
+      },
+      "status": "PASS"
+    },
+    {
+      "scenarioId": "BDD-MDL-013",
+      "name": "strict metadata bridge keeps exact selection without domain invention",
+      "expected": {
+        "buildIdentity": {
+          "repository": "local:synthetic",
+          "revision": "rev-a",
+          "build": "build-a",
+          "module": "board",
+          "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "analysisRunId": "run-a",
+        "indexSha256": "a98d1b6a4bd8695ba3fc7db2197ba3016ae1a6d6c60638c25dfad5bf1bf3a7e3",
+        "configSha256": "a9575bee0b58dc6116525b4e6e23181e01ad1e32fd5bd2cfc5739827835318c9",
+        "refKinds": [
+          "ANALYSIS_SNAPSHOT",
+          "ARTIFACT",
+          "MODULE",
+          "MODULE_BUILD",
+          "REPOSITORY",
+          "SOURCE_REVISION"
+        ],
+        "wrongIndex": "REJECTED",
+        "wrongBuild": "REJECTED"
+      },
+      "actual": {
+        "buildIdentity": {
+          "repository": "local:synthetic",
+          "revision": "rev-a",
+          "build": "build-a",
+          "module": "board",
+          "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "analysisRunId": "run-a",
+        "indexSha256": "a98d1b6a4bd8695ba3fc7db2197ba3016ae1a6d6c60638c25dfad5bf1bf3a7e3",
+        "configSha256": "a9575bee0b58dc6116525b4e6e23181e01ad1e32fd5bd2cfc5739827835318c9",
+        "refKinds": [
+          "ANALYSIS_SNAPSHOT",
+          "ARTIFACT",
+          "MODULE",
+          "MODULE_BUILD",
+          "REPOSITORY",
+          "SOURCE_REVISION"
+        ],
+        "wrongIndex": "REJECTED",
+        "wrongBuild": "REJECTED"
+      },
+      "status": "PASS"
+    }
+  ],
+  "passed": 13,
+  "total": 13,
+  "limitations": [
+    "Small in-memory identity/claim contract experiment; no capacity or auth proof.",
+    "No live collectors, full method graph migration or UI change.",
+    "BDD IDs trace selected contract assertions; Gherkin feature files are not executed."
+  ]
+}

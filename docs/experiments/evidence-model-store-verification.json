@@ -1,0 +1,184 @@
+{
+  "schema": "jjamtong.evidence-model-store-verification.v1",
+  "syntheticInputOnly": true,
+  "serverVersion": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "transactionReadOnly": "on",
+  "tenant": "java-publication-73",
+  "analyses": [
+    {
+      "input": {
+        "name": "scale-old.json",
+        "fileSha256": "7f3c473b4f38f581452469d78134548669005dea42ec51e3e97604b40e1b77e1"
+      },
+      "originalDocumentExact": true,
+      "bridge": {
+        "tenant": "java-publication-73",
+        "buildIdentity": {
+          "repository": "https://example.invalid/jjamtong-synthetic-analysis",
+          "revision": "b47a1e56849948f11d10ff61f9020fd59cdefcfd",
+          "build": "scale-400000-400000-v0",
+          "module": "scale-400000",
+          "artifactSha256": "eba9c20a3b2567be1fb0e11e39034ad56cbc164395b7d940332b0646611c92e2"
+        },
+        "analysisRunId": "scale-old",
+        "indexSha256": "2b134819fde2e952e8e69f4f5b82d5e576ebbb47b1cfd013568097853931b6b3",
+        "configSha256": "cf6727b54c9d8432f54e121a46f768959e750be418bbe5cdbe511c504c6519b4",
+        "refs": {
+          "repository": {
+            "kind": "REPOSITORY",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "https://example.invalid/jjamtong-synthetic-analysis",
+            "incarnation": ""
+          },
+          "sourceRevision": {
+            "kind": "SOURCE_REVISION",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:b661b3130345b48a2e9d654a9965d778c09aed25a43a249a2d4cce6cea937150",
+            "incarnation": ""
+          },
+          "module": {
+            "kind": "MODULE",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:717bb399670f56071cbed9bd3a420a26048b60de039a7b46eb0adb979bdb6e37",
+            "incarnation": ""
+          },
+          "moduleBuild": {
+            "kind": "MODULE_BUILD",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:84b858dc6477311fe8184cec5d33b87e6f7eec908c0030d7872ce5eb3185067a",
+            "incarnation": ""
+          },
+          "artifact": {
+            "kind": "ARTIFACT",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "eba9c20a3b2567be1fb0e11e39034ad56cbc164395b7d940332b0646611c92e2",
+            "incarnation": ""
+          },
+          "analysisSnapshot": {
+            "kind": "ANALYSIS_SNAPSHOT",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "scale-old",
+            "incarnation": "2b134819fde2e952e8e69f4f5b82d5e576ebbb47b1cfd013568097853931b6b3"
+          }
+        },
+        "limitations": [
+          "metadata-only bridge",
+          "no method inventory imported",
+          "no service, deployment, workload, pod, runtime, or trace inferred"
+        ]
+      },
+      "negativeChecks": {
+        "repository": "REJECTED",
+        "revision": "REJECTED",
+        "build": "REJECTED",
+        "module": "REJECTED",
+        "artifactSha256": "REJECTED",
+        "databaseIndexSha256": "REJECTED",
+        "indexSha256": "REJECTED",
+        "configSha256": "REJECTED"
+      },
+      "status": "PASS"
+    },
+    {
+      "input": {
+        "name": "scale-new.json",
+        "fileSha256": "7bf1dc9207025a7338be865119d2f5c35a825d7961772b5a720b990fffb2b16a"
+      },
+      "originalDocumentExact": true,
+      "bridge": {
+        "tenant": "java-publication-73",
+        "buildIdentity": {
+          "repository": "https://example.invalid/jjamtong-synthetic-analysis",
+          "revision": "1a31174b10c496515877a96df59cc5c0b37b67fc",
+          "build": "scale-400000-400000-v1",
+          "module": "scale-400000",
+          "artifactSha256": "3403f8d011ad0e95186db530fcc2a3db439b3007fceaf958d622de1c7567859f"
+        },
+        "analysisRunId": "scale-new",
+        "indexSha256": "2b12ab1360fb1034782fdfae79354d9b80c1d8073f48c9fda2d709f7d1a4de7b",
+        "configSha256": "cf6727b54c9d8432f54e121a46f768959e750be418bbe5cdbe511c504c6519b4",
+        "refs": {
+          "repository": {
+            "kind": "REPOSITORY",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "https://example.invalid/jjamtong-synthetic-analysis",
+            "incarnation": ""
+          },
+          "sourceRevision": {
+            "kind": "SOURCE_REVISION",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:546da6fbd474c38b8d9f04e4e9d003a623617bb839cda689f9e9fe60d9f5bed0",
+            "incarnation": ""
+          },
+          "module": {
+            "kind": "MODULE",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:717bb399670f56071cbed9bd3a420a26048b60de039a7b46eb0adb979bdb6e37",
+            "incarnation": ""
+          },
+          "moduleBuild": {
+            "kind": "MODULE_BUILD",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:7608bd3378ae06f41b1286c3ba7b5bc82915f6bd4a52ea29fab2a52b4621b4d6",
+            "incarnation": ""
+          },
+          "artifact": {
+            "kind": "ARTIFACT",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "3403f8d011ad0e95186db530fcc2a3db439b3007fceaf958d622de1c7567859f",
+            "incarnation": ""
+          },
+          "analysisSnapshot": {
+            "kind": "ANALYSIS_SNAPSHOT",
+            "tenant": "java-publication-73",
+            "provider": "method-index-v1",
+            "nativeId": "scale-new",
+            "incarnation": "2b12ab1360fb1034782fdfae79354d9b80c1d8073f48c9fda2d709f7d1a4de7b"
+          }
+        },
+        "limitations": [
+          "metadata-only bridge",
+          "no method inventory imported",
+          "no service, deployment, workload, pod, runtime, or trace inferred"
+        ]
+      },
+      "negativeChecks": {
+        "repository": "REJECTED",
+        "revision": "REJECTED",
+        "build": "REJECTED",
+        "module": "REJECTED",
+        "artifactSha256": "REJECTED",
+        "databaseIndexSha256": "REJECTED",
+        "indexSha256": "REJECTED",
+        "configSha256": "REJECTED"
+      },
+      "status": "PASS"
+    }
+  ],
+  "passed": 2,
+  "total": 2,
+  "negativeChecksPassed": 16,
+  "sources": {
+    "__init__.py": "771f33180abd283932c6d6fd81b8f780778e721e2176a0095ae552c0bb754b02",
+    "model.py": "8a9eb96874eb55f048e60c9481488f4f02c50440f831b46aafa04ebabca277d1",
+    "run.py": "d6eba1bbc9c537f1417b0e8d19ed0087fba429d79df9728ee1c7a1d838b1cf91",
+    "test_model.py": "95fc224a35643dda09115d8cbf57bf1b69424df1ce3dcb84419c303ef36563cd",
+    "verify_store.py": "603c79d09bca9152efa6d574bc5e63162123aae2f731a661b3e08792ef4d6c5f"
+  },
+  "limitations": [
+    "Reads preserved synthetic Java analyses; no fresh Java analysis or application request.",
+    "Metadata only; no full graph migration, runtime ingestion, cloud or security collection.",
+    "No database publication, schema change, capacity or authentication claim."
+  ]
+}

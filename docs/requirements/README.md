@@ -20,8 +20,9 @@
 | S03·S09 공통 자동 온보딩 | [10-automated-onboarding.feature](../../specs/features/10-automated-onboarding.feature) | BDD-ONB-001~010 | 구현 대상 |
 | 전체 영역 공통 기업 운영 | [11-enterprise-operations.feature](../../specs/features/11-enterprise-operations.feature) | BDD-ENT-001~009 | 구현 대상 |
 | 전체 영역 공통 자동 확장·축소 | [12-autoscaling.feature](../../specs/features/12-autoscaling.feature) | BDD-ASC-001~009 | 구현 대상 |
+| 전체 영역 공통 식별과 시간 | [13-evidence-model.feature](../../specs/features/13-evidence-model.feature) | BDD-MDL-001~013 | 구현 대상 |
 
-[자동화 제품 기획](AUTOMATION.md)은 GitHub 기반 발견·등록·지속 갱신과 운영 자동화의 흐름, 확인한 방향·세부 제안·미결 정책을 구분한다. 온보딩 10개 시나리오는 기존 S03·S09의 명세·검증 태스크에 연결한다. 전체 명세는 12개 feature·83개 시나리오로 구성되어 있으며 실행기 없는 Draft다. 새 스토리·태스크를 중복 생성하지 않는다.
+[자동화 제품 기획](AUTOMATION.md)은 GitHub 기반 발견·등록·지속 갱신과 운영 자동화의 흐름, 확인한 방향·세부 제안·미결 정책을 구분한다. 온보딩 10개 시나리오는 기존 S03·S09의 명세·검증 태스크에 연결한다. 전체 명세는 13개 feature·96개 시나리오로 구성되어 있으며 실행기 없는 Draft다. 새 스토리·태스크를 중복 생성하지 않는다.
 
 [수용량 검증 계획](../experiments/CAPACITY-VALIDATION.md)의 BDD-SRE-005~008은 업무 서비스의 계측 전후 수용량, 플랫폼의 수집·분석·조회와 데이터 규모, 과부하 복구와 서비스별 격리를 명세한다. T10 #19에서 목표·판정 조건을 검토하고 T25 #44의 로컬 적용 비교에 연결한다. 현재 수치 목표와 수용량 실측은 없다.
 
@@ -109,3 +110,7 @@
 BDD-UPD-011·012와 [#63](https://github.com/DDINGJOO/JJAM-TONG/issues/63)은 최적화 전후의 소스 위치·관계 보존과 패키지·소스 배치가 다른 입력을 명세한다. [후속 실측](../experiments/JAVA-PARSER-MEMORY.md)은 한정된 Java 분석 도구의 결과다. 작업 공통 계약·빌드 발견·HTTP와 이벤트의 근거 계약은 [#64](https://github.com/DDINGJOO/JJAM-TONG/issues/64)·[#65](https://github.com/DDINGJOO/JJAM-TONG/issues/65)·[#66](https://github.com/DDINGJOO/JJAM-TONG/issues/66)으로 이어가며, 범용 지원 완료로 취급하지 않는다.
 
 [분석 작업 공통 계약](ANALYSIS-JOB.md)과 BDD-UPD-013~018은 입력·시도·단계·자원·완료·실패의 의미를 구분한다. [발행 계약 실험](../experiments/ANALYSIS-JOB-CONTRACT.md)과 실제 Java·소비자·화면 전환 [#68](https://github.com/DDINGJOO/JJAM-TONG/issues/68)을 구분한다.
+
+## 코드와 실행의 근거 모델
+
+[근거의 식별과 시간 모델](EVIDENCE-MODEL.md)과 [BDD-MDL-001~013](../../specs/features/13-evidence-model.feature)은 빌드·서비스·배포·자원을 구분하고 정적 후보·관측·선언·추론, 지연 수집·정정·철회·충돌·조회 제한을 명세한다. [#76](https://github.com/DDINGJOO/JJAM-TONG/issues/76)은 #65의 첫 하위 작업이다. [작은 실행 실험](../../experiments/evidence_model_lab/README.md)의 판정은 이 feature 파일을 실행한 수락 결과나 전체 도메인 수집 완료를 의미하지 않는다.

@@ -51,6 +51,8 @@ CI는 코드 구조를 분석하고 빌드에 대응하는 snapshot을 만든다
 
 ## 버전과 식별 계약
 
+[코드·실행·자원 근거의 식별과 시간 모델](requirements/EVIDENCE-MODEL.md)은 이 절의 식별 후보를 관계의 대상·버전·출처·두 시간 축으로 구체화한다. [ADR 0012](decisions/0012-evidence-identity-time-model.md)의 작은 계약 실험에 적용하며, 현재 세 PostgreSQL 테이블을 전체 플랫폼의 물리 스키마로 확장한 상태는 아니다.
+
 | 식별 정보 | 목적 |
 | --- | --- |
 | repository identity·revision | 분석한 저장소와 실제 커밋 식별 |

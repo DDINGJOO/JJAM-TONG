@@ -32,6 +32,9 @@ flowchart LR
 | [ADR 0009: Java 파서의 보관 정책 분리](../decisions/0009-java-parser-retention.md) | 직접 파싱의 소스 위치를 유지하고 타입 조회용 파서의 토큰·주석 보관과 캐시 항목 수를 제한 | 전체 프로세스 자원 제한·최적 캐시 크기·고밀도 입력·작업과 출력 분할 |
 | [ADR 0010: 분석 작업의 완료 증거와 발행 비교](../decisions/0010-analysis-job-publication.md) | 로컬 실험에서 입력·시도·필수 단계와 검증한 완료 증거를 분리하고 단일 파일·분할 결과를 비교 | 기존 생산자·소비자·DB·화면 전환, 운영 자원 예산·분산 소유권·내구성 |
 | [ADR 0011: Java v1 공백 제거와 상한 보존](../decisions/0011-java-compact-publication.md) | 같은 v1 JSON의 공백을 줄이고 단계별 10 MiB 제한을 유지. 합성 이전·새 빌드의 색인·DB·브라우저 경로를 검증 | 상한을 넘는 결과의 분할 소비, 실제 기업 코드·지속 수용량·전체 소비자 메모리 |
+| [ADR 0012: 근거의 식별자와 시간 모델](../decisions/0012-evidence-identity-time-model.md) | 타입·버전·유효 시간과 지식 기준 시점의 작은 계약 실험. 기존 분석의 메타데이터를 정확하게 연결 | 자동 발견·실제 수집·전체 도메인 저장·운영 권한·물리 DB 선택 |
+
+[논리 모델과 관계도](../requirements/EVIDENCE-MODEL.md)는 저장소·모듈·빌드·서비스·배포·실행·인프라·자산·보안을 구분한다. [#76](https://github.com/DDINGJOO/JJAM-TONG/issues/76)은 [#65](https://github.com/DDINGJOO/JJAM-TONG/issues/65)의 첫 하위 작업으로, DB를 추가하기 전에 재빌드·롤링 배포·공유 자원·지연 수집의 오연결을 검증한다. 이 관계도 전체가 수집·저장된다는 의미는 아니다.
 
 관계 갱신 기본안은 현재 상태 복구에 관한 것이다. **놓친 중간 커밋·trace·보안 사건의 발생 이력이 자동 복원되지는 않는다.** 갱신 실험의 색인은 파일·blob 관계다. 별도 [메서드 근거 실험](../experiments/METHOD-OBSERVABILITY-RESULTS.md)은 실제 빌드·분석·span을 연결하며, 빠진 이력과 overload 식별의 한계를 그대로 반환한다.
 
