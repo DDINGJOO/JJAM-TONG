@@ -1,10 +1,8 @@
 package io.jjamtong.analysis;
 
 import com.google.gson.JsonParser;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,18 +37,11 @@ public final class Main {
                 "schema", "jjamtong.methods.v1", "status", "complete-with-limitations", "module", config.module(), "metadata", metadata,
                 "input", inputEvidence,
                 "scope", Model.obj("includePackage", config.includePackage(), "excludedPackages", config.excludedPackages()),
-                "provenance", Model.obj("adapterVersion", "0.2.1", "javaVersion", System.getProperty("java.version"), "javaVendor", System.getProperty("java.vendor"), "maximumBytecodeRelease", config.boot() ? 21 : 17, "dependencyMode", config.boot() ? "boot-nested-libraries-from-exact-artifact" : "published-Maven-Central-binaries"),
+                "provenance", Model.obj("adapterVersion", "0.2.2", "javaVersion", System.getProperty("java.version"), "javaVendor", System.getProperty("java.vendor"), "maximumBytecodeRelease", config.boot() ? 21 : 17, "dependencyMode", config.boot() ? "boot-nested-libraries-from-exact-artifact" : "published-Maven-Central-binaries"),
                 "tools", Model.obj("javaparser", parserResult, "wala", walaResult),
                 "limitations", List.of("Static declaration resolution and CHA candidates are separate evidence kinds, not observed execution.", config.allMethods() ? "All included concrete methods are synthetic CHA roots; this over-approximates framework dispatch, not actual route reachability." : "CHA edges are reachable from the configured main; method inventory also includes unreachable declarations.", "Reflection targets, native bodies and external library calls are not inferred as application execution.", config.boot() ? "Experimental Java 21 Spring Boot JAR input; application classes only, nested libraries resolve types but are not application graph nodes. Spring proxies, reflection and dependency injection feasibility are not modeled." : "Java 17 plain-JAR fixtures with the included application package and JDK dependencies are supported by this adapter.", "JavaParser explicit source calls do not model implicit constructors, initializers, lambda attribution, generated methods or bridge methods as equivalent to bytecode.", "Matching source and JAR input digests preserve provenance but do not prove that the JAR was built from this source; callers must verify their build manifest."));
-            byte[] output = (Model.JSON.toJson(result) + "\n").getBytes(StandardCharsets.UTF_8);
-            if (output.length > 10 * 1024 * 1024) throw new IllegalStateException("analysis output exceeds 10 MiB");
-            Files.createDirectories(config.output().toAbsolutePath().getParent());
-            Path temporary = Files.createTempFile(config.output().toAbsolutePath().getParent(), ".methods-", ".json");
-            try {
-                Files.write(temporary, output);
-                Files.move(temporary, config.output(), StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
-            } finally { Files.deleteIfExists(temporary); }
-            System.out.println("analysis complete: " + output.length + " bytes");
+            long outputBytes = ResultPublication.publish(config.output(), result);
+            System.out.println("analysis complete: " + outputBytes + " bytes");
         }
     }
 

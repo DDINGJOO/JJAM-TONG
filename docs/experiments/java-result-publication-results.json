@@ -1,0 +1,72 @@
+{
+  "schema": "jjamtong.java-result-publication-evidence.v1",
+  "date": "2026-11-14",
+  "task": 70,
+  "parent": 68,
+  "adapterVersion": "0.2.2",
+  "defaultOutputMaxBytes": 10485760,
+  "comparison": {
+    "old-100k": {
+      "exitCode": 0,
+      "wallSeconds": 6.224415958,
+      "peakProcessRssBytes": 1295482880,
+      "stdout": "analysis complete: 3361137 bytes",
+      "outputBytes": 3361137
+    },
+    "new-100k": {
+      "exitCode": 0,
+      "wallSeconds": 6.033344125000001,
+      "peakProcessRssBytes": 1294532608,
+      "stdout": "analysis complete: 3361137 bytes",
+      "outputBytes": 3361137
+    },
+    "consumer": {
+      "rawByteMatchExceptAdapterVersion": true,
+      "indexRoundTrip": true,
+      "indexBytes": 3651712,
+      "methodCount": 2291,
+      "databaseContractPrepared": true,
+      "databaseWrites": 0
+    },
+    "new-400k-existing": {
+      "exitCode": 1,
+      "wallSeconds": 29.871811625,
+      "peakProcessRssBytes": 1347584000,
+      "stdout": "",
+      "outputBytes": 3361137,
+      "error": "analysis failed: IllegalStateException: analysis output exceeds 10 MiB",
+      "previousOutputPreserved": true,
+      "temporaryFilesLeft": 0,
+      "newCompletion": false
+    }
+  },
+  "oracles": {
+    "17": {
+      "exitCode": 0,
+      "passedSummaries": [
+        "PASS: JP/WALA private, self, both overloads, reflection gaps, native flags; CHA two interface candidates; deterministic bytes; actual exclusion; empty-result failure",
+        "PASS: Boot normalization/dependencies/digest; plain boundary; traversal, duplicate, preview and major rejection; original preservation; failure cleanup",
+        "PASS: two source layouts; 48 cross-file types each; exact files, lines, descriptors and relation sets; deterministic output",
+        "PASS: ResultPublication atomic UTF-8 bounded output; 34 checks"
+      ]
+    },
+    "21": {
+      "exitCode": 0,
+      "passedSummaries": [
+        "PASS: JP/WALA private, self, both overloads, reflection gaps, native flags; CHA two interface candidates; deterministic bytes; actual exclusion; empty-result failure",
+        "PASS: Boot normalization/dependencies/digest; plain boundary; traversal, duplicate, preview and major rejection; original preservation; failure cleanup",
+        "PASS: two source layouts; 48 cross-file types each; exact files, lines, descriptors and relation sets; deterministic output",
+        "PASS: ResultPublication atomic UTF-8 bounded output; 34 checks"
+      ]
+    }
+  },
+  "consumerRegressionTests": 46,
+  "databaseWrites": 0,
+  "browserQA": false,
+  "implementationSha256": {
+    "tools/java-call-analysis/src/main/java/io/jjamtong/analysis/Main.java": "b004ee038c31c25822012a8a3c1a39b53465d50c19728adce38f710c8add345a",
+    "tools/java-call-analysis/src/main/java/io/jjamtong/analysis/ResultPublication.java": "bb7a3bd7a7a8d05dec8dc35af48a998a04e74ffc95ea01f612d72b2b6138bbb7",
+    "tools/java-call-analysis/src/test/java/io/jjamtong/analysis/PublicationOracle.java": "2a28f0f78dfd4cbd07fdc8c3155819f9aef1de320b05ae0321f249ef23be5e54",
+    "tools/java-call-analysis/verify.py": "7c816931154df5b030cc96406e0ea4d9cd71159d126bffb5a29c3916d3f30289"
+  }
+}

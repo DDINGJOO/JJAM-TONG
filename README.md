@@ -41,6 +41,8 @@ python3 -m experiments.reconciliation_lab.run --repetitions 3
 
 [분석 작업·결과 발행 실험](docs/experiments/ANALYSIS-JOB-CONTRACT.md)은 입력·시도·자원·완료 계약을 구분하고 같은 합성 근거 6만 건을 단일 파일과 불변 조각·완료 명세로 비교한다. 모든 필수 결과를 검증해야 완료를 인정한다. 기존 Java·소비자·화면으로의 전환은 [#68](https://github.com/DDINGJOO/JJAM-TONG/issues/68)의 별도 검증 범위다.
 
+[Java v1 발행 보완](docs/experiments/JAVA-RESULT-PUBLICATION.md)은 분석기 0.2.2에서 전체 출력의 추가 문자열·바이트 복제를 없애고, 저장 도중 끝 개행을 포함한 10 MiB 상한을 검사한다. 기존 결과의 바이트·소비자 호환과 실패 시 이전 파일 보존을 검증했다. 큰 결과의 형식 전환·DB·화면 검증은 계속 #68에서 다룬다.
+
 ## 명세할 문제와 기대 결과
 
 - 코드에서 메서드와 **호출 가능 관계**를 분석한다.
