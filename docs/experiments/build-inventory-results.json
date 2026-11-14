@@ -1,0 +1,1288 @@
+{
+  "schema": "jjamtong.build-inventory-lab.v1",
+  "synthetic": {
+    "cases": [
+      {
+        "id": "BDD-BLD-001",
+        "expected": [
+          "pom.xml",
+          "shared/pom.xml",
+          "board/pom.xml"
+        ],
+        "actual": [
+          "pom.xml",
+          "shared/pom.xml",
+          "board/pom.xml"
+        ],
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-002",
+        "expected": true,
+        "actual": true,
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-004-pin",
+        "expected": true,
+        "actual": true,
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-004-paths",
+        "expected": [
+          {
+            "side": "baseline",
+            "changedModule": "shared",
+            "path": [
+              "board",
+              "shared"
+            ]
+          },
+          {
+            "side": "baseline",
+            "changedModule": "shared",
+            "path": [
+              "worker",
+              "shared"
+            ]
+          },
+          {
+            "side": "current",
+            "changedModule": "shared",
+            "path": [
+              "board",
+              "shared"
+            ]
+          },
+          {
+            "side": "current",
+            "changedModule": "shared",
+            "path": [
+              "worker",
+              "shared"
+            ]
+          }
+        ],
+        "actual": [
+          {
+            "side": "baseline",
+            "changedModule": "shared",
+            "path": [
+              "board",
+              "shared"
+            ]
+          },
+          {
+            "side": "baseline",
+            "changedModule": "shared",
+            "path": [
+              "worker",
+              "shared"
+            ]
+          },
+          {
+            "side": "current",
+            "changedModule": "shared",
+            "path": [
+              "board",
+              "shared"
+            ]
+          },
+          {
+            "side": "current",
+            "changedModule": "shared",
+            "path": [
+              "worker",
+              "shared"
+            ]
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-004-module",
+        "expected": [
+          [
+            "shared",
+            "ARTIFACTS"
+          ]
+        ],
+        "actual": [
+          [
+            "shared",
+            "ARTIFACTS"
+          ]
+        ],
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-005-status",
+        "expected": "PARTIAL",
+        "actual": "PARTIAL",
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-005-missing",
+        "expected": [
+          {
+            "module": "board",
+            "missingFrom": "current"
+          },
+          {
+            "module": "worker",
+            "missingFrom": "current"
+          }
+        ],
+        "actual": [
+          {
+            "module": "board",
+            "missingFrom": "current"
+          },
+          {
+            "module": "worker",
+            "missingFrom": "current"
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-006",
+        "expected": {
+          "schema": "jjamtong.build-snapshot.v1",
+          "tenant": "synthetic-tenant",
+          "manifest": {
+            "build": "b1",
+            "moduleCoverage": "complete",
+            "modules": [
+              {
+                "artifacts": {
+                  "files": [
+                    {
+                      "path": "shared.bin",
+                      "sha256": "a332e4ca2ab11c608388400b910e5500e8ff90cdc6faf8b8e1837954e8978835"
+                    }
+                  ],
+                  "state": "present"
+                },
+                "dependencies": {
+                  "modules": [],
+                  "state": "present"
+                },
+                "descriptor": "shared/pom.xml",
+                "id": "shared",
+                "inputs": {
+                  "classpath": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "conditions": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "generatedSources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "sources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "toolchain": {
+                    "files": [],
+                    "state": "not-applicable"
+                  }
+                }
+              },
+              {
+                "artifacts": {
+                  "files": [
+                    {
+                      "path": "board.bin",
+                      "sha256": "33a4d3f26a1fc026ca279c0197d2b4a450b53107fbeb0738b0a2a7d2d73e73ee"
+                    }
+                  ],
+                  "state": "present"
+                },
+                "dependencies": {
+                  "modules": [
+                    "shared"
+                  ],
+                  "state": "present"
+                },
+                "descriptor": "board/pom.xml",
+                "id": "board",
+                "inputs": {
+                  "classpath": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "conditions": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "generatedSources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "sources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "toolchain": {
+                    "files": [],
+                    "state": "not-applicable"
+                  }
+                }
+              },
+              {
+                "artifacts": {
+                  "files": [
+                    {
+                      "path": "worker.bin",
+                      "sha256": "50f78b480f466c542a8fc083c27c1143d0d7f571dbac6ede72f7d70cc3f3fec2"
+                    }
+                  ],
+                  "state": "present"
+                },
+                "dependencies": {
+                  "modules": [
+                    "shared"
+                  ],
+                  "state": "present"
+                },
+                "descriptor": "worker/pom.xml",
+                "id": "worker",
+                "inputs": {
+                  "classpath": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "conditions": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "generatedSources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "sources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "toolchain": {
+                    "files": [],
+                    "state": "not-applicable"
+                  }
+                }
+              }
+            ],
+            "producer": {
+              "name": "independent-fixture",
+              "version": "1"
+            },
+            "recordedAt": "2026-11-14T03:00:00.000000Z",
+            "repository": "synthetic:community",
+            "revision": "synthetic-source-v1",
+            "schema": "jjamtong.build-manifest.v1"
+          },
+          "manifestSha256": "41361d446f6c62f66f5e588c2b9ddb276e002716387b37ba56949f0739a7fd26",
+          "verification": {
+            "checkedBytes": 26,
+            "checkedFiles": 3,
+            "limitations": [
+              "declared manifest only",
+              "per-file verification is not global filesystem atomicity",
+              "does not prove complete compiler inputs or source-to-artifact provenance"
+            ],
+            "manifestSha256": "41361d446f6c62f66f5e588c2b9ddb276e002716387b37ba56949f0739a7fd26",
+            "mode": "POSIX_FD_NOFOLLOW",
+            "verifiedAt": "2026-11-14T03:01:00.000000Z",
+            "verifierVersion": "build-inventory-v1"
+          },
+          "verificationSha256": "e7be1c09ab22b67e0159400062185c454cd5f4888508d9e0557c71096020d4a9"
+        },
+        "actual": {
+          "schema": "jjamtong.build-snapshot.v1",
+          "tenant": "synthetic-tenant",
+          "manifest": {
+            "build": "b1",
+            "moduleCoverage": "complete",
+            "modules": [
+              {
+                "artifacts": {
+                  "files": [
+                    {
+                      "path": "shared.bin",
+                      "sha256": "a332e4ca2ab11c608388400b910e5500e8ff90cdc6faf8b8e1837954e8978835"
+                    }
+                  ],
+                  "state": "present"
+                },
+                "dependencies": {
+                  "modules": [],
+                  "state": "present"
+                },
+                "descriptor": "shared/pom.xml",
+                "id": "shared",
+                "inputs": {
+                  "classpath": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "conditions": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "generatedSources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "sources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "toolchain": {
+                    "files": [],
+                    "state": "not-applicable"
+                  }
+                }
+              },
+              {
+                "artifacts": {
+                  "files": [
+                    {
+                      "path": "board.bin",
+                      "sha256": "33a4d3f26a1fc026ca279c0197d2b4a450b53107fbeb0738b0a2a7d2d73e73ee"
+                    }
+                  ],
+                  "state": "present"
+                },
+                "dependencies": {
+                  "modules": [
+                    "shared"
+                  ],
+                  "state": "present"
+                },
+                "descriptor": "board/pom.xml",
+                "id": "board",
+                "inputs": {
+                  "classpath": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "conditions": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "generatedSources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "sources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "toolchain": {
+                    "files": [],
+                    "state": "not-applicable"
+                  }
+                }
+              },
+              {
+                "artifacts": {
+                  "files": [
+                    {
+                      "path": "worker.bin",
+                      "sha256": "50f78b480f466c542a8fc083c27c1143d0d7f571dbac6ede72f7d70cc3f3fec2"
+                    }
+                  ],
+                  "state": "present"
+                },
+                "dependencies": {
+                  "modules": [
+                    "shared"
+                  ],
+                  "state": "present"
+                },
+                "descriptor": "worker/pom.xml",
+                "id": "worker",
+                "inputs": {
+                  "classpath": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "conditions": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "generatedSources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "sources": {
+                    "files": [],
+                    "state": "not-applicable"
+                  },
+                  "toolchain": {
+                    "files": [],
+                    "state": "not-applicable"
+                  }
+                }
+              }
+            ],
+            "producer": {
+              "name": "independent-fixture",
+              "version": "1"
+            },
+            "recordedAt": "2026-11-14T03:00:00.000000Z",
+            "repository": "synthetic:community",
+            "revision": "synthetic-source-v1",
+            "schema": "jjamtong.build-manifest.v1"
+          },
+          "manifestSha256": "41361d446f6c62f66f5e588c2b9ddb276e002716387b37ba56949f0739a7fd26",
+          "verification": {
+            "checkedBytes": 26,
+            "checkedFiles": 3,
+            "limitations": [
+              "declared manifest only",
+              "per-file verification is not global filesystem atomicity",
+              "does not prove complete compiler inputs or source-to-artifact provenance"
+            ],
+            "manifestSha256": "41361d446f6c62f66f5e588c2b9ddb276e002716387b37ba56949f0739a7fd26",
+            "mode": "POSIX_FD_NOFOLLOW",
+            "verifiedAt": "2026-11-14T03:01:00.000000Z",
+            "verifierVersion": "build-inventory-v1"
+          },
+          "verificationSha256": "e7be1c09ab22b67e0159400062185c454cd5f4888508d9e0557c71096020d4a9"
+        },
+        "pass": true
+      }
+    ],
+    "discovery": {
+      "adapter": "maven",
+      "mode": "DECLARED_CANDIDATES",
+      "status": "OK",
+      "candidates": [
+        {
+          "descriptorPath": "pom.xml",
+          "descriptorSha256": "b184ba124b3ee09ba9dbd2c3f4d8f846cfdeda240b82943502db0dbee089e70b",
+          "declaredArtifactId": null,
+          "packaging": null,
+          "modulePaths": [
+            "shared",
+            "board"
+          ]
+        },
+        {
+          "descriptorPath": "shared/pom.xml",
+          "descriptorSha256": "5a0c099fd07c60297a27c14b2d71915cdbf720246901341d4f4147a481f52fc9",
+          "declaredArtifactId": "shared",
+          "packaging": null,
+          "modulePaths": []
+        },
+        {
+          "descriptorPath": "board/pom.xml",
+          "descriptorSha256": "41eab88d5cf7a244a1a689e4e3f76c6a2591e1dae8f68dd06b174705b5b72dbb",
+          "declaredArtifactId": "board",
+          "packaging": null,
+          "modulePaths": []
+        }
+      ],
+      "gaps": [],
+      "limitations": [
+        "declared POM data only; effective model is not evaluated",
+        "properties, profiles, inheritance, plugins, dependencies, artifacts, classpath, and runtime are unresolved"
+      ]
+    },
+    "baselineComparison": {
+      "schema": "jjamtong.build-baseline-comparison.v1",
+      "mode": "DECLARED",
+      "status": "CHANGES",
+      "baseline": {
+        "tenant": "synthetic-tenant",
+        "repository": "synthetic:community",
+        "revision": "synthetic-source-v1",
+        "build": "b1",
+        "manifestSha256": "41361d446f6c62f66f5e588c2b9ddb276e002716387b37ba56949f0739a7fd26",
+        "verificationSha256": "e7be1c09ab22b67e0159400062185c454cd5f4888508d9e0557c71096020d4a9",
+        "recordedAt": "2026-11-14T03:00:00.000000Z",
+        "verifiedAt": "2026-11-14T03:01:00.000000Z",
+        "verificationMode": "POSIX_FD_NOFOLLOW"
+      },
+      "current": {
+        "tenant": "synthetic-tenant",
+        "repository": "synthetic:community",
+        "revision": "synthetic-source-v1",
+        "build": "b2",
+        "manifestSha256": "c63e7df996762f312e1edb6cd36e80146c75e58a8a3a5651ab90b32276244c07",
+        "verificationSha256": "ba61da8615ded8e616c3e4d1fdffabf17953992c84f0d71929fda0d6ab63287c",
+        "recordedAt": "2026-11-14T03:00:00.000000Z",
+        "verifiedAt": "2026-11-14T03:02:00.000000Z",
+        "verificationMode": "POSIX_FD_NOFOLLOW"
+      },
+      "changes": {
+        "addedModules": [],
+        "removedModules": [],
+        "moduleChanges": [
+          {
+            "module": "shared",
+            "reason": "ARTIFACTS",
+            "baseline": {
+              "state": "present",
+              "declarationSha256": "7923df18051f6ce368f2815fec5aaf9c781a85a603b826e95481c71259edbe69"
+            },
+            "current": {
+              "state": "present",
+              "declarationSha256": "692e3a9fb22315c73090b293482ca8f3fc700a606ea81b48127ffd3ffec7ada1"
+            }
+          }
+        ],
+        "addedEdges": [],
+        "removedEdges": [],
+        "impactPaths": [
+          {
+            "side": "baseline",
+            "changedModule": "shared",
+            "path": [
+              "board",
+              "shared"
+            ]
+          },
+          {
+            "side": "baseline",
+            "changedModule": "shared",
+            "path": [
+              "worker",
+              "shared"
+            ]
+          },
+          {
+            "side": "current",
+            "changedModule": "shared",
+            "path": [
+              "board",
+              "shared"
+            ]
+          },
+          {
+            "side": "current",
+            "changedModule": "shared",
+            "path": [
+              "worker",
+              "shared"
+            ]
+          }
+        ],
+        "identityChanges": [
+          {
+            "field": "build",
+            "baseline": "b1",
+            "current": "b2"
+          }
+        ]
+      },
+      "possiblyMissingModules": [],
+      "possiblyMissingEdges": [],
+      "limitations": [],
+      "notes": [
+        "Declared build metadata only; this comparison does not establish runtime behavior or causality.",
+        "recordedAt is producer-declared time; verifiedAt is local file-verification time."
+      ]
+    },
+    "partialComparison": {
+      "schema": "jjamtong.build-baseline-comparison.v1",
+      "mode": "DECLARED",
+      "status": "PARTIAL",
+      "baseline": {
+        "tenant": "synthetic-tenant",
+        "repository": "synthetic:community",
+        "revision": "synthetic-source-v1",
+        "build": "b1",
+        "manifestSha256": "41361d446f6c62f66f5e588c2b9ddb276e002716387b37ba56949f0739a7fd26",
+        "verificationSha256": "e7be1c09ab22b67e0159400062185c454cd5f4888508d9e0557c71096020d4a9",
+        "recordedAt": "2026-11-14T03:00:00.000000Z",
+        "verifiedAt": "2026-11-14T03:01:00.000000Z",
+        "verificationMode": "POSIX_FD_NOFOLLOW"
+      },
+      "current": {
+        "tenant": "synthetic-tenant",
+        "repository": "synthetic:community",
+        "revision": "synthetic-source-v1",
+        "build": "b2",
+        "manifestSha256": "efd81b9388b13a215c8911ad7e95afd39f54471e118628065c337068b4bfc0f0",
+        "verificationSha256": "3a868283d601e88d3f0cce8be9f04a5e7fafc5bbe33bb638684f499550488737",
+        "recordedAt": "2026-11-14T03:00:00.000000Z",
+        "verifiedAt": "2026-11-14T12:04:09.962582Z",
+        "verificationMode": "POSIX_FD_NOFOLLOW"
+      },
+      "changes": {
+        "addedModules": [],
+        "removedModules": [],
+        "moduleChanges": [
+          {
+            "module": "shared",
+            "reason": "ARTIFACTS",
+            "baseline": {
+              "state": "present",
+              "declarationSha256": "7923df18051f6ce368f2815fec5aaf9c781a85a603b826e95481c71259edbe69"
+            },
+            "current": {
+              "state": "present",
+              "declarationSha256": "692e3a9fb22315c73090b293482ca8f3fc700a606ea81b48127ffd3ffec7ada1"
+            }
+          },
+          {
+            "module": "shared",
+            "reason": "INPUT_CLASSPATH",
+            "baseline": {
+              "state": "not-applicable",
+              "declarationSha256": "78294b50c6f85b336b9bf293d53858129693b33004e22990858100c6beee27cd"
+            },
+            "current": {
+              "state": "unavailable",
+              "declarationSha256": "766e8b4b1ba60e651a3512f736b1762dc8e6c68298cb0671a2721b15d098a16c"
+            }
+          }
+        ],
+        "addedEdges": [],
+        "removedEdges": [],
+        "impactPaths": [
+          {
+            "side": "baseline",
+            "changedModule": "shared",
+            "path": [
+              "board",
+              "shared"
+            ]
+          },
+          {
+            "side": "baseline",
+            "changedModule": "shared",
+            "path": [
+              "worker",
+              "shared"
+            ]
+          }
+        ],
+        "identityChanges": [
+          {
+            "field": "build",
+            "baseline": "b1",
+            "current": "b2"
+          }
+        ]
+      },
+      "possiblyMissingModules": [
+        {
+          "module": "board",
+          "missingFrom": "current"
+        },
+        {
+          "module": "worker",
+          "missingFrom": "current"
+        }
+      ],
+      "possiblyMissingEdges": [
+        {
+          "consumer": "board",
+          "dependency": "shared",
+          "missingFrom": "current"
+        },
+        {
+          "consumer": "worker",
+          "dependency": "shared",
+          "missingFrom": "current"
+        }
+      ],
+      "limitations": [
+        "PARTIAL"
+      ],
+      "notes": [
+        "Declared build metadata only; this comparison does not establish runtime behavior or causality.",
+        "recordedAt is producer-declared time; verifiedAt is local file-verification time."
+      ]
+    },
+    "limitations": [
+      "synthetic bytes, not compiled application artifacts",
+      "declared module graph, no actual request or causal claim"
+    ]
+  },
+  "publicFixture": {
+    "cases": [
+      {
+        "id": "BDD-BLD-003-public-1",
+        "expected": {
+          "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+          "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+          "build": "boot-evidence-b1",
+          "module": "board-api",
+          "artifactSha256": "1689e0349f44095f206e90b48a50173ee00a0a8ef5bb7c17f6e07055c3332187"
+        },
+        "actual": {
+          "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+          "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+          "build": "boot-evidence-b1",
+          "module": "board-api",
+          "artifactSha256": "1689e0349f44095f206e90b48a50173ee00a0a8ef5bb7c17f6e07055c3332187"
+        },
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-003-index-mismatch-1",
+        "expected": true,
+        "actual": true,
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-003-public-2",
+        "expected": {
+          "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+          "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+          "build": "boot-evidence-b2",
+          "module": "board-api",
+          "artifactSha256": "7f91607e1d91ba5d044311e14251ed8e217b12e544a4f4bb6b900fd3c0d7d188"
+        },
+        "actual": {
+          "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+          "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+          "build": "boot-evidence-b2",
+          "module": "board-api",
+          "artifactSha256": "7f91607e1d91ba5d044311e14251ed8e217b12e544a4f4bb6b900fd3c0d7d188"
+        },
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-003-index-mismatch-2",
+        "expected": true,
+        "actual": true,
+        "pass": true
+      },
+      {
+        "id": "BDD-BLD-001-public",
+        "expected": [
+          "activity-worker/pom.xml",
+          "board-api/pom.xml",
+          "common/pom.xml",
+          "execution-common/pom.xml",
+          "execution-mvc/pom.xml",
+          "execution-netty/pom.xml",
+          "pom.xml"
+        ],
+        "actual": [
+          "activity-worker/pom.xml",
+          "board-api/pom.xml",
+          "common/pom.xml",
+          "execution-common/pom.xml",
+          "execution-mvc/pom.xml",
+          "execution-netty/pom.xml",
+          "pom.xml"
+        ],
+        "pass": true
+      },
+      {
+        "id": "public-partial-inputs",
+        "expected": "PARTIAL",
+        "actual": "PARTIAL",
+        "pass": true
+      },
+      {
+        "id": "target-read-only",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "pass": true
+      }
+    ],
+    "snapshots": [
+      {
+        "schema": "jjamtong.build-snapshot.v1",
+        "tenant": "public-fixture",
+        "manifest": {
+          "build": "boot-evidence-b1",
+          "moduleCoverage": "partial",
+          "modules": [
+            {
+              "artifacts": {
+                "files": [
+                  {
+                    "path": ".local/artifacts/boot-evidence-b1/board-api.jar",
+                    "sha256": "1689e0349f44095f206e90b48a50173ee00a0a8ef5bb7c17f6e07055c3332187"
+                  }
+                ],
+                "state": "present"
+              },
+              "dependencies": {
+                "modules": [],
+                "state": "unavailable"
+              },
+              "descriptor": "board-api/pom.xml",
+              "id": "board-api",
+              "inputs": {
+                "classpath": {
+                  "files": [],
+                  "state": "unavailable"
+                },
+                "conditions": {
+                  "files": [],
+                  "state": "unavailable"
+                },
+                "generatedSources": {
+                  "files": [],
+                  "state": "unavailable"
+                },
+                "sources": {
+                  "files": [
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/BoardApplication.java",
+                      "sha256": "e5d9a0c321274d9c566ab3415794774a4058f2cab21275f70513700fda8f9e24"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/BoardController.java",
+                      "sha256": "be9db35016e961cdf981b03329a6fce4c2c9ef67deff3602360da25b3d8f4020"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/CacheGateway.java",
+                      "sha256": "0d93833e43a464e857a620fadbb4c8fc8cd625c3c6bf6779164b1a971d42cd32"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/LocalFaults.java",
+                      "sha256": "ea4f10844033927f0a5c504ef7f2dcfbb17db5299f059626bda03623359d197c"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/OutboxPublisher.java",
+                      "sha256": "d8e9ecc175a37bf7864509442c99d6ec0df74d39dd23de5bc1885c14957d4bee"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/Post.java",
+                      "sha256": "531decfc38b3d55ad129fd05b88aaa04162490003289a19848005a4d4f7f6d01"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/PostReadService.java",
+                      "sha256": "4dae19325bb13005277c100b6aa68ad4bdadc1994c729bb827b43855bc8f5b81"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/PostWriteService.java",
+                      "sha256": "e23da02fed11524aec1c02bc2aa8ba6c2b86d16bd7e3d457b95c0c3439fd3ec7"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/RedisPostCache.java",
+                      "sha256": "7d7fd1371496bdee8b55630e08599f4fc26ce9b758d24193bfaab2f4358fc351"
+                    }
+                  ],
+                  "state": "present"
+                },
+                "toolchain": {
+                  "files": [],
+                  "state": "unavailable"
+                }
+              }
+            }
+          ],
+          "producer": {
+            "name": "retained-public-fixture-adapter",
+            "version": "1"
+          },
+          "recordedAt": "2026-11-14T12:04:09.989172Z",
+          "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+          "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+          "schema": "jjamtong.build-manifest.v1"
+        },
+        "manifestSha256": "91a3e00ead7a85981f4a7c4557b9a7b78b8f9a3ac06324e3be4781fea24ff942",
+        "verification": {
+          "checkedBytes": 59674640,
+          "checkedFiles": 10,
+          "limitations": [
+            "declared manifest only",
+            "per-file verification is not global filesystem atomicity",
+            "does not prove complete compiler inputs or source-to-artifact provenance"
+          ],
+          "manifestSha256": "91a3e00ead7a85981f4a7c4557b9a7b78b8f9a3ac06324e3be4781fea24ff942",
+          "mode": "POSIX_FD_NOFOLLOW",
+          "verifiedAt": "2026-11-14T12:04:09.989379Z",
+          "verifierVersion": "build-inventory-v1"
+        },
+        "verificationSha256": "55c52695f85f87f7b9e5b7348dc87c656804c9a3b7ee1341feb0ea97eb14b02a"
+      },
+      {
+        "schema": "jjamtong.build-snapshot.v1",
+        "tenant": "public-fixture",
+        "manifest": {
+          "build": "boot-evidence-b2",
+          "moduleCoverage": "partial",
+          "modules": [
+            {
+              "artifacts": {
+                "files": [
+                  {
+                    "path": ".local/artifacts/boot-evidence-b2/board-api.jar",
+                    "sha256": "7f91607e1d91ba5d044311e14251ed8e217b12e544a4f4bb6b900fd3c0d7d188"
+                  }
+                ],
+                "state": "present"
+              },
+              "dependencies": {
+                "modules": [],
+                "state": "unavailable"
+              },
+              "descriptor": "board-api/pom.xml",
+              "id": "board-api",
+              "inputs": {
+                "classpath": {
+                  "files": [],
+                  "state": "unavailable"
+                },
+                "conditions": {
+                  "files": [],
+                  "state": "unavailable"
+                },
+                "generatedSources": {
+                  "files": [],
+                  "state": "unavailable"
+                },
+                "sources": {
+                  "files": [
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/BoardApplication.java",
+                      "sha256": "e5d9a0c321274d9c566ab3415794774a4058f2cab21275f70513700fda8f9e24"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/BoardController.java",
+                      "sha256": "be9db35016e961cdf981b03329a6fce4c2c9ef67deff3602360da25b3d8f4020"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/CacheGateway.java",
+                      "sha256": "0d93833e43a464e857a620fadbb4c8fc8cd625c3c6bf6779164b1a971d42cd32"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/LocalFaults.java",
+                      "sha256": "ea4f10844033927f0a5c504ef7f2dcfbb17db5299f059626bda03623359d197c"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/OutboxPublisher.java",
+                      "sha256": "d8e9ecc175a37bf7864509442c99d6ec0df74d39dd23de5bc1885c14957d4bee"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/Post.java",
+                      "sha256": "531decfc38b3d55ad129fd05b88aaa04162490003289a19848005a4d4f7f6d01"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/PostReadService.java",
+                      "sha256": "4dae19325bb13005277c100b6aa68ad4bdadc1994c729bb827b43855bc8f5b81"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/PostWriteService.java",
+                      "sha256": "e23da02fed11524aec1c02bc2aa8ba6c2b86d16bd7e3d457b95c0c3439fd3ec7"
+                    },
+                    {
+                      "path": "board-api/src/main/java/io/jjamtong/sandbox/board/RedisPostCache.java",
+                      "sha256": "7d7fd1371496bdee8b55630e08599f4fc26ce9b758d24193bfaab2f4358fc351"
+                    }
+                  ],
+                  "state": "present"
+                },
+                "toolchain": {
+                  "files": [],
+                  "state": "unavailable"
+                }
+              }
+            }
+          ],
+          "producer": {
+            "name": "retained-public-fixture-adapter",
+            "version": "1"
+          },
+          "recordedAt": "2026-11-14T12:04:10.029897Z",
+          "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+          "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+          "schema": "jjamtong.build-manifest.v1"
+        },
+        "manifestSha256": "e69b328d62ff5de18df4672b39ad9a4a26a00c412fefd01025d823069c567d1b",
+        "verification": {
+          "checkedBytes": 59674642,
+          "checkedFiles": 10,
+          "limitations": [
+            "declared manifest only",
+            "per-file verification is not global filesystem atomicity",
+            "does not prove complete compiler inputs or source-to-artifact provenance"
+          ],
+          "manifestSha256": "e69b328d62ff5de18df4672b39ad9a4a26a00c412fefd01025d823069c567d1b",
+          "mode": "POSIX_FD_NOFOLLOW",
+          "verifiedAt": "2026-11-14T12:04:10.030040Z",
+          "verifierVersion": "build-inventory-v1"
+        },
+        "verificationSha256": "fda0dd618ee50c38ae20642923d97e89f0a6d868861ff022427cd529d3064520"
+      }
+    ],
+    "bridges": [
+      {
+        "tenant": "public-fixture",
+        "buildIdentity": {
+          "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+          "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+          "build": "boot-evidence-b1",
+          "module": "board-api",
+          "artifactSha256": "1689e0349f44095f206e90b48a50173ee00a0a8ef5bb7c17f6e07055c3332187"
+        },
+        "analysisRunId": "boot-local-b1-r2",
+        "indexSha256": "55d7f9b9061b445fbc0e85d819636fdb24daa8f43fac3b5e33a207737c05b112",
+        "configSha256": "d649581e494e551a4aefa2497242d28ffb127b8ac6a6d3655a796ff9f2bf07c0",
+        "refs": {
+          "repository": {
+            "kind": "REPOSITORY",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+            "incarnation": ""
+          },
+          "sourceRevision": {
+            "kind": "SOURCE_REVISION",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:484681bb5fc5c019b0a8f6c7b03f6eb1ca088edc1e1b98c18e715ce9de71cb89",
+            "incarnation": ""
+          },
+          "module": {
+            "kind": "MODULE",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:5008dfbc75b10d4759ff86ece13e8a49d79dcfd3d1761323e3664b9772e6d78a",
+            "incarnation": ""
+          },
+          "moduleBuild": {
+            "kind": "MODULE_BUILD",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:13f99d2f06efbf0a6a39b9261b887dca06106588e9ac89319994c84a5a41e662",
+            "incarnation": ""
+          },
+          "artifact": {
+            "kind": "ARTIFACT",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "1689e0349f44095f206e90b48a50173ee00a0a8ef5bb7c17f6e07055c3332187",
+            "incarnation": ""
+          },
+          "analysisSnapshot": {
+            "kind": "ANALYSIS_SNAPSHOT",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "boot-local-b1-r2",
+            "incarnation": "55d7f9b9061b445fbc0e85d819636fdb24daa8f43fac3b5e33a207737c05b112"
+          }
+        },
+        "limitations": [
+          "metadata-only bridge",
+          "no method inventory imported",
+          "no service, deployment, workload, pod, runtime, or trace inferred"
+        ]
+      },
+      {
+        "tenant": "public-fixture",
+        "buildIdentity": {
+          "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+          "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+          "build": "boot-evidence-b2",
+          "module": "board-api",
+          "artifactSha256": "7f91607e1d91ba5d044311e14251ed8e217b12e544a4f4bb6b900fd3c0d7d188"
+        },
+        "analysisRunId": "boot-local-b2-r2",
+        "indexSha256": "5d63869b542e5b9c955185a479966c8addcf65b9c2be0979c645a102e224698e",
+        "configSha256": "d649581e494e551a4aefa2497242d28ffb127b8ac6a6d3655a796ff9f2bf07c0",
+        "refs": {
+          "repository": {
+            "kind": "REPOSITORY",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+            "incarnation": ""
+          },
+          "sourceRevision": {
+            "kind": "SOURCE_REVISION",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:484681bb5fc5c019b0a8f6c7b03f6eb1ca088edc1e1b98c18e715ce9de71cb89",
+            "incarnation": ""
+          },
+          "module": {
+            "kind": "MODULE",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:5008dfbc75b10d4759ff86ece13e8a49d79dcfd3d1761323e3664b9772e6d78a",
+            "incarnation": ""
+          },
+          "moduleBuild": {
+            "kind": "MODULE_BUILD",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "sha256:728fb74c1f9e3ce8dd2c8fcb3842a37bd5c9d5c26701ba858130aebe205f8bf5",
+            "incarnation": ""
+          },
+          "artifact": {
+            "kind": "ARTIFACT",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "7f91607e1d91ba5d044311e14251ed8e217b12e544a4f4bb6b900fd3c0d7d188",
+            "incarnation": ""
+          },
+          "analysisSnapshot": {
+            "kind": "ANALYSIS_SNAPSHOT",
+            "tenant": "public-fixture",
+            "provider": "method-index-v1",
+            "nativeId": "boot-local-b2-r2",
+            "incarnation": "5d63869b542e5b9c955185a479966c8addcf65b9c2be0979c645a102e224698e"
+          }
+        },
+        "limitations": [
+          "metadata-only bridge",
+          "no method inventory imported",
+          "no service, deployment, workload, pod, runtime, or trace inferred"
+        ]
+      }
+    ],
+    "comparison": {
+      "schema": "jjamtong.build-baseline-comparison.v1",
+      "mode": "DECLARED",
+      "status": "PARTIAL",
+      "baseline": {
+        "tenant": "public-fixture",
+        "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+        "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+        "build": "boot-evidence-b1",
+        "manifestSha256": "91a3e00ead7a85981f4a7c4557b9a7b78b8f9a3ac06324e3be4781fea24ff942",
+        "verificationSha256": "55c52695f85f87f7b9e5b7348dc87c656804c9a3b7ee1341feb0ea97eb14b02a",
+        "recordedAt": "2026-11-14T12:04:09.989172Z",
+        "verifiedAt": "2026-11-14T12:04:09.989379Z",
+        "verificationMode": "POSIX_FD_NOFOLLOW"
+      },
+      "current": {
+        "tenant": "public-fixture",
+        "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+        "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+        "build": "boot-evidence-b2",
+        "manifestSha256": "e69b328d62ff5de18df4672b39ad9a4a26a00c412fefd01025d823069c567d1b",
+        "verificationSha256": "fda0dd618ee50c38ae20642923d97e89f0a6d868861ff022427cd529d3064520",
+        "recordedAt": "2026-11-14T12:04:10.029897Z",
+        "verifiedAt": "2026-11-14T12:04:10.030040Z",
+        "verificationMode": "POSIX_FD_NOFOLLOW"
+      },
+      "changes": {
+        "addedModules": [],
+        "removedModules": [],
+        "moduleChanges": [
+          {
+            "module": "board-api",
+            "reason": "ARTIFACTS",
+            "baseline": {
+              "state": "present",
+              "declarationSha256": "ccfceed71c4acef985e6018614b5b40d2f02e2e19d6182efda910810b5367d68"
+            },
+            "current": {
+              "state": "present",
+              "declarationSha256": "a323ad5535b325e51031e233da51243c0ef8171c6325e57782dfd1167fd4ed6e"
+            }
+          }
+        ],
+        "addedEdges": [],
+        "removedEdges": [],
+        "impactPaths": [],
+        "identityChanges": [
+          {
+            "field": "build",
+            "baseline": "boot-evidence-b1",
+            "current": "boot-evidence-b2"
+          }
+        ]
+      },
+      "possiblyMissingModules": [],
+      "possiblyMissingEdges": [],
+      "limitations": [
+        "PARTIAL"
+      ],
+      "notes": [
+        "Declared build metadata only; this comparison does not establish runtime behavior or causality.",
+        "recordedAt is producer-declared time; verifiedAt is local file-verification time."
+      ]
+    },
+    "discovery": {
+      "adapter": "maven",
+      "mode": "DECLARED_CANDIDATES",
+      "status": "OK",
+      "candidates": [
+        {
+          "descriptorPath": "pom.xml",
+          "descriptorSha256": "8a00cf8aba7f3781ec98d66b84d7c626a9b2d7445fa6e33e80b46546cf9efcb4",
+          "declaredArtifactId": "io.jjamtong.sandbox:jjamtong-sandbox",
+          "packaging": "pom",
+          "modulePaths": [
+            "common",
+            "board-api",
+            "activity-worker",
+            "execution-common",
+            "execution-mvc",
+            "execution-netty"
+          ]
+        },
+        {
+          "descriptorPath": "common/pom.xml",
+          "descriptorSha256": "63c5d4df533cff5ac9741a44d70ae52aa1d44506b9bbda423b9727a891ce600a",
+          "declaredArtifactId": "common",
+          "packaging": null,
+          "modulePaths": []
+        },
+        {
+          "descriptorPath": "board-api/pom.xml",
+          "descriptorSha256": "178c4626496ea7288efe5b197eebf490c3f2f445046a38a4aa9444a068c65374",
+          "declaredArtifactId": "board-api",
+          "packaging": null,
+          "modulePaths": []
+        },
+        {
+          "descriptorPath": "activity-worker/pom.xml",
+          "descriptorSha256": "5da1bd8e7c4bc1fc9da735741da1ee8d24a9120b35e32e4e6cb76eb871fb1fc0",
+          "declaredArtifactId": "activity-worker",
+          "packaging": null,
+          "modulePaths": []
+        },
+        {
+          "descriptorPath": "execution-common/pom.xml",
+          "descriptorSha256": "c4a155ae066258afdc2426f4c0e8fdea975917298a95bc1f99d48961386b4240",
+          "declaredArtifactId": "execution-common",
+          "packaging": null,
+          "modulePaths": []
+        },
+        {
+          "descriptorPath": "execution-mvc/pom.xml",
+          "descriptorSha256": "aa169b3eb7d6d177f227f8b9ba3fb2a037a42f4ea34d1025c27955b73ccc40b6",
+          "declaredArtifactId": "execution-mvc",
+          "packaging": null,
+          "modulePaths": []
+        },
+        {
+          "descriptorPath": "execution-netty/pom.xml",
+          "descriptorSha256": "8b78e45155662840245a28aa79f657cfb75c941738ee2d6c022df58ac964542e",
+          "declaredArtifactId": "execution-netty",
+          "packaging": null,
+          "modulePaths": []
+        }
+      ],
+      "gaps": [],
+      "limitations": [
+        "build is not evaluated",
+        "declared POM data only; effective model is not evaluated",
+        "parent is not evaluated",
+        "properties is not evaluated",
+        "properties, profiles, inheritance, plugins, dependencies, artifacts, classpath, and runtime are unresolved"
+      ]
+    },
+    "limitations": [
+      "retained source hashes matched the available files during this run",
+      "new declaration and verification times, not historic collection-time proof",
+      "complete compiler inputs and source-to-artifact provenance unavailable",
+      "no new Java analysis, build execution, application requests or DB writes"
+    ]
+  },
+  "summary": {
+    "passed": 15,
+    "total": 15
+  }
+}

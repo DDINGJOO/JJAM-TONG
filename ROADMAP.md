@@ -156,6 +156,8 @@ SIEM 근거를 같은 서비스·배포·자산의 운영 증거와 함께 조�
 | [#64 분석 작업 공통 계약](https://github.com/DDINGJOO/JJAM-TONG/issues/64) | 도구별 입력·지원 범위·자원·완료·실패 의미를 구분함 | #63 |
 | [#65 빌드·모듈 발견과 변경 영향](https://github.com/DDINGJOO/JJAM-TONG/issues/65) | 모듈·공통 라이브러리·산출물·배포 서비스와 변경 영향을 구분함 | #64 |
 | [#76 코드·실행·자원 근거의 식별과 시간 모델](https://github.com/DDINGJOO/JJAM-TONG/issues/76) | #65의 첫 하위 작업. 타입·버전·시간·출처·충돌을 명세하고 기존 분석의 메타데이터 연결을 검증함 | #64·#68 |
+| [#78 빌드 명세와 기준선 비교](https://github.com/DDINGJOO/JJAM-TONG/issues/78) | Maven·Gradle 후보와 검증 명세를 분리하고 정확한 두 기록의 선언 차이·영향 경로를 검증함 | #65 |
+| [#79 과거 시점 재생과 정답표](https://github.com/DDINGJOO/JJAM-TONG/issues/79) | 당시 조회 근거와 나중에 확인한 정답표를 분리하는 후속 작업 | #44 |
 | [#66 HTTP·이벤트 관계의 근거 계약](https://github.com/DDINGJOO/JJAM-TONG/issues/66) | 정적 후보·설정 추론·실제 Trace를 출처와 버전으로 연결함 | #65 |
 | [#68 실제 결과 발행·소비자·화면 전환](https://github.com/DDINGJOO/JJAM-TONG/issues/68) | Java 분석 결과의 표현·상한·버전·저장과 조회 화면을 실제 경로에서 검증함 | #64 |
 | [#70 Java v1 제한 스트림 발행](https://github.com/DDINGJOO/JJAM-TONG/issues/70) | #68의 첫 하위 작업. 기존 v1을 저장하면서 출력 상한·이전 파일 보존·소비자 호환을 검증함 | #64 |

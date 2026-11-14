@@ -6,6 +6,8 @@
 
 ## 범위와 추적성
 
+[빌드 명세·기준선 비교](BUILD-INVENTORY.md)와 [14-build-inventory.feature](../../specs/features/14-build-inventory.feature)의 `BDD-BLD-001~006`은 #65의 하위 작업 #78을 다룬다. 발견 후보·파일 검증·선언 의존 관계 비교를 구분하며, 실제 실행과 과거 정답표의 전체 구현은 별도다.
+
 | 스토리 | 명세 | 시나리오 ID | 구현 범위 |
 | --- | --- | --- | --- |
 | S01 메서드 관계 | [01-code-relations.feature](../../specs/features/01-code-relations.feature) | BDD-REL-001~004 | 구현 대상 |

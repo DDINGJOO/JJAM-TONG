@@ -1,6 +1,6 @@
 # OSS 아키텍처 비교와 JJAM-TONG의 차별화 가설
 
-조사일: 2026-11-12. 상태: **공식 문서 조사 완료 · 구조 제안 · 제품 미채택 · PoC 미실행**.
+조사일: 2026-11-12. Datadog·Elastic 비교 보완: 2026-11-14. 상태: **공식 문서 조사 · 구조 제안 · 제품 미채택 · 제품 PoC 미실행**.
 
 후속 [자동 갱신 비교 실험](experiments/ARCHITECTURE-EXPERIMENTS.md)은 합성 공급원과 SQLite로 세 갱신 전략을 구현·실행했다. 이 문서에서 비교한 OSS 제품을 설치·계측한 PoC와 구분하며, 실제 제품·환경 비교는 후속 검증이다.
 
@@ -169,3 +169,37 @@ BDD는 [기존 37개 Draft 명세](requirements/README.md)에 대응시킨 것�
 표는 후속 실험 계획이며 이번 작업에서 설치·라이브 클라우드 접근·계측·성능 측정은 하지 않았다. 제품 버전·테스트 입력·예산을 토론한 뒤 실행 범위를 정한다. 각 실험의 결과로 재사용/직접 구현 경계와 ADR을 결정한다. 문서 조사나 릴리스가 최신이라는 이유만으로 제품을 채택하지 않는다.
 
 현재 논의할 선택은 **근거 backend를 JJAM-TONG의 중심으로 두고 Backstage 등을 연동 표면으로 활용할지**, **과거 재현을 위해 어디까지 근거를 자체 보존할지**, **첫 게시판 fixture에서 어느 계측 대안을 비교할지**다. 전체 범위·지원 목표를 유지하며 [D01~D08 설계 토론](DISCUSSIONS.md)에서 결정한다.
+
+## 9. Datadog과 Elastic은 코드와 실행을 어떻게 연결하는가
+
+2026-11-14에 확인한 공식 문서 기준이다. 두 제품 모두 코드 수준 분석과 버전 추적의 비교 대상이다. 아래는 문서로 확인한 기능이며, JJAM-TONG과 동일한 입력으로 제품을 설치하거나 성능을 측정한 결과는 아니다. Datadog은 상용 서비스이므로 앞의 OSS 후보와 구분한다. Elastic도 기능마다 배포 형태·구독·agent 버전의 조건을 확인해야 한다.
+
+| 질문 | Datadog에서 확인한 방식 | Elastic에서 확인한 방식 |
+| --- | --- | --- |
+| 실행 중인 서비스는 어느 소스인가? | 산출물에 Git 정보를 넣어 Span에 저장소 URL과 커밋 SHA 태그를 붙인다. [소스 연결](https://docs.datadoghq.com/source_code/service-mapping/) | Java agent의 `service_version`에 배포 버전이나 커밋 식별자를 지정할 수 있다. 이 값만으로 산출물·컴파일 입력의 동일성이 증명되지는 않는다. [설정](https://www.elastic.co/docs/reference/apm/agents/java/config-core#config-service-version) |
+| 실제 요청은 어디로 흘렀는가? | APM Span을 소스 파일·행·함수와 연결하는 Code Origin을 제공한다. 지원 프레임워크·SDK 조건이 있다. [Code Origin](https://docs.datadoghq.com/tracing/code_origin/) | 분산 Trace로 서비스 맵을 만든다. 미계측 서비스나 `traceparent` 전파가 끊긴 연결은 지도에 나타나지 않는다. [서비스 맵](https://www.elastic.co/docs/solutions/observability/apm/service-map) |
+| 메서드 안쪽도 볼 수 있는가? | 실행 중인 앱에 Span·지표를 추가하는 Dynamic Instrumentation과 Trace·프로파일 연결을 제공한다. [동적 계측](https://docs.datadoghq.com/tracing/trace_collection/dynamic_instrumentation/), [프로파일 연결](https://docs.datadoghq.com/profiler/connect_traces_and_profiles/) | `trace_methods`로 지정한 메서드를 계측한다. 별도로 프로파일 샘플에서 메서드 Span을 추정할 수 있다. 두 방식은 정확도·비용·지원 조건이 다르다. [메서드 지정](https://www.elastic.co/docs/reference/apm/agents/java/method-config-based), [추정 Span](https://www.elastic.co/docs/reference/apm/agents/java/method-sampling-based) |
+| 변경 전후를 비교하는가? | `version` 태그로 요청·오류·지연을 나누고 두 배포 버전을 비교한다. 선택 가능한 비교 기간은 현재 문서상 최근 30일이다. [배포 추적](https://docs.datadoghq.com/tracing/services/deployment_tracking/) | `service.version` 변경을 차트에 자동 표시하며, CI/CD에서 annotation API로 배포를 기록할 수도 있다. 같은 두 빌드의 정적 그래프 차이를 계산한다는 뜻은 아니다. [배포 표시](https://www.elastic.co/docs/solutions/observability/apm/track-deployments-with-annotations) |
+| 보안까지 연결되는가? | 서비스 화면에서 보안 신호와 취약점 정보를 함께 탐색한다. [서비스 화면](https://docs.datadoghq.com/tracing/services/service_page/) | Elasticsearch·Kibana 기반으로 보안 데이터 수집·탐지·Timeline 조사·사례 관리를 제공한다. [Elastic Security](https://www.elastic.co/docs/solutions/security) |
+
+### 메서드 계측과 가상 스레드는 따로 검증한다
+
+Elastic의 `trace_methods`는 조건에 맞는 메서드에 계측을 넣는다. 공식 문서는 너무 넓은 패키지를 지정하면 시작 시간과 실행 성능이 나빠질 수 있다고 설명한다. 따라서 모든 메서드를 상시 Span으로 만드는 안은 기본값으로 정하지 않는다. [성능 주의사항](https://www.elastic.co/docs/reference/apm/agents/java/method-config-based).
+
+`profiling_inferred_spans_enabled`는 async-profiler의 표본으로 호출 구간을 추정한다. 현재 문서상 실험 기능이며, 시간은 추정값이고 가상 스레드는 지원하지 않는다. 이 제한은 해당 추정 Span 기능의 제한이다. Elastic 전체 APM이나 다른 agent의 가상 스레드 지원 여부를 대신 판정하지 않는다. Universal Profiling과 APM transaction을 연결하는 설정도 따로 존재하며, 버퍼 부족 시 연결 데이터가 불완전할 수 있다. [프로파일링 설정](https://www.elastic.co/docs/reference/apm/agents/java/config-profiling).
+
+우리의 Spring MVC 가상 스레드, Netty/Reactor, Kafka 비동기 소비 시나리오에서는 **agent·JDK·프레임워크·수집 방식별**로 호출 연결과 누락을 확인해야 한다. 표본에 메서드가 없다는 이유로 실행되지 않았다고 판정하지 않는다.
+
+### Elastic Graph와 과거 시점 조회를 구분한다
+
+Elastic Graph는 색인된 문서에서 함께 나타나는 값의 관계를 탐색한다. 기본 설정은 표본·통계적 유의성·최소 문서 수로 노이즈를 줄이므로 드문 관계를 생략할 수 있다. 따라서 이 결과를 빌드의 정확한 전체 메서드 호출 관계나 호출 부재의 근거로 사용하지 않는다. Elasticsearch에 명시적 호출 edge를 저장하는 설계는 별개의 선택지이며, 방향·중복·버전·순회 비용을 직접 검증해야 한다. [Graph 구조](https://www.elastic.co/docs/explore-analyze/visualize/graph), [누락과 제한](https://www.elastic.co/docs/explore-analyze/visualize/graph/graph-troubleshooting).
+
+Elasticsearch PIT(Point in Time)는 연 시점의 색인 가시 상태를 유지하며 검색하기 위한 기능이다. 어제의 코드·배포·권한 관계를 새로 복원하는 기능과는 다르다. 과거 판정을 재현하려면 그때의 데이터와 수집 시점·보존 조건을 별도로 남겨야 한다. [PIT API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time).
+
+### 재사용 경계와 다음 검증
+
+**설계 제안:** 로그·Trace·프로파일·보안 탐지는 기존 제품과의 연동을 우선 비교하고, JJAM-TONG은 정확한 빌드·분석 식별과 근거의 연결·시간 조회를 책임지는 안을 검증한다. 이것은 제품이나 DB의 채택 결정이 아니다. 공식 문서에서 전체 정적 메서드 그래프·불변 산출물 검증·과거 에이전트 정답표의 공통 계약까지 확인하지 못했으며, 이를 제품에 존재하지 않는 기능이라고 단정하지 않는다.
+
+[빌드 명세와 기준선 비교 #78](https://github.com/DDINGJOO/JJAM-TONG/issues/78)에서는 도구가 준 서비스 버전과 별도로 산출물·입력 해시를 확인한다. [과거 시점 재생 #79](https://github.com/DDINGJOO/JJAM-TONG/issues/79)는 당시 알 수 있던 근거와 나중에 확정한 정답표를 분리한다. 두 작업 모두 수집되지 않은 실행을 만들어 내거나 최신 소스를 과거 실행에 연결해서는 안 된다.
+
+후속 제품 비교에는 같은 게시판의 B1/B2를 사용한다. 먼저 agent·backend·JDK 버전과 구독·라이선스 조건을 고정하고, 기본 APM, 메서드 지정 계측, 프로파일 추정의 지원 조합을 나눈다. 이후 동기·병렬·Kafka 흐름, 가상 스레드·Reactor 문맥 전달, 버전 혼재, 늦게 도착한 근거를 대입한다. 적용 전후의 지연·CPU·메모리·저장량과 소스 연결의 정확도를 측정한 뒤 제품별 재사용 범위를 결정한다. 설치·비용이 드는 비교는 별도 실행 범위를 정하며 이번 명세 검증의 완료 조건에 섞지 않는다.
