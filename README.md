@@ -43,6 +43,8 @@ python3 -m experiments.reconciliation_lab.run --repetitions 3
 
 [Java v1 발행 보완](docs/experiments/JAVA-RESULT-PUBLICATION.md)은 분석기 0.2.2에서 전체 출력의 추가 문자열·바이트 복제를 없애고, 저장 도중 끝 개행을 포함한 10 MiB 상한을 검사한다. 기존 결과의 바이트·소비자 호환과 실패 시 이전 파일 보존을 검증했다. 큰 결과의 형식 전환·DB·화면 검증은 계속 #68에서 다룬다.
 
+[실제 Java 저장 표현 비교](docs/experiments/JAVA-PUBLICATION-COMPARISON.md)는 401,023줄의 같은 분석 결과를 상한 확대·공백 제거·분할 표현으로 대조했다. [ADR 0011](docs/decisions/0011-java-compact-publication.md)은 기존 상한과 v1 구조를 보존하며 공백을 줄이는 다음 로컬 구현을 선택한다. 실제 DB·브라우저 연결은 별도 통합 검증으로 이어간다.
+
 ## 명세할 문제와 기대 결과
 
 - 코드에서 메서드와 **호출 가능 관계**를 분석한다.

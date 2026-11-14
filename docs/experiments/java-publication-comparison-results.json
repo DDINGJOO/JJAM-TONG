@@ -1,0 +1,159 @@
+{
+  "schema": "jjamtong.java-publication-comparison.v1",
+  "representationOnly": true,
+  "fixture": {
+    "id": "scale-400000",
+    "metadataSha256": "3ab432e5a09b7632441c9d3fd31e3d16c6104915ee35e636b316ee6a1ed1d119",
+    "artifactSha256": "eba9c20a3b2567be1fb0e11e39034ad56cbc164395b7d940332b0646611c92e2",
+    "sourceTreeSha256": "72cdbe33cacfb0eb27e0011a6a6e9193b770e6e214e3f1176ac6e62dd157db7b"
+  },
+  "analysis": {
+    "schema": "jjamtong.methods.v1",
+    "adapterVersion": "0.2.2-probe32",
+    "rawSha256": "70113d968d50f8a04720dc0762658ca475c5f2c8e4678bb7c2f4ad9bbbf6369d",
+    "rawPrettyBytes": 13372075,
+    "recordCounts": {
+      "methods": 17797,
+      "calls": 17360,
+      "unresolved": 0,
+      "excluded": 0
+    }
+  },
+  "inputIdentity": {
+    "buildIdentity": {
+      "repository": "https://example.invalid/jjamtong-synthetic-analysis",
+      "revision": "b47a1e56849948f11d10ff61f9020fd59cdefcfd",
+      "build": "scale-400000-400000-v0",
+      "module": "scale-400000",
+      "artifactSha256": "eba9c20a3b2567be1fb0e11e39034ad56cbc164395b7d940332b0646611c92e2"
+    },
+    "input": {
+      "artifactSha256": "eba9c20a3b2567be1fb0e11e39034ad56cbc164395b7d940332b0646611c92e2",
+      "classInputSha256": "eba9c20a3b2567be1fb0e11e39034ad56cbc164395b7d940332b0646611c92e2",
+      "metadataInputSha256": "3ab432e5a09b7632441c9d3fd31e3d16c6104915ee35e636b316ee6a1ed1d119",
+      "sourceTreeSha256": "72cdbe33cacfb0eb27e0011a6a6e9193b770e6e214e3f1176ac6e62dd157db7b"
+    },
+    "config": {
+      "scope": {
+        "excludedPackages": [
+          "fixture.board.excluded"
+        ],
+        "includePackage": "fixture.scale"
+      },
+      "schema": "jjamtong.methods.v1",
+      "adapter": "0.2.2-probe32",
+      "tools": {
+        "javaparser": {
+          "version": "3.28.2",
+          "algorithm": null,
+          "entrypoints": null,
+          "reflectionPolicy": null
+        },
+        "wala": {
+          "version": "1.9.0",
+          "algorithm": "CHA",
+          "entrypoints": [
+            {
+              "class": "fixture.scale.Main",
+              "descriptor": "([Ljava/lang/String;)V",
+              "module": "scale-400000",
+              "name": "main"
+            }
+          ],
+          "reflectionPolicy": "not-inferred"
+        }
+      }
+    },
+    "provenance": {
+      "adapterVersion": "0.2.2-probe32",
+      "dependencyMode": "published-Maven-Central-binaries",
+      "javaVendor": "Amazon.com Inc.",
+      "javaVersion": "21.0.11",
+      "maximumBytecodeRelease": 17
+    },
+    "metadataSha256": "3ab432e5a09b7632441c9d3fd31e3d16c6104915ee35e636b316ee6a1ed1d119"
+  },
+  "inputKey": "b6596df65c8bf7d2a12df2d97c9714844310c02f4f4c3b34d1e43ae9305a81f6",
+  "inputKeyAssurance": "local canonical input/config digest; not publisher authentication or the common job-input wire schema",
+  "config": {
+    "compactMaxBytes": 10485760,
+    "partBudget": {
+      "aggregateBytes": 67108864,
+      "partBytes": 1048576
+    },
+    "rawByteCaps": [
+      10485760,
+      33554432
+    ]
+  },
+  "representations": {
+    "originalPretty": {
+      "bytes": 13372075,
+      "capOutcomes": {
+        "10485760": "rejected: serialized result exceeds cap",
+        "33554432": "accepted"
+      },
+      "decodeNanoseconds": 26195209,
+      "indexNanoseconds": 99450917
+    },
+    "compact": {
+      "bytes": 7647618,
+      "encodeNanoseconds": 315850584,
+      "decodeNanoseconds": 25811625,
+      "indexNanoseconds": 101955208
+    },
+    "parts": {
+      "bytes": 8039654,
+      "parts": 15,
+      "records": 35158,
+      "encodeNanoseconds": 353804084,
+      "decodeNanoseconds": 218603750,
+      "indexNanoseconds": 99145042
+    }
+  },
+  "logicalJsonEqual": true,
+  "indexSha256": "7139c67162b01e3318669060a023b01f2b17e62954e2d99f861e34349e1caa70",
+  "indexBytes": {
+    "pretty": 14526183,
+    "default": 9207855,
+    "compact": 8433407
+  },
+  "consumerBoundary": {
+    "saveIndex": "rejected: Index exceeds 10 MiB",
+    "prepare": "accepted"
+  },
+  "fullResultCounterexamples": {
+    "identicalRetry": "same immutable completion",
+    "wrongInput": "rejected",
+    "wrongAttempt": "rejected",
+    "missingPart": "rejected",
+    "corruptPart": "rejected",
+    "aggregateReadBudget": "rejected"
+  },
+  "processLifetimeRssBytes": null,
+  "performanceNote": "One local process/sample; timings are descriptive and not a per-format performance ranking.",
+  "javaProbe": {
+    "javaExitCode": 0,
+    "javaSeconds": 30.747972166,
+    "javaPeakRssBytes": 1357447168,
+    "sourceLines": 401023,
+    "rawPrettyBytes": 13372075,
+    "rawCompactBytes": 7647618,
+    "indexBytes": {
+      "pretty": 14526183,
+      "default": 9207855,
+      "compact": 8433407
+    },
+    "consumerOutcomes": {
+      "save_index": "Index exceeds 10 MiB",
+      "prepare": "accepted"
+    },
+    "methods": 9116
+  },
+  "producerBaseCommit": "7748983c75f988fd94acdc6b70101581e51ed873",
+  "implementationSha256": {
+    "experiments/java_publication_lab/formats.py": "50fd865696a8e982304628294aa6d2321f4b7fcd643cc921082e3ff825652c61",
+    "experiments/java_publication_lab/run.py": "993580a99833aabc681bd35f1bd5bcdac3357d7c47cfd34263dc92d3f2c1fa69",
+    "experiments/java_publication_lab/probe.py": "184d74fb7250a7bac47ed122caaf42419fbf2c32f4d8bb16bfca09563d7f472c"
+  }
+}
