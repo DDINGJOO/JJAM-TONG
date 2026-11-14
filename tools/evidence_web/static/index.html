@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>JJAM-TONG · 서비스 분석</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/prototype.css">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<div class="app connected-platform" id="app"><div class="shell">
+  <aside class="sidebar platform-sidebar" aria-label="플랫폼 메뉴">
+    <div class="brand"><span class="brand-mark">↗</span><div>JJAM-TONG<small>CONNECTED OPERATIONS</small></div></div>
+    <div class="org"><span class="org-logo">JT</span><div><strong>Local Workspace</strong><small>연결된 근거 · 읽기 전용</small></div></div>
+    <nav id="platformNav" aria-label="주 메뉴"><div class="nav"><button type="button" data-page="overview"><span class="nav-icon">▦</span>전사 현황</button></div><div class="nav"><button type="button" data-page="services" class="active" aria-current="page"><span class="nav-icon">⌁</span>서비스 분석<span class="nav-count">연결</span></button></div><div class="nav"><button type="button" data-page="infra"><span class="nav-icon">⬡</span>인프라·자산</button></div><div class="nav"><button type="button" data-page="sre"><span class="nav-icon">◇</span>운영·보안</button></div><div class="nav"><button type="button" data-page="automation"><span class="nav-icon">↗</span>자동화</button></div><div class="nav"><button type="button" data-page="connectors"><span class="nav-icon">⌾</span>플랫폼 관리</button></div></nav>
+    <div class="sidebar-bottom"><span class="badge local-badge">LOCAL EVIDENCE</span><p>코드와 실행 기록을<br>정확한 빌드에 연결합니다.</p><a class="sidebar-demo" href="/demo">전체 제품 데모 ↗</a></div>
+  </aside>
+  <div class="platform-body">
+    <header class="topbar">
+      <div class="crumb"><span class="optional">Workspace</span><span class="optional">/</span><b>Local</b><span>/</span><span id="platformCrumb">서비스 분석</span></div>
+      <div class="top-right"><span id="pageDataMode" class="badge green">실제 로컬 근거</span><a class="btn" href="/demo">제품 데모 ↗</a><span class="avatar">JT</span></div>
+    </header>
+    <main id="main" class="main">
+      <div class="page-head"><div><div class="eyebrow" id="platformEyebrow">SERVICE INTELLIGENCE</div><h1 id="platformTitle">서비스 분석</h1><p id="platformDescription">코드상 호출 후보와 실제 실행을, 같은 빌드의 근거로 살펴봅니다.</p></div><div class="actions"><button class="btn primary" type="button" data-page="services">⌁ 연결된 근거 보기</button></div></div>
+      <div id="connectionBanner" class="connection-banner"><span class="connection-dot"></span><strong id="modeBadge">로컬 근거 확인 중</strong><span id="sourceBadge">데이터 출처 확인 중</span><span id="queryTime">조회 시각: —</span></div>
+      <nav class="mobile-nav" id="platformMobileNav" aria-label="모바일 메뉴"><button type="button" data-page="overview">전사 현황</button><button type="button" data-page="services" class="active" aria-current="page">서비스 분석</button><button type="button" data-page="infra">인프라·자산</button><button type="button" data-page="sre">운영·보안</button><button type="button" data-page="automation">자동화</button><button type="button" data-page="connectors">플랫폼 관리</button></nav>
+      <section id="liveWorkspace" class="evidence-workspace" aria-label="연결된 서비스 분석">
+    <details id="buildPicker" class="build-picker" open><summary>분석할 빌드 <span id="buildPickerSummary">직접 선택해주세요</span><span class="picker-action">변경</span></summary><aside class="snapshot-browser panel" aria-label="분석 스냅샷">
+      <div class="section-heading"><div><p class="eyebrow">분석 스냅샷</p><h2>분석할 빌드 선택</h2></div><button id="refreshSnapshots" class="icon-button" title="목록 새로고침" aria-label="스냅샷 목록 새로고침">↻</button></div>
+      <label class="search-label" for="snapshotFilter">현재 페이지에서 찾기</label>
+      <input id="snapshotFilter" type="search" placeholder="run · build · module · revision" autocomplete="off">
+      <p class="helper">서버 검색이 아닌 불러온 목록만 필터링합니다.</p>
+      <div id="snapshotState" class="state loading">스냅샷을 불러오는 중…</div>
+      <div id="snapshotList" class="snapshot-list" role="group" aria-label="분석 스냅샷"></div>
+      <button id="moreSnapshots" class="secondary full" hidden>다음 스냅샷 불러오기</button>
+    </aside></details>
+    <section class="evidence-content" aria-live="polite">
+      <div id="welcome" class="welcome panel"><p class="eyebrow">실제 로컬 DB 근거</p><h2>분석 스냅샷을 선택하세요</h2><p>위에서 빌드를 고르면 메서드 호출 후보와 저장된 실행 기록을 같은 버전으로 살펴볼 수 있어요.</p></div>
+      <div id="evidence" hidden>
+        <section class="identity panel">
+          <div><p class="eyebrow">선택한 근거</p><h2 id="identityTitle">—</h2><p id="identitySummary" class="muted-text">—</p><p id="inventorySummary" class="inventory-summary"></p></div>
+          <details class="identity-details"><summary>버전·출처 전체 보기</summary><p id="identityAssurance" class="muted-text">—</p><dl id="identityFields" class="identity-fields"></dl></details>
+          <details class="raw"><summary>분석본 조회 JSON</summary><pre id="snapshotRaw"></pre></details>
+        </section>
+        <nav class="tabs" role="tablist" aria-label="근거 보기"><button class="tab active" role="tab" data-tab="static" aria-controls="staticPane" aria-selected="true">코드·빌드 <span>정적 호출 후보</span></button><button class="tab" role="tab" data-tab="trace" aria-controls="tracePane" aria-selected="false">Trace <span>저장된 실행 기록</span></button></nav>
+        <section id="staticPane" class="pane">
+          <div class="split">
+            <section class="methods panel"><div class="section-heading"><div><p class="eyebrow">메서드</p><h3>메서드 찾기</h3></div><label class="analyzer-label">분석기 <select id="analyzer"><option value="wala">WALA</option><option value="javaparser">JavaParser</option></select></label></div>
+              <input id="methodSearch" type="search" placeholder="클래스·메서드 검색" autocomplete="off" aria-label="메서드 검색">
+              <div id="methodState" class="state">스냅샷을 선택하면 메서드를 조회합니다.</div><div id="methodList" class="method-list" role="group" aria-label="메서드 목록"></div><button id="moreMethods" class="secondary full" hidden>메서드 더 보기</button>
+            </section>
+            <section class="graph panel"><div class="section-heading"><div><p class="eyebrow">호출 후보 그래프</p><h3 id="graphTitle">루트 메서드를 선택하세요</h3></div><div class="graph-controls"><label>깊이 <select id="depth"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></label><button id="zoomOut" class="icon-button" aria-label="축소">−</button><button id="zoomIn" class="icon-button" aria-label="확대">+</button><button id="zoomRoot" class="secondary">시작점</button><button id="zoomFit" class="secondary">전체</button></div></div>
+              <div class="legend"><span class="line-key"></span>정적 호출 후보 · 실행 증거 아님 <span id="graphCounts"></span></div><div id="graphState" class="state">그래프를 조회할 메서드를 선택하세요.</div><p id="graphZoomHint" class="helper">메서드를 선택하면 관계를 표시해요.</p><div id="graphViewport" class="graph-viewport" tabindex="0" aria-label="정적 호출 후보 그래프"><svg id="graphSvg" role="group" aria-label="정적 호출 후보 그래프" xmlns="http://www.w3.org/2000/svg"><g id="graphLayer"></g></svg></div>
+              <details id="methodDetail" class="detail" hidden><summary>선택한 메서드의 전체 식별자</summary><div><p class="eyebrow">선택한 심볼</p><code id="symbolDetail"></code></div><button id="focusRoot" class="secondary">이 메서드를 루트로</button></details><div id="graphNotes" class="notices"></div><details class="raw"><summary>그래프 조회 JSON</summary><pre id="graphRaw"></pre></details>
+            </section>
+          </div>
+        </section>
+        <section id="tracePane" class="pane" hidden><div class="split trace-split"><section class="traces panel"><div class="section-heading"><div><p class="eyebrow">저장된 실행 기록</p><h3>Trace</h3></div></div><p id="traceSource" class="helper">고정된 시작 파일 캡처입니다. 실시간 유입 트래픽이 아닙니다.</p><div id="traceListState" class="state">실행 기록을 불러오는 중…</div><div id="traceList" class="trace-list" role="group" aria-label="실행 기록 목록"></div><button id="moreTraces" class="secondary full" hidden>실행 기록 더 보기</button></section>
+          <section class="trace-detail panel"><div class="section-heading"><div><p class="eyebrow">관측 결과</p><h3 id="traceTitle">실행 기록을 선택하세요</h3></div></div><div id="traceState" class="state">선택한 분석본의 빌드와 실행 기록을 대조합니다.</div><div id="traceView"></div><details class="raw"><summary>Trace 조회 JSON</summary><pre id="traceRaw"></pre></details></section></div></section>
+      </div>
+    </section>
+  </section>
+      <section id="platformPlaceholder" class="platform-placeholder" hidden aria-labelledby="placeholderTitle"></section>
+      <footer class="footer"><span>JJAM-TONG PLATFORM · 출처·버전·시점이 있는 근거</span><span>실제 조회와 제품 데모를 구분합니다.</span></footer>
+    </main>
+  </div>
+</div></div>
+<script src="/platform.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

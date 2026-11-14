@@ -1,0 +1,4 @@
+interface:
+  display_name: "JJAM-TONG UX·프론트엔드 리뷰"
+  short_description: "UX와 개발 관점에서 화면의 사용성과 근거 연결을 독립 검토합니다"
+  default_prompt: "$ui-review로 현재 화면을 사용자 시나리오에 따라 독립 검토하고 개선 우선순위를 정리해줘."

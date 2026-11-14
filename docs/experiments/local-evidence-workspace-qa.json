@@ -1,0 +1,218 @@
+{
+  "schema": "jjamtong.local-evidence-web-qa.v1",
+  "executedAtUtc": "2026-11-14T03:20:22.490575+00:00",
+  "scope": "loopback-only browser consumer; existing PostgreSQL snapshots and a startup capture of a prior real request",
+  "source": {
+    "tenant": "playground-boot-local",
+    "analysisRunId": "boot-local-b1-r2",
+    "indexSha256": "55d7f9b9061b445fbc0e85d819636fdb24daa8f43fac3b5e33a207737c05b112",
+    "buildIdentity": {
+      "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+      "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+      "build": "boot-evidence-b1",
+      "module": "board-api",
+      "artifactSha256": "1689e0349f44095f206e90b48a50173ee00a0a8ef5bb7c17f6e07055c3332187"
+    },
+    "traceId": "f70a5997b3214b4f9317ad52daddcad8",
+    "traceCapture": "previous real Boot smoke request; no new app request in this slice"
+  },
+  "pythonTests": {
+    "total": 88,
+    "newWebTests": 19,
+    "priorRegressionTests": 69,
+    "skipped": 0,
+    "status": "PASS"
+  },
+  "browser": {
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "explicit-initial-selection",
+        "passed": true,
+        "evidence": {
+          "snapshots": 4
+        }
+      },
+      {
+        "name": "real-db-graph",
+        "passed": true,
+        "evidence": {
+          "run": "boot-local-b1-r2",
+          "nodes": 13,
+          "calls": 16,
+          "status": "PARTIAL"
+        }
+      },
+      {
+        "name": "simple-class-labels-with-exact-detail",
+        "passed": true,
+        "evidence": {
+          "title": "BoardController.create",
+          "fullIdentityAvailable": true
+        }
+      },
+      {
+        "name": "collapsed-source-details",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "graph-zoom-and-fit",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "keyboard-node-inspection",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "real-captured-trace-and-overloads",
+        "passed": true,
+        "evidence": {
+          "spans": 10,
+          "methodSpans": 7,
+          "unresolvedOverloadSpans": 3
+        }
+      },
+      {
+        "name": "actual-timing-bars",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "uncollected-parent-explained",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "switch-build-rejects-old-trace",
+        "passed": true,
+        "evidence": {
+          "status": "MISMATCH",
+          "rejected": 10
+        }
+      },
+      {
+        "name": "search-clears-stale-graph-immediately",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "empty-search-state",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "overload-search-keeps-descriptors",
+        "passed": true,
+        "evidence": {
+          "results": 2
+        }
+      },
+      {
+        "name": "analyzer-separation",
+        "passed": true,
+        "evidence": {
+          "analyzer": "javaparser",
+          "nodes": 7,
+          "calls": 7
+        }
+      },
+      {
+        "name": "http-error-clears-old-graph",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "unresolved-does-not-invent-root",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "late-snapshot-response-cannot-replace-selection",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "late-graph-response-cannot-cross-analyzers",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "desktop-no-horizontal-overflow",
+        "passed": true,
+        "evidence": {
+          "width": 1440,
+          "scrollWidth": 1425
+        }
+      }
+    ],
+    "responsiveViewports": [
+      {
+        "width": 1440,
+        "height": 1050,
+        "bodyWidth": 1425,
+        "horizontalOverflow": false,
+        "graphWidth": 789,
+        "nodePixelScale": 0.8962500341892256,
+        "graphTitle": "BoardController.create",
+        "requestedWidth": 1440
+      },
+      {
+        "width": 1024,
+        "height": 900,
+        "bodyWidth": 1009,
+        "horizontalOverflow": false,
+        "graphWidth": 667,
+        "nodePixelScale": 0.896,
+        "graphTitle": "BoardController.create",
+        "requestedWidth": 1024
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "bodyWidth": 390,
+        "horizontalOverflow": false,
+        "graphWidth": 334,
+        "nodePixelScale": 0.8946107702690557,
+        "graphTitle": "BoardController.create",
+        "requestedWidth": 390
+      }
+    ],
+    "consoleEntries": 0,
+    "screenshotsInspectedByPrimaryAgent": true,
+    "injectedResponses": [
+      "HTTP 503 at browser fetch boundary",
+      "UNRESOLVED root with zero returned methods",
+      "delayed successful prior snapshot and graph responses"
+    ]
+  },
+  "staticChecks": {
+    "javascriptSyntax": "PASS",
+    "pythonCompilation": "PASS"
+  },
+  "limitations": [
+    "Single configured tenant label is query scoping, not authentication or authorization.",
+    "Trace capture is read once at server startup, not live or persisted by this tool.",
+    "Fixed-budget query and viewport checks do not establish enterprise capacity or operational availability.",
+    "HTTP failure injection tests display behavior, not a live database outage.",
+    "Independent reviewers performed static review; browser execution and screenshots were verified by the primary agent."
+  ],
+  "independentReview": {
+    "backend": {
+      "initialFindings": 2,
+      "fixed": 2,
+      "recheck": "PASS/0"
+    },
+    "frontend": {
+      "staticReview": "PASS/0",
+      "focusAndDetailsRecheck": "PASS/0"
+    },
+    "koreanEditing": {
+      "initialRequests": 4,
+      "recheck": "PASS/0"
+    },
+    "executionBoundary": "Independent reviewers inspected code and recorded evidence; primary agent ran PostgreSQL and browser checks."
+  }
+}

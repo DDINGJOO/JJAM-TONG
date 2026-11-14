@@ -1,0 +1,404 @@
+{
+  "schema": "jjamtong.local-platform-reuse-qa.v1",
+  "executedAtUtc": "2026-11-14T05:11:10.818296+00:00",
+  "scope": "existing prototype visual shell and product tour reused alongside the exact-version local evidence consumer",
+  "prototype": {
+    "source": "JJAM-TONG adaptive graph HTML prototype",
+    "sourceSha256": "5b7276373416b0ce48aa287c8033df8e94af488a6f0b8c585b190245c30d07f4",
+    "reused": [
+      "prototype.css: original stylesheet",
+      "prototype.js: original synthetic fixtures, navigation, adaptive graph and interactions",
+      "demo.html: original document with external assets and persistent demo notice",
+      "index.html: same shell, navigation and visual language around the real evidence consumer"
+    ],
+    "boundary": "No synthetic fixture script is loaded by the connected evidence page. The product demo loads no evidence API consumer.",
+    "assetSha256": {
+      "prototype.css": "c320e3af15ee9a60dd8fa02b223c525505e2b8147fff142737f023068cb681fe",
+      "prototype.js": "57210c2cb8fb3fb30c66b74b435a83768c1137275a8aaa9a61b91e19f4977939",
+      "index.html": "271a682309a56f0d016f9dffa489050a6054317ee31bbbf9f1ee5e301873af80",
+      "demo.html": "a95617ba9cd0eebc254acea49a39212c9d62b2ddcf6053bb1abe84af8b48de88",
+      "demo-entry.js": "b5c3c1f4c9e0a8ddc1d8f60660094205d821cac1846178e8c5c9f4f9339b4a3c",
+      "app.css": "9b4f37b8b6cccef8dc8ee783c773dac4753f955a03a45eb3ee28eb1587f11ea8",
+      "platform.js": "35284cf43611396cebcd7a4d43590de74a31036904222150cd0e30de1aa96178",
+      "app.js": "e120160f1bcca2e1ece3cfe86d2821e0d6dab93d7c314cee09ec5f5db8594511"
+    }
+  },
+  "source": {
+    "tenant": "playground-boot-local",
+    "analysisRunId": "boot-local-b1-r2",
+    "indexSha256": "55d7f9b9061b445fbc0e85d819636fdb24daa8f43fac3b5e33a207737c05b112",
+    "buildIdentity": {
+      "repository": "https://github.com/DDINGJOO/JJAM-TONG-playground",
+      "revision": "0ea6a6845550a86114c28bcbf660723ac3575561",
+      "build": "boot-evidence-b1",
+      "module": "board-api",
+      "artifactSha256": "1689e0349f44095f206e90b48a50173ee00a0a8ef5bb7c17f6e07055c3332187"
+    },
+    "traceId": "f70a5997b3214b4f9317ad52daddcad8",
+    "traceCapture": "previous real Boot smoke request; no new app request in this slice"
+  },
+  "pythonTests": {
+    "total": 89,
+    "webTests": 20,
+    "priorRegressionTests": 69,
+    "skipped": 0,
+    "status": "PASS"
+  },
+  "browser": {
+    "status": "PASS",
+    "interactionChecks": 46,
+    "liveEvidenceChecks": [
+      {
+        "name": "explicit-initial-selection",
+        "passed": true,
+        "evidence": {
+          "snapshots": 4
+        }
+      },
+      {
+        "name": "real-db-graph",
+        "passed": true,
+        "evidence": {
+          "run": "boot-local-b1-r2",
+          "nodes": 13,
+          "calls": 16,
+          "status": "PARTIAL"
+        }
+      },
+      {
+        "name": "simple-class-labels-with-exact-detail",
+        "passed": true,
+        "evidence": {
+          "title": "BoardController.create",
+          "fullIdentityAvailable": true
+        }
+      },
+      {
+        "name": "collapsed-source-details",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "graph-zoom-and-fit",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "keyboard-node-inspection",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "real-captured-trace-and-overloads",
+        "passed": true,
+        "evidence": {
+          "spans": 10,
+          "methodSpans": 7,
+          "unresolvedOverloadSpans": 3
+        }
+      },
+      {
+        "name": "actual-timing-bars",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "uncollected-parent-explained",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "switch-build-rejects-old-trace",
+        "passed": true,
+        "evidence": {
+          "status": "MISMATCH",
+          "rejected": 10
+        }
+      },
+      {
+        "name": "search-clears-stale-graph-immediately",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "empty-search-state",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "overload-search-keeps-descriptors",
+        "passed": true,
+        "evidence": {
+          "results": 2
+        }
+      },
+      {
+        "name": "analyzer-separation",
+        "passed": true,
+        "evidence": {
+          "analyzer": "javaparser",
+          "nodes": 7,
+          "calls": 7
+        }
+      },
+      {
+        "name": "http-error-clears-old-graph",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "unresolved-does-not-invent-root",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "late-snapshot-response-cannot-replace-selection",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "late-graph-response-cannot-cross-analyzers",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "name": "desktop-no-horizontal-overflow",
+        "passed": true,
+        "evidence": {
+          "width": 1440,
+          "scrollWidth": 1425
+        }
+      }
+    ],
+    "platformChecks": [
+      {
+        "evidence": {},
+        "name": "shared-prototype-styles-with-live-data-only",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "selected-build-picker-collapses",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "build-picker-can-reopen",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "platform-navigation-overview",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "platform-navigation-infra",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "platform-navigation-sre",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "platform-navigation-automation",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "platform-navigation-connectors",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "return-preserves-exact-snapshot-and-graph",
+        "passed": true
+      },
+      {
+        "evidence": {
+          "bars": 10
+        },
+        "name": "trace-bars-stay-in-own-timing-track",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "failed-build-selection-clears-old-summary-and-reopens-picker",
+        "passed": true
+      }
+    ],
+    "syntheticDemoChecks": [
+      {
+        "evidence": {},
+        "name": "preserved-demo-never-loads-live-consumer",
+        "passed": true
+      },
+      {
+        "evidence": {
+          "nodes": 9
+        },
+        "name": "preserved-distributed-graph-renders",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-semantic-zoom-0",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-semantic-zoom-1",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-semantic-zoom-2",
+        "passed": true
+      },
+      {
+        "evidence": {
+          "scrollLeft": 51
+        },
+        "name": "demo-keyboard-pan",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-navigation-overview",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-navigation-catalog",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-navigation-infra",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-navigation-sre",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-navigation-automation",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-navigation-connectors",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-navigation-network",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-navigation-cmdb",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-navigation-security",
+        "passed": true
+      },
+      {
+        "evidence": {},
+        "name": "demo-makes-no-api-requests",
+        "passed": true
+      }
+    ],
+    "responsiveViewports": [
+      {
+        "width": 1440,
+        "height": 1050,
+        "bodyWidth": 1425,
+        "horizontalOverflow": false,
+        "graphWidth": 868,
+        "nodePixelScale": 0.8958139662037548,
+        "graphTitle": "BoardController.create",
+        "requestedWidth": 1440
+      },
+      {
+        "width": 1024,
+        "height": 900,
+        "bodyWidth": 1009,
+        "horizontalOverflow": false,
+        "graphWidth": 538,
+        "nodePixelScale": 0.8966542852653224,
+        "graphTitle": "BoardController.create",
+        "requestedWidth": 1024
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "bodyWidth": 390,
+        "horizontalOverflow": false,
+        "graphWidth": 338,
+        "nodePixelScale": 0.8946745885246173,
+        "graphTitle": "BoardController.create",
+        "requestedWidth": 390
+      }
+    ],
+    "mobileDemoDeepLink": {
+      "active": true,
+      "width": 390,
+      "bodyWidth": 390,
+      "bannerVisible": true,
+      "returnLinkVisible": true
+    },
+    "mobilePlatformNavigation": {
+      "placeholderVisible": true,
+      "restored": true,
+      "modeSwitchVisible": true,
+      "overflow": false
+    },
+    "consoleEntries": {
+      "live": 0,
+      "demo": 0
+    },
+    "screenshotsInspectedByPrimaryAgent": true,
+    "injectedResponses": [
+      "HTTP 503 at graph and snapshot fetch boundaries",
+      "UNRESOLVED root with zero returned methods",
+      "delayed successful prior snapshot and graph responses"
+    ],
+    "screenshotBoundary": "Desktop and mobile screenshots were captured and inspected after the layout change. Final text/picker-state verification passed via DOM interactions; a later recapture timed out in CDP because no frame was drawn."
+  },
+  "httpBoundary": {
+    "sameOriginAndLoopbackOnly": true,
+    "livePageLoadsSyntheticFixtures": false,
+    "demoPageLoadsLiveConsumer": false,
+    "demoConnectSrc": "none",
+    "demoInlineStyles": "allowed only on /demo to preserve original card positioning",
+    "inlineScripts": "not allowed on either document"
+  },
+  "staticChecks": {
+    "javascriptSyntax": "PASS",
+    "pythonCompilation": "PASS"
+  },
+  "limitations": [
+    "Single configured tenant label is query scoping, not authentication or authorization.",
+    "Trace capture is read once at server startup, not live or persisted by this tool.",
+    "Fixed-budget query and viewport checks do not establish enterprise capacity or operational availability.",
+    "HTTP failure injection tests display behavior, not a live database outage.",
+    "Independent reviewers performed static review; browser execution and screenshots were verified by the primary agent.",
+    "Product-tour metrics, infrastructure, CMDB and security events are synthetic examples, not connected telemetry.",
+    "The reused semantic zoom and distributed MSA graph in /demo are synthetic; the connected graph uses the bounded real method response."
+  ],
+  "independentReview": {
+    "initialCodeFindings": 2,
+    "codeFindingsFixed": 2,
+    "navigationAndPickerCodeRecheck": "PASS/0",
+    "koreanEditingRequests": 4,
+    "koreanEditingRecheck": "PASS/0",
+    "boundary": "Reviewers inspected code and prose. Primary agent ran PostgreSQL and browser checks, including the final failed-build picker scenario."
+  }
+}
