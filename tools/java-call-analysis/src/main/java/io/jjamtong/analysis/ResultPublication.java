@@ -1,5 +1,7 @@
 package io.jjamtong.analysis;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -12,6 +14,8 @@ import java.util.Objects;
 /** Local v1 publication. Byte limits do not bound the analysis Map or JVM memory. */
 final class ResultPublication {
     static final long MAX_BYTES = 10L * 1024 * 1024;
+    // Publication is compact; Model.JSON remains pretty because it orders analysis records.
+    private static final Gson PUBLICATION_JSON = new GsonBuilder().disableHtmlEscaping().create();
 
     private ResultPublication() { }
 
@@ -28,7 +32,7 @@ final class ResultPublication {
         try {
             var output = new LimitedOutput(Files.newOutputStream(temporary), maxBytes);
             try (output; var writer = new OutputStreamWriter(output, StandardCharsets.UTF_8)) {
-                Model.JSON.toJson(result, writer);
+                PUBLICATION_JSON.toJson(result, writer);
                 writer.write('\n');
             }
             // close must finish encoding and enforce the budget before publication.

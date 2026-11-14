@@ -122,7 +122,7 @@ def save_index(index, store):
     destination = Path(store) / (run_id + ".json")
     destination.parent.mkdir(parents=True, exist_ok=True)
     # Exclusive create: no implicit overwrite or latest-pointer mutation.
-    data = json.dumps(index, indent=2, ensure_ascii=False) + "\n"
+    data = json.dumps(index, ensure_ascii=False, separators=(",", ":"))
     if len(data.encode()) > MAX_BYTES:
         raise ValueError("Index exceeds 10 MiB")
     descriptor, temporary = tempfile.mkstemp(prefix=".index-", dir=destination.parent)

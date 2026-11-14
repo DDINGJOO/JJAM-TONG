@@ -47,9 +47,9 @@ def contract():
     return CONTRACT
 
 
-def bundle(value=None, extra=None):
+def bundle(value=None, extra=None, pretty=False):
     value = index() if value is None else value
-    raw = json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
+    raw = (json.dumps(value, sort_keys=True, indent=2) + "\n").encode() if pretty else json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
     manifest = {"schema": contract()["schema"], "repository": REPOSITORY, "repositoryId": REPOSITORY_ID, "revision": SHA,
                 "workflow": ".github/workflows/ci.yml", "runId": str(RUN_ID), "runAttempt": str(ATTEMPT),
                 "analysisRunId": "gh-1234-987-2", "indexSha256": value["indexSha256"],
@@ -140,6 +140,12 @@ class CollectorTests(unittest.TestCase):
                          (first.revision, first.build, first.analysis_run_id))
         self.assertEqual(".github/workflows/ci.yml", SourceConfig(REPOSITORY, "ci.yml", "main", "team-a").workflow)
 
+    def test_collector_accepts_compact_and_existing_pretty_index_bytes(self):
+        for pretty in (False, True):
+            with self.subTest(pretty=pretty):
+                receipt = self.collector(FakeTransport(bundle(pretty=pretty))).collect(str(RUN_ID))[0]
+                self.assertEqual("created", receipt.status)
+
     def test_wrong_revision_and_attempt_are_rejected_before_publish(self):
         transport, store = FakeTransport(), FakeStore()
         transport.run["head_sha"] = "d" * 40
@@ -188,6 +194,16 @@ class CollectorTests(unittest.TestCase):
         transport.json = mismatched
         with self.assertRaisesRegex(ImportError, "ARCHIVE_DIGEST_MISMATCH"):
             self.collector(transport, store).collect(str(RUN_ID))
+
+    def test_index_over_10_mib_is_rejected_before_publish(self):
+        oversized = io.BytesIO()
+        with zipfile.ZipFile(oversized, "w", zipfile.ZIP_DEFLATED) as archive:
+            archive.writestr("manifest.json", b"{}")
+            archive.writestr("index.json", b" " * (10 * 1024 * 1024 + 1))
+        store = FakeStore()
+        with self.assertRaisesRegex(ImportError, "INVALID_ARCHIVE_CONTENTS"):
+            self.collector(FakeTransport(oversized.getvalue()), store).collect(str(RUN_ID))
+        self.assertEqual({}, store.values)
 
     def test_duplicate_json_keys_are_rejected(self):
         raw_index = json.dumps(index(), sort_keys=True, separators=(",", ":")).encode()

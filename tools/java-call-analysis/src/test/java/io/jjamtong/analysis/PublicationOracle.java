@@ -1,5 +1,8 @@
 package io.jjamtong.analysis;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -14,6 +17,7 @@ import java.util.Set;
 /** Executable publication boundary oracle; uses custom byte budgets for deterministic limits. */
 public final class PublicationOracle {
     private static final long DEFAULT_LIMIT = 10L * 1024 * 1024;
+    private static final Gson COMPACT = new GsonBuilder().disableHtmlEscaping().create();
     private static int checks;
 
     private PublicationOracle() { }
@@ -24,6 +28,7 @@ public final class PublicationOracle {
             Path destination = directory.resolve("result.json");
             checkBudgetAndBytes(destination);
             checkUnicodeAndEscaping(destination);
+            checkSemanticParityAndFormatting(destination);
             checkRejectionAndSerializationFailures(directory, destination);
             checkAtomicMoveFailure(directory);
             checkDefaultLimit(destination);
@@ -61,6 +66,17 @@ public final class PublicationOracle {
         require(new String(actual, StandardCharsets.UTF_8).contains("<tag>&="), "HTML escaping remains disabled");
         require(ResultPublication.publish(destination, value, expected.length) == expected.length, "repeated publication byte count");
         require(Arrays.equals(expected, Files.readAllBytes(destination)), "repeated publication stable bytes");
+    }
+
+    private static void checkSemanticParityAndFormatting(Path destination) throws Exception {
+        Map<String, Object> value = Model.obj("items", List.of(Model.obj("id", 1), Model.obj("id", 2)), "message", "compact");
+        byte[] expectedCompact = bytes(value);
+        String oldPretty = Model.JSON.toJson(value) + "\n";
+        require(ResultPublication.publish(destination, value, expectedCompact.length) == expectedCompact.length, "compact semantic fixture byte count");
+        String compact = Files.readString(destination);
+        require(JsonParser.parseString(compact).equals(JsonParser.parseString(oldPretty)), "compact publication preserves old pretty JSON semantics");
+        require(Model.JSON.toJson(value).contains("\n"), "Model JSON remains pretty for sorted analysis records");
+        require(!compact.substring(0, compact.length() - 1).contains("\n"), "compact publication has no formatting newline before terminal newline");
     }
 
     private static void checkRejectionAndSerializationFailures(Path directory, Path destination) throws Exception {
@@ -109,7 +125,8 @@ public final class PublicationOracle {
         require(Arrays.equals(prior, Files.readAllBytes(destination)), "default rejection preserves exact-cap output");
     }
 
-    private static byte[] bytes(Object value) { return (Model.JSON.toJson(value) + "\n").getBytes(StandardCharsets.UTF_8); }
+    // Keep this encoder independent from ResultPublication's private publication encoder.
+    private static byte[] bytes(Object value) { return (COMPACT.toJson(value) + "\n").getBytes(StandardCharsets.UTF_8); }
 
     private static long temporaryFiles(Path directory) throws IOException {
         try (var paths = Files.list(directory)) {

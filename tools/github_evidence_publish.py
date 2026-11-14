@@ -60,7 +60,7 @@ def bundle(context, index):
         raise ValueError("Index build differs from the selected CI context")
     if index["analysisRunId"] != context.analysis_run_id:
         raise ValueError("Index analysis run differs from the selected CI context")
-    raw = (json.dumps(index, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode()
+    raw = json.dumps(index, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
     if len(raw) > MAX_BYTES:
         raise ValueError("Index exceeds 10 MiB")
     manifest = {"schema": SCHEMA, "repository": context.repository,

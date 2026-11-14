@@ -5,6 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
+from . import evidence
 from .evidence import (build_identity, create_index, digest, file_digest, load_index,
                        query as actual_query, read_otlp, save_index, source_digest)
 
@@ -80,6 +81,37 @@ class EvidenceTests(unittest.TestCase):
                                                       self.collection(self.span), self.trace)["reason"])
         with self.assertRaises(ValueError):
             load_index(self.root, "../run-A")
+
+    def test_compact_history_bytes_keep_semantics_and_boundary_controls(self):
+        history = self.root / "compact-history"
+        destination = save_index(self.index, history)
+        raw = destination.read_bytes()
+        expected = json.dumps(self.index, ensure_ascii=False, separators=(",", ":")).encode()
+        self.assertEqual(expected, raw)
+        self.assertEqual(self.index, json.loads(raw))
+        self.assertNotIn(b"\n", raw)
+        original = evidence.MAX_BYTES
+        try:
+            evidence.MAX_BYTES = len(raw)
+            self.assertEqual(raw, save_index(self.index, self.root / "exact-history").read_bytes())
+            evidence.MAX_BYTES = len(raw) - 1
+            with self.assertRaisesRegex(ValueError, "10 MiB"):
+                save_index(self.index, self.root / "rejected-history")
+            self.assertFalse((self.root / "rejected-history" / "run-A.json").exists())
+            self.assertFalse(list((self.root / "rejected-history").glob(".index-*")))
+            with self.assertRaises(ValueError):
+                save_index(self.index, history)
+            self.assertEqual(raw, destination.read_bytes())
+        finally:
+            evidence.MAX_BYTES = original
+
+    def test_existing_pretty_raw_and_saved_index_remain_readable(self):
+        raw = json.loads(json.dumps(self.analysis, ensure_ascii=False, indent=2))
+        self.assertEqual(self.index, create_index(raw, self.manifest, self.artifact, self.sources, "run-A"))
+        history = self.root / "legacy-history"
+        history.mkdir()
+        (history / "run-A.json").write_text(json.dumps(self.index, ensure_ascii=False, indent=2) + "\n")
+        self.assertEqual(self.index, load_index(history, "run-A"))
 
     def test_actual_bytes_and_source_must_match(self):
         self.artifact.write_bytes(b"different artifact")
