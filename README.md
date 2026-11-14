@@ -80,6 +80,8 @@ python3 -m experiments.reconciliation_lab.run --repetitions 3
 
 관측 지원 대상은 **AWS EKS·ECS와 일반 Kubernetes**, 카탈로그 매핑 대상은 **온프레미스·AWS 자원**이다. 카탈로그의 논리 서비스와 환경별 배포·실제 자원을 구분해 다중 환경·공유 자원을 표현한다. 수동 선언과 수집한 사실, 매핑 후보·확정·충돌을 출처·시점과 함께 구분하는 행동을 검토한다. 플랫폼 자체의 설치 환경·지원 버전·수집 방식은 별도로 논의하며 현재 실행 구현은 없다.
 
+[Codex·Claude 공통 에이전트 운영](docs/engineering/AGENT-ORCHESTRATION.md)은 티켓 기반 병렬 배정, 사용자·에이전트 SRE 평가, 문서화와 완료 근거를 연결한다. 공통 스킬과 도구별 프로젝트 훅을 저장소에서 관리한다.
+
 ## 프로젝트 문서
 
 [프로젝트 Wiki](https://github.com/DDINGJOO/JJAM-TONG/wiki)에서 비전·게시판 시나리오·아키텍처와 결정·OSS 비교·실험 결과·작업 이슈를 분야별로 탐색한다. [저장소 원본](docs/wiki/Home.md)에서도 읽을 수 있다. 상세 근거는 기존 문서, 진행 상태는 GitHub Issues가 기준이다.

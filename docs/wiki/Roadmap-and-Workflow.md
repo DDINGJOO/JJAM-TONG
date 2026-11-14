@@ -13,7 +13,11 @@
 | 다음 작업·차단 | [착수 가능](https://github.com/DDINGJOO/JJAM-TONG/issues?q=is%3Aopen+label%3A%22status%3Aready%22), [백로그](https://github.com/DDINGJOO/JJAM-TONG/issues?q=is%3Aopen+label%3A%22status%3Abacklog%22), [막힘](https://github.com/DDINGJOO/JJAM-TONG/issues?q=is%3Aopen+label%3A%22status%3Ablocked%22) |
 | 완료·변경 기록 | [닫힌 이슈](https://github.com/DDINGJOO/JJAM-TONG/issues?q=is%3Aissue+is%3Aclosed), [PR](https://github.com/DDINGJOO/JJAM-TONG/pulls?q=is%3Apr), [milestone](https://github.com/DDINGJOO/JJAM-TONG/milestones) |
 
-위키에는 진행 상태나 완료율을 다시 적지 않는다. 실제 상태는 GitHub의 열림·닫힘 상태, 단일 `status:*` 라벨, 부모·자식 이슈 관계, 마일스톤이 기준이다. 개인이 진행하는 최하위 태스크는 한 번에 하나다.
+위키에는 진행 상태나 완료율을 다시 적지 않는다. 실제 상태는 GitHub의 열림·닫힘 상태, 단일 `status:*` 라벨, 부모·자식 이슈 관계, 마일스톤이 기준이다. 에이전트마다 진행 중인 최하위 태스크는 하나다. 조율자는 소유 파일과 선행 조건이 독립적인 작업을 병렬 배정한다.
+
+## 에이전트 조율과 사용 평가
+
+[공통 운영 계약](../engineering/AGENT-ORCHESTRATION.md)은 Codex·Claude의 작업 배정, 근거 기록, 문서화와 완료 판정을 연결한다. [병렬 개발·SRE 평가 스토리 #86](https://github.com/DDINGJOO/JJAM-TONG/issues/86)에서 스킬·훅과 평가 작업을 추적한다. 구현자는 담당 결과를 검증하고, 독립 평가자는 구현된 사람 화면과 에이전트 조회를 각각 사용해 문제를 재현한다. 아직 제공하지 않는 경로는 미지원 상태와 평가 한계를 기록한다. 조율자는 중복 이슈를 확인하고 영향·근거·재검증 조건을 갖춘 후속 티켓으로 연결한다.
 
 ## 어떤 이야기를 어디에 남기는가
 
