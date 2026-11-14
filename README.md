@@ -47,6 +47,8 @@ python3 -m experiments.reconciliation_lab.run --repetitions 3
 
 [실제 Java의 색인·DB·화면 통합](docs/experiments/JAVA-COMPACT-INTEGRATION.md)은 분석기 0.2.3에서 기존 상한을 유지한 채 각각 401,023줄인 이전·새 빌드의 분석 결과를 발행·재조회했다. 역사적 생산자와 전체 JSON·소스 위치를 대조하고, 브라우저에서 빌드 전환·메서드 검색·상한·오류 복구·다른 빌드 거부를 확인했다. Trace 결합 입력은 QA용 합성 기록이며, 실제 기업 코드 수용량과 지속 수집은 앞으로 검증한다.
 
+[근거의 식별과 시간 모델](docs/requirements/EVIDENCE-MODEL.md)은 코드·실행·배포·인프라·자산·보안을 연결할 대상과 버전·관계 주장을 구분한다. [ADR 0012](docs/decisions/0012-evidence-identity-time-model.md)에 따라 작은 계약 실험으로 오연결 반례와 기존 분석의 메타데이터 연결을 검증한다. 현재 DB·웹 계약을 유지하며 전체 플랫폼의 물리 스키마·저장 엔진은 별도로 선택한다.
+
 ## 명세할 문제와 기대 결과
 
 - 코드에서 메서드와 **호출 가능 관계**를 분석한다.

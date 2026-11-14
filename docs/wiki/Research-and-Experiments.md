@@ -17,6 +17,8 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 
 ## 실행한 비교와 한계
 
+[근거의 식별자·시간 모델 실험](../experiments/EVIDENCE-MODEL-RESULTS.md)은 현재 PostgreSQL의 세 테이블과 별도로 코드·실행·배포·자원의 논리 계약을 검증했다. 새 단위 시험 21개와 기대값이 독립적인 합성 시나리오 13개가 통과했다. 기존 합성 Java 분석 두 개를 읽기 전용 트랜잭션으로 원본 전체와 대조하고, 빌드·분석·설정이 다른 선택 16건을 거부했다. 연결부는 여섯 종류의 메타데이터 참조만 만들며 제공되지 않은 서비스·배포·실행은 생성하지 않는다. [논리 모델](../requirements/EVIDENCE-MODEL.md)·[ADR 0012](../decisions/0012-evidence-identity-time-model.md)·[합성 판정](../experiments/evidence-model-results.json)·[DB 읽기 판정](../experiments/evidence-model-store-verification.json)을 연결한다. 실제 인증·인가·수집·용량·저장소 이관과 화면 연결은 앞으로 검증한다.
+
 [버전별 메서드 근거 저장 공통부](../experiments/VERSIONED-EVIDENCE-STORE.md)는 DB 비교 후 진행한 첫 로컬 구현이다. [ADR 0005](../decisions/0005-local-versioned-evidence-store.md)에 따라 PostgreSQL에 원본 분석과 분석기별 관계를 원자적으로 보관하고 그래프 조회 계약을 분리했다. 계약·실제 PostgreSQL 경로·기존 trace 회귀 시험 38개가 통과했다. 두 Java 빌드 × 두 분석기의 그래프를 원본 관계와 대조했고, 기존 trace가 이전 빌드에서만 연결됨을 확인했다. DB 재시작 후 재조회도 수행했다. 기업 인증·인가·대체 그래프 엔진·지속 수용량은 앞으로 검증한다. [구현·명령](../../tools/evidence_store/README.md)과 [원시 결과](../experiments/versioned-evidence-store-replay.json)를 연결한다.
 
 [버전별 코드 그래프 규모 비교](../experiments/GRAPH-SCALE-COMPARISON.md)는 PostgreSQL과 Neo4j에 빌드당 메서드 1만·10만 개, 기본 호출 2개·6개, 이전·새 빌드를 넣어 조회했다. 두 조회 방식과 동시 클라이언트 1·4·8개를 실행했고, 최종 실행의 순차 조회 3,888건·동시 조회 1,248건이 정답과 일치했다. [구현·재현 명령](../../experiments/graph_scale_lab/README.md)과 [원시 결과](../experiments/graph-scale-run.json)를 연결한다. 빌드당 10만 메서드·기본 호출 6개 조건에서 진입점 6단계의 넓은 순차 조회는 PostgreSQL이, 내부 메서드 12단계의 직접 조회와 여섯 질문을 섞은 짧은 동시 조회는 Neo4j가 더 낮은 지연을 보였다. 이 결과는 10만 메서드 조건 전체나 지속 부하의 우위를 뜻하지 않으므로 질문별로 판단한다. 첫 실행의 시간 초과 코드 분류 실패와 수정·전체 재실행도 남겼다. 합성 관계·단일 노드·서로 다른 클라이언트·재사용한 볼륨의 짧은 표본이며 제품 DB 채택·실제 코드 그래프·지속 수용량은 앞으로 검증한다.
