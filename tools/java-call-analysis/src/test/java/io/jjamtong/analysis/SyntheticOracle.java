@@ -23,8 +23,12 @@ public final class SyntheticOracle {
                     public static void main(String[] args) throws Exception {
                         Service service = new Service(new A());
                         service.handle("ok"); new B().load("ok");
+                        nested(new Input[1][]); generic(new Input());
                         Service.class.getDeclaredMethod("hidden", String.class).invoke(service, "ok");
                     }
+                    public static class Input { }
+                    public static Input[][] nested(Input[][] value) { return value; }
+                    public static <T extends Input> T generic(T value) { return value; }
                 }
                 interface Repo { String load(String value); }
                 class A implements Repo { public String load(String value) { return value; } }
@@ -58,6 +62,8 @@ public final class SyntheticOracle {
             for (String tool : List.of("javaparser", "wala")) {
                 var analysis = tools.getAsJsonObject(tool);
                 var edges = Model.JSON.fromJson(analysis.getAsJsonArray("calls"), List.class);
+                require(edge(edges, "main", "nested", "([[Lfixture/board/Main$Input;)[[Lfixture/board/Main$Input;"), tool + " nested binary-name array descriptor");
+                require(edge(edges, "main", "generic", "(Lfixture/board/Main$Input;)Lfixture/board/Main$Input;"), tool + " bounded generic erasure descriptor");
                 require(edge(edges, "handle", "hidden", "(Ljava/lang/String;)Ljava/lang/String;"), tool + " private self-call");
                 require(edge(edges, "hidden", "overload", "(Ljava/lang/String;)Ljava/lang/String;"), tool + " reference overload");
                 require(edge(edges, "handle", "overload", "(I)I"), tool + " primitive overload");

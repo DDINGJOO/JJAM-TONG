@@ -4,6 +4,7 @@ import argparse
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 
 HERE = Path(__file__).resolve().parent
 
@@ -18,8 +19,10 @@ def main():
     # JVM has no target-agent or application classpath; it only reads the supplied files.
     classpath = f"{jar}:{HERE / 'target/dependency/*'}"
     try:
-        subprocess.run([str(args.java_home / "bin/java"), "-Xmx1g", "-cp", classpath,
-                        "io.jjamtong.analysis.Main", *cli], timeout=60, check=True)
+        # The parent owns scratch space so JVM timeout/kill cannot leak extracted JARs.
+        with tempfile.TemporaryDirectory(prefix="jjamtong-analysis-run-") as scratch:
+            subprocess.run([str(args.java_home / "bin/java"), "-Xmx1g", "-Djava.io.tmpdir=" + scratch,
+                            "-cp", classpath, "io.jjamtong.analysis.Main", *cli], timeout=60, check=True)
     except subprocess.TimeoutExpired:
         print("analysis failed: 60-second deadline exceeded; no new success result published", file=sys.stderr)
         return 124

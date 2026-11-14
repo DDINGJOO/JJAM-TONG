@@ -10,11 +10,13 @@ import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.expr.LambdaExpr;
 import com.github.javaparser.ast.expr.MethodReferenceExpr;
 import com.github.javaparser.ast.expr.ObjectCreationExpr;
+import com.github.javaparser.resolution.types.ResolvedType;
 import com.github.javaparser.resolution.declarations.ResolvedConstructorDeclaration;
 import com.github.javaparser.resolution.declarations.ResolvedMethodDeclaration;
 import com.github.javaparser.resolution.declarations.ResolvedReferenceTypeDeclaration;
 import com.github.javaparser.symbolsolver.JavaSymbolSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.CombinedTypeSolver;
+import com.github.javaparser.symbolsolver.resolution.typesolvers.JarTypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.JavaParserTypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeSolver;
 import java.nio.file.Files;
@@ -28,8 +30,12 @@ final class JavaParserAnalysis {
     private JavaParserAnalysis() { }
 
     static Map<String, Object> run(Config config) throws Exception {
-        var parserConfig = new ParserConfiguration().setLanguageLevel(ParserConfiguration.LanguageLevel.JAVA_17);
+        return run(config, List.of());
+    }
+    static Map<String, Object> run(Config config, List<Path> dependencies) throws Exception {
+        var parserConfig = new ParserConfiguration().setLanguageLevel(config.boot() ? ParserConfiguration.LanguageLevel.JAVA_21 : ParserConfiguration.LanguageLevel.JAVA_17);
         var solver = new CombinedTypeSolver(new JavaParserTypeSolver(config.sourceRoot(), parserConfig), new ReflectionTypeSolver());
+        for (Path dependency : dependencies) solver.add(new JarTypeSolver(dependency));
         parserConfig.setSymbolResolver(new JavaSymbolSolver(solver));
         var parser = new JavaParser(parserConfig);
         List<Map<String, Object>> methods = new ArrayList<>(), calls = new ArrayList<>(), unresolved = new ArrayList<>(), excluded = new ArrayList<>();
@@ -97,16 +103,26 @@ final class JavaParserAnalysis {
             }
         }
         if (methods.isEmpty() || calls.isEmpty()) throw new IllegalStateException("JavaParser produced no included methods or calls");
-        return Model.obj("version", "3.28.2", "kind", "declaration-resolution", "languageLevel", "JAVA_17", "methods", Model.sorted(methods), "calls", Model.sorted(calls), "unresolved", Model.sorted(unresolved), "excluded", Model.sorted(excluded));
+        return Model.obj("version", "3.28.2", "kind", "declaration-resolution", "languageLevel", config.boot() ? "JAVA_21" : "JAVA_17", "methods", Model.sorted(methods), "calls", Model.sorted(calls), "unresolved", Model.sorted(unresolved), "excluded", Model.sorted(excluded));
     }
 
     private static Map<String, Object> key(Config config, ResolvedMethodDeclaration method) {
-        return Model.key(config.module(), binaryName(method.declaringType()), method.getName(), method.toDescriptor());
+        StringBuilder descriptor = new StringBuilder("(");
+        for (int i = 0; i < method.getNumberOfParams(); i++) descriptor.append(descriptor(method.getParam(i).getType(), 0));
+        return Model.key(config.module(), binaryName(method.declaringType()), method.getName(),
+                descriptor.append(")").append(descriptor(method.getReturnType(), 0)).toString());
     }
     private static Map<String, Object> key(Config config, ResolvedConstructorDeclaration constructor) {
         StringBuilder descriptor = new StringBuilder("(");
-        for (int i = 0; i < constructor.getNumberOfParams(); i++) descriptor.append(constructor.getParam(i).getType().toDescriptor());
+        for (int i = 0; i < constructor.getNumberOfParams(); i++) descriptor.append(descriptor(constructor.getParam(i).getType(), 0));
         return Model.key(config.module(), binaryName(constructor.declaringType()), "<init>", descriptor.append(")V").toString());
+    }
+    private static String descriptor(ResolvedType type, int depth) {
+        if (depth > 16) throw new IllegalArgumentException("recursive type erasure");
+        if (type.isArray()) return "[" + descriptor(type.asArrayType().getComponentType(), depth + 1);
+        if (type.isTypeVariable()) return descriptor(type.erasure(), depth + 1);
+        if (type.isReferenceType()) return "L" + binaryName(type.asReferenceType().getTypeDeclaration().orElseThrow()).replace('.', '/') + ";";
+        return type.toDescriptor();
     }
     private static String binaryName(ResolvedReferenceTypeDeclaration declaration) {
         String prefix = declaration.getPackageName();

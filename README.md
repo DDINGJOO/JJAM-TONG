@@ -10,6 +10,8 @@
 
 [GitHub 분석 결과 수집기](tools/github_evidence_sync/README.md)는 별도 Playground의 성공한 Actions 실행에서 정적 분석 결과를 가져와 로컬 DB에 저장한다. 첫 대상은 일반 Java JAR인 `method-fixture`이며, [실제 커밋별 갱신·이력 검증](docs/experiments/GITHUB-EVIDENCE-SYNC.md)과 [ADR 0006](docs/decisions/0006-github-method-evidence-pull.md)에 범위를 남긴다. Spring Boot 서비스 전체 분석·trace 지속 수집·화면 자동 갱신은 아직 연결하지 않았다.
 
+[실제 Spring Boot 메서드 근거](docs/experiments/BOOT-METHOD-EVIDENCE.md)는 별도 게시판의 실행 JAR 두 빌드를 분석하고, 실제 요청의 Controller·Service·private 메서드 기록을 같은 빌드의 DB 색인과 대조한다. 다른 실제 빌드와 색인 해시는 거부한다. 첫 로컬 연결이며 Boot의 CI 발행·trace 지속 수집은 다음 검증 범위다. [ADR 0007](docs/decisions/0007-local-boot-method-evidence.md)에 입력과 호출 후보의 의미를 남긴다.
+
 [에이전트 적용 전후의 HTTP 성능](docs/experiments/EXECUTION-PERFORMANCE-RESULTS.md)은 같은 Boot 앱에서 미적용·기본 추적·메서드 추적을 27회 비교했다. 지연·처리량·CPU·메모리·기동 시간과 원시값을 함께 남긴다.
 
 [수용량·과부하·복구 검증 계획](docs/experiments/CAPACITY-VALIDATION.md)은 업무 서비스와 JJAM-TONG의 처리 한계를 구분한다. 목표를 만족하는 지속 부하, 수집·분석·조회 적체, 데이터 규모와 부하 감소 후 복구를 검증할 요구이며 수용량 실측 결과는 아직 없다.
