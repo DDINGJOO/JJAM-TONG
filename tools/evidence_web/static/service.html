@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>JJAM-TONG · 서비스 소스 분석</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/prototype.css">
+  <link rel="stylesheet" href="/service.css">
+</head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<div class="app service-app"><div class="shell">
+  <aside class="sidebar" aria-label="플랫폼 메뉴">
+    <div class="brand"><span class="brand-mark">↗</span><div>JJAM-TONG<small>CONNECTED OPERATIONS</small></div></div>
+    <div class="org"><span class="org-logo">JT</span><div><strong>Local Workspace</strong><small>연결된 근거 · 읽기 전용</small></div></div>
+    <nav class="nav" aria-label="주 메뉴">
+      <a href="/demo?from=service-overview"><span class="nav-icon">▦</span>전사 현황<span class="sr-only"> (제품 데모에서 설명)</span></a>
+      <button type="button" class="active" aria-current="page"><span class="nav-icon">⌁</span>서비스 분석<span class="nav-count">연결</span></button>
+      <a href="/demo?from=service-infrastructure"><span class="nav-icon">⬡</span>인프라·자산<span class="sr-only"> (제품 데모에서 설명)</span></a>
+      <a href="/demo?from=service-operations"><span class="nav-icon">◇</span>운영·보안<span class="sr-only"> (제품 데모에서 설명)</span></a>
+    </nav>
+    <div class="sidebar-bottom"><span class="badge local-badge">LOCAL EVIDENCE</span><p>소스 선언과<br>정적 호출 후보를 봅니다.</p><a class="sidebar-demo" href="/demo">전체 제품 데모 ↗</a></div>
+  </aside>
+  <div class="service-body">
+    <header class="topbar"><div class="crumb"><span>Workspace</span><span>/</span><b>Local</b><span>/</span><span>서비스 분석</span></div><div class="top-right"><span class="badge green">소스 선언 분석</span><a class="btn" href="/demo">제품 데모 ↗</a><span class="avatar">JT</span></div></header>
+    <main id="main" class="main">
+      <div class="page-head"><div><div class="eyebrow">SERVICE INTELLIGENCE</div><h1 id="serviceName">서비스 소스 분석</h1><p id="serviceContext">소스 선언과 정적 호출 후보를 탐색합니다. 런타임 실행 기록은 수집되지 않았습니다.</p></div><button id="retryAll" class="btn primary" type="button">다시 불러오기</button></div>
+      <div id="scopeBanner" class="scope-banner"><span class="connection-dot"></span><strong>소스 선언 분석</strong><span>배포 산출물·런타임·Trace는 연결되지 않았습니다.</span><time id="capturedAt">불러오는 중…</time></div>
+      <nav class="mobile-nav" aria-label="모바일 메뉴"><a href="/demo?from=service-overview">전사 현황 <span class="sr-only">(제품 데모에서 설명)</span></a><a href="/service-analysis" class="active" aria-current="page">서비스 분석</a><a href="/demo?from=service-infrastructure">인프라·자산 <span class="sr-only">(제품 데모에서 설명)</span></a><a href="/demo?from=service-operations">운영·보안 <span class="sr-only">(제품 데모에서 설명)</span></a></nav>
+
+      <section id="pageState" class="page-state loading" aria-live="polite">서비스 분석 정보를 불러오는 중…</section>
+      <section id="workspace" hidden>
+        <section class="context-card" aria-label="분석 맥락">
+          <div><p class="eyebrow">선택한 소스 스냅샷</p><h2 id="revision">—</h2><p id="sourceMeta" class="muted">소스 식별자를 불러오는 중…</p></div>
+          <dl id="metrics" class="metrics" aria-label="소스 분석 요약"></dl>
+          <details><summary>소스·분석 세부 정보</summary><dl id="sourceDetails" class="details-list"></dl></details>
+        </section>
+        <div id="limitations" class="notices" aria-live="polite"></div>
+        <section class="explorer" aria-label="서비스 코드 탐색">
+          <nav class="tabs" role="tablist" aria-label="탐색 종류">
+            <button class="tab active" role="tab" id="endpointsTab" aria-controls="endpointsPane" aria-selected="true" data-tab="endpoints">API <span id="routeCount">0</span></button>
+            <button class="tab" role="tab" id="methodsTab" aria-controls="methodsPane" aria-selected="false" data-tab="methods">메서드 <span id="methodCount">0</span></button>
+          </nav>
+          <div class="filterbar"><label>모듈 <select id="moduleFilter" aria-label="모듈 필터"><option value="">전체 모듈</option></select></label><label class="search"><span class="sr-only">검색</span><input id="search" type="search" autocomplete="off" placeholder="API 경로 · HTTP 메서드 · 컨트롤러 검색"></label><label class="private-toggle"><input id="includePrivate" type="checkbox" checked> private 메서드 보기 (선택한 루트는 유지)</label><span id="searchHelp" class="helper">서버에서 검색합니다.</span></div>
+          <section id="endpointsPane" class="pane" role="tabpanel" aria-labelledby="endpointsTab">
+            <div class="pane-heading"><div><p class="eyebrow">HTTP API</p><h2>진입점</h2></div><p class="helper">handler가 없는 경로는 연결을 추정하지 않습니다.</p></div>
+            <div id="endpointState" class="list-state" aria-live="polite"></div><button id="retryEndpoints" class="more retry" type="button" hidden>API 목록 다시 시도</button><div id="endpointList" class="result-list"></div><button id="moreEndpoints" class="more" type="button" hidden>API 더 보기</button>
+          </section>
+          <section id="methodsPane" class="pane" role="tabpanel" aria-labelledby="methodsTab" hidden>
+            <div class="pane-heading"><div><p class="eyebrow">SOURCE DECLARATIONS</p><h2>메서드</h2></div><div class="focus-toggle" role="group" aria-label="메서드 범위"><button type="button" data-focus="connected" aria-pressed="true">연결됨</button><button type="button" data-focus="all" aria-pressed="false">전체</button></div></div>
+            <p id="hiddenMethods" class="helper"></p><div id="methodState" class="list-state" aria-live="polite"></div><button id="retryMethods" class="more retry" type="button" hidden>메서드 목록 다시 시도</button><div id="methodList" class="result-list"></div><button id="moreMethods" class="more" type="button" hidden>메서드 더 보기</button>
+          </section>
+        </section>
+        <section class="analysis-grid">
+          <section class="graph-card"><div class="pane-heading"><div><p class="eyebrow">STATIC CANDIDATES</p><h2 id="graphTitle">메서드를 선택하세요</h2></div><div class="graph-actions"><button id="zoomOut" type="button" aria-label="그래프 축소">−</button><button id="zoomIn" type="button" aria-label="그래프 확대">+</button><button id="fitGraph" type="button">맞춤</button><button id="rootGraph" type="button">루트</button></div></div><p id="graphCaption" class="helper">소스 선언으로 해석된 호출 후보만 표시합니다. 실행 증거가 아닙니다.</p><div id="graphState" class="list-state">메서드나 API를 선택하면 호출 후보를 조회합니다.</div><button id="retryGraph" class="more retry" type="button" hidden>그래프 다시 시도</button><div id="graphViewport" class="graph-viewport" tabindex="0" aria-label="정적 호출 후보 그래프"><div id="graphPlane" class="graph-plane"><svg id="graphEdges" aria-hidden="true"></svg><div id="graphNodes"></div></div></div><section class="callsites" aria-labelledby="callsiteTitle"><h3 id="callsiteTitle">호출 선언 위치</h3><p id="callsiteState" class="helper">그래프의 관계를 선택하면 선언된 분기 조건과 줄을 봅니다.</p><div id="callsiteList" class="callsite-list"></div><div id="callsiteDetail" class="callsite-detail" hidden></div></section><div id="graphNotes" class="notices"></div></section>
+          <aside class="inspector" aria-live="polite"><p class="eyebrow">선택한 선언</p><h2 id="detailTitle">아직 선택되지 않음</h2><p id="detailSummary" class="muted">목록에서 메서드 또는 API를 선택하세요.</p><div id="detailBody" hidden><dl id="detailList" class="details-list"></dl><details><summary>전체 시그니처와 식별자</summary><pre id="identifier"></pre></details><button id="navigateMethod" type="button" class="more">이 메서드로 이동</button></div></aside>
+        </section>
+      </section>
+      <footer class="footer"><span>JJAM-TONG PLATFORM · 출처·버전·시점이 있는 근거</span><span>정적 후보와 실제 실행을 구분합니다.</span></footer>
+    </main>
+  </div>
+</div></div>
+<script src="/service.js"></script>
+</body>
+</html>
