@@ -27,8 +27,11 @@ class WorkspaceServer(ThreadingHTTPServer):
     daemon_threads = True
     allow_reuse_address = True
 
-    def __init__(self, workspace, port=28740):
+    def __init__(self, workspace, port=28740, *, assets=None, routes=None, inline_styles=()):
         self.workspace = workspace
+        self.assets = ASSETS if assets is None else assets
+        self.routes = ROUTES if routes is None else routes
+        self.inline_styles = frozenset(inline_styles)
         self.slots = threading.BoundedSemaphore(8)
         super().__init__(("127.0.0.1", port), Handler)
         self.authorities = {"127.0.0.1:" + str(self.server_port), "localhost:" + str(self.server_port)}
@@ -68,7 +71,7 @@ class Handler(BaseHTTPRequestHandler):
         # Request URLs can contain identifiers; do not log input or local paths.
         pass
 
-    def _send(self, code, body, content_type="application/json; charset=utf-8", demo=False):
+    def _send(self, code, body, content_type="application/json; charset=utf-8", demo=False, inline_style=False):
         self.send_response(code)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(body)))
@@ -77,7 +80,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Referrer-Policy", "no-referrer")
         # The preserved synthetic tour positions its cards with style attributes.
         # It has no network connection permission. Keep the live consumer strict.
-        style_policy = "'self' 'unsafe-inline'" if demo else "'self'"
+        style_policy = "'self' 'unsafe-inline'" if demo or inline_style else "'self'"
         connect_policy = "'none'" if demo else "'self'"
         self.send_header("Content-Security-Policy", "default-src 'none'; script-src 'self'; style-src "
                          + style_policy + "; connect-src " + connect_policy +
@@ -115,13 +118,13 @@ class Handler(BaseHTTPRequestHandler):
             if any(len(values) != 1 for values in params.values()):
                 raise ValueError("Duplicate query field")
             params = {key: values[0] for key, values in params.items()}
-            if url.path in ASSETS and not params:
-                filename, content_type = ASSETS[url.path]
+            if url.path in self.server.assets and not params:
+                filename, content_type = self.server.assets[url.path]
                 return self._send(200, (STATIC / filename).read_bytes(), content_type,
-                                  demo=url.path == "/demo")
-            if url.path not in ROUTES:
+                                  demo=url.path == "/demo", inline_style=url.path in self.server.inline_styles)
+            if url.path not in self.server.routes:
                 return self._error(404, "NOT_FOUND", "조회 경로를 찾을 수 없어요.")
-            result = getattr(self.server.workspace, ROUTES[url.path])(params)
+            result = getattr(self.server.workspace, self.server.routes[url.path])(params)
             self._json(200, result)
         except VersionMismatch:
             self._error(409, "VERSION_MISMATCH", "선택한 분석 해시와 저장된 근거가 달라요. 다른 버전으로 대체하지 않았어요.")

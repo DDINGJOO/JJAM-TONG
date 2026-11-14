@@ -18,6 +18,8 @@ Backstage의 카탈로그, Flux의 원본 확인, Crossplane의 자원 제어, �
 
 ## 실행한 비교와 한계
 
+[서비스 소스 탐색](../../tools/service_analysis/README.md)은 API·메서드별 정적 후보를 읽는 로컬 경로다. 수집한 선언은 보존하되 기본 목록에서는 생성자·단순 접근자·고립된 비 API 선언을 숨기고, private 표시는 화면에서 전환한다. 호출 위치의 분기 문맥은 실행 사실과 구분한다. 작업과 검증 근거는 [#83](https://github.com/DDINGJOO/JJAM-TONG/issues/83)에 연결한다. 이 경로는 소스 선언의 분석본을 조회하며 배포 산출물·실행 기록과의 일치를 보장하지 않는다.
+
 [빌드 명세·기준선 비교](../experiments/BUILD-INVENTORY-RESULTS.md)는 정적 후보 발견과 파일 검증, 선언 의존 관계 비교를 분리한다. 단위 시험 44개와 합성·공개 대상 판정 15건을 통과했다. 완전한 컴파일 입력이 없는 두 공개 빌드는 부분 상태로 남겼다. [도구](../../tools/build_inventory/README.md)·[계약](../requirements/BUILD-INVENTORY.md)·[#78](https://github.com/DDINGJOO/JJAM-TONG/issues/78)을 연결하며 실제 배포·Trace나 과거 정답표 전체의 검증으로 확대하지 않는다.
 
 [근거의 식별자·시간 모델 실험](../experiments/EVIDENCE-MODEL-RESULTS.md)은 현재 PostgreSQL의 세 테이블과 별도로 코드·실행·배포·자원의 논리 계약을 검증했다. 새 단위 시험 21개와 기대값이 독립적인 합성 시나리오 13개가 통과했다. 기존 합성 Java 분석 두 개를 읽기 전용 트랜잭션으로 원본 전체와 대조하고, 빌드·분석·설정이 다른 선택 16건을 거부했다. 연결부는 여섯 종류의 메타데이터 참조만 만들며 제공되지 않은 서비스·배포·실행은 생성하지 않는다. [논리 모델](../requirements/EVIDENCE-MODEL.md)·[ADR 0012](../decisions/0012-evidence-identity-time-model.md)·[합성 판정](../experiments/evidence-model-results.json)·[DB 읽기 판정](../experiments/evidence-model-store-verification.json)을 연결한다. 실제 인증·인가·수집·용량·저장소 이관과 화면 연결은 앞으로 검증한다.

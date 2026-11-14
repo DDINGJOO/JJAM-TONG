@@ -14,6 +14,8 @@
 
 [로컬 근거 화면](tools/evidence_web/README.md)은 실제 DB의 분석본·메서드·정적 호출 후보와 저장된 Trace를 브라우저에서 조회한다. 다른 빌드의 기록과 미해결 메서드를 구분하며, 새 의존성 없이 로컬 HTTP 서버로 실행한다. 기존 JJAM-TONG 프로토타입 HTML의 디자인과 메뉴를 재사용하며 `/demo`에서는 전체 제품의 합성 시안을 체험한다. 화면의 시나리오와 검증은 [로컬 화면 QA](docs/experiments/LOCAL-EVIDENCE-WORKSPACE.md)에 남긴다.
 
+[서비스 소스 탐색](tools/service_analysis/README.md)은 외부 Java 프로젝트를 기동하지 않고 API 경로·메서드별 정적 후보를 읽는 별도 로컬 화면이다. private 표시와 호출 위치의 분기 문맥을 다루며, 수집한 원본과 화면에서 숨긴 항목을 구분한다.
+
 [에이전트 적용 전후의 HTTP 성능](docs/experiments/EXECUTION-PERFORMANCE-RESULTS.md)은 같은 Boot 앱에서 미적용·기본 추적·메서드 추적을 27회 비교했다. 지연·처리량·CPU·메모리·기동 시간과 원시값을 함께 남긴다.
 
 [수용량·과부하·복구 검증 계획](docs/experiments/CAPACITY-VALIDATION.md)은 업무 서비스와 JJAM-TONG의 처리 한계를 구분한다. 목표를 만족하는 지속 부하, 수집·분석·조회 적체, 데이터 규모와 부하 감소 후 복구를 검증할 요구이며 수용량 실측 결과는 아직 없다.
