@@ -1,0 +1,9 @@
+{
+  "description": "JJAM-TONG project workflow context and bounded completion checks",
+  "hooks": {
+    "SessionStart": [{"hooks": [{"type": "command", "command": "python3 \"$(git rev-parse --show-toplevel)/tools/agent_workflow.py\" hook --tool codex", "timeout": 5, "additionalContextLimit": 1200}]}],
+    "UserPromptSubmit": [{"hooks": [{"type": "command", "command": "python3 \"$(git rev-parse --show-toplevel)/tools/agent_workflow.py\" hook --tool codex", "timeout": 5, "additionalContextLimit": 1200}]}],
+    "SubagentStop": [{"hooks": [{"type": "command", "command": "python3 \"$(git rev-parse --show-toplevel)/tools/agent_workflow.py\" hook --tool codex", "timeout": 5}]}],
+    "Stop": [{"hooks": [{"type": "command", "command": "python3 \"$(git rev-parse --show-toplevel)/tools/agent_workflow.py\" hook --tool codex", "timeout": 5}]}]
+  }
+}

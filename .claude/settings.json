@@ -1,0 +1,8 @@
+{
+  "hooks": {
+    "SessionStart": [{"hooks": [{"type": "command", "command": "python3", "args": ["${CLAUDE_PROJECT_DIR}/tools/agent_workflow.py", "hook", "--tool", "claude"], "timeout": 5}]}],
+    "UserPromptSubmit": [{"hooks": [{"type": "command", "command": "python3", "args": ["${CLAUDE_PROJECT_DIR}/tools/agent_workflow.py", "hook", "--tool", "claude"], "timeout": 5}]}],
+    "SubagentStop": [{"hooks": [{"type": "command", "command": "python3", "args": ["${CLAUDE_PROJECT_DIR}/tools/agent_workflow.py", "hook", "--tool", "claude"], "timeout": 5}]}],
+    "Stop": [{"hooks": [{"type": "command", "command": "python3", "args": ["${CLAUDE_PROJECT_DIR}/tools/agent_workflow.py", "hook", "--tool", "claude"], "timeout": 5}]}]
+  }
+}
