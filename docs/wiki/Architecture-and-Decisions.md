@@ -31,6 +31,7 @@ flowchart LR
 | [ADR 0008: 정확 입력 분석 재사용](../decisions/0008-exact-input-analysis-reuse.md) | 소스·원본 JAR·분석 설정·도구가 같은 전체 입력 결과를 로컬에서 재사용 | 큰 단위 내부의 증분 분석·의존성 변경 전파·작업 큐·CI/DB/화면 연동 |
 | [ADR 0009: Java 파서의 보관 정책 분리](../decisions/0009-java-parser-retention.md) | 직접 파싱의 소스 위치를 유지하고 타입 조회용 파서의 토큰·주석 보관과 캐시 항목 수를 제한 | 전체 프로세스 자원 제한·최적 캐시 크기·고밀도 입력·작업과 출력 분할 |
 | [ADR 0010: 분석 작업의 완료 증거와 발행 비교](../decisions/0010-analysis-job-publication.md) | 로컬 실험에서 입력·시도·필수 단계와 검증한 완료 증거를 분리하고 단일 파일·분할 결과를 비교 | 기존 생산자·소비자·DB·화면 전환, 운영 자원 예산·분산 소유권·내구성 |
+| [ADR 0011: Java v1 공백 제거와 상한 보존](../decisions/0011-java-compact-publication.md) | 실제 대규모 결과 비교를 근거로 다음 로컬 구현에서 같은 v1 JSON의 공백을 줄이고 단계별 10 MiB 제한을 유지 | 실제 생산자·소비자·DB·브라우저 검증, 상한을 넘는 결과의 분할 소비와 지속 수용량 |
 
 관계 갱신 기본안은 현재 상태 복구에 관한 것이다. **놓친 중간 커밋·trace·보안 사건의 발생 이력이 자동 복원되지는 않는다.** 갱신 실험의 색인은 파일·blob 관계다. 별도 [메서드 근거 실험](../experiments/METHOD-OBSERVABILITY-RESULTS.md)은 실제 빌드·분석·span을 연결하며, 빠진 이력과 overload 식별의 한계를 그대로 반환한다.
 
